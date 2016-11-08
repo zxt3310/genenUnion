@@ -91,6 +91,12 @@
 		58E0D3FB1DB71AB50058EB54 /* loding 750x1280.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E0D3311DB71AB50058EB54 /* loding 750x1280.png */; };
 		58E0D3FC1DB71AB50058EB54 /* layout-arrange-09.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E0D3321DB71AB50058EB54 /* layout-arrange-09.png */; };
 		58E0D3FD1DB71AB50058EB54 /* SIDE-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 58E0D3331DB71AB50058EB54 /* SIDE-list.png */; };
+		708256E31DD226180076D9E2 /* nvxinganniu.png in Resources */ = {isa = PBXBuildFile; fileRef = 708256DD1DD226180076D9E2 /* nvxinganniu.png */; };
+		708256E41DD226180076D9E2 /* nvxinganniu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 708256DE1DD226180076D9E2 /* nvxinganniu@2x.png */; };
+		708256E51DD226180076D9E2 /* nvxinganniu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 708256DF1DD226180076D9E2 /* nvxinganniu@3x.png */; };
+		708256E61DD226180076D9E2 /* oval77.png in Resources */ = {isa = PBXBuildFile; fileRef = 708256E01DD226180076D9E2 /* oval77.png */; };
+		708256E71DD226180076D9E2 /* oval77@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 708256E11DD226180076D9E2 /* oval77@2x.png */; };
+		708256E81DD226180076D9E2 /* oval77@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 708256E21DD226180076D9E2 /* oval77@3x.png */; };
 		70F65ECD1DD1AE360077D6E0 /* 101.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F65ECA1DD1AE360077D6E0 /* 101.png */; };
 		70F65ECE1DD1AE360077D6E0 /* 101@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F65ECB1DD1AE360077D6E0 /* 101@2x.png */; };
 		70F65ECF1DD1AE360077D6E0 /* 101@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F65ECC1DD1AE360077D6E0 /* 101@3x.png */; };
@@ -222,6 +228,12 @@
 		58E0D3311DB71AB50058EB54 /* loding 750x1280.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loding 750x1280.png"; sourceTree = "<group>"; };
 		58E0D3321DB71AB50058EB54 /* layout-arrange-09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "layout-arrange-09.png"; sourceTree = "<group>"; };
 		58E0D3331DB71AB50058EB54 /* SIDE-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SIDE-list.png"; sourceTree = "<group>"; };
+		708256DD1DD226180076D9E2 /* nvxinganniu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nvxinganniu.png; sourceTree = "<group>"; };
+		708256DE1DD226180076D9E2 /* nvxinganniu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nvxinganniu@2x.png"; sourceTree = "<group>"; };
+		708256DF1DD226180076D9E2 /* nvxinganniu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nvxinganniu@3x.png"; sourceTree = "<group>"; };
+		708256E01DD226180076D9E2 /* oval77.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oval77.png; sourceTree = "<group>"; };
+		708256E11DD226180076D9E2 /* oval77@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oval77@2x.png"; sourceTree = "<group>"; };
+		708256E21DD226180076D9E2 /* oval77@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oval77@3x.png"; sourceTree = "<group>"; };
 		70F65ECA1DD1AE360077D6E0 /* 101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 101.png; sourceTree = "<group>"; };
 		70F65ECB1DD1AE360077D6E0 /* 101@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "101@2x.png"; sourceTree = "<group>"; };
 		70F65ECC1DD1AE360077D6E0 /* 101@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "101@3x.png"; sourceTree = "<group>"; };
@@ -415,6 +427,12 @@
 		58E0D2631DB71AB40058EB54 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				708256DD1DD226180076D9E2 /* nvxinganniu.png */,
+				708256DE1DD226180076D9E2 /* nvxinganniu@2x.png */,
+				708256DF1DD226180076D9E2 /* nvxinganniu@3x.png */,
+				708256E01DD226180076D9E2 /* oval77.png */,
+				708256E11DD226180076D9E2 /* oval77@2x.png */,
+				708256E21DD226180076D9E2 /* oval77@3x.png */,
 				70F65ECA1DD1AE360077D6E0 /* 101.png */,
 				70F65ECB1DD1AE360077D6E0 /* 101@2x.png */,
 				70F65ECC1DD1AE360077D6E0 /* 101@3x.png */,
@@ -625,6 +643,8 @@
 				58E0D3E61DB71AB50058EB54 /* iconfont-iuchengrenwu@3x.png in Resources */,
 				58AFC6321DB9FF7D00555933 /* Rectangle 28@3x.png in Resources */,
 				58AFC6301DB9FF7D00555933 /* Rectangle 28.png in Resources */,
+				708256E51DD226180076D9E2 /* nvxinganniu@3x.png in Resources */,
+				708256E61DD226180076D9E2 /* oval77.png in Resources */,
 				58E0D3F71DB71AB50058EB54 /* iconfont-wenti-4@3x.png in Resources */,
 				58E0D3361DB71AB50058EB54 /* 614-list.png in Resources */,
 				58E0D3E41DB71AB50058EB54 /* iconfont-changjianwenti-2@3x.png in Resources */,
@@ -644,17 +664,20 @@
 				70F65ECF1DD1AE360077D6E0 /* 101@3x.png in Resources */,
 				58E0D3FB1DB71AB50058EB54 /* loding 750x1280.png in Resources */,
 				58E0D3DE1DB71AB50058EB54 /* loding 640x960.png in Resources */,
+				708256E81DD226180076D9E2 /* oval77@3x.png in Resources */,
 				58E0D3FC1DB71AB50058EB54 /* layout-arrange-09.png in Resources */,
 				589640591DB8C2CD00E99ED1 /* dengru.png in Resources */,
 				58E0D3F51DB71AB50058EB54 /* iconfont-iconfontconsult@3x.png in Resources */,
 				58E0D3E51DB71AB50058EB54 /* iconfont-iconfontkefu@3x.png in Resources */,
 				58E0D3DB1DB71AB50058EB54 /* android载入页.png in Resources */,
+				708256E41DD226180076D9E2 /* nvxinganniu@2x.png in Resources */,
 				58E0D3FA1DB71AB50058EB54 /* loding 640x1136.png in Resources */,
 				58E0D3E31DB71AB50058EB54 /* 614-list.png in Resources */,
 				58E0D3E91DB71AB50058EB54 /* iconfont-zaixianzixunicon81889@3x.png in Resources */,
 				58E0D24E1DB71A6E0058EB54 /* MainViewController.xib in Resources */,
 				58E0D3DF1DB71AB50058EB54 /* loding 750x1280.png in Resources */,
 				58E0D24B1DB71A6E0058EB54 /* firstItemViewController.xib in Resources */,
+				708256E31DD226180076D9E2 /* nvxinganniu.png in Resources */,
 				58E0D3FD1DB71AB50058EB54 /* SIDE-list.png in Resources */,
 				58E0D3E81DB71AB50058EB54 /* iconfont-wodeyuyue@3x.png in Resources */,
 				58E0D3EA1DB71AB50058EB54 /* iconfont-zixunjiluzixun@3x.png in Resources */,
@@ -662,6 +685,7 @@
 				5895263A1DBDA7BD00944776 /* iconfontYouxiang@2x.png in Resources */,
 				58E0D3F91DB71AB50058EB54 /* loding 1242x2208.png in Resources */,
 				58AFC6311DB9FF7D00555933 /* Rectangle 28@2x.png in Resources */,
+				708256E71DD226180076D9E2 /* oval77@2x.png in Resources */,
 				58AFC6371DBA004200555933 /* iconfontMulu.png in Resources */,
 				58E0D3E11DB71AB50058EB54 /* 10-device-access-storage.png in Resources */,
 				58E0D3ED1DB71AB50058EB54 /* logo 120.png in Resources */,

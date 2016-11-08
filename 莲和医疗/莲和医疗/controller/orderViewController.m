@@ -36,10 +36,39 @@
 @end
 
 @interface orderViewController ()
+{
+    UIImageView *maleImgView;
+    
+    UIImageView *femaleImgView;
+    
+    UIImage *selectedImg;
+    UIImage *unSelectedImg;
+    
+    CGRect selectedFrame;
+    CGRect unSelectedFrame;
+    BOOL isMale;
+    
+    orderTextFiled *userNameTF;
+    orderTextFiled *ageTF;
+    orderTextFiled *phoneTF;
+    orderTextFiled *orderTimeTF;
+}
 
 @end
 
 @implementation orderViewController
+
+- (instancetype)init
+{
+    self=[super init];
+    if (self) {
+        selectedImg = [UIImage imageNamed:deviceImageSelect(@"nvxinganniu.png")];
+        unSelectedImg = [UIImage imageNamed:deviceImageSelect(@"oval77.png")];
+
+        isMale = YES;
+    }
+    return  self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,42 +108,95 @@
     maleLable.font = [UIFont app_FontSize:13];
     [self.view addSubview:maleLable];
     
+    maleImgView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(135, 274, 17, 17)];
+    maleImgView.image = selectedImg;
+    maleImgView.userInteractionEnabled = YES;
+    [self.view addSubview:maleImgView];
+    
     UILabel *femaleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(215, 277, 26, 13)];
     femaleLable.text = @"女士";
     femaleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     femaleLable.font = [UIFont app_FontSize:13];
     [self.view addSubview:femaleLable];
     
+    femaleImgView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(248, 274, 21, 21)];
+    femaleImgView.image = unSelectedImg;
+    UITapGestureRecognizer *femaleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(femaleClick)];
+    [femaleImgView addGestureRecognizer:femaleTap];
+    femaleImgView.userInteractionEnabled = YES;
+    [self.view addSubview:femaleImgView];
     
     //姓名
-    orderTextFiled *userNameTF = [[orderTextFiled alloc] initWithFrame:CGRectMakeWithAutoSize(68, 214, 240, 35)];
-
+    userNameTF = [[orderTextFiled alloc] initWithFrame:CGRectMakeWithAutoSize(68, 214, 240, 35)];
+    userNameTF.placeholder = @"  姓名";
     [self.view addSubview:userNameTF];
     
     //年龄
-    orderTextFiled *ageTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 312, 240, 35)];
-    
+    ageTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 312, 240, 35)];
+    ageTF.placeholder = @"  年龄";
     [self.view addSubview:ageTF];
     
     //联系电话
-    orderTextFiled *phoneTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 382, 240, 35)];
-    
+    phoneTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 382, 240, 35)];
+    phoneTF.placeholder = @"  联系电话";
     [self.view addSubview:phoneTF];
     
     //采样时间
-    orderTextFiled *orderTimeTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 452, 240, 35)];
-    
+    orderTimeTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 452, 240, 35)];
+    orderTimeTF.placeholder = @"  预约采样时间";
     [self.view addSubview:orderTimeTF];
     
 
     
 }
 
+- (void)maleClick
+{
+    
+//    maleImgView.image = selectedImg;
+//    femaleImgView.image = unSelectedImg;
+    return;
+}
+
+- (void)femaleClick
+{
+    if(isMale)
+    {
+        femaleImgView.frame = CGRectMakeWithAutoSize(135, 274 , 21, 21);
+        maleImgView.frame = CGRectMakeWithAutoSize(248, 274, 17, 17);
+        isMale = NO;
+    }
+    else
+    {
+        femaleImgView.frame = CGRectMakeWithAutoSize(248, 274, 21, 21);
+        maleImgView.frame = CGRectMakeWithAutoSize(135, 274, 17, 17);
+        isMale = YES;
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    
+    if (event.allTouches.count > 1) {
+        return;
+    }
+    
+    UITouch *touch = event.allTouches.anyObject;
+    if (![touch.view isKindOfClass:[UITextField class]]) {
+        [userNameTF resignFirstResponder];
+        [ageTF resignFirstResponder];
+        [phoneTF resignFirstResponder];
+        [orderTimeTF resignFirstResponder];
+        [self.view resignFirstResponder];
+    }
+    
+}
 
 @end
