@@ -7,6 +7,7 @@
 //
 
 #import "UFanBasicViewController.h"
+#import "reportListViewController.h"
 //#import "Address.h"
 
 @interface leftDrawerViewController : UFanBasicViewController

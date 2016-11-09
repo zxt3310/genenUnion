@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Address.h"
+#import "NetUtils.h"
 #import <QuartzCore/QuartzCore.h>
-@interface orderViewController : UIViewController
+#import "UIViewController+UFanViewController.h"
+@interface orderViewController : UFanViewController
+
+@property NSInteger productId;
+@property UFanViewController *UFanVC;
 
 @end

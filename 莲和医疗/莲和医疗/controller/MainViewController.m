@@ -13,6 +13,7 @@
 #import "userLoginView.h"
 #import "CustomURLCache.h"
 #import "orderViewController.h"
+#import "reportListViewController.h"
 
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WEIGHT [[UIScreen mainScreen] bounds].size.width
@@ -106,8 +107,8 @@
 
 - (void)eMailBtnClick
 {
-    orderViewController *ovc = [[orderViewController alloc]init];
-    
+    reportListViewController *ovc = [[reportListViewController alloc]init];
+
     [self.UF_ViewController.navigationController pushViewController:ovc animated:YES];
 }
 #pragma mark - WEB METHOD FROM HELTHYBOY

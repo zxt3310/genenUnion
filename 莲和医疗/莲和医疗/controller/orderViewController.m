@@ -28,6 +28,8 @@
         self.layer.shadowColor = [UIColor colorWithMyNeed:201 green:193 blue:232 alpha:1].CGColor;
         self.layer.shadowRadius = 5;
         self.layer.shadowOffset = CGSizeMake(1, 1);
+        self.placeholder = @"";
+        [self setValue:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
 
     }
     return self;
@@ -52,11 +54,16 @@
     orderTextFiled *ageTF;
     orderTextFiled *phoneTF;
     orderTextFiled *orderTimeTF;
+    
+    NSString *userSex;
+
 }
 
 @end
 
 @implementation orderViewController
+
+@synthesize productId = productId;
 
 - (instancetype)init
 {
@@ -74,6 +81,10 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    self.title = @"预约购买";
     
     //警告
     UILabel *waringlable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(56, 81, 264, 26)];
@@ -146,6 +157,15 @@
     orderTimeTF.placeholder = @"  预约采样时间";
     [self.view addSubview:orderTimeTF];
     
+    //预约按钮
+    UIButton *orderButton = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(113, 559, 149, 39)];
+    [orderButton setTitle:@"立即预约" forState:UIControlStateNormal ];
+    orderButton.backgroundColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    orderButton.tintColor = [UIColor whiteColor];
+    orderButton.layer.cornerRadius =10;
+    [orderButton addTarget:self action:@selector(orderClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview: orderButton];
+    
 
     
 }
@@ -172,6 +192,46 @@
         maleImgView.frame = CGRectMakeWithAutoSize(135, 274, 17, 17);
         isMale = YES;
     }
+}
+
+
+- (void)orderClick
+{
+    
+    
+
+    NSString *strUrl = [NSString stringWithFormat:orderRequest_RUL];
+    NSString *post = [NSString stringWithFormat:@"truename=%@&gender=%@&age=%@&tel=%@&book_date=%@&product=%ld",userNameTF.text,userSex,ageTF.text,phoneTF.text,orderTimeTF.text,(long)productId];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *requestData = sendRequestWithFullURL(strUrl, post);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           if(!requestData)
+           {
+               NSLog(@"send order FAILED check");
+               return ;
+           }
+            NSString *reqStr = [[NSString alloc] initWithData:requestData encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",reqStr);
+            
+            NSDictionary *requestDic = parseJsonResponse(requestData);
+            NSString *resault = JsonValue([requestDic objectForKey:@"err"],@"NSString");
+            NSInteger err = [resault integerValue];
+            
+            if(err > 0)
+            {
+                NSString *error = replaceUnicode([requestDic objectForKey:@"errmsg"]);
+                alertMsgView(error, self);
+                return;
+            }
+            
+            alertMsgView(@"预约成功", self);
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    
+    
+    });
 }
 
 - (void)didReceiveMemoryWarning {

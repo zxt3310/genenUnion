@@ -28,7 +28,7 @@ NSData *sendRequest(NSString *phpFile, NSString *post)
 NSData *sendRequestWithFullURL(NSString *fullURL, NSString *post)
 {
     //NSString *finalPost = [NSString stringWithFormat:@"%@&version=2.2&deviceid=%@&appid=3&source=apple", post, [[NSUserDefaults standardUserDefaults] objectForKey:USER_UNIQUE_ID]];
-    NSString *finalPost = post;
+    NSString *finalPost = [post stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
     NSLog(@"sendRequestWithFullURL:%@ post:%@", fullURL, finalPost);
     
     return sendFullRequest(fullURL, finalPost, nil, true, false);
@@ -96,11 +96,11 @@ NSData *sendFullRequest(NSString *fullURL, NSString *post, NSDictionary *additio
                 [request addValue:value forHTTPHeaderField:key];
             }
         }
-        //[request setHTTPMethod:@"POST"];
+        [request setHTTPMethod:@"POST"];
         //[request setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
         //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        //[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        //[request setHTTPBody:postData];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:postData];
         returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
         httpResponse = (NSHTTPURLResponse *) response;
         if ([httpResponse statusCode] != 200) {

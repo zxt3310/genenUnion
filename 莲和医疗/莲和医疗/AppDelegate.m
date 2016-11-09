@@ -26,15 +26,15 @@
     
     MainViewController *mainVC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
    
-    [mainVC setStrURL:[[NSString alloc] initWithFormat:@"http://ctdna.m3gene.com:81/resources/mobile/index"]];
+    [mainVC setStrURL:[[NSString alloc] initWithFormat:MAIN_PAGE]];
     // webVC.isMainTabPage = true;
 
     
     
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
     leftDrawerViewController *leftVC = [[leftDrawerViewController alloc] init];
-    UFanViewController *uFanVC = [[UFanViewController alloc] initWithCenterViewController:nav leftDrawerViewController:leftVC];
+    UFanViewController *uFanVC = [[UFanViewController alloc] initWithCenterViewController:mainVC leftDrawerViewController:leftVC];
     uFanVC.showShadow = YES;
     self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:uFanVC];
     
@@ -61,7 +61,7 @@
     //self.window.rootViewController = uFanVC;
     [self.window makeKeyAndVisible];
     
-    sleep(2);
+    sleep(1);
     return YES;
 }
 

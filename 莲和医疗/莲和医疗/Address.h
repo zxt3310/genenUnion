@@ -11,11 +11,11 @@
 #ifndef Adress_h
 #define Adress_h
 
-#define MAIN_PAGE      @"http://ctdna.m3gene.com:81/resources/mobile/index"
+#define MAIN_PAGE      @"http://gentest.ranknowcn.com/resources/mobile/index"
 #define ZXZX_PAGE      @"https://static.meiqia.com/dist/standalone.html?eid=33791"
 #define FAQ_PAGE       @"http://ctdna.m3gene.com:81/m/faq"
 #define LJYY_PAGE      @"http://ctdna.m3gene.com:81/m/order"
-#define WDJC_PAGE      @"http://ctdna.m3gene.com:81/m/my/report"
+#define WDJC_PAGE      @"http://gzh.gentest.ranknowcn.com/m/api/reports"
 #define FWLC_PAGE      @"http://ctdna.m3gene.com:81/m/procedure"
 #define LOIGN_PAGE     @""
 
@@ -25,6 +25,8 @@
 #define WDJC_IMAGE     @"iconfont-zixunjiluzixun@3x.png"
 #define FWLC_IMAGE     @"iconfont-iuchengrenwu@3x.png"
 #define LOIGN_IMAGE    @"iconfont-logout@3x.png"
+
+#define orderRequest_RUL @"http://gzh.gentest.ranknowcn.com/m/api/order"
 
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WEIGHT [[UIScreen mainScreen] bounds].size.width
@@ -76,6 +78,7 @@ NSString* getStringForKey(NSString* key);
 
 NSString* deviceImageSelect (NSString *imageName);
 
+void alertMsgView(NSString *alertMsg ,UIViewController *uvc);
 
 UIImage* drawImageWithColor(UIColor *startColor,UIColor *midColor, UIColor *endColor, CGRect frame);
 
@@ -87,18 +90,12 @@ CG_INLINE CGRect
 CGRectMakeWithAutoSize(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
 
 {
-    
-    
     CGRect rect;
-    
     rect.origin.x = SCREEN_WEIGHT * x/375;
     rect.origin.y = SCREEN_HEIGHT * y/667;
-    
     rect.size.width = SCREEN_WEIGHT * width/375;
     rect.size.height = SCREEN_HEIGHT *height/667;
-    
     return rect;
-    
 }
 
 

@@ -144,13 +144,28 @@
         {
             if(finished)
             {
-                firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
                 NSString *cellText = self.items[indexPath.row];
                 NSURL *url = [[NSURL alloc]initWithString:cellText];
-                //firstVC.navigationItem.title = self.itemsMenu[indexPath.row];
-                firstVC.strURL = url;      
-               
+                
+                if ([cellText isEqualToString:WDJC_PAGE])
+                {
+                    if(hasLogin)
+                    {
+                        reportListViewController *rlvc = [[reportListViewController alloc]init];
+                        rlvc.token = lastToken;
+                        [self.UF_ViewController.navigationController pushViewController:rlvc animated:YES];
+                    }
+                    else
+                    {
+                        return ;
+                    }
+                }
+                else
+                {
+                firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
+                firstVC.strURL = url;
                 [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
+                }
             }
             else
                 return ;
@@ -203,7 +218,7 @@
 
 -(void)receivedNotif:(NSNotification *)notification {
     hasLogin = !hasLogin;
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:6 inSection:0];
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:5 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 

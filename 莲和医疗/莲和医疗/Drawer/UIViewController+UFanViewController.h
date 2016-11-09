@@ -11,6 +11,6 @@
 
 @interface UIViewController (UFanViewController)
 
-@property (nonatomic, strong, readonly) UFanViewController *UF_ViewController;
+@property (nonatomic, strong,readonly) UFanViewController *UF_ViewController;
 
 @end

@@ -142,13 +142,13 @@
 - (IBAction)Bt_LoginClick:(id)sender
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"http://ctdna.m3gene.com:81/m/api/validation?mobile=%@&code=%@"
+        NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/validation?mobile=%@&code=%@"
                                         ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]
                                         ,[_Tx_Password.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
        // NSURL *url = [[NSURL alloc] initWithString:urlStr];
         
         
-        NSData *response = sendRequestWithFullURL(urlStr, @"");
+        NSData *response = sendGETRequest(urlStr);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (response==nil){
@@ -218,12 +218,12 @@
 - (IBAction)Bt_SendMsgClick:(id)sender
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"http://ctdna.m3gene.com:81/m/api/requestcode?mobile=%@"
+        NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/requestcode?mobile=%@"
                             ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
         
         // NSURL *url = [[NSURL alloc] initWithString:urlStr];
         
-        NSData *response = sendRequestWithFullURL(urlStr, @"");
+        NSData *response = sendGETRequest(urlStr);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (response==nil){
