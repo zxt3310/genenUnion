@@ -125,7 +125,7 @@
     nextPointy = self.frame.origin.y + self.frame.size.height;
     
     //左侧细线
-    lineLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(51, 30, 1, self.frame.size.height - 30)];
+    lineLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(52, 30, 1, self.frame.size.height - 30)];
     lineLable.layer.borderWidth = 1;
     lineLable.layer.borderColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1].CGColor;
     lineLable.transform = CGAffineTransformMakeRotation(M_PI/1);

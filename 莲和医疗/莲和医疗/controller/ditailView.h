@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ditailView : UIView
+
+
 
 @property UIImage *ditailImg; //步骤图标
 
