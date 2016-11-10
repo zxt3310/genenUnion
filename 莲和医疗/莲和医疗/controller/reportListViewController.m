@@ -205,6 +205,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *reportId = [reportArray[indexPath.row] objectForKey:@"report_id"];
+    reportDitailViewController *rdvc = [[reportDitailViewController alloc]init];
+    rdvc.reportId = reportId;
+    [self.navigationController pushViewController:rdvc animated:YES];
+    
     return;
 }
 

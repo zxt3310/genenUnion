@@ -9,6 +9,7 @@
 #import "UFanViewController.h"
 #import "Address.h"
 #import "NetUtils.h"
+#import "reportDitailViewController.h"
 
 @interface reportListViewController : UFanViewController
 
