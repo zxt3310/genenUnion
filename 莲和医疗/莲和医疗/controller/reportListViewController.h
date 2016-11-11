@@ -10,6 +10,7 @@
 #import "Address.h"
 #import "NetUtils.h"
 #import "reportDitailViewController.h"
+#import "CMCustomViews.h"
 
 @interface reportListViewController : UFanViewController
 

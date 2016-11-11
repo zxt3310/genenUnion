@@ -281,47 +281,6 @@
 }
 
 
-//- (void)setInt:(NSInteger)value forKey:(NSString *)key
-//{
-//    if (!key || [key length] <= 0) {
-//        return;
-//    }
-//    
-//    [[NSUserDefaults standardUserDefaults] setInteger:value forKey:key];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//}
-//- (void)setString:(NSString*)value objctForKey:(NSString *)key
-//{
-//    if (!key || [key length] <= 0) {
-//        return;
-//    }
-//    
-//    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//}
-//- (NSInteger)getIntForKey:(NSString *)key
-//{
-//    if (!key || [key length] <= 0) {
-//        return 0;
-//    }
-//    
-//    
-//    return [[NSUserDefaults standardUserDefaults] integerForKey:key];
-//}
-//
-//- (NSString *)getStringForKey:(NSString *)key
-//{
-//    if (!key || [key length] <= 0) {
-//        return 0;
-//    }
-//    
-//    
-//    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
-//}
-
-
-
 
 //touch非textfiled 隐藏键盘
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

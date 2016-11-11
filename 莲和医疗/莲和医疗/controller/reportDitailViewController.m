@@ -12,21 +12,21 @@
 @interface reportDitailViewController ()
 {
     NSArray *stepArray;
+    NSArray *imgNameArray;
 }
 @end
 
 @implementation reportDitailViewController
+
+@synthesize reportDitailDic = reportDitailDic;
 
 - (instancetype)init
 {
     self = [super init];
     if(self)
     {
-        titleName = @"和普安基因检测";
-        username = @"张三";
-        sex = @"男";
-        age = @"51";
-        phone = @"13813810000";
+
+        imgNameArray = @[CHOUXUE_IMG,YANGBEN_IMG,FENLI_IMG,TIQU_IMG,KUOZENGJIANKU_IMG,GAOTONGCEXU_IMG,SHENGWUFENXI_IMG,CHUBAOGAO_IMG];
         
     }
     return self;
@@ -35,8 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的检测详情";
-    
-    [self loadRequest];
+
      stepArray = [reportDitailDic objectForKey:@"steps"];
     
     
@@ -91,24 +90,6 @@
     [reportScrollView addSubview:phoneLabel];
     
     //流程进度
-//    ditailView *chouxueView = [[ditailView alloc]initWithFrame:CGRectMakeWithAutoSize(0, 148, SCREEN_WEIGHT,0 )];
-//    chouxueView.ditailImg = [UIImage imageNamed:@"iconChouxueCopy2@2x.png"];
-//    chouxueView.isThisStep = NO;
-//    chouxueView.stepName = @"抽血";
-//    chouxueView.ditailText = @"静脉抽取10毫升血液，控温运输到实验室。";
-//    chouxueView.reportTime = @"2016-09-10";
-//    [chouxueView drawDitail];
-//    [reportScrollView addSubview:chouxueView];
-//    
-//    ditailView *yangbenView = [[ditailView alloc]initWithFrame:CGRectMakeWithAutoSize(0, chouxueView.nextPointy, SCREEN_WEIGHT, 0)];
-//    yangbenView.ditailImg = [UIImage imageNamed:@"tiquCopy2@2x.png"];
-//    yangbenView.isThisStep = YES;
-//    yangbenView.stepName = @"提取";
-//    yangbenView.ditailText =
-//    yangbenView.reportTime = @"2016-10-05";
-//    [yangbenView drawDitail];
-//    [reportScrollView addSubview:yangbenView];
-//    
     for(int i =0;i < stepArray.count; i++)
     {
         NSDictionary *stepDic = stepArray[i];
@@ -131,13 +112,17 @@
             View.isThisStep = YES;
             View.reportTime = @"进行中";
         }
-        View.ditailImg = [UIImage imageNamed:@"tiquCopy2@2x.png"];
+
+        //设置高图标
+        View.ditailImg = [UIImage imageNamed:[self selectReportImg:i currentStep:step - 1]];
         [View drawDitail];
         if(i == stepArray.count - 1)
         {
             View.lineLable.hidden = YES;
         }
-        [reportScrollView addSubview:View];
+        
+        
+         [reportScrollView addSubview:View];
     }
 
             
@@ -159,48 +144,41 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (void)loadRequest
-{
-    NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/report/70?token=13810663999123123123"];
-    
-    
-    NSData *response = sendGETRequest(urlStr);
-    
-    if (response==nil){
-        // [self.hud hide]
-        NSLog(@" response is null check net!");
-        return;
-    }
-    
-    NSString *strResp = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    
-    NSDictionary *jsonData = parseJsonResponse(response);
-    if (!jsonData)
-    {
-        return;
-    }
-    
-    NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
-    if ([result integerValue] != 1) {
-        //   [self.hud hide];
-        NSLog(@"listarea result invalid: %@", strResp);
-    }
-    NSString *errmsg = JsonValue([jsonData objectForKey:@"errmsg"], CLASS_STRING);
-    if (errmsg.length > 0)
-    {
-        NSString *errmsgInZhcn = replaceUnicode(errmsg);
-        NSLog(@"errormesg : %@" , errmsgInZhcn);
-        alertMsgView(errmsgInZhcn, self);
-        return;
-    }
-    
-    reportDitailDic = JsonValue([jsonData objectForKey:@"data"],CLASS_DICTIONARY);
-    if(reportDitailDic.count == 0)
-    {
-        alertMsgView(@"您尚未有报告", self);
-        return;
-    }
-}
 
+
+//图片选择器  命名规则 已完成图片名+$   正在进行 图片名+&  未完成 图片名+！
+- (NSString *)selectReportImg:(NSInteger)index currentStep:(NSInteger)step;
+{
+    
+    NSString *imgName = imgNameArray[index];
+    
+    NSMutableArray *arry = [[NSMutableArray alloc]init];
+    NSMutableString *string = [NSMutableString stringWithString:imgName];
+    int n = 0;
+    for (int i = 0; i < imgName.length; i++) {
+        arry[i] = [imgName substringWithRange:NSMakeRange(i, 1)];
+        if([arry[i]  isEqual: @"."])
+        {
+            n = i;
+            break;
+        }
+    }
+    
+    if(index < step)
+    {
+        [string insertString:@"$" atIndex:n];
+    }
+    else if(index == step)
+    {
+        [string insertString:@"&" atIndex:n];
+    }
+    else
+    {
+        [string insertString:@"!" atIndex:n];
+    }
+    imgName = [string copy];
+    imgName = deviceImageSelect(imgName);
+    return imgName;
+}
 
 @end

@@ -13,14 +13,14 @@
 
 #define MAIN_PAGE      @"http://gentest.ranknowcn.com/resources/mobile/index"
 #define ZXZX_PAGE      @"https://static.meiqia.com/dist/standalone.html?eid=33791"
-#define FAQ_PAGE       @"http://ctdna.m3gene.com:81/m/faq"
+#define GYWM_PAGE       @"http://gentest.ranknowcn.com/m/faq"
 #define LJYY_PAGE      @"http://ctdna.m3gene.com:81/m/order"
 #define WDJC_PAGE      @"http://gzh.gentest.ranknowcn.com/m/api/reports"
 #define FWLC_PAGE      @"http://ctdna.m3gene.com:81/m/procedure"
 #define LOIGN_PAGE     @""
 
 #define ZXZX_IMAGE     @"iconfont-zaixianzixunicon81889@3x.png"
-#define FAQ_IMAGE      @"iconfont-changjianwenti-2@3x.png"
+#define GYWM_IMAGE      @"iconfontGuanyuwomen2@3x.png"
 #define LJYY_IMAGE     @"iconfont-wodeyuyue@3x.png"
 #define WDJC_IMAGE     @"iconfont-zixunjiluzixun@3x.png"
 #define FWLC_IMAGE     @"iconfont-iuchengrenwu@3x.png"
@@ -51,6 +51,15 @@
 #define CLASS_STRING @"NSString"
 #define CLASS_DICTIONARY @"NSDictionary"
 #define CLASS_ARRAY @"NSArray"
+
+#define CHOUXUE_IMG @"Chouxue.png"
+#define YANGBEN_IMG @"iconYangben.png"
+#define FENLI_IMG   @"Fenli.png"
+#define TIQU_IMG    @"tiqu.png"
+#define KUOZENGJIANKU_IMG @"kuozengjianku.png"
+#define GAOTONGCEXU_IMG   @"Gaotong.png"
+#define SHENGWUFENXI_IMG  @"Fenxi.png"
+#define CHUBAOGAO_IMG     @"Chubaogao.png"
 
 @interface UIFont (custom)
 

@@ -18,6 +18,8 @@
     NSString* lastToken;
     UIImageView *cellImageView;
     BOOL hasLogin;
+    
+    UINavigationController *unv;
 }
 @property (nonatomic, strong) NSArray *items;
 @property (nonatomic, strong) NSArray *itemsMenu;

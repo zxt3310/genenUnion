@@ -17,6 +17,7 @@
 
 @implementation UILabel (ContentSize)
 
+//根据文字计算lable高度
 - (CGSize)contentSize {
 	NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
 	 paragraphStyle.lineBreakMode = self.lineBreakMode;
@@ -67,14 +68,21 @@
     [self addSubview:detailImageView];
     
     //时间
-    UILabel *timeLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(99, 25, 80, 14)];
+    UILabel *timeLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(99, 25, 90, 14)];
     timeLable.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:14];
     timeLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     timeLable.text = reportTime;
     [self addSubview:timeLable];
     
+    CGFloat y = 0;
+    if(reportTime.length == 0)
+    {
+        y = timeLable.frame.size.height;
+    }
+
+    
     //高亮标志
-    UITextField *ligntTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(110, 47, 19, 25)];
+    UITextField *ligntTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(110, 47 - y, 19, 25)];
     ligntTF.enabled = NO;
     ligntTF.layer.borderWidth = 1;
     ligntTF.layer.cornerRadius = 10;
@@ -104,7 +112,7 @@
     [self bringSubviewToFront:textLable];
     
     [textLable setFrame: CGRectMakeWithAutoSize(22, 28, 198, [textLable contentSize].height)];
-    [outLable setFrame:CGRectMakeWithAutoSize(97, 56, 235, [textLable contentSize].height + 39)];
+    [outLable setFrame:CGRectMakeWithAutoSize(97, 56 - y, 235, [textLable contentSize].height + 39)];
     
     [outLable addSubview:textLable];
     

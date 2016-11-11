@@ -21,10 +21,12 @@
     NSString *phone;
     CGFloat numberOfRows;
     NSString *context;
-    NSDictionary *reportDitailDic;
+    
 }
 
 @property NSString *reportId;
+
+@property NSDictionary *reportDitailDic;
 
 @end
 

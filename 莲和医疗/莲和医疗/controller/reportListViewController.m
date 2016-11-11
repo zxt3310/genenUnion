@@ -19,9 +19,13 @@
     CGFloat prograss;
     NSString *prograssTag;
     
+    LoadingView *loadingView;
+    
     NSArray *reportArray;
     
     NSString *t;
+    
+    
 }
 @end
 
@@ -35,11 +39,11 @@
     
     if(self)
     {
-       reportTime = @"2016年11月10日";
-        username = @"张三李四";
-        productName = @"和普安无创肿瘤基因检测";
-        prograss = 0.3;
-        prograssTag = @"扩增建库";
+//       reportTime = @"2016年11月10日";
+//        username = @"张三李四";
+//        productName = @"和普安无创肿瘤基因检测";
+//        prograss = 0.3;
+//        prograssTag = @"扩增建库";
         t = @"138106639991231231234";
     }
     
@@ -59,6 +63,17 @@
     
     [self loadRequest];
     //[self.tableView reloadData];
+    
+    
+    //loading 动画
+    float topY = 180;
+    if ([UIScreen mainScreen].bounds.size.height > 480.0) {
+        topY += 40;
+    }
+    loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2.5, topY, 80, 79)];
+    loadingView.hidden = YES;
+    [self.view addSubview:loadingView];
+
     
 }
 
@@ -172,7 +187,7 @@
     userNameLb.text = [dic objectForKey:@"client_name"];
     
     UILabel *productNameLb = (UILabel *)[backView viewWithTag:4];
-    productNameLb.text = productName;
+    productNameLb.text = [dic objectForKey:@"product_name"];
     
     UITextField *prograssView = (UITextField *)[backView viewWithTag:5];
     prograss = [[dic objectForKey:@"current_progress"] floatValue];
@@ -205,11 +220,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *reportId = [reportArray[indexPath.row] objectForKey:@"report_id"];
-    reportDitailViewController *rdvc = [[reportDitailViewController alloc]init];
-    rdvc.reportId = reportId;
-    [self.navigationController pushViewController:rdvc animated:YES];
     
-    return;
+    [self ditailLoadRequest:reportId];
 }
 
 - (void)loadRequest
@@ -252,6 +264,70 @@
             alertMsgView(@"您尚未有报告", self);
             return;
         }
+}
+
+- (void)ditailLoadRequest:(NSString *)reportId
+{
+    loadingView.hidden = NO;
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/report/%@?token=13810663999123123123",reportId];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+        NSData *response = sendGETRequest(urlStr);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (response==nil){
+                // [self.hud hide]
+                NSLog(@" response is null check net!");
+                loadingView.hidden = YES;
+                return;
+            }
+            
+            NSString *strResp = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+            
+            NSDictionary *jsonData = parseJsonResponse(response);
+            if (!jsonData)
+            {
+                loadingView.hidden = YES;
+                return;
+            }
+            
+            NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
+            if ([result integerValue] != 1) {
+                //   [self.hud hide];
+                NSLog(@"listarea result invalid: %@", strResp);
+            }
+            NSString *errmsg = JsonValue([jsonData objectForKey:@"errmsg"], CLASS_STRING);
+            if (errmsg.length > 0)
+            {
+                NSString *errmsgInZhcn = replaceUnicode(errmsg);
+                NSLog(@"errormesg : %@" , errmsgInZhcn);
+                alertMsgView(errmsgInZhcn, self);
+                loadingView.hidden = YES;
+                return;
+            }
+            
+            NSDictionary *reportDitailDic = JsonValue([jsonData objectForKey:@"data"],CLASS_DICTIONARY);
+            if(reportDitailDic.count == 0)
+            {
+                alertMsgView(@"您尚未有报告", self);
+                loadingView.hidden = YES;
+                return;
+            }
+            else
+            {
+                loadingView.hidden = YES;
+                reportDitailViewController *rdvc = [[reportDitailViewController alloc]init];
+                rdvc.reportDitailDic = reportDitailDic;
+                [self.navigationController pushViewController:rdvc animated:YES];
+                
+            }
+        
+        });
+        
+    });
 }
 
 - (void)didReceiveMemoryWarning {
