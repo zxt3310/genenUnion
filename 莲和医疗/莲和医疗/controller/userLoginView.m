@@ -218,8 +218,8 @@
 - (IBAction)Bt_SendMsgClick:(id)sender
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/requestcode?mobile=%@"
-                            ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
+        NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
+                            //,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
         
         // NSURL *url = [[NSURL alloc] initWithString:urlStr];
         

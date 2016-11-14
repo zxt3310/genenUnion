@@ -26,6 +26,9 @@
 #define FWLC_IMAGE     @"iconfont-iuchengrenwu@3x.png"
 #define LOIGN_IMAGE    @"iconfont-logout@3x.png"
 
+#define PRODUCT1_URL   @"http://gentest.ranknowcn.com/m/product/1"
+#define PRODUCT2_URL   @"http://gentest.ranknowcn.com/m/product/2"
+
 #define orderRequest_RUL @"http://gzh.gentest.ranknowcn.com/m/api/order"
 
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height

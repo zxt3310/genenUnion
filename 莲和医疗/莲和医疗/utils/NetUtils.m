@@ -260,7 +260,7 @@ NSData *sendGetReqWithHeaderAndRespDict(NSString *strUrl, NSDictionary *headers,
             NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
             [request setTimeoutInterval:30];
             [request setURL:url];
-            [request setHTTPMethod:@"GET"];
+            //[request setHTTPMethod:@"GET"];
             if (headers) {
                 NSArray *keys = headers.allKeys;
                 for (NSString *key in keys) {

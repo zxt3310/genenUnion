@@ -48,8 +48,6 @@
 		58E0D2591DB71A6E0058EB54 /* NetUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2361DB71A6E0058EB54 /* NetUtils.m */; };
 		58E0D25A1DB71A6E0058EB54 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2381DB71A6E0058EB54 /* Reachability.m */; };
 		58E0D25B1DB71A6E0058EB54 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D23A1DB71A6E0058EB54 /* Util.m */; };
-		58E0D25C1DB71A6E0058EB54 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58E0D23D1DB71A6E0058EB54 /* WebViewJavascriptBridge.js.txt */; };
-		58E0D25D1DB71A6E0058EB54 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D23E1DB71A6E0058EB54 /* WebViewJavascriptBridge.m */; };
 		58E0D25E1DB71A6E0058EB54 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D23F1DB71A6E0058EB54 /* Address.m */; };
 		58E0D25F1DB71A6E0058EB54 /* UFanBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2421DB71A6E0058EB54 /* UFanBasicViewController.m */; };
 		58E0D2601DB71A6E0058EB54 /* UFanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2441DB71A6E0058EB54 /* UFanViewController.m */; };
@@ -181,6 +179,24 @@
 		703FEC091DD3260900C7DEA5 /* Rectangle 133 Copy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 703FEC081DD3260900C7DEA5 /* Rectangle 133 Copy@2x.png */; };
 		706CADBA1DD3623200362D17 /* rectangle150.png in Resources */ = {isa = PBXBuildFile; fileRef = 706CADB81DD3623200362D17 /* rectangle150.png */; };
 		706CADBB1DD3623200362D17 /* rectangle150@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 706CADB91DD3623200362D17 /* rectangle150@2x.png */; };
+		70810F8A1DD97F120075BC17 /* aboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70810F891DD97F120075BC17 /* aboutUsViewController.m */; };
+		70810F8D1DD97F600075BC17 /* serviceHelperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70810F8C1DD97F600075BC17 /* serviceHelperViewController.m */; };
+		70810F911DD98E650075BC17 /* aboutus.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F8E1DD98E650075BC17 /* aboutus.png */; };
+		70810F921DD98E650075BC17 /* aboutus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F8F1DD98E650075BC17 /* aboutus@2x.png */; };
+		70810F931DD98E650075BC17 /* aboutus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F901DD98E650075BC17 /* aboutus@3x.png */; };
+		70810F9E1DD9A4DC0075BC17 /* iconCaiji.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F951DD9A4DC0075BC17 /* iconCaiji.png */; };
+		70810F9F1DD9A4DC0075BC17 /* iconCaiji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F961DD9A4DC0075BC17 /* iconCaiji@2x.png */; };
+		70810FA01DD9A4DC0075BC17 /* iconCaiji@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F971DD9A4DC0075BC17 /* iconCaiji@3x.png */; };
+		70810FA11DD9A4DC0075BC17 /* iconJiedu.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F981DD9A4DC0075BC17 /* iconJiedu.png */; };
+		70810FA21DD9A4DC0075BC17 /* iconJiedu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F991DD9A4DC0075BC17 /* iconJiedu@2x.png */; };
+		70810FA31DD9A4DC0075BC17 /* iconJiedu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F9A1DD9A4DC0075BC17 /* iconJiedu@3x.png */; };
+		70810FA41DD9A4DC0075BC17 /* iconLiucheng.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F9B1DD9A4DC0075BC17 /* iconLiucheng.png */; };
+		70810FA51DD9A4DC0075BC17 /* iconLiucheng@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F9C1DD9A4DC0075BC17 /* iconLiucheng@2x.png */; };
+		70810FA61DD9A4DC0075BC17 /* iconLiucheng@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70810F9D1DD9A4DC0075BC17 /* iconLiucheng@3x.png */; };
+		70810FB01DD9BAF10075BC17 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 70810FA91DD9BAF10075BC17 /* WKWebViewJavascriptBridge.m */; };
+		70810FB11DD9BAF10075BC17 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 70810FAB1DD9BAF10075BC17 /* WebViewJavascriptBridge.m */; };
+		70810FB21DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 70810FAD1DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.m */; };
+		70810FB31DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 70810FAF1DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.m */; };
 		70F65ECD1DD1AE360077D6E0 /* 101.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F65ECA1DD1AE360077D6E0 /* 101.png */; };
 		70F65ECE1DD1AE360077D6E0 /* 101@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F65ECB1DD1AE360077D6E0 /* 101@2x.png */; };
 		70F65ECF1DD1AE360077D6E0 /* 101@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70F65ECC1DD1AE360077D6E0 /* 101@3x.png */; };
@@ -264,9 +280,6 @@
 		58E0D2381DB71A6E0058EB54 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		58E0D2391DB71A6E0058EB54 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		58E0D23A1DB71A6E0058EB54 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
-		58E0D23C1DB71A6E0058EB54 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
-		58E0D23D1DB71A6E0058EB54 /* WebViewJavascriptBridge.js.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebViewJavascriptBridge.js.txt; sourceTree = "<group>"; };
-		58E0D23E1DB71A6E0058EB54 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
 		58E0D23F1DB71A6E0058EB54 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		58E0D2411DB71A6E0058EB54 /* UFanBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFanBasicViewController.h; sourceTree = "<group>"; };
 		58E0D2421DB71A6E0058EB54 /* UFanBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFanBasicViewController.m; sourceTree = "<group>"; };
@@ -405,6 +418,30 @@
 		703FEC081DD3260900C7DEA5 /* Rectangle 133 Copy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rectangle 133 Copy@2x.png"; sourceTree = "<group>"; };
 		706CADB81DD3623200362D17 /* rectangle150.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rectangle150.png; sourceTree = "<group>"; };
 		706CADB91DD3623200362D17 /* rectangle150@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rectangle150@2x.png"; sourceTree = "<group>"; };
+		70810F881DD97F120075BC17 /* aboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutUsViewController.h; sourceTree = "<group>"; };
+		70810F891DD97F120075BC17 /* aboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutUsViewController.m; sourceTree = "<group>"; };
+		70810F8B1DD97F600075BC17 /* serviceHelperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serviceHelperViewController.h; sourceTree = "<group>"; };
+		70810F8C1DD97F600075BC17 /* serviceHelperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serviceHelperViewController.m; sourceTree = "<group>"; };
+		70810F8E1DD98E650075BC17 /* aboutus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutus.png; sourceTree = "<group>"; };
+		70810F8F1DD98E650075BC17 /* aboutus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutus@2x.png"; sourceTree = "<group>"; };
+		70810F901DD98E650075BC17 /* aboutus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutus@3x.png"; sourceTree = "<group>"; };
+		70810F951DD9A4DC0075BC17 /* iconCaiji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconCaiji.png; sourceTree = "<group>"; };
+		70810F961DD9A4DC0075BC17 /* iconCaiji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCaiji@2x.png"; sourceTree = "<group>"; };
+		70810F971DD9A4DC0075BC17 /* iconCaiji@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconCaiji@3x.png"; sourceTree = "<group>"; };
+		70810F981DD9A4DC0075BC17 /* iconJiedu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconJiedu.png; sourceTree = "<group>"; };
+		70810F991DD9A4DC0075BC17 /* iconJiedu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconJiedu@2x.png"; sourceTree = "<group>"; };
+		70810F9A1DD9A4DC0075BC17 /* iconJiedu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconJiedu@3x.png"; sourceTree = "<group>"; };
+		70810F9B1DD9A4DC0075BC17 /* iconLiucheng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconLiucheng.png; sourceTree = "<group>"; };
+		70810F9C1DD9A4DC0075BC17 /* iconLiucheng@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLiucheng@2x.png"; sourceTree = "<group>"; };
+		70810F9D1DD9A4DC0075BC17 /* iconLiucheng@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLiucheng@3x.png"; sourceTree = "<group>"; };
+		70810FA81DD9BAF10075BC17 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		70810FA91DD9BAF10075BC17 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		70810FAA1DD9BAF10075BC17 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		70810FAB1DD9BAF10075BC17 /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		70810FAC1DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		70810FAD1DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		70810FAE1DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		70810FAF1DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
 		70F65ECA1DD1AE360077D6E0 /* 101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 101.png; sourceTree = "<group>"; };
 		70F65ECB1DD1AE360077D6E0 /* 101@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "101@2x.png"; sourceTree = "<group>"; };
 		70F65ECC1DD1AE360077D6E0 /* 101@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "101@3x.png"; sourceTree = "<group>"; };
@@ -547,6 +584,10 @@
 				70207DB51DD410CB0070D638 /* reportDitailViewController.m */,
 				70207DBD1DD43B780070D638 /* ditailView.h */,
 				70207DBE1DD43B780070D638 /* ditailView.m */,
+				70810F881DD97F120075BC17 /* aboutUsViewController.h */,
+				70810F891DD97F120075BC17 /* aboutUsViewController.m */,
+				70810F8B1DD97F600075BC17 /* serviceHelperViewController.h */,
+				70810F8C1DD97F600075BC17 /* serviceHelperViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -554,6 +595,7 @@
 		58E0D2201DB71A6E0058EB54 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				70810FA71DD9BAF10075BC17 /* WebViewJavascriptBridge */,
 				58E0D2211DB71A6E0058EB54 /* CMImageUtils.h */,
 				58E0D2221DB71A6E0058EB54 /* CMImageUtils.m */,
 				58E0D2231DB71A6E0058EB54 /* CustomURLCache.h */,
@@ -564,19 +606,8 @@
 				58E0D2381DB71A6E0058EB54 /* Reachability.m */,
 				58E0D2391DB71A6E0058EB54 /* Util.h */,
 				58E0D23A1DB71A6E0058EB54 /* Util.m */,
-				58E0D23B1DB71A6E0058EB54 /* WebViewJavaScriptBridge */,
 			);
 			path = utils;
-			sourceTree = "<group>";
-		};
-		58E0D23B1DB71A6E0058EB54 /* WebViewJavaScriptBridge */ = {
-			isa = PBXGroup;
-			children = (
-				58E0D23C1DB71A6E0058EB54 /* WebViewJavascriptBridge.h */,
-				58E0D23D1DB71A6E0058EB54 /* WebViewJavascriptBridge.js.txt */,
-				58E0D23E1DB71A6E0058EB54 /* WebViewJavascriptBridge.m */,
-			);
-			path = WebViewJavaScriptBridge;
 			sourceTree = "<group>";
 		};
 		58E0D2401DB71A6E0058EB54 /* Drawer */ = {
@@ -604,6 +635,10 @@
 		58E0D2631DB71AB40058EB54 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				70810F941DD9A4DC0075BC17 /* FWLC */,
+				70810F8E1DD98E650075BC17 /* aboutus.png */,
+				70810F8F1DD98E650075BC17 /* aboutus@2x.png */,
+				70810F901DD98E650075BC17 /* aboutus@3x.png */,
 				703C2F971DD56912003B2B3A /* ditailIcon */,
 				70207DB71DD41BE60070D638 /* reportDitail.png */,
 				70207DB81DD41BE60070D638 /* reportDitail@2x.png */,
@@ -857,6 +892,37 @@
 			path = yangben;
 			sourceTree = "<group>";
 		};
+		70810F941DD9A4DC0075BC17 /* FWLC */ = {
+			isa = PBXGroup;
+			children = (
+				70810F951DD9A4DC0075BC17 /* iconCaiji.png */,
+				70810F961DD9A4DC0075BC17 /* iconCaiji@2x.png */,
+				70810F971DD9A4DC0075BC17 /* iconCaiji@3x.png */,
+				70810F981DD9A4DC0075BC17 /* iconJiedu.png */,
+				70810F991DD9A4DC0075BC17 /* iconJiedu@2x.png */,
+				70810F9A1DD9A4DC0075BC17 /* iconJiedu@3x.png */,
+				70810F9B1DD9A4DC0075BC17 /* iconLiucheng.png */,
+				70810F9C1DD9A4DC0075BC17 /* iconLiucheng@2x.png */,
+				70810F9D1DD9A4DC0075BC17 /* iconLiucheng@3x.png */,
+			);
+			path = FWLC;
+			sourceTree = "<group>";
+		};
+		70810FA71DD9BAF10075BC17 /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				70810FA81DD9BAF10075BC17 /* WKWebViewJavascriptBridge.h */,
+				70810FA91DD9BAF10075BC17 /* WKWebViewJavascriptBridge.m */,
+				70810FAA1DD9BAF10075BC17 /* WebViewJavascriptBridge.h */,
+				70810FAB1DD9BAF10075BC17 /* WebViewJavascriptBridge.m */,
+				70810FAC1DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.h */,
+				70810FAD1DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.m */,
+				70810FAE1DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.h */,
+				70810FAF1DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.m */,
+			);
+			path = WebViewJavascriptBridge;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -965,6 +1031,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58AFC6201DB9B85300555933 /* FZXDXJW.ttf in Resources */,
+				70810FA61DD9A4DC0075BC17 /* iconLiucheng@3x.png in Resources */,
 				703C30091DD56912003B2B3A /* Fenxi&.png in Resources */,
 				703C302C1DD56912003B2B3A /* iconYangben$@3x.png in Resources */,
 				589640541DB88EE700E99ED1 /* loginBGI@3x.png in Resources */,
@@ -987,6 +1054,7 @@
 				703FEC091DD3260900C7DEA5 /* Rectangle 133 Copy@2x.png in Resources */,
 				7025EEAE1DD2C403006DFDCF /* nvxinganniu@3x.png in Resources */,
 				7025EEAF1DD2C403006DFDCF /* oval77.png in Resources */,
+				70810FA01DD9A4DC0075BC17 /* iconCaiji@3x.png in Resources */,
 				703C30231DD56912003B2B3A /* tiqu$@3x.png in Resources */,
 				703C30221DD56912003B2B3A /* tiqu$@2x.png in Resources */,
 				58E0D3F71DB71AB50058EB54 /* iconfont-wenti-4@3x.png in Resources */,
@@ -1000,12 +1068,14 @@
 				5849C78F1DB7177D00B97AF6 /* Assets.xcassets in Resources */,
 				5895263C1DBDA7BD00944776 /* iconfontYouxiang@3x.png in Resources */,
 				703C2FEC1DD56912003B2B3A /* Chouxue$@2x.png in Resources */,
+				70810FA11DD9A4DC0075BC17 /* iconJiedu.png in Resources */,
 				58AFC6261DB9C29200555933 /* iconBack@3x.png in Resources */,
 				58E0D3E01DB71AB50058EB54 /* loding 750x1334.png in Resources */,
 				58E0D3EF1DB71AB50058EB54 /* logo 180.png in Resources */,
 				589640581DB8C2CD00E99ED1 /* dengru@2x.png in Resources */,
 				58E0D3EC1DB71AB50058EB54 /* logo 120 2.png in Resources */,
 				58E0D3F81DB71AB50058EB54 /* icon_close.png in Resources */,
+				70810FA51DD9A4DC0075BC17 /* iconLiucheng@2x.png in Resources */,
 				703C30211DD56912003B2B3A /* tiqu$.png in Resources */,
 				703C30291DD56912003B2B3A /* iconYangben!@3x.png in Resources */,
 				58AFC62B1DB9C98B00555933 /* register@2x.png in Resources */,
@@ -1036,6 +1106,8 @@
 				58E0D24E1DB71A6E0058EB54 /* MainViewController.xib in Resources */,
 				703C2FFD1DD56912003B2B3A /* Fenli$.png in Resources */,
 				703C302D1DD56912003B2B3A /* iconYangben&.png in Resources */,
+				70810F931DD98E650075BC17 /* aboutus@3x.png in Resources */,
+				70810FA31DD9A4DC0075BC17 /* iconJiedu@3x.png in Resources */,
 				703C301E1DD56912003B2B3A /* tiqu!.png in Resources */,
 				703C2FFA1DD56912003B2B3A /* Fenli!.png in Resources */,
 				58E0D3DF1DB71AB50058EB54 /* loding 750x1280.png in Resources */,
@@ -1056,6 +1128,7 @@
 				703C2FFB1DD56912003B2B3A /* Fenli!@2x.png in Resources */,
 				58E0D3F91DB71AB50058EB54 /* loding 1242x2208.png in Resources */,
 				703C30031DD56912003B2B3A /* Fenxi!.png in Resources */,
+				70810F9F1DD9A4DC0075BC17 /* iconCaiji@2x.png in Resources */,
 				58AFC6311DB9FF7D00555933 /* Rectangle 28@2x.png in Resources */,
 				703C2FF81DD56912003B2B3A /* Chubaogao&@2x.png in Resources */,
 				703C30061DD56912003B2B3A /* Fenxi$.png in Resources */,
@@ -1066,13 +1139,13 @@
 				703C30141DD56912003B2B3A /* Gaotong&@3x.png in Resources */,
 				703C30281DD56912003B2B3A /* iconYangben!@2x.png in Resources */,
 				703C30271DD56912003B2B3A /* iconYangben!.png in Resources */,
+				70810FA41DD9A4DC0075BC17 /* iconLiucheng.png in Resources */,
 				703C300D1DD56912003B2B3A /* Gaotong!@2x.png in Resources */,
 				703C30261DD56912003B2B3A /* tiqu&@3x.png in Resources */,
 				58AFC6371DBA004200555933 /* iconfontMulu.png in Resources */,
 				703C300A1DD56912003B2B3A /* Fenxi&@2x.png in Resources */,
 				58E0D3E11DB71AB50058EB54 /* 10-device-access-storage.png in Resources */,
 				58E0D3ED1DB71AB50058EB54 /* logo 120.png in Resources */,
-				58E0D25C1DB71A6E0058EB54 /* WebViewJavascriptBridge.js.txt in Resources */,
 				703C30151DD56912003B2B3A /* kuozengjianku!.png in Resources */,
 				58E0D3EE1DB71AB50058EB54 /* logo 180 2.png in Resources */,
 				5849C78D1DB7177D00B97AF6 /* Main.storyboard in Resources */,
@@ -1095,7 +1168,9 @@
 				703C30041DD56912003B2B3A /* Fenxi!@2x.png in Resources */,
 				58E0D3E21DB71AB50058EB54 /* 10_device_access_storage.png in Resources */,
 				5896405A1DB8C2CD00E99ED1 /* dengru@3x.png in Resources */,
+				70810F911DD98E650075BC17 /* aboutus.png in Resources */,
 				58AFC6381DBA004200555933 /* iconfontMulu@3x.png in Resources */,
+				70810FA21DD9A4DC0075BC17 /* iconJiedu@2x.png in Resources */,
 				58E0D2501DB71A6E0058EB54 /* userloginView.xib in Resources */,
 				58E0D3F21DB71AB50058EB54 /* logo 60.png in Resources */,
 				58E0D3F31DB71AB50058EB54 /* logo 80.png in Resources */,
@@ -1103,12 +1178,14 @@
 				703C2FF41DD56912003B2B3A /* Chubaogao$.png in Resources */,
 				70207DBC1DD41BE60070D638 /* reportDitail@3x.png in Resources */,
 				5895263B1DBDA7BD00944776 /* iconfontYouxiang.png in Resources */,
+				70810F9E1DD9A4DC0075BC17 /* iconCaiji.png in Resources */,
 				703C302E1DD56912003B2B3A /* iconYangben&@2x.png in Resources */,
 				703C2FEF1DD56912003B2B3A /* Chouxue&@2x.png in Resources */,
 				703C2FEB1DD56912003B2B3A /* Chouxue$.png in Resources */,
 				703C30191DD56912003B2B3A /* kuozengjianku$@2x.png in Resources */,
 				703C301D1DD56912003B2B3A /* kuozengjianku&@3x.png in Resources */,
 				58E0D3E71DB71AB50058EB54 /* iconfont-logout@3x.png in Resources */,
+				70810F921DD98E650075BC17 /* aboutus@2x.png in Resources */,
 				703C30011DD56912003B2B3A /* Fenli&@2x.png in Resources */,
 				70207DBB1DD41BE60070D638 /* reportDitail@2x.png in Resources */,
 				58AFC62A1DB9C98B00555933 /* register.png in Resources */,
@@ -1143,24 +1220,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				58E0D2521DB71A6E0058EB54 /* CMImageUtils.m in Sources */,
-				58E0D25D1DB71A6E0058EB54 /* WebViewJavascriptBridge.m in Sources */,
 				58E0D25F1DB71A6E0058EB54 /* UFanBasicViewController.m in Sources */,
 				58E0D2531DB71A6E0058EB54 /* CustomURLCache.m in Sources */,
 				58E0D24C1DB71A6E0058EB54 /* leftDrawerViewController.m in Sources */,
 				58E0D24D1DB71A6E0058EB54 /* MainViewController.m in Sources */,
 				70F65ED21DD1B3BF0077D6E0 /* orderViewController.m in Sources */,
 				58E0D2601DB71A6E0058EB54 /* UFanViewController.m in Sources */,
+				70810F8D1DD97F600075BC17 /* serviceHelperViewController.m in Sources */,
+				70810FB11DD9BAF10075BC17 /* WebViewJavascriptBridge.m in Sources */,
 				58E0D2621DB71A6E0058EB54 /* CMCustomViews.m in Sources */,
+				70810F8A1DD97F120075BC17 /* aboutUsViewController.m in Sources */,
 				58E0D2511DB71A6E0058EB54 /* WebViewController.m in Sources */,
 				58E0D2611DB71A6E0058EB54 /* UIViewController+UFanViewController.m in Sources */,
 				70207DB61DD410CB0070D638 /* reportDitailViewController.m in Sources */,
 				5849C7871DB7177D00B97AF6 /* AppDelegate.m in Sources */,
 				58E0D24F1DB71A6E0058EB54 /* userLoginView.m in Sources */,
+				70810FB01DD9BAF10075BC17 /* WKWebViewJavascriptBridge.m in Sources */,
 				58E0D2591DB71A6E0058EB54 /* NetUtils.m in Sources */,
+				70810FB21DD9BAF10075BC17 /* WebViewJavascriptBridgeBase.m in Sources */,
 				58E0D24A1DB71A6E0058EB54 /* firstItemViewController.m in Sources */,
 				5849C7841DB7177D00B97AF6 /* main.m in Sources */,
 				703FEC071DD305D300C7DEA5 /* reportListViewController.m in Sources */,
 				58E0D25A1DB71A6E0058EB54 /* Reachability.m in Sources */,
+				70810FB31DD9BAF10075BC17 /* WebViewJavascriptBridge_JS.m in Sources */,
 				70207DBF1DD43B780070D638 /* ditailView.m in Sources */,
 				58E0D25E1DB71A6E0058EB54 /* Address.m in Sources */,
 				58E0D25B1DB71A6E0058EB54 /* Util.m in Sources */,

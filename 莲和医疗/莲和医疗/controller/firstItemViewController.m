@@ -47,7 +47,39 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
+    
+    NSString *urlStr = self.strURL.absoluteString;
+    NSString *prodct = [NSString stringWithFormat:@"http://gentest.ranknowcn.com/m/product"];
+    
+    if([urlStr containsString:prodct])
+    {
+        UIButton *orderBt = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(0, 623, 187.5, 44)];
+        [orderBt setTitle:@"预约购买" forState:UIControlStateNormal];
+        [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
+        orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
+        orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
+        [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:orderBt];
+        
+        UIButton *zixunBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(187.5, 623, 187.5, 44)];
+        [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
+        zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
+        zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
+        [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
+        [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:zixunBt];
+    }
 
+}
+
+- (void)orderBtClick
+{
+    
+}
+
+- (void)zixunBtClick
+{
+    
 }
 
 - (void)setLeftBarButtonItem{
@@ -69,16 +101,28 @@
 
     }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    if (!jsBridge) {
-        jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5WebView webViewDelegate:self handler:^(id data, WVJBResponse *response) {
-            NSLog(@"ObjC received message from JS: %@", data);
-            //[self processJSEvent:data];
-        }];
-   }
+//    if (!jsBridge) {
+//        jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5WebView webViewDelegate:self handler:^(id data, WVJBResponse *response) {
+//            NSLog(@"ObjC received message from JS: %@", data);
+//            //[self processJSEvent:data];
+//        }];
+//   }
+    
+    [WebViewJavascriptBridge enableLogging];
+    
+    jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5WebView];
+    
+    
     
     if(hasLogin & ![_strURL.absoluteString isEqual:ZXZX_PAGE])
     {

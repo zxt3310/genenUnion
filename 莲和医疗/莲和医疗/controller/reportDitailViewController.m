@@ -32,6 +32,12 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的检测详情";
@@ -40,11 +46,11 @@
     
     
     UIScrollView *reportScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WEIGHT, SCREEN_HEIGHT)];
-    reportScrollView.contentSize = CGSizeMake(SCREEN_WEIGHT, 1350 * SCREEN_HEIGHT /667);
+    reportScrollView.contentSize = CGSizeMake(SCREEN_WEIGHT, 1500 * SCREEN_HEIGHT /667);
     reportScrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:reportScrollView];
     
-    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, SCREEN_WEIGHT, 1139)];
+    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, SCREEN_WEIGHT, 1300)];
     backImage.image = [UIImage imageNamed:deviceImageSelect(@"reportDitail.png")];
     [reportScrollView addSubview:backImage];
     
@@ -52,8 +58,17 @@
     UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(104, 18, 168, 24)];
     productNameLable.font = [UIFont fontWithName:@"HeiTi SC" size:24];
     productNameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    productNameLable.text = @"和普安基因测序";//[reportDitailDic objectForKey:@"product_name"];
+    NSString *text = [reportDitailDic objectForKey:@"product_name"];
+    if(!text)
+    {
+        productNameLable.text = text;
+    }
+    else
+    {
+        productNameLable.text = @"";
+    }
     [reportScrollView addSubview:productNameLable];
+    
     //姓名
     UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(38, 60, 100, 13)];
     usernameLable.font = [UIFont app_FontSize:13];

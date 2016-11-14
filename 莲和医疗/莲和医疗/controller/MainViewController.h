@@ -24,6 +24,10 @@
 }
 @property (nonatomic, strong) NSString *strURL;
 @property (strong, nonatomic) IBOutlet UIWebView *html5View;
+
+@property UINavigationBar *bar;
+@property UIImage *barColor;
+
 - (void)setStrURL:(NSString *)strURL;
 
 

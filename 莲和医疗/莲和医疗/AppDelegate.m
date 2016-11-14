@@ -22,10 +22,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    UIColor *startColor = [UIColor colorWithRed:196.0/255 green:174.0/255 blue:228.0/255 alpha:1];
+    UIColor *endColor = [UIColor colorWithRed:135.0/255 green:126.0/255 blue:188.0/255 alpha:1];
+    CGRect rect = CGRectMake(0, 0, SCREEN_WEIGHT, 64);
+
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     MainViewController *mainVC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
-   
+    mainVC.barColor = [self drawImageWithColor:startColor endColor:endColor rect:rect];
     [mainVC setStrURL:[[NSString alloc] initWithFormat:MAIN_PAGE]];
     // webVC.isMainTabPage = true;
 
@@ -39,7 +44,6 @@
     self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:uFanVC];
     
     
-    
     uFanVC.navigationItem.title = @"和普安";
     [self.rootNavigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont fontWithName:@"FZXDXJW--GB1-0" size:18],
@@ -47,13 +51,12 @@
     
     //self.rootNavigationController.navigationBar.barTintColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:0];
     
-    UIColor *startColor = [UIColor colorWithRed:196.0/255 green:174.0/255 blue:228.0/255 alpha:1];
-    UIColor *endColor = [UIColor colorWithRed:135.0/255 green:126.0/255 blue:188.0/255 alpha:1];
-    CGRect rect = CGRectMake(0, 0, 375, 64);
-
+    
     
     //UIImage *image = [UIImage imageNamed:@"Rectangle 28@3x.png"];
     [self.rootNavigationController.navigationBar setBackgroundImage:[self drawImageWithColor:startColor endColor:endColor rect:rect] forBarMetrics:UIBarMetricsDefault];
+    self.rootNavigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
     
     [[self window] setRootViewController:self.rootNavigationController];
    

@@ -129,6 +129,10 @@
 //设置cell高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(indexPath.row == 0)
+    {
+        return  SCREEN_HEIGHT * 20/667;
+    }
 
     return SCREEN_HEIGHT/10;
 }
@@ -163,6 +167,16 @@
                     {
                         [self.navigationController presentViewController:unv animated:YES completion:nil];
                     }
+                }
+                else if ([cellText isEqualToString:GYWM_PAGE])
+                {
+                    aboutUsViewController *auvc = [[aboutUsViewController alloc]init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                }
+                else if([cellText isEqualToString:FWLC_PAGE])
+                {
+                    serviceHelperViewController *shvc = [[serviceHelperViewController alloc]init];
+                    [self.UF_ViewController.navigationController pushViewController:shvc animated:YES];
                 }
                 else
                 {

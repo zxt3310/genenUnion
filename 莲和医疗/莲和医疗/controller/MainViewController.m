@@ -24,36 +24,73 @@
 @implementation MainViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
-                                                                     diskCapacity:200 * 1024 * 1024
-                                                                         diskPath:nil
-                                                                        cacheTime:0];
-        [CustomURLCache setSharedURLCache:urlCache];
-    }
-    return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+//    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+//        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
+//                                                                     diskCapacity:200 * 1024 * 1024
+//                                                                         diskPath:nil
+//                                                                        cacheTime:0];
+//        [CustomURLCache setSharedURLCache:urlCache];
+//    }
+//    return self;
+//}
 
 
 - (void)viewDidLoad {
    
     
     [super viewDidLoad];
-   
-    [self setLeftBarButtonItem];
+    
+    _html5View.frame = CGRectMake(0, 64, SCREEN_WEIGHT, SCREEN_HEIGHT - 64);
+    
     isMainPage = YES;
     _html5View.delegate = self;
     
-    hostReach = [Reachability reachabilityWithHostname:@"http://gzh.gentest.ranknowcn.com/resources/mobile/index"];
+    hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
     
     //监听网络变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged) name:kReachabilityChangedNotification object:nil];
     [hostReach startNotifier];
     isNeedReload = NO;
     
+    [self setNewBar];
     // Do any additional setup after loading the view.
      
+}
+
+
+- (void)setNewBar
+{
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WEIGHT, 65)];
+    UIImageView *backimg = [[UIImageView alloc]initWithFrame:header.frame];
+    backimg.backgroundColor = [UIColor colorWithPatternImage:_barColor];
+    header.layer.borderColor = [UIColor colorWithRed:200.0/255 green:200.0/255 blue:200.0/255 alpha:0.5].CGColor;
+    header.layer.borderWidth = 0;
+    [self.view addSubview:header];
+    [header addSubview:backimg];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setTitle:@"" forState:UIControlStateNormal];
+    [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [backBtn setImage:[UIImage imageNamed:@"iconfontMulu.png"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"iconfontMulu.png"] forState:UIControlStateHighlighted];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(7, 0, 7, 8)];
+    [backBtn addTarget:self action:@selector(leftAction) forControlEvents:UIControlEventTouchUpInside];
+    [backBtn sizeToFit];
+    CGRect rect = backBtn.frame;
+    rect.origin.y = 20;
+    rect.size.height = 44;
+    rect.size.width = rect.size.width + 33;
+    backBtn.frame = rect;
+    [header addSubview:backBtn];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width + 16, 20, SCREEN_WEIGHT - (rect.size.width+8) * 2, 44)];
+    titleLabel.text = @"和普安";
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [header addSubview:titleLabel];
 }
 
 - (void)setLeftBarButtonItem{
@@ -66,7 +103,8 @@
     [closeBtn setHidden:NO];
     [closeBtn setTitle:@"" forState:UIControlStateNormal];
     [closeBtn addTarget:self action:@selector(leftAction) forControlEvents:UIControlEventTouchUpInside];
-    self.UF_ViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:closeBtn];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:closeBtn];
+    [self.bar.topItem setLeftBarButtonItem:item];
     
     
     UIImage *imageYx = [UIImage imageNamed:deviceImageSelect(@"iconfontYouxiang.png")];
@@ -75,7 +113,7 @@
     [eMailBtn setImage:imageYx forState:UIControlStateNormal];
     [eMailBtn setHidden:NO];
     [eMailBtn addTarget:self action:@selector(eMailBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    self.UF_ViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:eMailBtn];
+    self.bar.topItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:eMailBtn];
     
     
     /* 两种设置button的方式 上面更适合图片 下面的方式会造成button为不变的蓝色
@@ -95,6 +133,13 @@
     
 }
 
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    [self.html5View.scrollView setContentInset:UIEdgeInsetsZero];
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    self.modalPresentationCapturesStatusBarAppearance = YES;
+}
 
 - (void)leftAction{
     [self.UF_ViewController triggerLeftDrawer];
@@ -126,6 +171,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [_bar setBackgroundImage:_barColor forBarMetrics:UIBarMetricsDefault];
+    [self setLeftBarButtonItem];
+    
+     self.navigationController.navigationBar.hidden = YES;
   
 }
 
@@ -133,14 +183,14 @@
 {
     [super viewDidAppear:animated];
     
-    if (!jsBridge) {
-        jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5View webViewDelegate:self handler:^(id data, WVJBResponse *response) {
-            NSLog(@"ObjC received message from JS: %@", data);
-            //[self processJSEvent:data];
-            
-          
-        }];
-    }
+//    if (!jsBridge) {
+//        jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5View webViewDelegate:self handler:^(id data, WVJBResponse *response) {
+//            NSLog(@"ObjC received message from JS: %@", data);
+//            //[self processJSEvent:data];
+//            
+//          
+//        }];
+//    }
     
     
         URL = [[NSURL alloc] initWithString:_strURL];
