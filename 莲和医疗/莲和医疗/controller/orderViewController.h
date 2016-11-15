@@ -12,8 +12,15 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIViewController+UFanViewController.h"
 @interface orderViewController : UFanViewController
-
+{
+    UIDatePicker *datePicker;
+}
 @property NSInteger productId;
+@property NSString *price;
+@property NSString *productName;
+
 @property UFanViewController *UFanVC;
+
+
 
 @end

@@ -37,7 +37,7 @@
 
 @end
 
-@interface orderViewController ()
+@interface orderViewController () <UITextFieldDelegate>
 {
     UIImageView *maleImgView;
     
@@ -64,6 +64,8 @@
 @implementation orderViewController
 
 @synthesize productId = productId;
+@synthesize productName = productName;
+@synthesize price = price;
 
 - (instancetype)init
 {
@@ -101,7 +103,7 @@
     titleLable.font = [UIFont app_FontSizeBold:18];
     titleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     titleLable.textAlignment = NSTextAlignmentCenter;
-    titleLable.text = @"和普安无创肿瘤基因检测";
+    titleLable.text = productName;
     [self.view addSubview:titleLable];
     
     //价格
@@ -109,7 +111,7 @@
     priceLable.font = [UIFont fontWithName:@"STHeitiSC-Light-Bold" size:14];
     priceLable.textColor = [UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1];
     priceLable.textAlignment = NSTextAlignmentCenter;
-    priceLable.text = @"¥16000";
+    priceLable.text = price;
     [self.view addSubview:priceLable];
     
     //性别lable
@@ -155,6 +157,7 @@
     //采样时间
     orderTimeTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 452, 240, 35)];
     orderTimeTF.placeholder = @"  预约采样时间";
+    orderTimeTF.delegate = self;
     [self.view addSubview:orderTimeTF];
     
     //预约按钮
@@ -167,6 +170,51 @@
     [self.view addSubview: orderButton];
     
 
+    datePicker = [[UIDatePicker alloc]init];//WithFrame:CGRectMake(0, 400, 375, 267)];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [self.view addSubview:orderTimeTF];datePicker.backgroundColor = [UIColor whiteColor];
+    //datePicker.hidden = YES;
+    
+    NSDate *date = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSTimeInterval time = [zone secondsFromGMTForDate:date];
+    NSDate *defaultDate = [date dateByAddingTimeInterval:time];
+    datePicker.date = defaultDate;
+    orderTimeTF.inputView = datePicker;
+
+    //创建工具条
+    UIToolbar *toolbar=[[UIToolbar alloc]init];
+    //设置工具条的颜色
+    toolbar.barTintColor=[UIColor whiteColor];
+    //设置工具条的frame
+    toolbar.frame=CGRectMakeWithAutoSize(0, 0, 375, 44);
+    //给工具条添加按钮
+    UIBarButtonItem *item0=[[UIBarButtonItem alloc]initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(timeBtClick)];
+    toolbar.items = @[item0];
+    
+    orderTimeTF.inputAccessoryView = toolbar;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+//    datePicker.hidden = NO;
+//    return  NO;
+    return  YES;
+}
+
+- (void)timeBtClick
+{
+    NSDate *date = datePicker.date; // 获得时间对象
+    
+    NSDateFormatter *forMatter = [[NSDateFormatter alloc] init];
+    
+    [forMatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *dateStr = [forMatter stringFromDate:date];
+    
+    orderTimeTF.text = dateStr;
+    
+    [orderTimeTF resignFirstResponder];
     
 }
 
@@ -197,9 +245,6 @@
 
 - (void)orderClick
 {
-    
-    
-
     NSString *strUrl = [NSString stringWithFormat:orderRequest_RUL];
     NSString *post = [NSString stringWithFormat:@"truename=%@&gender=%@&age=%@&tel=%@&book_date=%@&product=%ld",userNameTF.text,userSex,ageTF.text,phoneTF.text,orderTimeTF.text,(long)productId];
     

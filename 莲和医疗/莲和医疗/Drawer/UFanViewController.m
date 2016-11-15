@@ -9,7 +9,7 @@
 #define UFSCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
 #define UFShadowRadius 10.0f
 #define UFShadowOpacity 0.8
-#define UFDrawerWidth UFSCREEN_WIDTH/1.5
+#define UFDrawerWidth UFSCREEN_WIDTH/1.3
 #define UFDrawerTime .1
 #define UFDrawerSpeed UFDrawerWidth/UFDrawerTime
 

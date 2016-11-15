@@ -15,7 +15,10 @@
 #define UFSCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define UFSCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
 @implementation firstItemViewController
-
+{
+    UIButton *orderBt;
+    UIButton *zixunBt;
+}
 -(void)viewDidLoad{
     [super viewDidLoad];
     
@@ -39,47 +42,57 @@
     [self.view addSubview:loadingView];
     
     hasLogin = NO;
-    lastUserPhone = getStringForKey(@"userPhoneNo");   // [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"];
-    lastToken = getStringForKey(@"token");             // [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-    if (lastToken !=nil & lastUserPhone !=nil)
-    {
-        hasLogin = YES;
-    }
+   
+    
+    _html5WebView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
     
-    NSString *urlStr = self.strURL.absoluteString;
-    NSString *prodct = [NSString stringWithFormat:@"http://gentest.ranknowcn.com/m/product"];
     
-    if([urlStr containsString:prodct])
-    {
-        UIButton *orderBt = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(0, 623, 187.5, 44)];
-        [orderBt setTitle:@"预约购买" forState:UIControlStateNormal];
-        [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
-        orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
-        orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
-        [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:orderBt];
-        
-        UIButton *zixunBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(187.5, 623, 187.5, 44)];
-        [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
-        zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
-        zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
-        [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
-        [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:zixunBt];
-    }
+    
+    orderBt = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(0, 623, 187.5, 44)];
+    [orderBt setTitle:@"预约购买" forState:UIControlStateNormal];
+    [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
+    orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
+    orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
+    [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
+    orderBt.hidden = YES;
+    [self.view addSubview:orderBt];
+    
+    zixunBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(187.5, 623, 187.5, 44)];
+    [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
+    zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
+    zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
+    [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
+    [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
+    zixunBt.hidden = YES;
+    [self.view addSubview:zixunBt];
+    
 
 }
 
 - (void)orderBtClick
 {
+//    [jsBridge callHandler:@"showHtmlcallJava" data:nil responseCallback:^(id responseData)
+//     {
+//         NSLog(@"%@",responseData);
+//     }];
     
+    NSString *js = [NSString stringWithFormat:@"showHtmlcall();"];
+    NSString *str = [self.html5WebView stringByEvaluatingJavaScriptFromString:js];
+    NSArray *array = [str componentsSeparatedByString:@","];
+    orderViewController *ovc = [[orderViewController alloc] init];
+    ovc.productId = [array[0] integerValue];
+    ovc.productName = array[1];
+    ovc.price = array[2];
+    [self.navigationController pushViewController:ovc animated:YES];
 }
 
 - (void)zixunBtClick
 {
-    
+    NSString *zXurl = [NSString stringWithFormat:ZXZX_PAGE];
+    [self.html5WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:zXurl]]];
+    orderBt.hidden = zixunBt.hidden = YES;
 }
 
 - (void)setLeftBarButtonItem{
@@ -105,25 +118,19 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    
+    lastUserPhone = getStringForKey(@"userPhoneNo");
+    lastToken = getStringForKey(@"token");
+    if (lastToken !=nil & lastUserPhone !=nil)
+    {
+        hasLogin = YES;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-//    if (!jsBridge) {
-//        jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5WebView webViewDelegate:self handler:^(id data, WVJBResponse *response) {
-//            NSLog(@"ObjC received message from JS: %@", data);
-//            //[self processJSEvent:data];
-//        }];
-//   }
-    
-    [WebViewJavascriptBridge enableLogging];
-    
-    jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5WebView];
-    
-    
-    
+
     if(hasLogin & ![_strURL.absoluteString isEqual:ZXZX_PAGE])
     {
         NSString *str = [NSString stringWithFormat:@"%@?token=%@",_strURL.absoluteString,lastToken];
@@ -141,15 +148,31 @@
 {
     
     NSURL *currentUrl = [request URL];
-    NSURL *url = [[NSURL alloc] initWithString:@"app://login"];
+//    NSURL *url = [[NSURL alloc] initWithString:WDJC_PAGE];
+    NSString *prodct = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"];
     
-    if ([currentUrl isEqual:url])
+    NSString *title =[_html5WebView stringByEvaluatingJavaScriptFromString:@"document.title"];  //获取链接标题
+    if(title.length>12)
     {
-        userLoginView *ulv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
-        UINavigationController *unc = [[UINavigationController alloc] initWithRootViewController:ulv];
-        ulv.navigationController.navigationBar.hidden = YES;
-        [self presentViewController:unc animated:YES completion:nil];
+        title = [[title substringWithRange:NSMakeRange(0, 11)] stringByAppendingString:@"..."];
     }
+    
+//    if ([currentUrl isEqual:url])
+//    {
+//        userLoginView *ulv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
+//        UINavigationController *unc = [[UINavigationController alloc] initWithRootViewController:ulv];
+//        ulv.navigationController.navigationBar.hidden = YES;
+//        [self presentViewController:unc animated:YES completion:nil];
+//    }
+    
+    if ([currentUrl.absoluteString containsString:prodct])
+    {
+        orderBt.hidden = NO;
+        zixunBt.hidden = NO;
+        title = @"产品介绍";
+    }
+    
+    self.navigationItem.title = title;
     
     return YES;
 }
@@ -167,14 +190,6 @@
     }
 
     loadingView.hidden = NO;
-     NSString *title =[_html5WebView stringByEvaluatingJavaScriptFromString:@"document.title"];  //获取链接标题
-    if(title.length>12)
-    {
-        NSString *newTitle = [[title substringWithRange:NSMakeRange(0, 11)] stringByAppendingString:@"..."];
-        self.navigationItem.title = newTitle;
-    }
-    else
-    self.navigationItem.title = title;
     
 }
 

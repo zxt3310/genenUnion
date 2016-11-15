@@ -41,7 +41,11 @@
     
     [super viewDidLoad];
     
-    _html5View.frame = CGRectMake(0, 64, SCREEN_WEIGHT, SCREEN_HEIGHT - 64);
+    _html5View123.hidden = YES;
+    
+    _html5View = [[UIWebView alloc ]initWithFrame: CGRectMake(0, 64, SCREEN_WEIGHT, SCREEN_HEIGHT - 64)];
+
+    [self.view addSubview:_html5View];
     
     isMainPage = YES;
     _html5View.delegate = self;
@@ -54,7 +58,9 @@
     isNeedReload = NO;
     
     [self setNewBar];
-    // Do any additional setup after loading the view.
+    
+    hasLogin = NO;
+    
      
 }
 
@@ -171,8 +177,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    lastToken = getStringForKey(@"token");
+    if (lastToken !=nil)
+    {
+        hasLogin = YES;
+    }
+    else
+    {
+        hasLogin = NO;
+    }
     
-    [_bar setBackgroundImage:_barColor forBarMetrics:UIBarMetricsDefault];
     [self setLeftBarButtonItem];
     
      self.navigationController.navigationBar.hidden = YES;
@@ -234,6 +248,26 @@
     //NSURL *url = [[NSURL alloc] initWithString:@"http://gzh.gentest.ranknowcn.com/resources/mobile/index"];
     NSString *a = currentUrl.absoluteString;
     
+    if([currentUrl.absoluteString isEqualToString:WDJC_PAGE])
+    {
+        if(hasLogin)
+        {
+            reportListViewController *rlvc = [[reportListViewController alloc]init];
+            rlvc.token = lastToken;
+            [self.UF_ViewController.navigationController pushViewController:rlvc animated:YES];
+        }
+        else
+        {
+            userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
+            UINavigationController *unv = [[UINavigationController alloc] initWithRootViewController:uLv];
+            unv.navigationBar.hidden = YES;
+            [self presentViewController:unv animated:YES completion:nil];
+            
+        }
+        isMainPage = NO;
+        return NO;
+    }
+
    
     if (![currentUrl isEqual:URL] & ![a isEqualToString:@"about:blank"])
     {

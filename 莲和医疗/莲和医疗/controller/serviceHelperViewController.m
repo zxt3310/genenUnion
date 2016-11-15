@@ -105,7 +105,7 @@
     [self.view addSubview:firstView];
     
     
-    unitView *secondView = [[unitView alloc] initWithFrame:CGRectMakeWithAutoSize(0, firstView.nextYPoint, 375, 152)];
+    unitView *secondView = [[unitView alloc] initWithFrame:CGRectMake(0, firstView.nextYPoint, SCREEN_WEIGHT, firstView.frame.size.height)];
     secondView.firstLableText = @"  ctDNA提取";
     secondView.secendLableText = @"  建库及质控";
     secondView.thirdLableText = @"  样本测序";
@@ -114,7 +114,7 @@
     [secondView addUnitView];
     [self.view addSubview:secondView];
     
-    unitView *thirdView = [[unitView alloc]initWithFrame:CGRectMakeWithAutoSize(0, secondView.nextYPoint, 375, 152)];
+    unitView *thirdView = [[unitView alloc]initWithFrame:CGRectMake(0, secondView.nextYPoint, SCREEN_WEIGHT, firstView.frame.size.height)];
     thirdView.firstLableText = @"  生物信息学分析";
     thirdView.secendLableText = @"  注释和报告生成";
     thirdView.thirdLableText = @"  资讯解读服务";

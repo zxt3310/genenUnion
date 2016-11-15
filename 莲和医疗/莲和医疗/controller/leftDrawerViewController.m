@@ -64,7 +64,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:leftImage];
     
     
-    UIImageView *logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5.14 - 10, SCREEN_HEIGHT/1.29, SCREEN_WEIGHT/3.21, SCREEN_HEIGHT/6.67)];
+    UIImageView *logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5.14, SCREEN_HEIGHT/1.29, SCREEN_WEIGHT/3.21, SCREEN_HEIGHT/6.67)];
     
     logoImage.image = [UIImage imageNamed:deviceImageSelect(@"101.png")];
     
@@ -120,7 +120,7 @@
 //    else
     
     
-    cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/10, SCREEN_HEIGHT/44, SCREEN_HEIGHT/22.23, SCREEN_HEIGHT/22.23)];   //侧边栏图标
+    cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/6, SCREEN_HEIGHT/44, SCREEN_HEIGHT/22.23, SCREEN_HEIGHT/22.23)];   //侧边栏图标
     
     cellImageView.image =[UIImage imageNamed:self.itemsImageName[indexPath.row]];
     [cell.contentView addSubview:cellImageView];

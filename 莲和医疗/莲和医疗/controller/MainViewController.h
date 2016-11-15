@@ -21,9 +21,14 @@
     BOOL isMainPage;
     Reachability *hostReach;
     BOOL isNeedReload;
+    
+    NSString *lastToken;
+    BOOL hasLogin;
 }
 @property (nonatomic, strong) NSString *strURL;
-@property (strong, nonatomic) IBOutlet UIWebView *html5View;
+@property (strong, nonatomic) IBOutlet UIWebView *html5View123;
+
+@property UIWebView *html5View;
 
 @property UINavigationBar *bar;
 @property UIImage *barColor;

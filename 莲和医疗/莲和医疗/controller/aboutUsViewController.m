@@ -81,7 +81,8 @@
     UILabel *lable = (UILabel *)tap.self.view;
     NSString *str = lable.text;
     str = [str substringFromIndex:3];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",str]] options:nil completionHandler:nil];
+    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",str]] options:@{} completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",str]]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -11,25 +11,27 @@
 #ifndef Adress_h
 #define Adress_h
 
-#define MAIN_PAGE      @"http://gentest.ranknowcn.com/resources/mobile/index"
+#define MAIN_PAGE      @"http://mapi.lhgene.cn/resources/mobile/index"
 #define ZXZX_PAGE      @"https://static.meiqia.com/dist/standalone.html?eid=33791"
-#define GYWM_PAGE       @"http://gentest.ranknowcn.com/m/faq"
+#define GYWM_PAGE       @"http://mapi.lhgene.cn/m/faq"
 #define LJYY_PAGE      @"http://ctdna.m3gene.com:81/m/order"
-#define WDJC_PAGE      @"http://gzh.gentest.ranknowcn.com/m/api/reports"
+#define WDJC_PAGE      @"http://mapi.lhgene.cn/m/my/report"
 #define FWLC_PAGE      @"http://ctdna.m3gene.com:81/m/procedure"
 #define LOIGN_PAGE     @""
 
+#define WDJC_REQUEST   @"http://mapi.lhgene.cn/m/api/reports"
+
 #define ZXZX_IMAGE     @"iconfont-zaixianzixunicon81889@3x.png"
-#define GYWM_IMAGE      @"iconfontGuanyuwomen2@3x.png"
+#define GYWM_IMAGE     @"iconfontGuanyuwomen2@3x.png"
 #define LJYY_IMAGE     @"iconfont-wodeyuyue@3x.png"
 #define WDJC_IMAGE     @"iconfont-zixunjiluzixun@3x.png"
 #define FWLC_IMAGE     @"iconfont-iuchengrenwu@3x.png"
 #define LOIGN_IMAGE    @"iconfont-logout@3x.png"
 
-#define PRODUCT1_URL   @"http://gentest.ranknowcn.com/m/product/1"
-#define PRODUCT2_URL   @"http://gentest.ranknowcn.com/m/product/2"
+#define PRODUCT1_URL   @"http://mapi.lhgene.cn/m/product/1"
+#define PRODUCT2_URL   @"http://mapi.lhgene.cn/m/product/2"
 
-#define orderRequest_RUL @"http://gzh.gentest.ranknowcn.com/m/api/order"
+#define orderRequest_RUL @"http://mapi.lhgene.cn/m/api/order"
 
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WEIGHT [[UIScreen mainScreen] bounds].size.width

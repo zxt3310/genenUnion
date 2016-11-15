@@ -169,6 +169,7 @@
         reportBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
         reportBt.tintColor = [UIColor whiteColor];
         reportBt.layer.cornerRadius = 5;
+        [reportBt addTarget:self action:@selector(reportBtClick:) forControlEvents:UIControlEventTouchUpInside];
         [backgroundView addSubview:reportBt];
         
         
@@ -230,9 +231,20 @@
     [self ditailLoadRequest:reportId];
 }
 
+- (void)reportBtClick:(UIButton *)sender
+{
+    NSIndexPath *myIndex = [self.tableView indexPathForCell:(UITableViewCell *) [[[sender superview] superview] superview]];
+    NSDictionary *dic = reportArray[myIndex.row];
+    NSString *currentId = [dic objectForKey:@"report_id"];
+    
+    firstItemViewController *fivc = [[firstItemViewController alloc]init];
+    fivc.strURL =[NSURL URLWithString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/my/report/%@?token=%@",currentId,_token]];
+    [self.navigationController pushViewController:fivc animated:YES];
+}
+
 - (void)loadRequest
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_PAGE,t];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_REQUEST,_token];
                         
     
     NSData *response = sendGETRequest(urlStr);
@@ -276,7 +288,7 @@
 {
     loadingView.hidden = NO;
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://gzh.gentest.ranknowcn.com/m/api/report/%@?token=13810663999123123123",reportId];
+    NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/my/report/%@?token=%@",reportId,_token];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
