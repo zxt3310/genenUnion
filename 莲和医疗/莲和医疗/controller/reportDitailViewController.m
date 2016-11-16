@@ -55,11 +55,12 @@
     [reportScrollView addSubview:backImage];
     
     //产品名
-    UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(104, 18, 168, 24)];
+    UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(0, 18, 375, 24)];
     productNameLable.font = [UIFont fontWithName:@"HeiTi SC" size:24];
     productNameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    productNameLable.textAlignment = NSTextAlignmentCenter;
     NSString *text = [reportDitailDic objectForKey:@"product_name"];
-    if(!text)
+    if(text != nil)
     {
         productNameLable.text = text;
     }
@@ -125,11 +126,15 @@
         if(i == step -1)
         {
             View.isThisStep = YES;
-            View.reportTime = @"进行中";
+            if(step < stepArray.count)
+            {
+                View.reportTime = @"进行中";
+            }
         }
 
         //设置高图标
         View.ditailImg = [UIImage imageNamed:[self selectReportImg:i currentStep:step - 1]];
+        
         [View drawDitail];
         if(i == stepArray.count - 1)
         {
@@ -179,11 +184,11 @@
         }
     }
     
-    if(index < step)
+    if(index < step || step == stepArray.count - 1)
     {
         [string insertString:@"$" atIndex:n];
     }
-    else if(index == step)
+    else if(index == step & step < stepArray.count - 1)
     {
         [string insertString:@"&" atIndex:n];
     }

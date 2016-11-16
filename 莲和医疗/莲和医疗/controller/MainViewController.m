@@ -54,6 +54,10 @@
     
     //监听网络变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged) name:kReachabilityChangedNotification object:nil];
+    
+    //监听登陆操作
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToken:) name:@"updateToken" object:nil];
+    
     [hostReach startNotifier];
     isNeedReload = NO;
     
@@ -92,7 +96,7 @@
     [header addSubview:backBtn];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width + 16, 20, SCREEN_WEIGHT - (rect.size.width+8) * 2, 44)];
-    titleLabel.text = @"和普安";
+    titleLabel.text = @"莲和医疗";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -187,7 +191,7 @@
         hasLogin = NO;
     }
     
-    [self setLeftBarButtonItem];
+   // [self setLeftBarButtonItem];
     
      self.navigationController.navigationBar.hidden = YES;
   
@@ -196,15 +200,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-//    if (!jsBridge) {
-//        jsBridge = [WebViewJavascriptBridge bridgeForWebView:_html5View webViewDelegate:self handler:^(id data, WVJBResponse *response) {
-//            NSLog(@"ObjC received message from JS: %@", data);
-//            //[self processJSEvent:data];
-//            
-//          
-//        }];
-//    }
     
     
         URL = [[NSURL alloc] initWithString:_strURL];
@@ -261,6 +256,7 @@
             userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
             UINavigationController *unv = [[UINavigationController alloc] initWithRootViewController:uLv];
             unv.navigationBar.hidden = YES;
+            uLv.delegate = self;
             [self presentViewController:unv animated:YES completion:nil];
             
         }
@@ -300,6 +296,25 @@
     }
 }
 
+- (void)updateToken:(NSNotification *)notification
+{
+    lastToken = getStringForKey(@"token");
+    if (lastToken !=nil)
+    {
+        hasLogin = YES;
+    }
+    else
+    {
+        hasLogin = NO;
+    }
 
+}
+
+-(void)loginPushReport:(NSString *)token
+{
+    reportListViewController *rlvc = [[reportListViewController alloc]init];
+    rlvc.token = token;
+    [self.UF_ViewController.navigationController pushViewController:rlvc animated:YES];
+}
 
 @end

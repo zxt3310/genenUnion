@@ -27,6 +27,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>莲和医疗APP需要您同意访问相机</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>莲和医疗APP需要您同意访问照片</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>FZXDXJW.ttf</string>

@@ -14,6 +14,10 @@
 #import "Address.h"
 #import "CMCustomViews.h"
 
+@protocol FFGlobalLoginDelegate <NSObject>
+-(void)loginPushReport:(NSString *)token;
+@end
+
 @interface userLoginView : UIViewController
 
 
@@ -24,6 +28,9 @@
 @property (strong,nonatomic) IBOutlet UIButton* Bt_SendMsg;
 @property (strong,nonatomic) IBOutlet UIButton* Bt_Login;
 @property BOOL isRegisterPage;
+@property BOOL isReportTap;
+
+@property (nonatomic,retain) id<FFGlobalLoginDelegate> delegate;
 //@property (weak, nonatomic) IBOutlet UIImageView *imageIcon;
 
 @end

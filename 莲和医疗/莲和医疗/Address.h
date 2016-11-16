@@ -21,12 +21,12 @@
 
 #define WDJC_REQUEST   @"http://mapi.lhgene.cn/m/api/reports"
 
-#define ZXZX_IMAGE     @"iconfont-zaixianzixunicon81889@3x.png"
-#define GYWM_IMAGE     @"iconfontGuanyuwomen2@3x.png"
+#define ZXZX_IMAGE     @"iconfontZaixianzixunicon81889.png"
+#define GYWM_IMAGE     @"iconfontGuanyuwomen2.png"
 #define LJYY_IMAGE     @"iconfont-wodeyuyue@3x.png"
-#define WDJC_IMAGE     @"iconfont-zixunjiluzixun@3x.png"
-#define FWLC_IMAGE     @"iconfont-iuchengrenwu@3x.png"
-#define LOIGN_IMAGE    @"iconfont-logout@3x.png"
+#define WDJC_IMAGE     @"iconfontZixunjiluzixun.png"
+#define FWLC_IMAGE     @"iconfontIuchengrenwu.png"
+#define LOIGN_IMAGE    @"iconfontLogout.png"
 
 #define PRODUCT1_URL   @"http://mapi.lhgene.cn/m/product/1"
 #define PRODUCT2_URL   @"http://mapi.lhgene.cn/m/product/2"

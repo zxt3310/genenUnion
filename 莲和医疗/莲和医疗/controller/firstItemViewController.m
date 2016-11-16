@@ -49,7 +49,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
     
     
-    
     orderBt = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(0, 623, 187.5, 44)];
     [orderBt setTitle:@"预约购买" forState:UIControlStateNormal];
     [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
@@ -84,7 +83,7 @@
     orderViewController *ovc = [[orderViewController alloc] init];
     ovc.productId = [array[0] integerValue];
     ovc.productName = array[1];
-    ovc.price = array[2];
+    ovc.price = @"";
     [self.navigationController pushViewController:ovc animated:YES];
 }
 
@@ -146,9 +145,19 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    
-    NSURL *currentUrl = [request URL];
-//    NSURL *url = [[NSURL alloc] initWithString:WDJC_PAGE];
+    return YES;
+}
+
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    loadingView.hidden = NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSURL *currentUrl = _html5WebView.request.URL;
+    //    NSURL *url = [[NSURL alloc] initWithString:WDJC_PAGE];
     NSString *prodct = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"];
     
     NSString *title =[_html5WebView stringByEvaluatingJavaScriptFromString:@"document.title"];  //获取链接标题
@@ -157,13 +166,6 @@
         title = [[title substringWithRange:NSMakeRange(0, 11)] stringByAppendingString:@"..."];
     }
     
-//    if ([currentUrl isEqual:url])
-//    {
-//        userLoginView *ulv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
-//        UINavigationController *unc = [[UINavigationController alloc] initWithRootViewController:ulv];
-//        ulv.navigationController.navigationBar.hidden = YES;
-//        [self presentViewController:unc animated:YES completion:nil];
-//    }
     
     if ([currentUrl.absoluteString containsString:prodct])
     {
@@ -174,11 +176,6 @@
     
     self.navigationItem.title = title;
     
-    return YES;
-}
-
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
     
     if([_html5WebView canGoBack])
     {
@@ -188,13 +185,7 @@
     {
         self.navigationItem.leftBarButtonItem = nil;
     }
-
-    loadingView.hidden = NO;
     
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
     loadingView.hidden = YES;
 }
 

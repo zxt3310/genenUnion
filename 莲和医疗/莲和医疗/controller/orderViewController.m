@@ -232,12 +232,14 @@
     {
         femaleImgView.frame = CGRectMakeWithAutoSize(135, 274 , 21, 21);
         maleImgView.frame = CGRectMakeWithAutoSize(248, 274, 17, 17);
+        userSex = @"女";
         isMale = NO;
     }
     else
     {
         femaleImgView.frame = CGRectMakeWithAutoSize(248, 274, 21, 21);
         maleImgView.frame = CGRectMakeWithAutoSize(135, 274, 17, 17);
+        userSex = @"男";
         isMale = YES;
     }
 }

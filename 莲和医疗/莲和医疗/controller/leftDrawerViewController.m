@@ -7,9 +7,7 @@
 //
 
 #import "leftDrawerViewController.h"
-#import "firstItemViewController.h"
-#import "UIViewController+UFanViewController.h"
-#import "userLoginView.h"
+
 @interface leftDrawerViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIColor *starColor;
@@ -120,9 +118,9 @@
 //    else
     
     
-    cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/6, SCREEN_HEIGHT/44, SCREEN_HEIGHT/22.23, SCREEN_HEIGHT/22.23)];   //侧边栏图标
+    cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5, SCREEN_HEIGHT/31, SCREEN_HEIGHT/31.76, SCREEN_HEIGHT/31.76)];   //侧边栏图标
     
-    cellImageView.image =[UIImage imageNamed:self.itemsImageName[indexPath.row]];
+    cellImageView.image =[UIImage imageNamed:deviceImageSelect(self.itemsImageName[indexPath.row])];
     [cell.contentView addSubview:cellImageView];
     return cell;
 }
@@ -165,6 +163,10 @@
                     }
                     else
                     {
+                        userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
+                        unv = [[UINavigationController alloc] initWithRootViewController:uLv];
+                        unv.navigationBar.hidden = YES;
+                        uLv.delegate = self;
                         [self.navigationController presentViewController:unv animated:YES completion:nil];
                     }
                 }
@@ -193,6 +195,10 @@
     {       
         if(!hasLogin)
         {
+            userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
+            unv = [[UINavigationController alloc] initWithRootViewController:uLv];
+            unv.navigationBar.hidden = YES;
+            uLv.isReportTap = NO;
             [self.navigationController presentViewController:unv animated:YES completion:nil];
         }
         else
@@ -234,6 +240,13 @@
     hasLogin = !hasLogin;
     NSIndexPath *indexPath=[NSIndexPath indexPathForRow:5 inSection:0];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+-(void)loginPushReport:(NSString *)token
+{
+    reportListViewController *rlvc = [[reportListViewController alloc]init];
+    rlvc.token = token;
+    [self.UF_ViewController.navigationController pushViewController:rlvc animated:YES];
 }
 
 @end

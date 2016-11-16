@@ -14,6 +14,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self)
     {
+        self.isReportTap = YES;
         [self setIsRegisterPage:NO];
     }
     return self;
@@ -202,14 +203,27 @@
             //给侧边栏推送刷新cell的通知
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"hasLoginState" object:nil];
-             [self dismissViewControllerAnimated:YES completion:nil];
-             //[self getStringForKey:@"token"];
-            //getStringForKey(@"token");
+             [self closeDrawerAnimtaion:YES complete:^(BOOL finished)
+             {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"updateToken" object:nil];
+                 if(_isReportTap)
+                 {
+                    [_delegate loginPushReport:token];
+                 }
+             }];
+ 
             return;
         });
     });
     
    }
+
+-(void)closeDrawerAnimtaion:(BOOL)animatied complete:(void (^)(BOOL))completion {
+    if (animatied) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        completion(YES);
+    }
+}
 
 
 

@@ -10,9 +10,12 @@
 #import "reportListViewController.h"
 #import "aboutUsViewController.h"
 #import "serviceHelperViewController.h"
+#import "firstItemViewController.h"
+#import "UIViewController+UFanViewController.h"
+#import "userLoginView.h"
 //#import "Address.h"
 
-@interface leftDrawerViewController : UFanBasicViewController
+@interface leftDrawerViewController : UFanBasicViewController <FFGlobalLoginDelegate>
 
 
 {
@@ -20,6 +23,7 @@
     NSString* lastToken;
     UIImageView *cellImageView;
     BOOL hasLogin;
+    
     
     UINavigationController *unv;
 }

@@ -11,8 +11,15 @@
 #import "CMCustomViews.h"
 #import "firstItemViewController.h"
 #import "Reachability.h"
+#import "UIViewController+UFanViewController.h"
+#import "CMCustomViews.h"
+#import "CMImageUtils.h"
+#import "userLoginView.h"
+#import "CustomURLCache.h"
+#import "orderViewController.h"
+#import "reportListViewController.h"
 
-@interface MainViewController : UFanBasicViewController<UIWebViewDelegate>
+@interface MainViewController : UFanBasicViewController<UIWebViewDelegate,FFGlobalLoginDelegate>
 {
     UIBarButtonItem *leftBarButton;
     WebViewJavascriptBridge *jsBridge;

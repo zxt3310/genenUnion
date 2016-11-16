@@ -25,6 +25,8 @@
     
     NSString *t;
     
+    UIImageView *noReportImgView;
+    UILabel *noReportLable;
     
 }
 @end
@@ -39,11 +41,7 @@
     
     if(self)
     {
-//       reportTime = @"2016年11月10日";
-//        username = @"张三李四";
-//        productName = @"和普安无创肿瘤基因检测";
-//        prograss = 0.3;
-//        prograssTag = @"扩增建库";
+
         t = @"138106639991231231234";
     }
     
@@ -53,6 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"我的检测";
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.tableView = [[UITableView alloc] init];
     self.tableView.tableFooterView.frame = CGRectZero;
@@ -60,6 +59,19 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.view = self.tableView;
+    
+    noReportImgView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(166, 179, 44, 55)];
+    noReportImgView.image = [UIImage imageNamed:deviceImageSelect(@"病理报告.png")];
+    noReportImgView.hidden = YES;
+    
+    noReportLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(122, 270, 132, 22)];
+    noReportLable.text = @"没有检测报告";
+    noReportLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:22];
+    noReportLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    noReportLable.hidden = YES;
+    [self.view addSubview:noReportImgView];
+    [self.view addSubview:noReportLable];
+    
     
     [self loadRequest];
     //[self.tableView reloadData];
@@ -72,7 +84,8 @@
     }
     loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2.5, topY, 80, 79)];
     loadingView.hidden = YES;
-    [self.view addSubview:loadingView];
+    //[self.view addSubview:loadingView];
+    [[UIApplication sharedApplication].keyWindow addSubview:loadingView];
 
     
 }
@@ -208,7 +221,7 @@
     
     
     UIButton *button = (UIButton *)[backView viewWithTag:8];
-    if (prograss >= 0.8) {
+    if (prograss >= 1) {
         button.enabled = YES;
         [button setTitle:@"查看报告" forState:UIControlStateNormal];
         button.backgroundColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
@@ -279,7 +292,8 @@
         reportArray = JsonValue([jsonData objectForKey:@"data"],@"NSArray");
         if(reportArray.count == 0)
         {
-            alertMsgView(@"您尚未有报告", self);
+            noReportLable.hidden = NO;
+            noReportImgView.hidden = NO;
             return;
         }
 }
@@ -288,7 +302,7 @@
 {
     loadingView.hidden = NO;
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/my/report/%@?token=%@",reportId,_token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/report/%@?token=%@",reportId,_token];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
@@ -332,6 +346,8 @@
             {
                 alertMsgView(@"您尚未有报告", self);
                 loadingView.hidden = YES;
+                
+    
                 return;
             }
             else
