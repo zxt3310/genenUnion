@@ -192,7 +192,7 @@
     //设置工具条的颜色
     toolbar.barTintColor=[UIColor whiteColor];
     //设置工具条的frame
-    toolbar.frame=CGRectMakeWithAutoSize(0, 0, 375, 44);
+    toolbar.frame=CGRectMakeWithAutoSize(0, 10, 375, 35);
     //给工具条添加按钮
     UIBarButtonItem *item0=[[UIBarButtonItem alloc]initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(timeBtClick)];
     toolbar.items = @[item0];

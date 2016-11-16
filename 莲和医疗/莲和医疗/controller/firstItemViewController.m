@@ -67,15 +67,14 @@
     zixunBt.hidden = YES;
     [self.view addSubview:zixunBt];
     
+    _html5WebView.scalesPageToFit = YES;
+    [_html5WebView loadRequest:[NSURLRequest requestWithURL:_strURL]];
+    
 
 }
 
 - (void)orderBtClick
 {
-//    [jsBridge callHandler:@"showHtmlcallJava" data:nil responseCallback:^(id responseData)
-//     {
-//         NSLog(@"%@",responseData);
-//     }];
     
     NSString *js = [NSString stringWithFormat:@"showHtmlcall();"];
     NSString *str = [self.html5WebView stringByEvaluatingJavaScriptFromString:js];
@@ -130,17 +129,14 @@
 {
     [super viewDidAppear:animated];
 
-    if(hasLogin & ![_strURL.absoluteString isEqual:ZXZX_PAGE])
-    {
-        NSString *str = [NSString stringWithFormat:@"%@?token=%@",_strURL.absoluteString,lastToken];
-        NSURL *str_URL_withToken = [[NSURL alloc] initWithString:str];
-        _strURL = str_URL_withToken;
-    }
+//    if(hasLogin & ![_strURL.absoluteString isEqual:ZXZX_PAGE])
+//    {
+//        NSString *str = [NSString stringWithFormat:@"%@?token=%@",_strURL.absoluteString,lastToken];
+//        NSURL *str_URL_withToken = [[NSURL alloc] initWithString:str];
+//        _strURL = str_URL_withToken;
+//    }
     
     NSLog(@"WebViewController URL: %@", _strURL);
-    _html5WebView.scalesPageToFit = YES;
-    [_html5WebView loadRequest:[NSURLRequest requestWithURL:_strURL]];
-    
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
