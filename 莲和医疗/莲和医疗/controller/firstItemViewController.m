@@ -50,7 +50,7 @@
     
     
     orderBt = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(0, 623, 187.5, 44)];
-    [orderBt setTitle:@"预约购买" forState:UIControlStateNormal];
+    [orderBt setTitle:@"预约取样" forState:UIControlStateNormal];
     [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
     orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
     orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];

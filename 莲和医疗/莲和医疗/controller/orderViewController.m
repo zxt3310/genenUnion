@@ -29,8 +29,12 @@
         self.layer.shadowRadius = 5;
         self.layer.shadowOffset = CGSizeMake(1, 1);
         self.placeholder = @"";
-        [self setValue:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
-
+        
+        //[self setValue:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forKeyPath:@"_placeholderLabel.textColor"];
+        
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMakeWithAutoSize(0, 0, 15, 5)];
+        self.leftView = view;
+        self.leftViewMode = UITextFieldViewModeAlways;
     }
     return self;
 }
@@ -73,6 +77,7 @@
     if (self) {
         selectedImg = [UIImage imageNamed:deviceImageSelect(@"nvxinganniu.png")];
         unSelectedImg = [UIImage imageNamed:deviceImageSelect(@"oval77.png")];
+        userSex = @"0";
 
         isMale = YES;
     }
@@ -86,7 +91,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    self.title = @"预约购买";
+    self.title = @"预约取样";
     
     //警告
     UILabel *waringlable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(56, 81, 264, 26)];
@@ -141,22 +146,22 @@
     
     //姓名
     userNameTF = [[orderTextFiled alloc] initWithFrame:CGRectMakeWithAutoSize(68, 214, 240, 35)];
-    userNameTF.placeholder = @"  姓名";
+    userNameTF.placeholder = @"姓名";
     [self.view addSubview:userNameTF];
     
     //年龄
     ageTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 312, 240, 35)];
-    ageTF.placeholder = @"  年龄";
+    ageTF.placeholder = @"年龄";
     [self.view addSubview:ageTF];
     
     //联系电话
     phoneTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 382, 240, 35)];
-    phoneTF.placeholder = @"  联系电话";
+    phoneTF.placeholder = @"联系电话";
     [self.view addSubview:phoneTF];
     
     //采样时间
     orderTimeTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 452, 240, 35)];
-    orderTimeTF.placeholder = @"  预约采样时间";
+    orderTimeTF.placeholder = @"预约采样时间";
     orderTimeTF.delegate = self;
     [self.view addSubview:orderTimeTF];
     
@@ -232,14 +237,14 @@
     {
         femaleImgView.frame = CGRectMakeWithAutoSize(135, 274 , 21, 21);
         maleImgView.frame = CGRectMakeWithAutoSize(248, 274, 17, 17);
-        userSex = @"女";
+        userSex = @"1";
         isMale = NO;
     }
     else
     {
         femaleImgView.frame = CGRectMakeWithAutoSize(248, 274, 21, 21);
         maleImgView.frame = CGRectMakeWithAutoSize(135, 274, 17, 17);
-        userSex = @"男";
+        userSex = @"0";
         isMale = YES;
     }
 }
