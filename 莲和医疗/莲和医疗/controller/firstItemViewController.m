@@ -51,7 +51,7 @@
     
     if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
     {
-    orderBt = [[UIButton alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 64 - 44, SCREEN_WEIGHT/2, 44)];
+    orderBt = [[UIButton alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT  - 44, SCREEN_WEIGHT/2, 44)];
     [orderBt setTitle:@"预约取样" forState:UIControlStateNormal];
     [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
     orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
@@ -59,7 +59,7 @@
     [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:orderBt];
     
-    zixunBt = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2, SCREEN_HEIGHT -64- 44, SCREEN_WEIGHT/2, 44)];
+    zixunBt = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2, SCREEN_HEIGHT - 44, SCREEN_WEIGHT/2, 44)];
     [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
     zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
     zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
@@ -177,6 +177,11 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
     
+    if([_html5WebView.request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
+    {
+        orderBt.hidden = NO;
+        zixunBt.hidden = NO;
+    }
 
     
     loadingView.hidden = YES;

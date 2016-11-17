@@ -29,6 +29,9 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    [[UINavigationBar appearance]  setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
     MainViewController *mainVC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     mainVC.barColor = [self drawImageWithColor:startColor endColor:endColor rect:rect];
     [mainVC setStrURL:[[NSString alloc] initWithFormat:MAIN_PAGE]];
@@ -55,8 +58,8 @@
     
     //UIImage *image = [UIImage imageNamed:@"Rectangle 28@3x.png"];
     [self.rootNavigationController.navigationBar setBackgroundImage:[self drawImageWithColor:startColor endColor:endColor rect:rect] forBarMetrics:UIBarMetricsDefault];
-    self.rootNavigationController.navigationBar.translucent = NO;
-    self.rootNavigationController.navigationBar.shadowImage = [[UIImage alloc]init];
+//    self.rootNavigationController.navigationBar.translucent = NO;
+//    self.rootNavigationController.navigationBar.shadowImage = [[UIImage alloc]init];
     self.rootNavigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
