@@ -233,6 +233,12 @@
     isMainPage = false;
 }
 
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"didFailLoadWithError");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.html5View loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_strURL]]];
+    });
+}
 
 - (void)didReceiveMemoryWarning
 {
