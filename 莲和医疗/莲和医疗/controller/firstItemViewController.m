@@ -46,26 +46,29 @@
     
     _html5WebView.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
+   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
+ 
     
-    
-    orderBt = [[UIButton alloc]initWithFrame:CGRectMakeWithAutoSize(0, 623, 187.5, 44)];
+    if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
+    {
+    orderBt = [[UIButton alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 64 - 44, SCREEN_WEIGHT/2, 44)];
     [orderBt setTitle:@"预约取样" forState:UIControlStateNormal];
     [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
     orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
     orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
     [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
-    orderBt.hidden = YES;
     [self.view addSubview:orderBt];
     
-    zixunBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(187.5, 623, 187.5, 44)];
+    zixunBt = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2, SCREEN_HEIGHT -64- 44, SCREEN_WEIGHT/2, 44)];
     [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
     zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
     zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
     [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
     [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
-    zixunBt.hidden = YES;
+
     [self.view addSubview:zixunBt];
+    
+    }
     
     _html5WebView.scalesPageToFit = YES;
     [_html5WebView loadRequest:[NSURLRequest requestWithURL:_strURL]];
@@ -141,6 +144,7 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+
     return YES;
 }
 
@@ -152,9 +156,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSURL *currentUrl = _html5WebView.request.URL;
-    //    NSURL *url = [[NSURL alloc] initWithString:WDJC_PAGE];
-    NSString *prodct = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"];
+
     
     NSString *title =[_html5WebView stringByEvaluatingJavaScriptFromString:@"document.title"];  //获取链接标题
     if(title.length>12)
@@ -162,13 +164,6 @@
         title = [[title substringWithRange:NSMakeRange(0, 11)] stringByAppendingString:@"..."];
     }
     
-    
-    if ([currentUrl.absoluteString containsString:prodct])
-    {
-        orderBt.hidden = NO;
-        zixunBt.hidden = NO;
-        title = @"产品介绍";
-    }
     
     self.navigationItem.title = title;
     
@@ -181,6 +176,8 @@
     {
         self.navigationItem.leftBarButtonItem = nil;
     }
+    
+
     
     loadingView.hidden = YES;
 }
