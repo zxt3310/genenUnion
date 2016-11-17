@@ -55,6 +55,8 @@
     
     //UIImage *image = [UIImage imageNamed:@"Rectangle 28@3x.png"];
     [self.rootNavigationController.navigationBar setBackgroundImage:[self drawImageWithColor:startColor endColor:endColor rect:rect] forBarMetrics:UIBarMetricsDefault];
+    self.rootNavigationController.navigationBar.translucent = NO;
+    self.rootNavigationController.navigationBar.shadowImage = [[UIImage alloc]init];
     self.rootNavigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
