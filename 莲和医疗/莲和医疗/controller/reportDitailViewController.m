@@ -106,17 +106,20 @@
     [reportScrollView addSubview:phoneLabel];
     
     //流程进度
+    CGFloat startHeight = 148;
     for(int i =0;i < stepArray.count; i++)
     {
         NSDictionary *stepDic = stepArray[i];
         
-        View = [[ditailView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 148, SCREEN_WEIGHT, 0)];
-        View.tag = i + 10 ;
+        View = [[ditailView alloc] initWithFrame:CGRectMake(0, startHeight, SCREEN_WEIGHT, 0)];
+        //View = [[ditailView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 148, SCREEN_WEIGHT, 0)];
+        //View.tag = i + 10 ;
+        /*
         if(i > 0)
         {   //设置frame
             ditailView *firstView = (ditailView *)[reportScrollView viewWithTag:i + 10 -1];
             View.frame = CGRectMakeWithAutoSize(0, firstView.nextPointy, SCREEN_WEIGHT, 0);
-        }
+        }*/
         
         View.stepName = [stepDic objectForKey:@"name"];
         View.ditailText = [stepDic objectForKey:@"desc"];
@@ -136,6 +139,7 @@
         View.ditailImg = [UIImage imageNamed:[self selectReportImg:i currentStep:step - 1]];
         
         [View drawDitail];
+        startHeight += View.frame.size.height;
         if(i == stepArray.count - 1)
         {
             View.lineLable.hidden = YES;
