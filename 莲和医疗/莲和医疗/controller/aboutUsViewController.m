@@ -67,7 +67,7 @@
     [self.view addSubview:telLabel];
     
     
-    UILabel *mailLable = [[UILabel alloc ] initWithFrame:CGRectMake(51, 437, 185, 13)];
+    UILabel *mailLable = [[UILabel alloc ] initWithFrame:CGRectMakeWithAutoSize(51, 437, 185, 13)];
     mailLable.text = @"邮箱：cs@lifehealthcare.com";
     mailLable.font = ad.font;
     mailLable.textColor = textColor;

@@ -25,7 +25,7 @@
     imageView.image = _leftImage;
     [self addSubview:imageView];
     
-    UILabel *imgLable = [[UILabel alloc ]initWithFrame:CGRectMakeWithAutoSize(43, 118, 85, 40)];
+    UILabel *imgLable = [[UILabel alloc ]initWithFrame:CGRectMakeWithAutoSize(43, 118, 90, 40)];
     imgLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     imgLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
     imgLable.text = _imgText;
