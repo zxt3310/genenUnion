@@ -127,7 +127,7 @@
     
     //重新计算高度
     
-    self.frame = CGRectMakeWithAutoSize(0, self.frame.origin.y, SCREEN_WEIGHT, textLable.frame.size.height + 117);
+    self.frame = CGRectMake(0, self.frame.origin.y, 375, textLable.frame.size.height + SCREEN_HEIGHT/5.7);
     
     //下一个view的纵坐标
     nextPointy = self.frame.origin.y + self.frame.size.height;

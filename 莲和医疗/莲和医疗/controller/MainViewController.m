@@ -41,6 +41,8 @@
     
     [super viewDidLoad];
     
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
+    
     _html5View123.hidden = YES;
     
     _html5View = [[UIWebView alloc ]initWithFrame: CGRectMake(0, 64, SCREEN_WEIGHT, SCREEN_HEIGHT - 64)];

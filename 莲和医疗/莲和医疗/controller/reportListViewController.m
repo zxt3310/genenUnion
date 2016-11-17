@@ -50,6 +50,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
+    
     self.title =@"我的检测";
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -214,10 +217,11 @@
     prograssView.frame = CGRectMakeWithAutoSize(35, 136, 255 * prograss, 15);
     
     UIImageView *imageView = (UIImageView *)[backView viewWithTag:6];
+    
     UILabel *tagLable = (UILabel *)[imageView viewWithTag:7];
     tagLable.text = [dic objectForKey:@"current_step"];
     tagLable.frame = CGRectMakeWithAutoSize(3, 2, 48 + (tagLable.text.length - 4) * 12, 12);
-    imageView.frame = CGRectMakeWithAutoSize(prograssView.frame.origin.x + prograssView.frame.size.width - 20, 111, 55 + (tagLable.text.length - 4) * 12, 20);
+    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, SCREEN_HEIGHT/6, 56 + (tagLable.text.length - 4) * 12, SCREEN_HEIGHT/33.35);
     
     
     UIButton *button = (UIButton *)[backView viewWithTag:8];

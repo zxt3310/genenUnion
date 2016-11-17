@@ -99,6 +99,7 @@
 		7025EEAF1DD2C403006DFDCF /* oval77.png in Resources */ = {isa = PBXBuildFile; fileRef = 7025EEA91DD2C403006DFDCF /* oval77.png */; };
 		7025EEB01DD2C403006DFDCF /* oval77@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7025EEAA1DD2C403006DFDCF /* oval77@2x.png */; };
 		7025EEB11DD2C403006DFDCF /* oval77@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7025EEAB1DD2C403006DFDCF /* oval77@3x.png */; };
+		702D9A841DDD50310039C3B7 /* rectangle150@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 702D9A831DDD50310039C3B7 /* rectangle150@3x.png */; };
 		703C2FE81DD56912003B2B3A /* Chouxue!.png in Resources */ = {isa = PBXBuildFile; fileRef = 703C2F991DD56912003B2B3A /* Chouxue!.png */; };
 		703C2FE91DD56912003B2B3A /* Chouxue!@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 703C2F9A1DD56912003B2B3A /* Chouxue!@2x.png */; };
 		703C2FEA1DD56912003B2B3A /* Chouxue!@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 703C2F9B1DD56912003B2B3A /* Chouxue!@3x.png */; };
@@ -351,6 +352,7 @@
 		7025EEA91DD2C403006DFDCF /* oval77.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = oval77.png; sourceTree = "<group>"; };
 		7025EEAA1DD2C403006DFDCF /* oval77@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oval77@2x.png"; sourceTree = "<group>"; };
 		7025EEAB1DD2C403006DFDCF /* oval77@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "oval77@3x.png"; sourceTree = "<group>"; };
+		702D9A831DDD50310039C3B7 /* rectangle150@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rectangle150@3x.png"; path = "莲和医疗/images/rectangle150@3x.png"; sourceTree = SOURCE_ROOT; };
 		703C2F991DD56912003B2B3A /* Chouxue!.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chouxue!.png"; sourceTree = "<group>"; };
 		703C2F9A1DD56912003B2B3A /* Chouxue!@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chouxue!@2x.png"; sourceTree = "<group>"; };
 		703C2F9B1DD56912003B2B3A /* Chouxue!@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Chouxue!@3x.png"; sourceTree = "<group>"; };
@@ -794,6 +796,7 @@
 		703C2F971DD56912003B2B3A /* ditailIcon */ = {
 			isa = PBXGroup;
 			children = (
+				702D9A831DDD50310039C3B7 /* rectangle150@3x.png */,
 				703C2F981DD56912003B2B3A /* chouxue */,
 				703C2FA21DD56912003B2B3A /* chuBaoGao */,
 				703C2FAC1DD56912003B2B3A /* fenLi */,
@@ -1124,6 +1127,7 @@
 				703C30211DD56912003B2B3A /* tiqu$.png in Resources */,
 				703C30291DD56912003B2B3A /* iconYangben!@3x.png in Resources */,
 				58AFC62B1DB9C98B00555933 /* register@2x.png in Resources */,
+				702D9A841DDD50310039C3B7 /* rectangle150@3x.png in Resources */,
 				589640521DB88EE600E99ED1 /* loginBGI.png in Resources */,
 				703C30111DD56912003B2B3A /* Gaotong$@3x.png in Resources */,
 				705C0F911DDC434E00F4FB99 /* 病理报告@3x.png in Resources */,

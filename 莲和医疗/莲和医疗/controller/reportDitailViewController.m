@@ -40,6 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
     self.title = @"我的检测详情";
 
      stepArray = [reportDitailDic objectForKey:@"steps"];
@@ -50,7 +52,7 @@
     reportScrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:reportScrollView];
     
-    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, SCREEN_WEIGHT, 1300)];
+    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, 375, 1300)];
     backImage.image = [UIImage imageNamed:deviceImageSelect(@"reportDitail.png")];
     [reportScrollView addSubview:backImage];
     
@@ -106,7 +108,7 @@
     [reportScrollView addSubview:phoneLabel];
     
     //流程进度
-    CGFloat startHeight = 148;
+    CGFloat startHeight = SCREEN_HEIGHT/4.51;
     for(int i =0;i < stepArray.count; i++)
     {
         NSDictionary *stepDic = stepArray[i];
@@ -148,8 +150,11 @@
         
          [reportScrollView addSubview:View];
     }
-
-            
+    
+    
+    CGSize temp = reportScrollView.contentSize;
+    temp.height = startHeight + SCREEN_HEIGHT/4.51;
+    reportScrollView.contentSize = temp;
     
 
 }
