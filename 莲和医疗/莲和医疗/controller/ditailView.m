@@ -47,6 +47,8 @@
 @synthesize ditailText = ditailText;
 @synthesize nextPointy = nextPointy;
 @synthesize reportTime;
+@synthesize outLable = outLable;
+@synthesize lightTF = ligntTF;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -82,7 +84,7 @@
 
     
     //高亮标志
-    UITextField *ligntTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(110, 47 - y, 19, 25)];
+    ligntTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(110, 47 - y, 19, 25)];
     ligntTF.enabled = NO;
     ligntTF.layer.borderWidth = 1;
     ligntTF.layer.cornerRadius = 10;
@@ -95,7 +97,7 @@
     [self addSubview:ligntTF];
     
     //文本外框
-    UITextField *outLable = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(97, 56, 235, 60)];
+    outLable = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(97, 56, 235, 60)];
     outLable.layer.borderColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1].CGColor;
     outLable.backgroundColor = [UIColor whiteColor];
     outLable.layer.borderWidth = 1;

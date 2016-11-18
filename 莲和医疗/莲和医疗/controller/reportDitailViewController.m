@@ -136,6 +136,7 @@
                 View.reportTime = @"进行中";
             }
         }
+       
 
         //设置高图标
         View.ditailImg = [UIImage imageNamed:[self selectReportImg:i currentStep:step - 1]];
@@ -146,7 +147,11 @@
         {
             View.lineLable.hidden = YES;
         }
-        
+        if (i > step - 1)
+        {
+            View.outLable.layer.borderColor = [UIColor colorWithMyNeed:118 green:118 blue:118 alpha:1].CGColor;
+            View.lightTF.layer.borderColor = [UIColor colorWithMyNeed:118 green:118 blue:118 alpha:1].CGColor;
+        }
         
          [reportScrollView addSubview:View];
     }
@@ -195,7 +200,7 @@
     
     if(index < step || step == stepArray.count - 1)
     {
-        [string insertString:@"$" atIndex:n];
+        [string insertString:@"&" atIndex:n];
     }
     else if(index == step & step < stepArray.count - 1)
     {
