@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>漫瑞基因 - ctDNA</title>
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telphone=no">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- <script type="text/javascript" src="../js/swiper.min.js"></script> -->
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <style type="text/css">
+        body {
+            padding: 16px 22px 0px 22px;
+            background-color: #ffffff;
+        }
+        
+        /* 产品DIV start */
+        .med-home .product-box {
+            border: 1px solid rgb(224, 220, 247);
+            margin: 25px 3px 17px 3px;
+            text-align: center;
+        }
+        
+        .med-home .product-name {
+            width: 63px;
+            height: 22px;
+            top: -11px;
+            font-size: 16px;
+            color: rgb(135, 126, 188);
+            line-height: 21px;
+            display: inline-block;
+            position: relative;
+            background-color: #ffffff;
+        }
+        
+        .med-home .product-info {
+            display: -webkit-box;
+        }
+        .med-home .product-box .product-info img {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .med-home .product-box .product-info p {
+            font-size: 13px;
+            line-height: 16px;
+            color: rgb(135, 126, 188);
+            font-weight: bold;
+            width: 104px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .med-home .product-box .product-info .right-part,.left-part {
+            width: 50%;
+            -webkit-box-flex: 1;
+            margin-top: 8px;
+            margin-bottom: 29px;
+            text-align: center;
+        }
+        /* 产品DIV end */
+        
+        /* 功能DIV start */
+        .med-home .functions-box {
+            margin-bottom: 16px;
+        }
+        
+        .med-home .functions-box .function {
+            padding-top: 5px;
+            padding-bottom: 6px;
+            box-shadow: 1px 2px 6px 1px rgb(224, 220, 247);
+            margin-bottom: 8px;
+            display: -webkit-box;
+        }
+        
+        .med-home .functions-box img {
+            width: 30px;
+            height: 30px;
+            margin: 10px 12px 0px 12px;
+            -webkit-box-flex: 1;
+        }
+        
+        .med-home .functions-box .function .function-info {
+            -webkit-box-flex: 1;
+            border-left: 1px solid rgb(224, 220, 247);
+            padding-left: 19px;
+        }
+        
+        .med-home .functions-box .function .function-info p:nth-child(1) {
+            font-size: 13px;
+            color: rgb(135, 126, 188);
+            font-weight: 600;
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+        
+        .med-home .functions-box .function .function-info p:nth-child(2) {
+            font-size: 12px;
+            color: rgb(135, 126, 188);
+        }
+        /* 功能DIV end */
+        
+        .med-home .booking-box a {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .home-departs ul li{
+            margin-bottom: 25px;
+        }
+
+        .med-home .booking-box a h2 {
+            font-size: 18px;
+            padding-bottom: 6px;
+            color: #333
+        }
+
+        .med-home .booking-box a h3 {
+            font-size: 14px;
+            color: #333
+        }
+
+        .med-home .booking-box a.yy {
+            padding: 15px
+        }
+        .med-home .booking-box .free {
+            color:white;
+            background-color:red;
+            position:absolute;
+            top:5px;
+            right:5px;
+            width:40px;
+            height:18px;
+            border-radius:10px;
+            text-align:center;
+            line-height:18px;
+            font-size: 14px;
+            padding-top:1px;
+        }
+
+        .med-home .booking-box .right_part{
+            border-right-width: 1px;
+            -webkit-box-flex: 1;
+            width: 50%;
+            text-align: center;
+            line-height: 120px;
+            height: 120px;
+            position: relative;
+        }
+        .med-home .booking-box a .con {
+            position: relative
+        }
+
+        .med-home .booking-box a.ks {
+            padding: 12px
+        }
+        .med-home .booking-box p{
+            font-size: 12px;
+            color: #9B9B9B;
+        }
+
+        .med-home .booking-box a.ks :after {
+            background: url("../img/ico_ks_b.png?v=20160128") no-repeat;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: -7px;
+            content: '';
+            width: 50px;
+            height: 50px;
+            vertical-align: middle;
+            background-size: 100% 100%
+        }
+        
+        /* 前沿咨询 start */
+        .med-box {
+            border: 0;
+        }
+        
+        .med-home .caption {
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-left: -1px;
+            margin-right: -1px;
+        }
+        
+        .med-home .caption .best-value {
+            font-size: 14px;
+        }
+        
+        .med-home .caption a {
+            float: right;
+            font-size: 14px;
+            color: rgb(135, 126, 188);
+        }
+        
+        .news-list li {
+            border-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-left: -1px;
+            margin-right: -1px;
+        }
+        
+        .news-list li a .news-box {
+            border-bottom: 1px solid rgb(224, 220, 247);
+            padding-bottom: 12px;
+        }
+        
+        .news-list li a .news-box h3 {
+            color: rgb(135, 126, 188);
+        }
+        
+        .news-list li a .news-box p {
+            color: rgb(162, 150, 203);
+            padding-top: 20px;
+        }
+        /* 前沿咨询 end */
+    </style>
+    <link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
+    <script type="text/javascript">
+
+        function parseURL(url) {
+            //var url =  location.href;
+            console.log(url);
+            if (url.split("?")[1] == undefined) {
+                return [];
+            }
+            var paramArr = url.split("?")[1].split("&");
+            var parseResult = new Array();
+            for ($i = 0; $i < paramArr.length; $i++) {
+                var eachParam = paramArr[$i].split("=");
+                parseResult[eachParam[0]] = eachParam[1];
+            }
+            return parseResult;
+        }
+
+        function uuid(len, radix) {
+            var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+            var uuid = [], i;
+            radix = radix || chars.length;
+
+            if (len) {
+                // Compact form
+                for (i = 0; i < len; i++) uuid[i] = chars[0 | Math.random()*radix];
+            } else {
+                // rfc4122, version 4 form
+                var r;
+
+                // rfc4122 requires these characters
+                uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+                uuid[14] = '4';
+
+                // Fill in random data.  At i==19 set the high bits of clock sequence as
+                // per rfc4122, sec. 4.1.5
+                for (i = 0; i < 36; i++) {
+                    if (!uuid[i]) {
+                        r = 0 | Math.random()*16;
+                        uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                    }
+                }
+            }
+
+            return uuid.join('');
+        }
+
+        var urlParam = parseURL(location.href);
+        var $GC = {
+            serverUrl: 'http://mapi.lhgene.cn',
+            webappUrl: 'http://mapi.lhgene.cn',
+            appid: urlParam['appid'] == undefined ? 1 : urlParam['appid']
+        };
+        console.log("appid:" + $GC.appid);
+        if (/iP(hone|od|ad)/.test(navigator.userAgent)) {
+            var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/),
+                    version = parseInt(v[1], 10);
+            if (version >= 8) {
+                document.documentElement.classList.add('hairlines');
+            }
+        }
+
+        window.imgError = function(src) {
+            var img = event.srcElement;
+            img.src = src;
+            img.onerror = null;
+        };
+
+        var loader = {
+            init: function() {
+                this.loadData();
+                // this.initLink();
+
+            //    var avatar = new Image();
+            //    avatar.src = 'http://idm.bce.baidu.com/t/ping.gif?dm=bce.baidu.com/a1015&ac='+$GC.jihuoid+'&v=bce-1.0&rnd='+Math.random()+'&ext_bce_tid=a1015&ext_bce_pid='+$GC.appid+'&ext_bce_uid='+$GC.jihuoid;
+            },
+            loadData: function() {
+                var e = this;
+                $.ajax({
+                    type: "get",
+                    url: $GC.serverUrl + "/m/api/init",
+                    //url: "/m/api/init",
+                    dataType: "json",
+                    cache: !1,
+                    success: function (t) {
+                        if (t) {
+                            var newsList = t.news_list;
+                            //bannerList = t.banner_list;
+                            //初始化广告
+                            // e.initBannerList(bannerList);
+                            //初始化资讯
+                            e.initNewsList(newsList);
+                        }
+                    },
+                    error: function(t) {
+                        $('#news_loading').hide();
+                    }
+                });
+            },initNewsList: function(t) {
+                if (t && t.length > 0) {
+                    var n = [];
+                    for (var i = 0; i < t.length; i++) {
+                        var r = t[i];
+                        if (r) {
+                            if ( r.img == null || r.img == "" || r.img == 'undefined') {
+                                r.img = "../img/ico_default_msg.png"
+                            }
+                            //var img = '<div style="background: url(' + r.img + ');background-size:auto 75px;background-repeat:no-repeat;background-position: center;border-radius:5px;width:100%;height:100%"></div>';
+                            var img = '<div style="background: url(' + r.img + ');background-size:auto 75px;background-repeat:no-repeat;background-position: center;width:100%;height:100%"></div>';
+                            n.push("<li>"), n.push('<a href="' + r.url + '">'),
+                                    //n.push('<div class="pic-box"><img src="' + r.img + '" onerror="imgError(\'img/blank.gif\')"/></div>'), n.push('<div class="news-box">'),
+                                    //n.push('<div class="pic-box"><img src="'+r.img.replace(':8082','')+'" /></div>'),
+                                    n.push('<div class="pic-box">' + img + '</div>');
+                                    n.push('<div class="news-box">'),
+                                    n.push("<h3>" + r.title + "</h3>");
+                            n.push('<p>' + r.summary + "</p>"), n.push("</div>"), n.push("</a>"),
+                                    n.push("</li>")
+                        }
+                    }
+                    $("#news").html(n.join("")), $("#news_loading").hide();
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+<div class="med-home">
+    <div class="ding-box" style="line-height: 0px;">
+        <img src="../img/dingtu2.png" width="100%">
+    </div>
+    
+    
+    <div class="product-box">
+        <span class="product-name">产品</span>
+        <div class="product-info">
+            <div class="right-part">
+                <a href="http://mapi.lhgene.cn/m/product/1">
+                    <img src="../img/jiyin@3x.png" alt="">
+                    <p>和普安无创肿瘤基因检测</p>
+            </a></div><a href="http://mapi.lhgene.cn/m/product/1">
+            </a><div class="left-part"><a href="http://mapi.lhgene.cn/m/product/1">
+                </a><a href="http://mapi.lhgene.cn/m/product/2">
+                    <img src="../img/ruxian@3x.png" alt="">
+                    <p>乳腺癌易感基因检测</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="functions-box">
+        <a href="http://mapi.lhgene.cn/m/my/report">
+            <div class="function">
+                <img src="../img/jiancebaogao.png">
+                <div class="function-info">
+                    <p>我的检测</p>
+                    <p>登录即可查看报告</p>
+                </div>
+            </div>
+        </a>
+        <a href="https://static.meiqia.com/dist/standalone.html?eid=33791">
+            <div class="function">
+                <img src="../img/consult.png">
+                <div class="function-info">
+                    <p>在线咨询</p>
+                    <p>在线客服及时答疑</p>
+                </div>
+            </div>
+        </a>
+        <a href="http://mapi.lhgene.cn/m/faq">
+            <div class="function">
+                <img src="../img/wenti.png">
+                <div class="function-info">
+                    <p>FAQ</p>
+                    <p>快速了解常见问题</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!--
+    <div class="med-box thin-box booking-box">
+
+        <div style="box-sizing: content-box; border-right-width: 1px; -webkit-box-flex: 1; text-align: center; height: 120px;width: 50%">
+            <br>
+            <a href="http://gzh.gentest.ranknowcn.com/m/my/report">
+                <img src="img/jiancebaogao.png" style="width:62px;height:62px"/>
+                <h2>我的报告</h2>
+            </a>
+        </div>
+        <div class="right_part">
+            <div style="border-bottom-width: 1px; text-align: center; line-height: 60px; height: 60px">
+                <a href="https://static.meiqia.com/dist/standalone.html?eid=33791"><h3><img src="img/consult.png" style="width:30px; height:28px;vertical-align: middle"/>在线咨询</h3></a>
+            </div>
+            <div style="text-align: center; line-height: 60px; height: 60px">
+                <a href="http://gzh.gentest.ranknowcn.com/m/faq"><h3><img src="img/wenti.png" style="width:31px;height:31px;vertical-align: middle"/>常见问题</h3></a>
+            </div>
+
+        </div>
+
+    </div>
+    -->
+
+    <!--
+    <div class="med-box thin-box" id="bannerDiv">
+        <div class="loading" id="banner_loading" style="position:relative; width:100%; height:100px"></div>
+        <div class="swiper-container" style="width:100%">
+            <div class="swiper-wrapper" id="banners">
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    -->
+    <div class="caption">
+        <span class="best-value">前沿资讯</span>
+        <a href="http://mapi.lhgene.cn/m/news">
+            更多
+            <i class="icon-more" style="display: none;"></i>
+        </a>
+    </div>
+    <div class="med-box thin-box">
+        <div class="loading" id="news_loading" style="position: relative; width: 100%; height: 100px;"></div>
+        <ul class="news-list" id="news" style="width: 100%">
+		</ul>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        loader.init();
+    });
+</script>
+</body>
+</html>
