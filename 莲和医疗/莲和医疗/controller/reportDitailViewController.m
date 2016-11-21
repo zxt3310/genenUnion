@@ -131,7 +131,7 @@
         if(i == step -1)
         {
             View.isThisStep = YES;
-            if(step < stepArray.count)
+           // if(step < stepArray.count)
             {
                 View.reportTime = @"进行中";
             }

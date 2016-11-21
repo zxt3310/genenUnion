@@ -106,12 +106,55 @@
 
 - (NSCachedURLResponse *)dataFromRequest:(NSURLRequest *)request {
     
+
+    
     NSString *url = request.URL.absoluteString;
     NSString *fileName = [self cacheRequestFileName:url];
     NSString *otherInfoFileName = [self cacheRequestOtherInfoFileName:url];
     NSString *filePath = [self cacheFilePath:fileName];
     NSString *otherInfoPath = [self cacheFilePath:otherInfoFileName];
     NSDate *date = [NSDate date];
+    
+    //有网清空缓存
+    _hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
+    
+    if(_hostReach.isReachable)
+    {
+//        __block NSCachedURLResponse *cachedResponse = nil;
+//        //sendSynchronousRequest请求也要经过NSURLCache
+//        id boolExsite = [self.responseDictionary objectForKey:url];
+//        if (boolExsite == nil) {
+//            [self.responseDictionary setValue:[NSNumber numberWithBool:TRUE] forKey:url];
+//            
+//            [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data,NSError *error)
+//             {
+//                 if (response && data) {
+//                     
+//                     [self.responseDictionary removeObjectForKey:url];
+//                     
+//                     if (error) {
+//                         NSLog(@"error : %@", error);
+//                         NSLog(@"not cached: %@", request.URL.absoluteString);
+//                         cachedResponse = nil;
+//                     }
+//                     
+//                     NSLog(@"cache url --- %@ ",url);
+//                     
+//                     //save to cache
+//                     NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%f", [date timeIntervalSince1970]], @"time",
+//                                           response.MIMEType, @"MIMEType",
+//                                           response.textEncodingName, @"textEncodingName", nil];
+//                     [dict writeToFile:otherInfoPath atomically:YES];
+//                     [data writeToFile:filePath atomically:YES];
+//                     
+//                     cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+//                 }
+//                 
+//             }];
+//        }
+        [self removeCachedResponseForRequest:request];
+        
+    }
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:filePath]) {
@@ -126,14 +169,6 @@
         }
         
         if (expire == false) {
-            
-            //有网不读缓存
-            _hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
-            
-            if(_hostReach.isReachable)
-            {
-                return [super cachedResponseForRequest:request];
-            }
             
             NSLog(@"data from cache ...");
             

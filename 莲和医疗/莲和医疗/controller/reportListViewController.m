@@ -131,21 +131,21 @@
         UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMakeWithAutoSize(25, 17, 325, 211)];
         
         //时间 tag 2
-        UILabel *timeLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(14, 12, 150, 18)];
+        UILabel *timeLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(14, 26, 150, 18)];
         timeLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
         timeLable.font = [UIFont app_FontSize:16];
         timeLable.tag = 2;
         [backgroundView addSubview:timeLable];
        
         //姓名 tag 3
-        UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(15, 35, 54, 14)];
+        UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(15, 55, 54, 14)];
         usernameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
         usernameLable.font = [UIFont app_FontSize:13];
         usernameLable.tag = 3;
         [backgroundView addSubview:usernameLable];
        
         //产品名称 tag 4
-        UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(15, 54, 264, 27)];
+        UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(15, 80, 264, 27)];
         productNameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
         productNameLable.font = [UIFont app_FontSize:24];
         productNameLable.tag = 4;
@@ -153,7 +153,7 @@
        
         //进度条 tag 5
         //进度条底层
-        UILabel *underPrograssLb = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(35, 136, 255, 15)];
+        UILabel *underPrograssLb = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(35, 159, 255, 15)];
         underPrograssLb.layer.borderColor = [UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1].CGColor;
         underPrograssLb.layer.borderWidth = 1.0;
         underPrograssLb.layer.cornerRadius = 8;
@@ -167,7 +167,7 @@
         [backgroundView addSubview:abovePrograssLb];
         
         //进度指示器 tag 6
-        UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(40, 111, 55, 20)];
+        UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(40, 146, 55, 20)];
         tagView.image = [UIImage imageNamed:deviceImageSelect(@"rectangle150.png")];
         tagView.tag = 6;
         [backgroundView addSubview:tagView];
@@ -180,7 +180,7 @@
         [tagView addSubview:tagLable];
         
         //报告生成按钮 tag 8
-        UIButton *reportBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(106, 161, 105, 25)];
+        UIButton *reportBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(212, 26, 95, 30)];
         reportBt.tag = 8;
         reportBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
         reportBt.tintColor = [UIColor whiteColor];
@@ -214,14 +214,14 @@
     
     UITextField *prograssView = (UITextField *)[backView viewWithTag:5];
     prograss = [[dic objectForKey:@"current_progress"] floatValue];
-    prograssView.frame = CGRectMakeWithAutoSize(35, 136, 255 * prograss, 15);
+    prograssView.frame = CGRectMakeWithAutoSize(35, 159, 255 * prograss, 15);
     
     UIImageView *imageView = (UIImageView *)[backView viewWithTag:6];
     
     UILabel *tagLable = (UILabel *)[imageView viewWithTag:7];
     tagLable.text = [dic objectForKey:@"current_step"];
     tagLable.frame = CGRectMakeWithAutoSize(3, 2, 48 + (tagLable.text.length - 4) * 12, 12);
-    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, SCREEN_HEIGHT/6, 56 + (tagLable.text.length - 4) * 12, SCREEN_HEIGHT/33.35);
+    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, prograssView.frame.origin.y - 25, 56 + (tagLable.text.length - 4) * 12, SCREEN_HEIGHT/33.35);
     
     
     UIButton *button = (UIButton *)[backView viewWithTag:8];
@@ -261,7 +261,7 @@
 
 - (void)loadRequest
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_REQUEST,_token];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_REQUEST,t];
                         
     
     NSData *response = sendGETRequest(urlStr);

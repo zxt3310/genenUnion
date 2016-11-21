@@ -18,4 +18,7 @@
 @property(nonatomic, retain) Reachability *hostReach;
 
 - (id)initWithMemoryCapacity:(NSUInteger)memoryCapacity diskCapacity:(NSUInteger)diskCapacity diskPath:(NSString *)path cacheTime:(NSInteger)cacheTime;
+
+- (NSString *)cacheRequestFileName:(NSString *)requestUrl;
+- (NSString *)cacheFilePath:(NSString *)file;
 @end

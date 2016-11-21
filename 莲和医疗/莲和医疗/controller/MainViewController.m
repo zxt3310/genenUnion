@@ -96,7 +96,7 @@
     [header addSubview:backBtn];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width + 16, 20, SCREEN_WEIGHT - (rect.size.width+8) * 2, 44)];
-    titleLabel.text = @"莲和医疗";
+    titleLabel.text = @"莲和基因";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -201,29 +201,35 @@
 {
     [super viewDidAppear:animated];
     
+    hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
     
         URL = [[NSURL alloc] initWithString:_strURL];
         
         NSLog(@"WebViewController URL: %@", URL);
-//        if(hostReach.isReachable)
-//        {
-            _html5View.scalesPageToFit = YES;
-            [_html5View loadRequest:[NSURLRequest requestWithURL:URL]];
-          
-//        }
-//        else
-//        {
-//            NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
-//            
-//            NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-//            
-//            NSString *basePath = [[NSBundle mainBundle] bundlePath];
-//            
-//            NSURL *baseURL = [NSURL fileURLWithPath:basePath];
-//            
-//            [self.html5View loadHTMLString:htmlString baseURL:baseURL];
-//            URL = baseURL;
-//        }
+    
+        NSInteger appUseCount = [[[NSUserDefaults standardUserDefaults] objectForKey:@"count"] integerValue];
+        if(!hostReach.isReachable)
+        {
+            if(appUseCount == 0)
+            {
+                NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+                    
+                NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+                    
+                NSString *basePath = [[NSBundle mainBundle] bundlePath];
+                    
+                NSURL *baseURL = [NSURL fileURLWithPath:basePath];
+                    
+                [self.html5View loadHTMLString:htmlString baseURL:baseURL];
+                URL = baseURL;
+                return;
+            }
+        }
+        _html5View.scalesPageToFit = YES;
+        [_html5View loadRequest:[NSURLRequest requestWithURL:URL]];
+        appUseCount ++;
+        [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld",(long)appUseCount] forKey:@"count"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
