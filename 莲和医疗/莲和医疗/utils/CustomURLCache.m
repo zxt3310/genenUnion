@@ -45,6 +45,10 @@
     if ([request.HTTPMethod compare:@"GET"] != NSOrderedSame) {
         return [super cachedResponseForRequest:request];
     }
+    if (![request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/resources/mobile"]])
+    {
+        return [super cachedResponseForRequest:request];
+    }
     
     return [self dataFromRequest:request];
 }
@@ -101,6 +105,7 @@
 }
 
 - (NSCachedURLResponse *)dataFromRequest:(NSURLRequest *)request {
+    
     NSString *url = request.URL.absoluteString;
     NSString *fileName = [self cacheRequestFileName:url];
     NSString *otherInfoFileName = [self cacheRequestOtherInfoFileName:url];
@@ -121,6 +126,15 @@
         }
         
         if (expire == false) {
+            
+            //有网不读缓存
+            _hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
+            
+            if(_hostReach.isReachable)
+            {
+                return [super cachedResponseForRequest:request];
+            }
+            
             NSLog(@"data from cache ...");
             
             NSData *data = [NSData dataWithContentsOfFile:filePath];

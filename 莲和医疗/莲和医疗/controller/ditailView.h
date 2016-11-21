@@ -28,6 +28,8 @@
 
 @property CGFloat nextPointy; //下一个view的纵坐标
 
+@property UITextField *outLable;
+@property UITextField *lightTF;
 - (void)drawDitail;
 
 @end

@@ -24,16 +24,16 @@
 @implementation MainViewController
 
 
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-//    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-//        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
-//                                                                     diskCapacity:200 * 1024 * 1024
-//                                                                         diskPath:nil
-//                                                                        cacheTime:0];
-//        [CustomURLCache setSharedURLCache:urlCache];
-//    }
-//    return self;
-//}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        CustomURLCache *urlCache = [[CustomURLCache alloc] initWithMemoryCapacity:20 * 1024 * 1024
+                                                                     diskCapacity:200 * 1024 * 1024
+                                                                         diskPath:nil
+                                                                        cacheTime:0];
+        [CustomURLCache setSharedURLCache:urlCache];
+    }
+    return self;
+}
 
 
 - (void)viewDidLoad {
@@ -51,8 +51,6 @@
     
     isMainPage = YES;
     _html5View.delegate = self;
-    
-    hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
     
     //监听网络变化
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged) name:kReachabilityChangedNotification object:nil];
@@ -248,7 +246,6 @@
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(nonnull NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSURL *currentUrl = request.URL;
-    //NSURL *url = [[NSURL alloc] initWithString:@"http://gzh.gentest.ranknowcn.com/resources/mobile/index"];
     NSString *a = currentUrl.absoluteString;
     
     if([currentUrl.absoluteString isEqualToString:WDJC_PAGE])
