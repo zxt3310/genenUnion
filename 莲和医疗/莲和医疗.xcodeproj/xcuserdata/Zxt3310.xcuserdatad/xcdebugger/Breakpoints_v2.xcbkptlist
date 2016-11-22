@@ -309,11 +309,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/MainViewController.m"
-            timestampString = "501409380.01261"
+            timestampString = "501478521.061948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -325,11 +325,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/MainViewController.m"
-            timestampString = "501409380.01261"
+            timestampString = "501478521.061948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "-viewDidAppear:"
             landmarkType = "7">
          </BreakpointContent>
@@ -421,12 +421,56 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/reportDitailViewController.m"
-            timestampString = "501416265.837619"
+            timestampString = "501477091.700127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-selectReportImg:currentStep:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/reportDitailViewController.h"
+            timestampString = "501477091.700127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/reportDitailViewController.h"
+            timestampString = "501477091.700127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/reportListViewController.m"
+            timestampString = "501488525.462752"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-productSelect:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

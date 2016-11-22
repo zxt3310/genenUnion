@@ -215,8 +215,10 @@
             @finally
             {
                 [self alertMsgView:@"您已成功注销"];
+                
               //  NSIndexPath *indexPath=[NSIndexPath indexPathForRow:indexPath.row inSection:0];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateToken" object:nil];
 
             }
         }

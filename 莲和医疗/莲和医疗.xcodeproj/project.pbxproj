@@ -51,6 +51,21 @@
 		58AFC6361DBA004200555933 /* iconfontMulu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AFC6331DBA004200555933 /* iconfontMulu@2x.png */; };
 		58AFC6371DBA004200555933 /* iconfontMulu.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AFC6341DBA004200555933 /* iconfontMulu.png */; };
 		58AFC6381DBA004200555933 /* iconfontMulu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58AFC6351DBA004200555933 /* iconfontMulu@3x.png */; };
+		58D548721DE3EA8E00A643C3 /* 千图网-红色的英文印章@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D5486F1DE3EA8E00A643C3 /* 千图网-红色的英文印章@2x.png */; };
+		58D548731DE3EA8E00A643C3 /* 千图网-红色的英文印章.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548701DE3EA8E00A643C3 /* 千图网-红色的英文印章.png */; };
+		58D548741DE3EA8E00A643C3 /* 千图网-红色的英文印章@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548711DE3EA8E00A643C3 /* 千图网-红色的英文印章@3x.png */; };
+		58D5487B1DE3F45800A643C3 /* ex人@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548751DE3F45800A643C3 /* ex人@2x.png */; };
+		58D5487C1DE3F45800A643C3 /* ex人.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548761DE3F45800A643C3 /* ex人.png */; };
+		58D5487D1DE3F45800A643C3 /* ex人@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548771DE3F45800A643C3 /* ex人@3x.png */; };
+		58D5487E1DE3F45800A643C3 /* 人@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548781DE3F45800A643C3 /* 人@2x.png */; };
+		58D5487F1DE3F45800A643C3 /* 人.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548791DE3F45800A643C3 /* 人.png */; };
+		58D548801DE3F45800A643C3 /* 人@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D5487A1DE3F45800A643C3 /* 人@3x.png */; };
+		58D548871DE413D500A643C3 /* ruxian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548811DE413D400A643C3 /* ruxian@2x.png */; };
+		58D548881DE413D500A643C3 /* ruxian.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548821DE413D500A643C3 /* ruxian.png */; };
+		58D548891DE413D500A643C3 /* ruxian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548831DE413D500A643C3 /* ruxian@3x.png */; };
+		58D5488A1DE413D500A643C3 /* jiyin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548841DE413D500A643C3 /* jiyin@2x.png */; };
+		58D5488B1DE413D500A643C3 /* jiyin.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548851DE413D500A643C3 /* jiyin.png */; };
+		58D5488C1DE413D500A643C3 /* jiyin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58D548861DE413D500A643C3 /* jiyin@3x.png */; };
 		58E0D24A1DB71A6E0058EB54 /* firstItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2131DB71A6E0058EB54 /* firstItemViewController.m */; };
 		58E0D24B1DB71A6E0058EB54 /* firstItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E0D2141DB71A6E0058EB54 /* firstItemViewController.xib */; };
 		58E0D24C1DB71A6E0058EB54 /* leftDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2161DB71A6E0058EB54 /* leftDrawerViewController.m */; };
@@ -303,6 +318,21 @@
 		58AFC6331DBA004200555933 /* iconfontMulu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontMulu@2x.png"; sourceTree = "<group>"; };
 		58AFC6341DBA004200555933 /* iconfontMulu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfontMulu.png; sourceTree = "<group>"; };
 		58AFC6351DBA004200555933 /* iconfontMulu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontMulu@3x.png"; sourceTree = "<group>"; };
+		58D5486F1DE3EA8E00A643C3 /* 千图网-红色的英文印章@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "千图网-红色的英文印章@2x.png"; sourceTree = "<group>"; };
+		58D548701DE3EA8E00A643C3 /* 千图网-红色的英文印章.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "千图网-红色的英文印章.png"; sourceTree = "<group>"; };
+		58D548711DE3EA8E00A643C3 /* 千图网-红色的英文印章@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "千图网-红色的英文印章@3x.png"; sourceTree = "<group>"; };
+		58D548751DE3F45800A643C3 /* ex人@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ex人@2x.png"; sourceTree = "<group>"; };
+		58D548761DE3F45800A643C3 /* ex人.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ex人.png"; sourceTree = "<group>"; };
+		58D548771DE3F45800A643C3 /* ex人@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ex人@3x.png"; sourceTree = "<group>"; };
+		58D548781DE3F45800A643C3 /* 人@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "人@2x.png"; sourceTree = "<group>"; };
+		58D548791DE3F45800A643C3 /* 人.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "人.png"; sourceTree = "<group>"; };
+		58D5487A1DE3F45800A643C3 /* 人@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "人@3x.png"; sourceTree = "<group>"; };
+		58D548811DE413D400A643C3 /* ruxian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ruxian@2x.png"; sourceTree = "<group>"; };
+		58D548821DE413D500A643C3 /* ruxian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruxian.png; sourceTree = "<group>"; };
+		58D548831DE413D500A643C3 /* ruxian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ruxian@3x.png"; sourceTree = "<group>"; };
+		58D548841DE413D500A643C3 /* jiyin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiyin@2x.png"; sourceTree = "<group>"; };
+		58D548851DE413D500A643C3 /* jiyin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jiyin.png; sourceTree = "<group>"; };
+		58D548861DE413D500A643C3 /* jiyin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiyin@3x.png"; sourceTree = "<group>"; };
 		58E0D2121DB71A6E0058EB54 /* firstItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = firstItemViewController.h; sourceTree = "<group>"; };
 		58E0D2131DB71A6E0058EB54 /* firstItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = firstItemViewController.m; sourceTree = "<group>"; };
 		58E0D2141DB71A6E0058EB54 /* firstItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = firstItemViewController.xib; sourceTree = "<group>"; };
@@ -761,6 +791,9 @@
 		58E0D2631DB71AB40058EB54 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				58D5486F1DE3EA8E00A643C3 /* 千图网-红色的英文印章@2x.png */,
+				58D548701DE3EA8E00A643C3 /* 千图网-红色的英文印章.png */,
+				58D548711DE3EA8E00A643C3 /* 千图网-红色的英文印章@3x.png */,
 				70810F941DD9A4DC0075BC17 /* FWLC */,
 				70810F8E1DD98E650075BC17 /* aboutus.png */,
 				70810F8F1DD98E650075BC17 /* aboutus@2x.png */,
@@ -808,6 +841,18 @@
 		58E0D30C1DB71AB50058EB54 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				58D548811DE413D400A643C3 /* ruxian@2x.png */,
+				58D548821DE413D500A643C3 /* ruxian.png */,
+				58D548831DE413D500A643C3 /* ruxian@3x.png */,
+				58D548841DE413D500A643C3 /* jiyin@2x.png */,
+				58D548851DE413D500A643C3 /* jiyin.png */,
+				58D548861DE413D500A643C3 /* jiyin@3x.png */,
+				58D548751DE3F45800A643C3 /* ex人@2x.png */,
+				58D548761DE3F45800A643C3 /* ex人.png */,
+				58D548771DE3F45800A643C3 /* ex人@3x.png */,
+				58D548781DE3F45800A643C3 /* 人@2x.png */,
+				58D548791DE3F45800A643C3 /* 人.png */,
+				58D5487A1DE3F45800A643C3 /* 人@3x.png */,
 				705C0F8C1DDC434E00F4FB99 /* 病理报告.png */,
 				705C0F8D1DDC434E00F4FB99 /* 病理报告@2x.png */,
 				705C0F8E1DDC434E00F4FB99 /* 病理报告@3x.png */,
@@ -1176,11 +1221,15 @@
 				58AFC6201DB9B85300555933 /* FZXDXJW.ttf in Resources */,
 				70810FA61DD9A4DC0075BC17 /* iconLiucheng@3x.png in Resources */,
 				703C30091DD56912003B2B3A /* Fenxi&.png in Resources */,
+				58D5488B1DE413D500A643C3 /* jiyin.png in Resources */,
+				58D5488C1DE413D500A643C3 /* jiyin@3x.png in Resources */,
 				703C302C1DD56912003B2B3A /* iconYangben$@3x.png in Resources */,
 				589640541DB88EE700E99ED1 /* loginBGI@3x.png in Resources */,
+				58D548721DE3EA8E00A643C3 /* 千图网-红色的英文印章@2x.png in Resources */,
 				703C30051DD56912003B2B3A /* Fenxi!@3x.png in Resources */,
 				703C2FFE1DD56912003B2B3A /* Fenli$@2x.png in Resources */,
 				58AFC62C1DB9C98B00555933 /* register@3x.png in Resources */,
+				58D5488A1DE413D500A643C3 /* jiyin@2x.png in Resources */,
 				5836FEC41DE2CB93008DB09E /* consult.png in Resources */,
 				706CADBB1DD3623200362D17 /* rectangle150@2x.png in Resources */,
 				589640531DB88EE700E99ED1 /* loginBGI@2x.png in Resources */,
@@ -1194,6 +1243,7 @@
 				70207DBA1DD41BE60070D638 /* reportDitail.png in Resources */,
 				70F65ECD1DD1AE360077D6E0 /* 101.png in Resources */,
 				58AFC6321DB9FF7D00555933 /* Rectangle 28@3x.png in Resources */,
+				58D5487E1DE3F45800A643C3 /* 人@2x.png in Resources */,
 				58AFC6301DB9FF7D00555933 /* Rectangle 28.png in Resources */,
 				703FEC091DD3260900C7DEA5 /* Rectangle 133 Copy@2x.png in Resources */,
 				7025EEAE1DD2C403006DFDCF /* nvxinganniu@3x.png in Resources */,
@@ -1211,6 +1261,7 @@
 				58E0D3E41DB71AB50058EB54 /* iconfont-changjianwenti-2@3x.png in Resources */,
 				703C30121DD56912003B2B3A /* Gaotong&.png in Resources */,
 				703C2FEA1DD56912003B2B3A /* Chouxue!@3x.png in Resources */,
+				58D548801DE3F45800A643C3 /* 人@3x.png in Resources */,
 				5836FEC21DE2CB93008DB09E /* index.html in Resources */,
 				703C2FE81DD56912003B2B3A /* Chouxue!.png in Resources */,
 				5849C78F1DB7177D00B97AF6 /* Assets.xcassets in Resources */,
@@ -1223,6 +1274,7 @@
 				58E0D3EF1DB71AB50058EB54 /* logo 180.png in Resources */,
 				589640581DB8C2CD00E99ED1 /* dengru@2x.png in Resources */,
 				58E0D3EC1DB71AB50058EB54 /* logo 120 2.png in Resources */,
+				58D548881DE413D500A643C3 /* ruxian.png in Resources */,
 				58E0D3F81DB71AB50058EB54 /* icon_close.png in Resources */,
 				70810FA51DD9A4DC0075BC17 /* iconLiucheng@2x.png in Resources */,
 				705C0F881DDC1FD200F4FB99 /* iconfontZaixianzixunicon81889@3x.png in Resources */,
@@ -1250,6 +1302,7 @@
 				703C30331DD59B95003B2B3A /* iconfontGuanyuwomen2.png in Resources */,
 				589640591DB8C2CD00E99ED1 /* dengru.png in Resources */,
 				5836FECA1DE2CB93008DB09E /* jiyin@3x.png in Resources */,
+				58D5487C1DE3F45800A643C3 /* ex人.png in Resources */,
 				58E0D3F51DB71AB50058EB54 /* iconfont-iconfontconsult@3x.png in Resources */,
 				58E0D3E51DB71AB50058EB54 /* iconfont-iconfontkefu@3x.png in Resources */,
 				5836FEC31DE2CB93008DB09E /* ajax-loader.gif in Resources */,
@@ -1271,6 +1324,8 @@
 				58E0D24B1DB71A6E0058EB54 /* firstItemViewController.xib in Resources */,
 				7025EEAC1DD2C403006DFDCF /* nvxinganniu.png in Resources */,
 				703C2FF31DD56912003B2B3A /* Chubaogao!@3x.png in Resources */,
+				58D548741DE3EA8E00A643C3 /* 千图网-红色的英文印章@3x.png in Resources */,
+				58D5487F1DE3F45800A643C3 /* 人.png in Resources */,
 				703C301F1DD56912003B2B3A /* tiqu!@2x.png in Resources */,
 				705C0F861DDC1FD200F4FB99 /* iconfontZaixianzixunicon81889.png in Resources */,
 				58E0D3FD1DB71AB50058EB54 /* SIDE-list.png in Resources */,
@@ -1279,6 +1334,7 @@
 				703C2FFC1DD56912003B2B3A /* Fenli!@3x.png in Resources */,
 				703C30021DD56912003B2B3A /* Fenli&@3x.png in Resources */,
 				703C2FF11DD56912003B2B3A /* Chubaogao!.png in Resources */,
+				58D5487D1DE3F45800A643C3 /* ex人@3x.png in Resources */,
 				703C30251DD56912003B2B3A /* tiqu&@2x.png in Resources */,
 				703C30131DD56912003B2B3A /* Gaotong&@2x.png in Resources */,
 				58AFC6361DBA004200555933 /* iconfontMulu@2x.png in Resources */,
@@ -1309,12 +1365,14 @@
 				703C30151DD56912003B2B3A /* kuozengjianku!.png in Resources */,
 				705C0F8F1DDC434E00F4FB99 /* 病理报告.png in Resources */,
 				58E0D3EE1DB71AB50058EB54 /* logo 180 2.png in Resources */,
+				58D548871DE413D500A643C3 /* ruxian@2x.png in Resources */,
 				5836FEC11DE2CB93008DB09E /* swiper.min.css in Resources */,
 				5849C78D1DB7177D00B97AF6 /* Main.storyboard in Resources */,
 				703C30101DD56912003B2B3A /* Gaotong$@2x.png in Resources */,
 				58E0D3F01DB71AB50058EB54 /* logo 29.png in Resources */,
 				58E0D3351DB71AB50058EB54 /* 10_device_access_storage.png in Resources */,
 				706CADBA1DD3623200362D17 /* rectangle150.png in Resources */,
+				58D548731DE3EA8E00A643C3 /* 千图网-红色的英文印章.png in Resources */,
 				703C2FF71DD56912003B2B3A /* Chubaogao&.png in Resources */,
 				703C2FF51DD56912003B2B3A /* Chubaogao$@2x.png in Resources */,
 				703C300F1DD56912003B2B3A /* Gaotong$.png in Resources */,
@@ -1325,6 +1383,7 @@
 				703C2FF01DD56912003B2B3A /* Chouxue&@3x.png in Resources */,
 				705C0F831DDC1FD200F4FB99 /* iconfontLogout.png in Resources */,
 				5836FECE1DE2CB93008DB09E /* hint_pb.js in Resources */,
+				58D548891DE413D500A643C3 /* ruxian@3x.png in Resources */,
 				703C30341DD59B95003B2B3A /* iconfontGuanyuwomen2@2x.png in Resources */,
 				58E0D3341DB71AB50058EB54 /* 10-device-access-storage.png in Resources */,
 				703C301A1DD56912003B2B3A /* kuozengjianku$@3x.png in Resources */,
@@ -1360,6 +1419,7 @@
 				5836FEC51DE2CB93008DB09E /* dingtu2.png in Resources */,
 				703C30011DD56912003B2B3A /* Fenli&@2x.png in Resources */,
 				70207DBB1DD41BE60070D638 /* reportDitail@2x.png in Resources */,
+				58D5487B1DE3F45800A643C3 /* ex人@2x.png in Resources */,
 				5836FECD1DE2CB93008DB09E /* wenti.png in Resources */,
 				58AFC62A1DB9C98B00555933 /* register.png in Resources */,
 				703C2FEE1DD56912003B2B3A /* Chouxue&.png in Resources */,

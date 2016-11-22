@@ -44,13 +44,25 @@
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
     self.title = @"我的检测详情";
 
-     stepArray = [reportDitailDic objectForKey:@"steps"];
+    stepArray = [reportDitailDic objectForKey:@"steps"];
+    NSString *stepStr = [reportDitailDic objectForKey:@"current_step"];
+    NSInteger step = [stepStr integerValue];
     
     
     UIScrollView *reportScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WEIGHT, SCREEN_HEIGHT)];
     reportScrollView.contentSize = CGSizeMake(SCREEN_WEIGHT, 1500 * SCREEN_HEIGHT /667);
     reportScrollView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:reportScrollView];
+    
+    //报告完成指示图
+    UIImageView *complateView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(242, 0, 133, 133)];
+    complateView.image = [UIImage imageNamed:deviceImageSelect(@"千图网-红色的英文印章.png")];
+    complateView.hidden = YES;
+    if(step > stepArray.count +1)
+    {
+        complateView.hidden=NO;
+    }
+    [reportScrollView addSubview:complateView];
     
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, 375, 1300)];
     backImage.image = [UIImage imageNamed:deviceImageSelect(@"reportDitail.png")];
@@ -95,10 +107,26 @@
     }
     else{
         sexLable.text = [NSString stringWithFormat:@"性别：女"];
-
     }
     [reportScrollView addSubview:sexLable];
     
+    //查看报告按钮
+    UIButton *reportBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(260, 111, 90, 30)];
+    reportBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
+    reportBt.tintColor = [UIColor whiteColor];
+    reportBt.layer.cornerRadius = 5;
+    [reportBt addTarget:self action:@selector(reportBtClick:) forControlEvents:UIControlEventTouchUpInside];
+    reportBt.enabled = NO;
+    [reportBt setTitle:@"报告生成中" forState:UIControlStateNormal];
+    reportBt.backgroundColor = [UIColor colorWithMyNeed:209 green:209 blue:209 alpha:1];
+    if(step > stepArray.count +1)
+    {
+        reportBt.enabled = YES;
+        reportBt.backgroundColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+        [reportBt setTitle:@"查看报告" forState:UIControlStateNormal];
+    }
+    [reportScrollView addSubview:reportBt];
+
     
     //联系电话
     UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(186, 91, 151, 13)];
@@ -126,8 +154,7 @@
         View.stepName = [stepDic objectForKey:@"name"];
         View.ditailText = [stepDic objectForKey:@"desc"];
         View.reportTime = [stepDic objectForKey:@"time"];
-        NSString *stepStr = [reportDitailDic objectForKey:@"current_step"];
-        NSInteger step = [stepStr integerValue];
+        
         if(i == step -1)
         {
             View.isThisStep = YES;
@@ -179,6 +206,12 @@
 }
 */
 
+- (void)reportBtClick:(UIButton *)sender
+{
+    firstItemViewController *fivc = [[firstItemViewController alloc]init];
+    fivc.strURL =[NSURL URLWithString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/my/report/%@?token=%@",_reportId,_token]];
+    [self.navigationController pushViewController:fivc animated:YES];
+}
 
 //图片选择器  命名规则 已完成图片名+$   正在进行 图片名+&  未完成 图片名+！
 - (NSString *)selectReportImg:(NSInteger)index currentStep:(NSInteger)step;

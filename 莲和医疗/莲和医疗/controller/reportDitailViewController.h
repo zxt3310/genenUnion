@@ -9,6 +9,7 @@
 #import "UFanViewController.h"
 #import "ditailView.h"
 #import "NetUtils.h"
+#import "firstItemViewController.h"
 @interface reportDitailViewController : UFanViewController
 
 {
@@ -27,6 +28,8 @@
 @property NSString *reportId;
 
 @property NSDictionary *reportDitailDic;
+
+@property NSString *token;
 
 @end
 

@@ -18,7 +18,9 @@
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WEIGHT [[UIScreen mainScreen] bounds].size.width
 @interface MainViewController ()
-
+{
+    UIButton *backBtn;
+}
 @end
 
 @implementation MainViewController
@@ -31,6 +33,9 @@
                                                                          diskPath:nil
                                                                         cacheTime:0];
         [CustomURLCache setSharedURLCache:urlCache];
+            hasLogin = NO;
+        
+        
     }
     return self;
 }
@@ -60,12 +65,9 @@
     
     [hostReach startNotifier];
     isNeedReload = NO;
-    
+
     [self setNewBar];
     
-    hasLogin = NO;
-    
-     
 }
 
 
@@ -79,7 +81,7 @@
     [self.view addSubview:header];
     [header addSubview:backimg];
     
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [backBtn setTitle:@"" forState:UIControlStateNormal];
     [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
@@ -185,10 +187,12 @@
     if (lastToken !=nil)
     {
         hasLogin = YES;
+        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
+        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
     
    // [self setLeftBarButtonItem];
@@ -313,10 +317,12 @@
     if (lastToken !=nil)
     {
         hasLogin = YES;
+        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
+        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
 
 }

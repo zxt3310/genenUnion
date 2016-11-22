@@ -28,6 +28,8 @@
     UIImageView *noReportImgView;
     UILabel *noReportLable;
     
+    UIView *noReportView;
+    
 }
 @end
 
@@ -63,11 +65,12 @@
     self.tableView.dataSource = self;
     self.view = self.tableView;
     
-    noReportImgView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(166, 179, 44, 55)];
+    //无报告上半部分-------------------------------------------------------------------------------------
+    noReportImgView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(166, 115, 44, 55)];
     noReportImgView.image = [UIImage imageNamed:deviceImageSelect(@"病理报告.png")];
     noReportImgView.hidden = YES;
     
-    noReportLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(122, 270, 132, 22)];
+    noReportLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(122, 201, 132, 22)];
     noReportLable.text = @"没有检测报告";
     noReportLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:22];
     noReportLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
@@ -75,6 +78,56 @@
     [self.view addSubview:noReportImgView];
     [self.view addSubview:noReportLable];
     
+    //无检测报告下半部分-----------------------------------------------------------------------------------
+    noReportView = [[UIView alloc]initWithFrame:CGRectMakeWithAutoSize(0, 278, 375, 322)];
+    noReportView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *lineLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(41, 0, 293, 1)];
+    lineLable.layer.borderWidth = 1;
+    lineLable.layer.borderColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1].CGColor;
+    [noReportView addSubview:lineLable];
+    
+    UILabel *tjLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(156, 72, 64, 16)];
+    tjLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    tjLable.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:(16*SCREEN_HEIGHT/667)];
+    tjLable.text = @"推荐产品";
+    [noReportView addSubview:tjLable];
+    
+    UIImageView *Product1 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(73, 108.5, 47, 47)];
+    Product1.image = [UIImage imageNamed:deviceImageSelect(@"jiyin.png")];
+    UITapGestureRecognizer *p1tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productSelect:)];
+    [Product1 addGestureRecognizer:p1tap];
+    Product1.tag = 1;
+    Product1.userInteractionEnabled = YES;
+    [noReportView addSubview:Product1];
+    
+    UILabel *product1Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(45, 161.5, 104, 32)];
+    product1Lable.numberOfLines = 0;
+    product1Lable.text = @"和普安无创肿瘤基因检测";
+    product1Lable.textAlignment = NSTextAlignmentCenter;
+    product1Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    product1Lable.font = [UIFont app_FontSize:(13*SCREEN_HEIGHT/667)];
+    [noReportView addSubview:product1Lable];
+    
+    UIImageView *Product2 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(256, 108.5, 47, 47)];
+    Product2.image = [UIImage imageNamed:deviceImageSelect(@"ruxian.png")];
+    UITapGestureRecognizer *p2tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productSelect:)];
+    [Product2 addGestureRecognizer:p2tap];
+    Product2.tag = 2;
+    Product2.userInteractionEnabled = YES;
+    [noReportView addSubview:Product2];
+    
+    UILabel *product2Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(227, 161.5, 104, 32)];
+    product2Lable.numberOfLines = 0;
+    product2Lable.text = @"乳腺癌易感基因检测";
+    product2Lable.textAlignment = NSTextAlignmentCenter;
+    product2Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    product2Lable.font = [UIFont app_FontSize:(13*SCREEN_HEIGHT/667)];
+    [noReportView addSubview:product2Lable];
+    
+    noReportView.hidden = YES;
+    [self.view addSubview:noReportView];
+
     
     [self loadRequest];
     //[self.tableView reloadData];
@@ -90,7 +143,23 @@
     //[self.view addSubview:loadingView];
     [[UIApplication sharedApplication].keyWindow addSubview:loadingView];
 
+}
+
+- (void)productSelect:(UITapGestureRecognizer *)sender
+{
+    NSString *url;
+    if(sender.view.tag == 1)
+    {
+        url = PRODUCT1_URL;
+    }
     
+    if(sender.view.tag == 2)
+    {
+        url = PRODUCT2_URL;
+    }
+    firstItemViewController *fivc = [[firstItemViewController alloc]init];
+    fivc.strURL = [NSURL URLWithString:url];
+    [self.navigationController pushViewController:fivc animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -261,7 +330,7 @@
 
 - (void)loadRequest
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_REQUEST,t];
+    NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_REQUEST,_token];
                         
     
     NSData *response = sendGETRequest(urlStr);
@@ -298,6 +367,7 @@
         {
             noReportLable.hidden = NO;
             noReportImgView.hidden = NO;
+            noReportView.hidden = NO;
             return;
         }
 }
@@ -359,6 +429,8 @@
                 loadingView.hidden = YES;
                 reportDitailViewController *rdvc = [[reportDitailViewController alloc]init];
                 rdvc.reportDitailDic = reportDitailDic;
+                rdvc.token = _token;
+                rdvc.reportId = reportId;
                 [self.navigationController pushViewController:rdvc animated:YES];
                 
             }
