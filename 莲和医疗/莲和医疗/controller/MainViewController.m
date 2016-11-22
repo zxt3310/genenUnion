@@ -195,8 +195,6 @@
         [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
     
-   // [self setLeftBarButtonItem];
-    
      self.navigationController.navigationBar.hidden = YES;
   
 }
@@ -239,6 +237,13 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     isMainPage = false;
+    if(!lastToken)
+    {
+        lastToken = @"";
+    }
+    
+    NSString *js = [NSString stringWithFormat:@"report_count_show('%@');",lastToken];
+    [self.html5View stringByEvaluatingJavaScriptFromString:js];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
@@ -314,16 +319,22 @@
 - (void)updateToken:(NSNotification *)notification
 {
     lastToken = getStringForKey(@"token");
+    NSString *currentToken;
     if (lastToken !=nil)
     {
         hasLogin = YES;
+        currentToken = lastToken;
         [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
+        currentToken = @"";
         [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
+    
+    NSString *js = [NSString stringWithFormat:@"report_count_show('%@');",currentToken];
+    [self.html5View stringByEvaluatingJavaScriptFromString:js];
 
 }
 

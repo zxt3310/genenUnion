@@ -55,9 +55,9 @@
     [self.view addSubview:reportScrollView];
     
     //报告完成指示图
-    UIImageView *complateView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(242, 0, 133, 133)];
+    UIImageView *complateView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(322, 0, 53, 67)];
     complateView.image = [UIImage imageNamed:deviceImageSelect(@"千图网-红色的英文印章.png")];
-    complateView.hidden = YES;
+    //complateView.hidden = YES;
     if(step > stepArray.count +1)
     {
         complateView.hidden=NO;
@@ -85,19 +85,19 @@
     [reportScrollView addSubview:productNameLable];
     
     //姓名
-    UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(38, 60, 100, 13)];
+    UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(60, 63, 100, 13)];
     usernameLable.font = [UIFont app_FontSize:13];
     usernameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     usernameLable.text = [NSString stringWithFormat:@"姓名：%@",[reportDitailDic objectForKey:@"name"]];
     [reportScrollView addSubview:usernameLable];
     //年龄
-    UILabel *ageLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(186, 60, 100, 13)];
+    UILabel *ageLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(60, 93, 100, 13)];
     ageLable.font = [UIFont app_FontSize:13];
     ageLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     ageLable.text = [NSString stringWithFormat:@"年龄：%@",[reportDitailDic objectForKey:@"age"]];
     [reportScrollView addSubview: ageLable];
     //性别
-    UILabel *sexLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(39, 91, 52, 13)];
+    UILabel *sexLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(164, 61, 52, 13)];
     sexLable.font = ageLable.font = [UIFont app_FontSize:13];
     sexLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     NSString *gender = [reportDitailDic objectForKey:@"gender"];
@@ -110,33 +110,45 @@
     }
     [reportScrollView addSubview:sexLable];
     
+    //带阴影的横线
+    UILabel *shadowLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 127, 375, 1)];
+    shadowLine.layer.borderWidth = 1;
+    shadowLine.layer.borderColor = [UIColor colorWithMyNeed:235 green:232 blue:250 alpha:1].CGColor;
+    shadowLine.layer.shadowOpacity = 1;
+    shadowLine.layer.shadowColor = [UIColor colorWithMyNeed:224 green:220 blue:247 alpha:1].CGColor;
+    //shadowLine.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadowLine.layer.shadowRadius = 4;
+    shadowLine.layer.shadowOffset = CGSizeMake(0, 4);
+    [reportScrollView addSubview:shadowLine];
+
     //查看报告按钮
-    UIButton *reportBt = [[UIButton alloc] initWithFrame:CGRectMakeWithAutoSize(260, 111, 90, 30)];
+    UIButton *reportBt = [UIButton buttonWithType:UIButtonTypeSystem];
+    reportBt.frame = CGRectMakeWithAutoSize(110, 149, 155, 45);
     reportBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
     reportBt.tintColor = [UIColor whiteColor];
     reportBt.layer.cornerRadius = 5;
     [reportBt addTarget:self action:@selector(reportBtClick:) forControlEvents:UIControlEventTouchUpInside];
     reportBt.enabled = NO;
-    [reportBt setTitle:@"报告生成中" forState:UIControlStateNormal];
-    reportBt.backgroundColor = [UIColor colorWithMyNeed:209 green:209 blue:209 alpha:1];
+    
+    [reportBt setBackgroundImage:[UIImage imageNamed:deviceImageSelect(@"anniu.png")] forState:UIControlStateNormal];
     if(step > stepArray.count +1)
     {
         reportBt.enabled = YES;
-        reportBt.backgroundColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-        [reportBt setTitle:@"查看报告" forState:UIControlStateNormal];
+        [reportBt setBackgroundImage:[UIImage imageNamed:deviceImageSelect(@"anniuend.png")] forState:UIControlStateNormal];
     }
     [reportScrollView addSubview:reportBt];
 
     
     //联系电话
-    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(186, 91, 151, 13)];
+    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(164, 93, 151, 13)];
+    phoneLabel.numberOfLines = 0;
     phoneLabel.font = [UIFont app_FontSize:13];
     phoneLabel.textColor =  [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     phoneLabel.text = [NSString stringWithFormat:@"联系电话：%@",[reportDitailDic objectForKey:@"tel"]];
     [reportScrollView addSubview:phoneLabel];
     
     //流程进度
-    CGFloat startHeight = SCREEN_HEIGHT/4.51;
+    CGFloat startHeight = (189*SCREEN_HEIGHT/667);
     for(int i =0;i < stepArray.count; i++)
     {
         NSDictionary *stepDic = stepArray[i];

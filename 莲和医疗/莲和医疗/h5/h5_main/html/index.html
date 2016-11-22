@@ -162,7 +162,7 @@
         }
 
         .med-home .booking-box a.ks :after {
-            background: url("../ico_ks_b.png?v=20160128") no-repeat;
+            background: url("ico_ks_b.png?v=20160128") no-repeat;
             display: block;
             position: absolute;
             right: 0;
@@ -218,6 +218,15 @@
             padding-top: 20px;
         }
         /* 前沿咨询 end */
+        
+        .baogao-msg {
+            background-color: rgb(162, 150, 203);
+            padding-right: 10px;
+            padding-left: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            color: rgb(255, 255, 255);
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="swiper.min.css">
     <script type="text/javascript">
@@ -375,7 +384,7 @@
                 <img src="jiancebaogao.png">
                 <div class="function-info">
                     <p>我的检测</p>
-                    <p>登录即可查看报告</p>
+                    <p><span id="baogao-msg"></span></p>
                 </div>
             </div>
         </a>
@@ -449,6 +458,40 @@
     $(document).ready(function() {
         loader.init();
     });
+    
+    function report_count_show(token) {
+        $('#baogao-msg').removeClass('baogao-msg');
+        $('#baogao-msg').html('正在加载中...');
+        if (token == '') {
+            $('#baogao-msg').html('登录即可查看报告');
+        } else {
+            $.ajax({
+                url: 'http://mapi.lhgene.cn/m/api/reports?token='+token,
+                type: 'GET',
+                timeout: 5000,
+                dataType: 'json',
+                success: function(data) {
+                    if (typeof(data.data) == 'undefined') {
+                        $('#baogao-msg').html('您还没有报告');
+                        $('#baogao-msg').addClass('baogao-msg');
+                    } else {
+                        $('#baogao-msg').html('您有' + data.data.length + '报告');
+                        $('#baogao-msg').addClass('baogao-msg');
+                    }
+                },
+                error: function(xhr, type) {
+                    $('#baogao-msg').html('您还没有报告。');
+                    $('#baogao-msg').addClass('baogao-msg');
+                    if (type == 'timeout') {
+                        return -2;
+                    }
+                    return -1;
+                }
+            });
+        }
+        
+        return 0;
+    }
 </script>
 </body>
 </html>

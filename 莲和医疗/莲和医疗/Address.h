@@ -11,7 +11,7 @@
 #ifndef Adress_h
 #define Adress_h
 
-#define MAIN_PAGE      @"http://mapi.lhgene.cn/resources/mobile/index"
+#define MAIN_PAGE      @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/index.html"
 #define ZXZX_PAGE      @"https://static.meiqia.com/dist/standalone.html?eid=33791"
 #define GYWM_PAGE       @"http://mapi.lhgene.cn/m/faq"
 #define LJYY_PAGE      @"http://ctdna.m3gene.com:81/m/order"
