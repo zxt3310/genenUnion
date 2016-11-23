@@ -31,6 +31,8 @@
 
 @property NSString *token;
 
+@property CGFloat progress;
+
 @end
 
 /*

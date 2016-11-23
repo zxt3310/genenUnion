@@ -228,7 +228,7 @@
             color: rgb(255, 255, 255);
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
     <script type="text/javascript">
 
         function parseURL(url) {
@@ -337,7 +337,7 @@
                             }
                             //var img = '<div style="background: url(' + r.img + ');background-size:auto 75px;background-repeat:no-repeat;background-position: center;border-radius:5px;width:100%;height:100%"></div>';
                             var img = '<div style="background: url(' + r.img + ');background-size:auto 75px;background-repeat:no-repeat;background-position: center;width:100%;height:100%"></div>';
-                            n.push("<li>"), n.push('<a href="' + r.url + '">'),
+                            n.push("<li>"), n.push('<a href="' + $GC.serverUrl + r.url + '">'),
                                     //n.push('<div class="pic-box"><img src="' + r.img + '" onerror="imgError(\'img/blank.gif\')"/></div>'), n.push('<div class="news-box">'),
                                     //n.push('<div class="pic-box"><img src="'+r.img.replace(':8082','')+'" /></div>'),
                                     n.push('<div class="pic-box">' + img + '</div>');

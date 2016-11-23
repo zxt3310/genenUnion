@@ -55,16 +55,16 @@
     [self.view addSubview:reportScrollView];
     
     //报告完成指示图
-    UIImageView *complateView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(322, 0, 53, 67)];
+    UIImageView *complateView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(318, 0, 60, 60)];
     complateView.image = [UIImage imageNamed:deviceImageSelect(@"千图网-红色的英文印章.png")];
-    //complateView.hidden = YES;
-    if(step > stepArray.count +1)
+    complateView.hidden = YES;
+    if(_progress == 1)
     {
         complateView.hidden=NO;
     }
     [reportScrollView addSubview:complateView];
     
-    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, 375, 1300)];
+    UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, 375, 1139)];
     backImage.image = [UIImage imageNamed:deviceImageSelect(@"reportDitail.png")];
     [reportScrollView addSubview:backImage];
     
@@ -131,7 +131,7 @@
     reportBt.enabled = NO;
     
     [reportBt setBackgroundImage:[UIImage imageNamed:deviceImageSelect(@"anniu.png")] forState:UIControlStateNormal];
-    if(step > stepArray.count +1)
+    if(_progress == 1)
     {
         reportBt.enabled = YES;
         [reportBt setBackgroundImage:[UIImage imageNamed:deviceImageSelect(@"anniuend.png")] forState:UIControlStateNormal];
@@ -148,7 +148,7 @@
     [reportScrollView addSubview:phoneLabel];
     
     //流程进度
-    CGFloat startHeight = (189*SCREEN_HEIGHT/667);
+    CGFloat startHeight = (200*SCREEN_HEIGHT/667);
     for(int i =0;i < stepArray.count; i++)
     {
         NSDictionary *stepDic = stepArray[i];
@@ -167,18 +167,14 @@
         View.ditailText = [stepDic objectForKey:@"desc"];
         View.reportTime = [stepDic objectForKey:@"time"];
         
-        if(i == step -1)
+        if(i == step & _progress < 1)
         {
             View.isThisStep = YES;
-           // if(step < stepArray.count)
-            {
-                View.reportTime = @"进行中";
-            }
+            View.reportTime = @"进行中";
         }
-       
 
         //设置高图标
-        View.ditailImg = [UIImage imageNamed:[self selectReportImg:i currentStep:step - 1]];
+        View.ditailImg = [UIImage imageNamed:[self selectReportImg:i currentStep:step]];
         
         [View drawDitail];
         startHeight += View.frame.size.height;
@@ -186,7 +182,7 @@
         {
             View.lineLable.hidden = YES;
         }
-        if (i > step - 1)
+        if (i > step)
         {
             View.outLable.layer.borderColor = [UIColor colorWithMyNeed:118 green:118 blue:118 alpha:1].CGColor;
             View.lightTF.layer.borderColor = [UIColor colorWithMyNeed:118 green:118 blue:118 alpha:1].CGColor;
@@ -197,7 +193,7 @@
     
     
     CGSize temp = reportScrollView.contentSize;
-    temp.height = startHeight + SCREEN_HEIGHT/4.51;
+    temp.height = startHeight + SCREEN_HEIGHT/4.51 - 100;
     reportScrollView.contentSize = temp;
     
 

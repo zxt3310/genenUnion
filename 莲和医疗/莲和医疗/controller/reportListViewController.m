@@ -431,6 +431,7 @@
                 rdvc.reportDitailDic = reportDitailDic;
                 rdvc.token = _token;
                 rdvc.reportId = reportId;
+                rdvc.progress = prograss;
                 [self.navigationController pushViewController:rdvc animated:YES];
                 
             }
