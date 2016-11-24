@@ -85,19 +85,19 @@
     [reportScrollView addSubview:productNameLable];
     
     //姓名
-    UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(60, 63, 100, 13)];
+    UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(60, 63, 100, 20)];
     usernameLable.font = [UIFont app_FontSize:13];
     usernameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     usernameLable.text = [NSString stringWithFormat:@"姓名：%@",[reportDitailDic objectForKey:@"name"]];
     [reportScrollView addSubview:usernameLable];
     //年龄
-    UILabel *ageLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(60, 93, 100, 13)];
+    UILabel *ageLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(60, 93, 100, 20)];
     ageLable.font = [UIFont app_FontSize:13];
     ageLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     ageLable.text = [NSString stringWithFormat:@"年龄：%@",[reportDitailDic objectForKey:@"age"]];
     [reportScrollView addSubview: ageLable];
     //性别
-    UILabel *sexLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(164, 61, 52, 13)];
+    UILabel *sexLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(164, 61, 82, 20)];
     sexLable.font = ageLable.font = [UIFont app_FontSize:13];
     sexLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     NSString *gender = [reportDitailDic objectForKey:@"gender"];
@@ -140,7 +140,7 @@
 
     
     //联系电话
-    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(164, 93, 151, 13)];
+    UILabel *phoneLabel = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(164, 93, 200, 20)];
     phoneLabel.numberOfLines = 0;
     phoneLabel.font = [UIFont app_FontSize:13];
     phoneLabel.textColor =  [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];

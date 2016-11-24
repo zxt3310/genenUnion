@@ -96,7 +96,7 @@
     self.title = @"预约取样";
     
     //警告
-    UILabel *waringlable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(56, 81, 264, 26)];
+    UILabel *waringlable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(56, 81, 264, 50)];
     //UILabel *waringlable = [[UILabel alloc]initWithScreenFrame:56 y:81 width:264 high:26];
     waringlable.font = [UIFont app_FontSize:11];
     waringlable.textColor = [UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1];
@@ -105,8 +105,9 @@
     waringlable.text = @"请填写表单并保证手机号的准确性，采样时收取费用，在此之前我平台不会要求您汇款操作，谨防诈骗。";
     [self.view addSubview:waringlable];
     
+    
     //标题
-    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(88, 145, 198, 16)]; //initWithScreenFrame:88 y:145 width:198 high:16];
+    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(0, 145, 375, 16)]; //initWithScreenFrame:88 y:145 width:198 high:16];
     titleLable.font = [UIFont app_FontSizeBold:18];
     titleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     titleLable.textAlignment = NSTextAlignmentCenter;
@@ -122,7 +123,7 @@
     [self.view addSubview:priceLable];
     
     //性别lable
-    UILabel *maleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(100, 277, 26, 13)];
+    UILabel *maleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(100, 277, 33, 13)];
     maleLable.text = @"先生";
     maleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     maleLable.font = [UIFont app_FontSize:13];
@@ -133,7 +134,7 @@
     maleImgView.userInteractionEnabled = YES;
     [self.view addSubview:maleImgView];
     
-    UILabel *femaleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(215, 277, 26, 13)];
+    UILabel *femaleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(215, 277, 33, 13)];
     femaleLable.text = @"女士";
     femaleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     femaleLable.font = [UIFont app_FontSize:13];
@@ -196,7 +197,7 @@
     //设置工具条的frame
     toolbar.frame=CGRectMakeWithAutoSize(0, 10, 375, 35);
     //给工具条添加按钮
-    UIBarButtonItem *item0=[[UIBarButtonItem alloc]initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(timeBtClick)];
+    UIBarButtonItem *item0=[[UIBarButtonItem alloc]initWithTitle:@"确认" style:UIBarButtonItemStylePlain target:self action:@selector(timeBtClick)];
     toolbar.items = @[item0];
     
     orderTimeTF.inputAccessoryView = toolbar;

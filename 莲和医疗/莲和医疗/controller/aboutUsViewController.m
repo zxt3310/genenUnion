@@ -27,38 +27,38 @@
     UIColor *textColor = [UIColor colorWithMyNeed:118 green:118 blue:118 alpha:1];
     
     UILabel *introductionLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(51, 113, 273, 150)];
-    introductionLable.text = @"莲和（北京）医疗科技有限公司是香港上市公司Tack Fiori International Group Limited(HKSECode: 0928)下属境内全资子公司，是一家从事基因检测及健康大数据分析的生物技术公司，公司致力于高通量基因检测在临床医学与健康服务中的推广及应用，拥有国际领先水平的无创肿瘤基因检测技术，为医疗与健康管理机构提供一站式、全方位服务和系统解决方案。";
+    introductionLable.text = @"莲和医疗是一家从事基因科技及肿瘤基因检测技术的上市公司。拥有国际领先水平的无创肿瘤基因检测技术及专家团队，致力于高通量基因检测在临床医学与健康服务中的推广和应用。以基因检测向客户输送健康医疗服务，面向企业提供全方位健康问题解决方案；为个人及家庭输送一站式健康管理系统。是国内从事基因检测及健康数据分析的优秀医疗企业。";
     introductionLable.numberOfLines = 0;
     introductionLable.lineBreakMode = NSLineBreakByCharWrapping;
     introductionLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:13];
     introductionLable.textColor = textColor;
     [self.view addSubview:introductionLable];
     
-    UILabel *techLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(51, 281, 273, 40)];
-    techLable.numberOfLines = 2;
-    techLable.text = @"拥有国际领先水平的无创肿瘤基因检测技术，专业的数据分析团队。";
-    techLable.lineBreakMode = NSLineBreakByCharWrapping;
+    UILabel *techLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(51, 281, 273, 30)];
+    techLable.numberOfLines = 0;
+    techLable.text = @"莲和医疗，为品质人生保驾护航。";
+    techLable.lineBreakMode = NSLineBreakByWordWrapping;
     techLable.font = introductionLable.font;
     techLable.textColor = textColor;
     [self.view addSubview:techLable];
     
-    UILabel *ad = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(51, 333.8, 234, 16)];
-    ad.text = @"莲和健康，为您守护自己和家人的健康。";
+    UILabel *ad = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(51, 419, 375, 16)];
+    ad.text = @"@微博：莲和医疗。";
     ad.font = techLable.font;
     ad.textColor = textColor;
     [self.view addSubview:ad];
     
-    UILabel *connectLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(51, 396, 52, 13)];
+    UILabel *connectLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(51, 396, 375, 13)];
     connectLable.text = @"联系我们";
     connectLable.font = ad.font;
     connectLable.textColor = textColor;
     [self.view addSubview:connectLable];
     
-    UILabel *telLabel = [[UILabel alloc ]initWithFrame:CGRectMakeWithAutoSize(51, 419, 140, 13)];
+    UILabel *telLabel = [[UILabel alloc ]initWithFrame:CGRectMakeWithAutoSize(51, 439, 375, 13)];
     telLabel.font = ad.font;
     telLabel.textColor = textColor;
-    NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:@"电话：400-601-0982"];
-    NSRange redRange = NSMakeRange([[noteStr string] rangeOfString:@"："].location + 1,[noteStr string].length - 3);
+    NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:@"TEL：400-601-0982"];
+    NSRange redRange = NSMakeRange([[noteStr string] rangeOfString:@"："].location + 1,[noteStr string].length - 4);
     [noteStr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:redRange];
     [telLabel setAttributedText:noteStr];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(telClick:)];
@@ -67,8 +67,8 @@
     [self.view addSubview:telLabel];
     
     
-    UILabel *mailLable = [[UILabel alloc ] initWithFrame:CGRectMakeWithAutoSize(51, 437, 185, 13)];
-    mailLable.text = @"邮箱：cs@lifehealthcare.com";
+    UILabel *mailLable = [[UILabel alloc ] initWithFrame:CGRectMakeWithAutoSize(51, 457, 375, 13)];
+    mailLable.text = @"E-mail：cs@lifehealthcare.com";
     mailLable.font = ad.font;
     mailLable.textColor = textColor;
     [self.view addSubview:mailLable];
@@ -80,7 +80,7 @@
 {
     UILabel *lable = (UILabel *)tap.self.view;
     NSString *str = lable.text;
-    str = [str substringFromIndex:3];
+    str = [str substringFromIndex:4];
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",str]] options:@{} completionHandler:nil];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",str]]];
 }

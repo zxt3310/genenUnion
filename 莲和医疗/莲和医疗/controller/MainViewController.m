@@ -187,12 +187,12 @@
     if (lastToken !=nil)
     {
         hasLogin = YES;
-        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
+//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
-        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
+//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
     
      self.navigationController.navigationBar.hidden = YES;
@@ -324,13 +324,13 @@
     {
         hasLogin = YES;
         currentToken = lastToken;
-        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
+//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
         currentToken = @"";
-        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
+//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
     
     NSString *js = [NSString stringWithFormat:@"report_count_show('%@');",currentToken];

@@ -27,7 +27,7 @@
     
     UILabel *imgLable = [[UILabel alloc ]initWithFrame:CGRectMakeWithAutoSize(43, 118, 90, 40)];
     imgLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    imgLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
+    imgLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14*SCREEN_WEIGHT/375];
     imgLable.text = _imgText;
     imgLable.numberOfLines = 0;
     imgLable.textAlignment = NSTextAlignmentCenter;
@@ -41,36 +41,36 @@
     outLable.layer.cornerRadius = 10;
     [self addSubview:outLable];
     
-    UITextField *firstTF = [[UITextField alloc]initWithFrame:CGRectMakeWithAutoSize(10, 13, 158, 13)];
+    UITextField *firstTF = [[UITextField alloc]initWithFrame:CGRectMakeWithAutoSize(10, 13, 180, 13)];
     firstTF.enabled = NO;
     [firstTF setLeftViewMode:UITextFieldViewModeAlways];
     firstTF.leftView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(0, 0, 13, 13)];
     firstTF.leftView.backgroundColor = [UIColor colorWithMyNeed:201 green:193 blue:232 alpha:1];
     firstTF.leftView.layer.cornerRadius = firstTF.leftView.frame.size.width/2;
     firstTF.text = _firstLableText;
-    firstTF.font = [UIFont fontWithName:@"STHeitiSC-Light" size:13];
+    firstTF.font = [UIFont fontWithName:@"STHeitiSC-Light" size:(13*SCREEN_WEIGHT/375)];
     firstTF.textColor = [UIColor colorWithMyNeed:74 green:74 blue:74 alpha:1];
     [outLable addSubview:firstTF];
     
-    UITextField *secondTF = [[UITextField alloc]initWithFrame:CGRectMakeWithAutoSize(10, 51, 158, 13)];
+    UITextField *secondTF = [[UITextField alloc]initWithFrame:CGRectMakeWithAutoSize(10, 51, 180, 13)];
     secondTF.enabled = NO;
     [secondTF setLeftViewMode:UITextFieldViewModeAlways];
     secondTF.leftView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(0, 0, 13, 13)];
     secondTF.leftView.layer.cornerRadius = secondTF.leftView.frame.size.width/2;
     secondTF.leftView.backgroundColor = [UIColor colorWithMyNeed:201 green:193 blue:232 alpha:1];
     secondTF.text = _secendLableText;
-    secondTF.font = [UIFont fontWithName:@"STHeitiSC-Light" size:13];
+    secondTF.font = [UIFont fontWithName:@"STHeitiSC-Light" size:(13*SCREEN_WEIGHT/375)];
     secondTF.textColor = [UIColor colorWithMyNeed:74 green:74 blue:74 alpha:1];
     [outLable addSubview:secondTF];
     
-    UITextField *thirdTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(10, 89, 158, 13)];
+    UITextField *thirdTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(10, 89, 180, 13)];
     thirdTF.enabled = NO;
     [thirdTF setLeftViewMode:UITextFieldViewModeAlways];
     thirdTF.leftView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(0, 0, 13, 13)];
     thirdTF.leftView.layer.cornerRadius = thirdTF.leftView.frame.size.width/2;
     thirdTF.leftView.backgroundColor = [UIColor colorWithMyNeed:201 green:193 blue:232 alpha:1];
     thirdTF.text = _thirdLableText;
-    thirdTF.font = [UIFont fontWithName:@"STHeitiSC-Light" size:13];
+    thirdTF.font = [UIFont fontWithName:@"STHeitiSC-Light" size:(13*SCREEN_WEIGHT/375)];
     thirdTF.textColor = [UIColor colorWithMyNeed:74 green:74 blue:74 alpha:1];
     [outLable addSubview:thirdTF];
     
@@ -123,8 +123,9 @@
     [thirdView addUnitView];
     [self.view addSubview:thirdView];
     
-    UILabel *underLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(101, 613, 172, 14)];
+    UILabel *underLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(0, 613, 375, 25)];
     underLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    underLable.textAlignment = NSTextAlignmentCenter;
     underLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
     underLable.text = @"检测周期：只需10个工作日";
     [self.view addSubview:underLable];

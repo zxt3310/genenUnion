@@ -12,12 +12,12 @@
 
 +(UIFont *)app_FontSize:(CGFloat)size
 {
-    return [UIFont fontWithName:@"FZXDXJW--GB1-0" size:SCREEN_WEIGHT * size/375];
+    return [UIFont fontWithName:@"FZXDXJW--GB1-0" size:size];
 }
 
 +(UIFont *)app_FontSizeBold:(CGFloat)size
 {
-    return [UIFont fontWithName:@"FZXDXJW--GB1-0-Bold" size:SCREEN_WEIGHT * size/375];
+    return [UIFont fontWithName:@"FZXDXJW--GB1-0-Bold" size:size];
 }
 
 @end

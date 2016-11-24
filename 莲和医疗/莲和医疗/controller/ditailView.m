@@ -70,7 +70,7 @@
     [self addSubview:detailImageView];
     
     //时间
-    UILabel *timeLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(99, 25, 90, 14)];
+    UILabel *timeLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(99, 25, 200, 14)];
     timeLable.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:14];
     timeLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     timeLable.text = reportTime;
@@ -84,7 +84,7 @@
 
     
     //高亮标志
-    ligntTF = [[UITextField alloc] initWithFrame:CGRectMakeWithAutoSize(110, 47 - y, 19, 25)];
+    ligntTF = [[UITextField alloc] initWithFrame:CGRectMake((110*SCREEN_WEIGHT/375), (47*SCREEN_HEIGHT/667) - y, 19*SCREEN_WEIGHT/375, 25*SCREEN_HEIGHT/667)];
     ligntTF.enabled = NO;
     ligntTF.layer.borderWidth = 1;
     ligntTF.layer.cornerRadius = 10;
@@ -113,15 +113,15 @@
     textLable.numberOfLines = 0;
     [self bringSubviewToFront:textLable];
     
-    [textLable setFrame: CGRectMakeWithAutoSize(22, 28, 198, [textLable contentSize].height)];
-    [outLable setFrame:CGRectMakeWithAutoSize(97, 56 - y, 235, [textLable contentSize].height + 39)];
+    [textLable setFrame: CGRectMake(22*SCREEN_WEIGHT/375, 28*SCREEN_HEIGHT/667, 198*SCREEN_WEIGHT/375, [textLable contentSize].height)];
+    [outLable setFrame:CGRectMake(97*SCREEN_WEIGHT/375, (56*SCREEN_HEIGHT/667 - y), 235*SCREEN_WEIGHT/375, ([textLable contentSize].height + 39*SCREEN_HEIGHT/667))];
     
     [outLable addSubview:textLable];
     
     [self addSubview:outLable];
     
     //步骤名称
-    UILabel *stepNameLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(22, 10, 98, 14)];
+    UILabel *stepNameLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(22, 10, 150, 14)];
     stepNameLable.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:14];
     stepNameLable.textColor = [UIColor colorWithMyNeed:74 green:74 blue:74 alpha:1];
     stepNameLable.text = stepName;
@@ -135,7 +135,7 @@
     nextPointy = self.frame.origin.y + self.frame.size.height;
     
     //左侧细线
-    lineLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(52, 30, 1, self.frame.size.height - 30)];
+    lineLable = [[UILabel alloc] initWithFrame:CGRectMake(52*SCREEN_WEIGHT/375, 30*SCREEN_HEIGHT/667, 1, self.frame.size.height - 30*SCREEN_HEIGHT/667)];
     lineLable.layer.borderWidth = 1;
     lineLable.layer.borderColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1].CGColor;
     lineLable.transform = CGAffineTransformMakeRotation(M_PI/1);

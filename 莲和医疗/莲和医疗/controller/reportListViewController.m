@@ -70,8 +70,9 @@
     noReportImgView.image = [UIImage imageNamed:deviceImageSelect(@"病理报告.png")];
     noReportImgView.hidden = YES;
     
-    noReportLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(122, 201, 132, 22)];
+    noReportLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(0, 201, 375, 40)];
     noReportLable.text = @"没有检测报告";
+    noReportLable.textAlignment = NSTextAlignmentCenter;
     noReportLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:22];
     noReportLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     noReportLable.hidden = YES;
@@ -87,9 +88,10 @@
     lineLable.layer.borderColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1].CGColor;
     [noReportView addSubview:lineLable];
     
-    UILabel *tjLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(156, 72, 64, 16)];
+    UILabel *tjLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(146, 72, 84, 30)];
     tjLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    tjLable.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:(16*SCREEN_HEIGHT/667)];
+    tjLable.textAlignment = NSTextAlignmentCenter;
+    tjLable.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:16];
     tjLable.text = @"推荐产品";
     [noReportView addSubview:tjLable];
     
@@ -101,29 +103,32 @@
     Product1.userInteractionEnabled = YES;
     [noReportView addSubview:Product1];
     
-    UILabel *product1Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(45, 161.5, 104, 32)];
-    product1Lable.numberOfLines = 0;
+    UILabel *product1Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(45, 161.5, 104, 39)];
+    product1Lable.numberOfLines = 2;
     product1Lable.text = @"和普安无创肿瘤基因检测";
     product1Lable.textAlignment = NSTextAlignmentCenter;
+    
     product1Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    product1Lable.font = [UIFont app_FontSize:(13*SCREEN_HEIGHT/667)];
+    product1Lable.font = [UIFont app_FontSize:13];
     [noReportView addSubview:product1Lable];
+   // product1Lable.frame = [product1Lable textRectForBounds:product1Lable.frame limitedToNumberOfLines:0];
     
     UIImageView *Product2 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(256, 108.5, 47, 47)];
-    Product2.image = [UIImage imageNamed:deviceImageSelect(@"ruxian.png")];
+    Product2.image = [UIImage imageNamed:@"ruxian"];
     UITapGestureRecognizer *p2tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productSelect:)];
     [Product2 addGestureRecognizer:p2tap];
     Product2.tag = 2;
     Product2.userInteractionEnabled = YES;
     [noReportView addSubview:Product2];
     
-    UILabel *product2Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(227, 161.5, 104, 32)];
-    product2Lable.numberOfLines = 0;
+    UILabel *product2Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(227, 161.5, 104, 39)];
+    product2Lable.numberOfLines = 2;
     product2Lable.text = @"乳腺癌易感基因检测";
     product2Lable.textAlignment = NSTextAlignmentCenter;
     product2Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    product2Lable.font = [UIFont app_FontSize:(13*SCREEN_HEIGHT/667)];
+    product2Lable.font = [UIFont app_FontSize:13];
     [noReportView addSubview:product2Lable];
+   // product2Lable.frame = [product2Lable textRectForBounds:product2Lable.frame limitedToNumberOfLines:0];
     
     noReportView.hidden = YES;
     [self.view addSubview:noReportView];
@@ -214,10 +219,11 @@
         [backgroundView addSubview:usernameLable];
        
         //产品名称 tag 4
-        UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(15, 80, 264, 27)];
+        UILabel *productNameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(0, 80, 325, 27)];
         productNameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
         productNameLable.font = [UIFont app_FontSize:24];
         productNameLable.tag = 4;
+        productNameLable.textAlignment = NSTextAlignmentCenter;
         [backgroundView addSubview:productNameLable];
        
         //进度条 tag 5
@@ -244,7 +250,7 @@
         UILabel *tagLable = [[UILabel alloc] initWithFrame:CGRectMakeWithAutoSize(3, 2, 48, 12)];
         tagLable.textColor = [UIColor whiteColor];
         tagLable.textAlignment = NSTextAlignmentCenter;
-        tagLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:12];
+        tagLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:12*SCREEN_WEIGHT/375];
         tagLable.tag = 7;
         [tagView addSubview:tagLable];
         
@@ -290,7 +296,7 @@
     UILabel *tagLable = (UILabel *)[imageView viewWithTag:7];
     tagLable.text = [dic objectForKey:@"current_step"];
     tagLable.frame = CGRectMakeWithAutoSize(3, 2, 48 + (tagLable.text.length - 4) * 12, 12);
-    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, prograssView.frame.origin.y - 25, 56 + (tagLable.text.length - 4) * 12, SCREEN_HEIGHT/33.35);
+    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, prograssView.frame.origin.y - 25, tagLable.frame.size.width + 5/*56 + (tagLable.text.length - 4) * 12*/, SCREEN_HEIGHT/33.35);
     
     
     UIButton *button = (UIButton *)[backView viewWithTag:8];

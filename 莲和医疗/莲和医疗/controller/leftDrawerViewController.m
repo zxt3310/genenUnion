@@ -170,11 +170,12 @@
                         [self.navigationController presentViewController:unv animated:YES completion:nil];
                     }
                 }
-                else if ([cellText isEqualToString:GYWM_PAGE])
-                {
-                    aboutUsViewController *auvc = [[aboutUsViewController alloc]init];
-                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
-                }
+//                else if ([cellText isEqualToString:GYWM_PAGE])
+//                {
+//                    aboutUsViewController *auvc = [[aboutUsViewController alloc]init];
+//                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+//                    
+//                }
                 else if([cellText isEqualToString:FWLC_PAGE])
                 {
                     serviceHelperViewController *shvc = [[serviceHelperViewController alloc]init];
