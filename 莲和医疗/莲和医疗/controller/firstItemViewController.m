@@ -83,9 +83,13 @@
     NSString *str = [self.html5WebView stringByEvaluatingJavaScriptFromString:js];
     NSArray *array = [str componentsSeparatedByString:@","];
     orderViewController *ovc = [[orderViewController alloc] init];
-    ovc.productId = [array[0] integerValue];
-    ovc.productName = array[1];
-    ovc.price = @"";
+    if(![str isEqualToString:@""])
+    {
+        ovc.productId = [array[0] integerValue];
+        ovc.productName = array[1];
+        ovc.price = @"";
+    }
+    
     [self.navigationController pushViewController:ovc animated:YES];
 }
 
