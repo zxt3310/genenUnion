@@ -62,6 +62,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
  NSInteger getIntForKey(NSString *key)
 {
     if (!key || [key length] <= 0) {
@@ -200,4 +201,13 @@ void alertMsgView(NSString *alertMsg ,UIViewController *uvc)
         [uvc presentViewController:alert animated:YES completion:nil];
     }
     
+}
+
+NSDate* getCurrentDate()
+{
+    NSDate *loginDate = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone localTimeZone];
+    NSTimeInterval time = [zone secondsFromGMTForDate:loginDate];
+    NSDate *currentDate = [loginDate dateByAddingTimeInterval:time];
+    return currentDate;
 }

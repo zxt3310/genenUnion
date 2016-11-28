@@ -16,7 +16,7 @@
 #define GYWM_PAGE       @"http://mapi.lhgene.cn/m/about"
 #define LJYY_PAGE      @"http://ctdna.m3gene.com:81/m/order"
 #define WDJC_PAGE      @"http://mapi.lhgene.cn/m/my/report"
-#define FWLC_PAGE      @"http://ctdna.m3gene.com:81/m/procedure"
+#define FWLC_PAGE      @"http://mapi.lhgene.cn/m/procedure"
 #define LOIGN_PAGE     @""
 
 #define WDJC_REQUEST   @"http://mapi.lhgene.cn/m/api/reports"
@@ -96,7 +96,7 @@ void alertMsgView(NSString *alertMsg ,UIViewController *uvc);
 
 UIImage* drawImageWithColor(UIColor *startColor,UIColor *midColor, UIColor *endColor, CGRect frame);
 
-
+NSDate* getCurrentDate();
 
 //定义自己的cgmake
 CG_INLINE CGRect

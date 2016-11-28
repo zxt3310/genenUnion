@@ -19,8 +19,8 @@
     self=[super initWithFrame:frame];
     if (self) {
         self.layer.borderColor = [UIColor colorWithMyNeed:197 green:187 blue:234 alpha:1].CGColor;
-        self.font = [UIFont app_FontSize:13];
-        self.textColor = [UIColor colorWithMyNeed:135.0 green:126.0 blue:188.0 alpha:1];
+        self.font = [UIFont app_FontSize:14];
+        self.textColor = [UIColor colorWithMyNeed:88 green:80 blue:138 alpha:1];
         self.layer.borderWidth = 1;
         self.borderStyle = UITextBorderStyleRoundedRect;
         self.layer.cornerRadius = 5;
@@ -102,7 +102,7 @@
     waringlable.textColor = [UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1];
     waringlable.numberOfLines = 0;
     waringlable.textAlignment = NSTextAlignmentCenter;
-    waringlable.text = @"请填写表单并保证手机号的准确性，采样时收取费用，在此之前我平台不会要求您汇款操作，谨防诈骗。";
+    waringlable.text = @"预约成功后，我们将于1个工作日内与您确认。";
     [self.view addSubview:waringlable];
     
     
@@ -126,7 +126,7 @@
     UILabel *maleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(100, 277, 33, 13)];
     maleLable.text = @"先生";
     maleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    maleLable.font = [UIFont app_FontSize:13];
+    maleLable.font = [UIFont app_FontSize:14];
     [self.view addSubview:maleLable];
     
     maleImgView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(135, 274, 17, 17)];
@@ -137,7 +137,7 @@
     UILabel *femaleLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(215, 277, 33, 13)];
     femaleLable.text = @"女士";
     femaleLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    femaleLable.font = [UIFont app_FontSize:13];
+    femaleLable.font = [UIFont app_FontSize:14];
     [self.view addSubview:femaleLable];
     
     femaleImgView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(248, 274, 21, 21)];

@@ -22,6 +22,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    NSDate *lastTime = [[NSUserDefaults standardUserDefaults]objectForKey:@"lastLoginTIme"];
+    if(lastTime)
+    {
+        NSDate *currentTime = getCurrentDate();
+        NSTimeInterval time = [currentTime timeIntervalSinceDate:lastTime];
+        
+        if (time >(12*60*60)) {
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNo"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+      }
+    
     UIColor *startColor = [UIColor colorWithRed:196.0/255 green:174.0/255 blue:228.0/255 alpha:1];
     UIColor *endColor = [UIColor colorWithRed:135.0/255 green:126.0/255 blue:188.0/255 alpha:1];
     CGRect rect = CGRectMake(0, 0, SCREEN_WEIGHT, 64);

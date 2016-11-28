@@ -193,12 +193,12 @@
              NSLog(@"listarea result invalid: %@", strResp);
            // [self setInt:([[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""] integerValue]) forKey:@"userPhoneNo"];
             //[self setString:token objctForKey:@"token"];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:getCurrentDate() forKey:@"lastLoginTIme"];
            
             setIntObjectForKey([[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""] integerValue],
                                                                                                               @"userPhoneNo");
-            
             setStringObjectForKey(token, @"token");
-            
             
             //给侧边栏推送刷新cell的通知
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
