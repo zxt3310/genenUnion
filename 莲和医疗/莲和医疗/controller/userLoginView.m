@@ -231,9 +231,15 @@
 //{ret:1/0, errmsg:xxx}
 - (IBAction)Bt_SendMsgClick:(id)sender
 {
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendLoginRequest) object:sender];
+    [self performSelector:@selector(sendLoginRequest) withObject:sender afterDelay:1.0f];
+}
+
+- (void)sendLoginRequest
+{
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
-                            //,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
+        //,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
         
         // NSURL *url = [[NSURL alloc] initWithString:urlStr];
         

@@ -20,6 +20,7 @@
 @interface MainViewController ()
 {
     UIButton *backBtn;
+    NSURL * urlLocal;
 }
 @end
 
@@ -34,7 +35,7 @@
                                                                         cacheTime:0];
         [CustomURLCache setSharedURLCache:urlCache];
             hasLogin = NO;
-        
+        urlLocal = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"inDirectory:@"h5_main/html"]];
         
     }
     return self;
@@ -214,16 +215,21 @@
         {
             if(appUseCount == 0)
             {
-                NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
-                    
-                NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-                    
-                NSString *basePath = [[NSBundle mainBundle] bundlePath];
-                    
-                NSURL *baseURL = [NSURL fileURLWithPath:basePath];
-                    
-                [self.html5View loadHTMLString:htmlString baseURL:baseURL];
-                URL = baseURL;
+//                NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+//                    
+//                NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//                    
+//                NSString *basePath = [[NSBundle mainBundle] bundlePath];
+//                    
+//                NSURL *baseURL = [NSURL fileURLWithPath:basePath];
+//                    
+//                [self.html5View loadHTMLString:htmlString baseURL:baseURL];
+//                URL = baseURL;
+                
+                NSURLRequest *request = [NSURLRequest requestWithURL:urlLocal];
+                
+                [_html5View loadRequest:request];
+                
                 return;
             }
         }
@@ -285,7 +291,7 @@
     }
 
    
-    if (![currentUrl isEqual:URL] & ![a isEqualToString:@"about:blank"])
+    if (![currentUrl isEqual:URL] & ![currentUrl isEqual:urlLocal] & ![a isEqualToString:@"about:blank"])
     {
         firstItemViewController *firstVC = [firstItemViewController new]; //initWithNibName:@"firstItemViewController" bundle:nil];
         firstVC.strURL = request.URL;
