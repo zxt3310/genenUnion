@@ -8,6 +8,48 @@
 
 #import "orderViewController.h"
 
+@interface myDatePicker : UIView
+
+@property UIDatePicker *datePicker;
+@property UIDatePicker *timePiker;
+@end
+
+@implementation myDatePicker
+@synthesize datePicker = datePicker;
+@synthesize timePiker = timePiker;
+
+- (instancetype)init
+{
+    self = [super init];
+    if(self)
+    {
+
+        self.backgroundColor = [UIColor whiteColor];
+        datePicker = [[UIDatePicker alloc]init];
+        timePiker = [[UIDatePicker alloc]init];
+        self.frame = datePicker.frame;
+        CGRect temp = datePicker.frame;
+        temp.size.width = SCREEN_WEIGHT *2/3;
+        datePicker.frame = temp;
+        datePicker.minimumDate = [NSDate date];
+        
+        //timePiker.minimumDate = [NSDate alloc] initwih
+        
+        temp.origin.x = datePicker.frame.origin.x + datePicker.frame.size.width;
+        temp.size.width = SCREEN_WEIGHT/3;
+        timePiker.frame = temp;
+        
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        timePiker.datePickerMode = UIDatePickerModeTime;
+        [self addSubview:datePicker];
+        [self addSubview:timePiker];
+        
+    }
+    return self;
+}
+
+@end
+
 @interface orderTextFiled : UITextField
 
 @end
@@ -177,18 +219,18 @@
     [orderButton addTarget:self action:@selector(orderClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: orderButton];
     
+    myDatePicker *md = [[myDatePicker alloc]init];
 
     datePicker = [[UIDatePicker alloc]init];//WithFrame:CGRectMake(0, 400, 375, 267)];
-    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.datePickerMode = UIDatePickerModeTime;
     [self.view addSubview:orderTimeTF];datePicker.backgroundColor = [UIColor whiteColor];
     //datePicker.hidden = YES;
     
     NSDate *date = [NSDate date];
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    NSTimeInterval time = [zone secondsFromGMTForDate:date];
-    NSDate *defaultDate = [date dateByAddingTimeInterval:time];
-    datePicker.date = defaultDate;
-    orderTimeTF.inputView = datePicker;
+    datePicker.minimumDate = date;
+    datePicker.date = date;
+    datePicker.minuteInterval = 30;
+    orderTimeTF.inputView = md;
 
     //创建工具条
     UIToolbar *toolbar=[[UIToolbar alloc]init];
@@ -216,7 +258,7 @@
     
     NSDateFormatter *forMatter = [[NSDateFormatter alloc] init];
     
-    [forMatter setDateFormat:@"yyyy-MM-dd"];
+    [forMatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     
     NSString *dateStr = [forMatter stringFromDate:date];
     

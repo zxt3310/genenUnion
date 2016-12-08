@@ -204,7 +204,7 @@
 {
     [super viewDidAppear:animated];
     
-    hostReach = [Reachability reachabilityWithHostname:MAIN_PAGE];
+    hostReach = [Reachability reachabilityWithHostname:@"http://mapi.lhgene.cn"];
     
         URL = [[NSURL alloc] initWithString:_strURL];
         
