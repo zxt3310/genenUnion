@@ -11,7 +11,7 @@
 #import "NetUtils.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIViewController+UFanViewController.h"
-@interface orderViewController : UFanViewController
+@interface orderViewController : UIViewController
 {
     UIDatePicker *datePicker;
 }

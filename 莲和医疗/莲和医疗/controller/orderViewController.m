@@ -33,7 +33,8 @@
         datePicker.frame = temp;
         datePicker.minimumDate = [NSDate date];
         
-        //timePiker.minimumDate = [NSDate alloc] initwih
+        timePiker.date  = timePiker.minimumDate = [NSDate dateWithTimeIntervalSinceReferenceDate:3600];
+        timePiker.maximumDate = [NSDate dateWithTimeIntervalSinceReferenceDate:(8*60*60)];
         
         temp.origin.x = datePicker.frame.origin.x + datePicker.frame.size.width;
         temp.size.width = SCREEN_WEIGHT/3;
@@ -41,6 +42,7 @@
         
         datePicker.datePickerMode = UIDatePickerModeDate;
         timePiker.datePickerMode = UIDatePickerModeTime;
+        timePiker.minuteInterval = 30;
         [self addSubview:datePicker];
         [self addSubview:timePiker];
         
@@ -83,7 +85,7 @@
 
 @end
 
-@interface orderViewController () <UITextFieldDelegate>
+@interface orderViewController ()
 {
     UIImageView *maleImgView;
     
@@ -102,6 +104,8 @@
     orderTextFiled *orderTimeTF;
     
     NSString *userSex;
+    
+    myDatePicker *md;
 
 }
 
@@ -129,22 +133,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
+    //[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     self.title = @"预约取样";
-    
+
     //警告
-    UILabel *waringlable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(56, 81, 264, 50)];
+    UILabel *waringlable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(56, 74, 280, 50)];
     //UILabel *waringlable = [[UILabel alloc]initWithScreenFrame:56 y:81 width:264 high:26];
-    waringlable.font = [UIFont app_FontSize:11];
+    waringlable.font = [UIFont app_FontSize:12];
     waringlable.textColor = [UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1];
     waringlable.numberOfLines = 0;
+    waringlable.lineBreakMode = NSLineBreakByWordWrapping;
     waringlable.textAlignment = NSTextAlignmentCenter;
-    waringlable.text = @"预约成功后，我们将于1个工作日内与您确认。";
+    waringlable.text = @"欢迎来到和普安，您可以直接在线预约，也可拨打400-601-0982人工预约，电话预约时间9点到18点";
     [self.view addSubview:waringlable];
     
     
@@ -206,8 +211,7 @@
     
     //采样时间
     orderTimeTF = [[orderTextFiled alloc]initWithFrame:CGRectMakeWithAutoSize(68, 452, 240, 35)];
-    orderTimeTF.placeholder = @"预约采样时间";
-    orderTimeTF.delegate = self;
+    orderTimeTF.placeholder = @"预约时间9点至16点";
     [self.view addSubview:orderTimeTF];
     
     //预约按钮
@@ -219,17 +223,17 @@
     [orderButton addTarget:self action:@selector(orderClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview: orderButton];
     
-    myDatePicker *md = [[myDatePicker alloc]init];
+    md = [[myDatePicker alloc]init];
 
-    datePicker = [[UIDatePicker alloc]init];//WithFrame:CGRectMake(0, 400, 375, 267)];
-    datePicker.datePickerMode = UIDatePickerModeTime;
-    [self.view addSubview:orderTimeTF];datePicker.backgroundColor = [UIColor whiteColor];
-    //datePicker.hidden = YES;
-    
-    NSDate *date = [NSDate date];
-    datePicker.minimumDate = date;
-    datePicker.date = date;
-    datePicker.minuteInterval = 30;
+//    datePicker = [[UIDatePicker alloc]init];//WithFrame:CGRectMake(0, 400, 375, 267)];
+//    datePicker.datePickerMode = UIDatePickerModeTime;
+//    datePicker.backgroundColor = [UIColor whiteColor];
+//    //datePicker.hidden = YES;
+//    
+//    NSDate *date = [NSDate date];
+//    datePicker.minimumDate = date;
+//    datePicker.date = date;
+//    datePicker.minuteInterval = 30;
     orderTimeTF.inputView = md;
 
     //创建工具条
@@ -245,24 +249,20 @@
     orderTimeTF.inputAccessoryView = toolbar;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-//    datePicker.hidden = NO;
-//    return  NO;
-    return  YES;
-}
-
 - (void)timeBtClick
 {
-    NSDate *date = datePicker.date; // 获得时间对象
+    //NSDate *date = datePicker.date; // 获得时间对象
     
     NSDateFormatter *forMatter = [[NSDateFormatter alloc] init];
     
-    [forMatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [forMatter setDateFormat:@"yyyy-MM-dd"];
     
-    NSString *dateStr = [forMatter stringFromDate:date];
+    NSString *dateStr = [forMatter stringFromDate:md.datePicker.date];
     
-    orderTimeTF.text = dateStr;
+    [forMatter setDateFormat:@"HH:mm"];
+    NSString *timeStr = [forMatter stringFromDate:md.timePiker.date];
+    
+    orderTimeTF.text = [NSString stringWithFormat:@"%@ %@",dateStr,timeStr];
     
     [orderTimeTF resignFirstResponder];
     
@@ -318,12 +318,21 @@
             
             if(err > 0)
             {
-                NSString *error = replaceUnicode([requestDic objectForKey:@"errmsg"]);
-                alertMsgView(error, self);
+               // NSString *error = replaceUnicode([requestDic objectForKey:@"errmsg"]);
+                alertMsgView(@"您已预约过服务，如需变更预约时间请与客服联系，谢谢！", self);
                 return;
             }
             
-            alertMsgView(@"预约成功", self);
+            for(id object in self.view.subviews)
+            {
+                if ([object isKindOfClass:[UITextField class]]) {
+                    UITextField *TF = (UITextField *)object;
+                    TF.text = nil;
+                }
+            }
+            
+            alertMsgView(@"您已预约成功，我们将尽快与您联系", self);
+            
             [self.navigationController popViewControllerAnimated:YES];
         });
     
@@ -335,7 +344,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -351,7 +359,7 @@
         [ageTF resignFirstResponder];
         [phoneTF resignFirstResponder];
         [orderTimeTF resignFirstResponder];
-        [self.view resignFirstResponder];
+       // [self.view resignFirstResponder];
     }
     
 }
