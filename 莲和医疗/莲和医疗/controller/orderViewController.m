@@ -147,9 +147,18 @@
     waringlable.font = [UIFont app_FontSize:12];
     waringlable.textColor = [UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1];
     waringlable.numberOfLines = 0;
+    waringlable.userInteractionEnabled = YES;
     waringlable.lineBreakMode = NSLineBreakByWordWrapping;
     waringlable.textAlignment = NSTextAlignmentCenter;
-    waringlable.text = @"欢迎来到和普安，您可以直接在线预约，也可拨打400-601-0982人工预约，电话预约时间9点到18点";
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
+    [waringlable addGestureRecognizer:tap];
+    NSString *titleSt = @"欢迎来到和普安，您可以直接在线预约，也可拨打400-601-0982人工预约，电话预约时间9点到18点";
+    NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:titleSt];
+    NSRange redRange = [titleSt rangeOfString:@"400-601-0982"];
+    [noteStr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:redRange];
+    [waringlable setAttributedText:noteStr];
+
     [self.view addSubview:waringlable];
     
     
@@ -249,6 +258,11 @@
     orderTimeTF.inputAccessoryView = toolbar;
 }
 
+- (void)tapAction
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:400-601-0982"]]];
+}
+
 - (void)timeBtClick
 {
     //NSDate *date = datePicker.date; // 获得时间对象
@@ -331,7 +345,7 @@
                 }
             }
             
-            alertMsgView(@"您已预约成功，我们将尽快与您联系", self);
+            alertMsgView(@"您已预约成功，我们将尽快与您联系。", self);
             
             [self.navigationController popViewControllerAnimated:YES];
         });

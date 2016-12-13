@@ -96,19 +96,17 @@
         translatedPoint.x = UFDrawerWidth;
     }
     self.leftDrawerViewController.view.transform = CGAffineTransformMakeTranslation(translatedPoint.x, 0);
-    //self.leftDrawerViewController.view.backgroundColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:1];
-    //self.leftDrawerViewController.view.backgroundColor = [UIColor colorWithPatternImage:leftImage];
     self.leftDrawerViewController.view.alpha =.8;
-    CGFloat alphaGrade = .1 / UFDrawerWidth;
+    CGFloat alphaGrade = .6 / UFDrawerWidth;
     self.coverView.alpha = 1;
-    self.coverView.backgroundColor = [UIColor colorWithRed:42/255 green:42/255 blue:42/255 alpha:alphaGrade * translatedPoint.x];
+    self.coverView.backgroundColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:alphaGrade * translatedPoint.x];
     
     //手势停止时停靠
     if (panGesture.state == UIGestureRecognizerStateEnded) {
         
         CGFloat duration;
         
-        if (translatedPoint.x < UFDrawerWidth && translatedPoint.x >= UFDrawerWidth/2) {
+        if (translatedPoint.x <= UFDrawerWidth && translatedPoint.x >= UFDrawerWidth/2) {
             duration = (UFDrawerWidth - translatedPoint.x) / drawer_speed;
             [UIView animateWithDuration:duration animations:^{
                 self.leftDrawerViewController.view.transform = CGAffineTransformMakeTranslation(UFDrawerWidth, 0);

@@ -68,6 +68,10 @@
     //无报告上半部分-------------------------------------------------------------------------------------
     noReportImgView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(166, 115, 44, 55)];
     noReportImgView.image = [UIImage imageNamed:deviceImageSelect(@"病理报告.png")];
+    noReportImgView.userInteractionEnabled = YES;
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction)];
+    longPress.minimumPressDuration = 10;
+    [noReportImgView addGestureRecognizer:longPress];
     noReportImgView.hidden = YES;
     
     noReportLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(0, 201, 375, 40)];
@@ -148,6 +152,14 @@
     //[self.view addSubview:loadingView];
     [[UIApplication sharedApplication].keyWindow addSubview:loadingView];
 
+}
+
+- (void)longPressAction
+{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"kAppVersion"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"count"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    alertMsgView(@"已清除缓存数据", self);
 }
 
 - (void)productSelect:(UITapGestureRecognizer *)sender

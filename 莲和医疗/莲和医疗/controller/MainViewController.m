@@ -177,7 +177,6 @@
     NSMutableString *finalStrURL = [[NSMutableString alloc] initWithString:strURL];
     
     // 添加URL标识
-    //[finalStrURL appendFormat:@"&appid=4"];
      _strURL = [finalStrURL copy];
 }
 
@@ -188,12 +187,10 @@
     if (lastToken !=nil)
     {
         hasLogin = YES;
-//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
-//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
     
      self.navigationController.navigationBar.hidden = YES;
@@ -293,7 +290,7 @@
    
     if (![currentUrl isEqual:URL] & ![currentUrl isEqual:urlLocal] & ![a isEqualToString:@"about:blank"])
     {
-        firstItemViewController *firstVC = [firstItemViewController new]; //initWithNibName:@"firstItemViewController" bundle:nil];
+        firstItemViewController *firstVC = [firstItemViewController new];
         firstVC.strURL = request.URL;
         [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
         
@@ -330,13 +327,11 @@
     {
         hasLogin = YES;
         currentToken = lastToken;
-//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"人.png")] forState:UIControlStateNormal];
     }
     else
     {
         hasLogin = NO;
         currentToken = @"";
-//        [backBtn setImage:[UIImage imageNamed:deviceImageSelect(@"ex人.png")] forState:UIControlStateNormal];
     }
     
     NSString *js = [NSString stringWithFormat:@"report_count_show('%@');",currentToken];

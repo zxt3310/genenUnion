@@ -71,8 +71,7 @@
     
     //UIImage *image = [UIImage imageNamed:@"Rectangle 28@3x.png"];
     [self.rootNavigationController.navigationBar setBackgroundImage:[self drawImageWithColor:startColor endColor:endColor rect:rect] forBarMetrics:UIBarMetricsDefault];
-//    self.rootNavigationController.navigationBar.translucent = NO;
-//    self.rootNavigationController.navigationBar.shadowImage = [[UIImage alloc]init];
+
     self.rootNavigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
@@ -83,6 +82,13 @@
     [self.window makeKeyAndVisible];
     
     sleep(1);
+    
+    if([self isFirstLauch])
+    {
+        GuideView *guide = [[GuideView alloc] initWithFrame:self.window.bounds];
+        [self.window addSubview:guide];
+    }
+    
     return YES;
 }
 
@@ -189,6 +195,24 @@
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
+    }
+}
+
+
+#pragma mark - 判断是不是首次登录或者版本更新
+-(BOOL )isFirstLauch{
+    //获取当前版本号
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    NSString *currentAppVersion = infoDic[@"CFBundleShortVersionString"];
+    //获取上次启动应用保存的appVersion
+    NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:@"kAppVersion"];
+    //版本升级或首次登录
+    if (version == nil || ![version isEqualToString:currentAppVersion]) {
+        [[NSUserDefaults standardUserDefaults] setObject:currentAppVersion forKey:@"kAppVersion"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        return YES;
+    }else{
+        return NO;
     }
 }
 

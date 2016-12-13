@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import "UFanViewController.h"
 #import "leftDrawerViewController.h"
+#import "GuideView.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
