@@ -99,40 +99,66 @@
     tjLable.text = @"推荐产品";
     [noReportView addSubview:tjLable];
     
-    UIImageView *Product1 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(73, 108.5, 47, 47)];
-    Product1.image = [UIImage imageNamed:deviceImageSelect(@"jiyin.png")];
+    UIImageView *Product1 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(48, 108.5, 47, 47)];
+    Product1.image = [UIImage imageNamed:@"jiyin"];
     UITapGestureRecognizer *p1tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productSelect:)];
     [Product1 addGestureRecognizer:p1tap];
     Product1.tag = 1;
     Product1.userInteractionEnabled = YES;
     [noReportView addSubview:Product1];
     
-    UILabel *product1Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(45, 161.5, 104, 39)];
-    product1Lable.numberOfLines = 2;
-    product1Lable.text = @"和普安无创肿瘤基因检测";
+    UILabel *product1Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(29, 161.5, 87, 55)];
+    product1Lable.numberOfLines = 3;
     product1Lable.textAlignment = NSTextAlignmentCenter;
-    
     product1Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    product1Lable.font = [UIFont app_FontSize:13];
+    product1Lable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:12];
+    NSMutableAttributedString *lb1Str = [[NSMutableAttributedString alloc]initWithString:@"和普安\nctDNA无创肿瘤\n基因检测"];
+    NSRange lb1Range = [[lb1Str string] rangeOfString:@"和普安"];
+    [lb1Str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:lb1Range];
+    [product1Lable setAttributedText:lb1Str];
     [noReportView addSubview:product1Lable];
    // product1Lable.frame = [product1Lable textRectForBounds:product1Lable.frame limitedToNumberOfLines:0];
     
-    UIImageView *Product2 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(256, 108.5, 47, 47)];
-    Product2.image = [UIImage imageNamed:@"ruxian"];
+    UIImageView *Product2 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(165, 108.5, 47, 47)];
+    Product2.image = [UIImage imageNamed:@"zhongliu"];
     UITapGestureRecognizer *p2tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productSelect:)];
     [Product2 addGestureRecognizer:p2tap];
     Product2.tag = 2;
     Product2.userInteractionEnabled = YES;
     [noReportView addSubview:Product2];
     
-    UILabel *product2Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(227, 161.5, 104, 39)];
-    product2Lable.numberOfLines = 2;
-    product2Lable.text = @"乳腺癌易感基因检测";
+    UILabel *product2Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(152, 161.5, 72, 55)];
+    product2Lable.numberOfLines = 3;
+    product2Lable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:12];
+    NSMutableAttributedString *lb2Str = [[NSMutableAttributedString alloc]initWithString:@"和家安\n遗传肿瘤基因\n检测"];
+    NSRange lb2Range = [[lb2Str string] rangeOfString:@"和家安"];
+    [lb2Str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:lb2Range];
+    [product2Lable setAttributedText:lb2Str];
     product2Lable.textAlignment = NSTextAlignmentCenter;
     product2Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
-    product2Lable.font = [UIFont app_FontSize:13];
+    
     [noReportView addSubview:product2Lable];
    // product2Lable.frame = [product2Lable textRectForBounds:product2Lable.frame limitedToNumberOfLines:0];
+    
+    UIImageView *Product3 = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(283, 108.5, 47, 47)];
+    Product3.image = [UIImage imageNamed:@"ruxian"];
+    UITapGestureRecognizer *p3tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productSelect:)];
+    [Product3 addGestureRecognizer:p3tap];
+    Product3.tag = 3;
+    Product3.userInteractionEnabled = YES;
+    [noReportView addSubview:Product3];
+    
+    UILabel *product3Lable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(273, 161.5, 72, 55)];
+    product3Lable.numberOfLines = 3;
+    product3Lable.textAlignment = NSTextAlignmentCenter;
+    product3Lable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
+    product3Lable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:12];
+    NSMutableAttributedString *lb3Str = [[NSMutableAttributedString alloc]initWithString:@"和美安\n乳腺肿瘤基因\n检测"];
+    NSRange lb3Range = [[lb3Str string] rangeOfString:@"和美安"];
+    [lb3Str addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:14] range:lb3Range];
+    [product3Lable setAttributedText:lb3Str];
+    [noReportView addSubview:product3Lable];
+
     
     noReportView.hidden = YES;
     [self.view addSubview:noReportView];
@@ -171,6 +197,11 @@
     }
     
     if(sender.view.tag == 2)
+    {
+        url = PRODUCT3_URL;
+    }
+    
+    if(sender.view.tag == 3)
     {
         url = PRODUCT2_URL;
     }

@@ -35,7 +35,7 @@
                                                                         cacheTime:0];
         [CustomURLCache setSharedURLCache:urlCache];
             hasLogin = NO;
-        urlLocal = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"inDirectory:@"h5_main/html"]];
+        urlLocal = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ios_index" ofType:@"html"inDirectory:@"h5_main/html"]];
         
     }
     return self;

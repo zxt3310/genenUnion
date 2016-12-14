@@ -6,26 +6,29 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telphone=no">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <!-- <script type="text/javascript" src="js/swiper.min.js"></script> -->
-    <script type="text/javascript" src="js/zepto.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/unslider-min.js"></script>
-    <script type="text/javascript" src="js/jquery.event.move.js"></script>
-    <script type="text/javascript" src="js/jquery.event.swipe.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/unslider.css">
-    <link rel="stylesheet" type="text/css" href="css/unslider-dots.css">
-    <link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+    <!-- <script type="text/javascript" src="../js/swiper.min.js"></script> -->
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/unslider-min.js"></script>
+    <script type="text/javascript" src="../js/jquery.event.move.js"></script>
+    <script type="text/javascript" src="../js/jquery.event.swipe.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/unslider.css">
+    <link rel="stylesheet" type="text/css" href="../css/unslider-dots.css">
     <style type="text/css">
         body {
             padding: 16px 22px 0px 22px;
             background-color: #ffffff;
         }
         
+        .dev,.release {
+            display: none;
+        }
+        
         /* 产品DIV start */
         .med-home .product-box {
-            border: 1px solid rgb(224, 220, 247);
-            margin: 25px 3px 17px 3px;
+            border-top: 1px solid rgb(224, 220, 247);
+            margin: 17px 3px 25px 3px;
             text-align: center;
         }
         
@@ -45,26 +48,43 @@
             display: -webkit-box;
         }
         .med-home .product-box .product-info img {
-            width: 60px;
-            height: 60px;
+            width: 47px;
+            height: 47px;
         }
         
-        .med-home .product-box .product-info p {
-            font-size: 13px;
-            line-height: 16px;
+        .med-home .product-box .product-info div a p {
             color: rgb(135, 126, 188);
-            font-weight: bold;
-            width: 104px;
+            width: 72px;
             margin-left: auto;
             margin-right: auto;
         }
         
-        .med-home .product-box .product-info .right-part,.left-part {
-            width: 50%;
+        .med-home .product-box .product-info div:nth-child(2) {
+            width: 44%;
+        }
+        
+        .med-home .product-box .product-info div:nth-child(1) a p {
+            width: 87px;
+        }
+        
+        .med-home .product-box .product-info div a p:nth-child(2) {
+            font-weight: 2px;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 16px;
+            margin-bottom: 3px;
+        }
+        
+        .med-home .product-box .product-info div a p:nth-child(3) {
+            font-size: 12px;
+            line-height: 12px;
+        }
+        
+        .med-home .product-box .product-info div {
             -webkit-box-flex: 1;
-            margin-top: 8px;
-            margin-bottom: 29px;
+            margin-top: -5px;
             text-align: center;
+            width: 28%;
         }
         /* 产品DIV end */
         
@@ -75,16 +95,17 @@
         
         .med-home .functions-box .function {
             padding-top: 5px;
-            padding-bottom: 6px;
+            padding-bottom: 7px;
             box-shadow: 1px 2px 6px 1px rgb(224, 220, 247);
             margin-bottom: 8px;
             display: -webkit-box;
+            height: 38px;
         }
         
         .med-home .functions-box img {
             width: 30px;
             height: 30px;
-            margin: 10px 12px 0px 12px;
+            margin: 8px 12px 0px 12px;
             -webkit-box-flex: 1;
         }
         
@@ -98,7 +119,6 @@
             font-size: 13px;
             color: rgb(135, 126, 188);
             font-weight: 600;
-            margin-top: 4px;
             margin-bottom: 2px;
         }
         
@@ -169,7 +189,7 @@
         }
 
         .med-home .booking-box a.ks :after {
-            background: url("img/ico_ks_b.png?v=20160128") no-repeat;
+            background: url("../img/ico_ks_b.png?v=20160128") no-repeat;
             display: block;
             position: absolute;
             right: 0;
@@ -235,7 +255,7 @@
             color: rgb(255, 255, 255);
         }
     </style>
-    
+    <link rel="stylesheet" type="text/css" href="../css/swiper.min.css">
     <script type="text/javascript">
 
         function parseURL(url) {
@@ -363,32 +383,32 @@
 
 <body>
 <div class="med-home">
-    <div class="ding-box" style="line-height: 0px;display: none;">
-        <img src="img/dingtu2.png" width="100%">
-    </div>
-    
-    <div class="automatic-slider">
-        <ul>
-            <li><a href="javascript:void(0);"><img src="img/app首页广告图-01.jpg" alt="" style="width: 100%;border-radius: 8px;"></a></li>
-            <li><a href="javascript:void(0);"><img src="img/app首页广告图-02.jpg" alt="" style="width: 100%;border-radius: 8px;"></a></li>
-            <li><a href="javascript:void(0);"><img src="img/app首页广告图-03.jpg" alt="" style="width: 100%;border-radius: 8px;"></a></li>
-            <li><a href="javascript:void(0);"><img src="img/app首页广告图-04.jpg" alt="" style="width: 100%;border-radius: 8px;"></a></li>
-            <li><a href="javascript:void(0);"><img src="img/app首页广告图-05.jpg" alt="" style="width: 100%;border-radius: 8px;"></a></li>
-        </ul>
+    <div class="ding-box" style="line-height: 0px;">
+        <img src="../img/dingtu2.png" width="100%">
     </div>
     
     <div class="product-box">
         <span class="product-name">产品</span>
         <div class="product-info">
-            <div class="right-part">
+            <div>
                 <a href="http://mapi.lhgene.cn/m/product/1">
-                    <img src="img/jiyin@3x.png" alt="">
-                    <p>和普安无创肿瘤基因检测</p>
-            </a></div><a href="http://mapi.lhgene.cn/m/product/1">
-            </a><div class="left-part"><a href="http://mapi.lhgene.cn/m/product/1">
-                </a><a href="http://mapi.lhgene.cn/m/product/2">
-                    <img src="img/ruxian@3x.png" alt="">
-                    <p>乳腺癌易感基因检测</p>
+                    <img src="../img/1@3x.png" alt="">
+                    <p>和普安</p>
+                    <p>ctDNA无创肿瘤基因检测</p>
+                </a>
+            </div>
+            <div>
+                <a href="http://mapi.lhgene.cn/m/product/3">
+                    <img src="../img/2@3x.png" alt="">
+                    <p>和家安</p>
+                    <p>遗传肿瘤基因检测</p>
+                </a>
+            </div>
+            <div>
+                <a href="http://mapi.lhgene.cn/m/product/2">
+                    <img src="../img/3@3x.png" alt="">
+                    <p>和美安</p>
+                    <p>乳腺肿瘤基因检测</p>
                 </a>
             </div>
         </div>
@@ -397,7 +417,7 @@
     <div class="functions-box">
         <a href="http://mapi.lhgene.cn/m/my/report">
             <div class="function">
-                <img src="img/jiancebaogao.png">
+                <img src="../img/jiancebaogao.png">
                 <div class="function-info">
                     <p>我的检测</p>
                     <p><span id="baogao-msg"></span></p>
@@ -406,7 +426,7 @@
         </a>
         <a href="https://static.meiqia.com/dist/standalone.html?eid=33791">
             <div class="function">
-                <img src="img/consult.png">
+                <img src="../img/consult.png">
                 <div class="function-info">
                     <p>在线咨询</p>
                     <p>在线客服及时答疑</p>
@@ -415,7 +435,7 @@
         </a>
         <a href="http://mapi.lhgene.cn/m/faq">
             <div class="function">
-                <img src="img/wenti.png">
+                <img src="../img/wenti.png">
                 <div class="function-info">
                     <p>FAQ</p>
                     <p>快速了解常见问题</p>
@@ -476,7 +496,7 @@
         
         var slider = $('.automatic-slider').unslider({
             autoplay: true,
-            delay: 7000,
+            delay: 5000,
             speed: 800,
             nav: false,
             arrows: false,
@@ -517,6 +537,7 @@
         
         return 0;
     }
+    
 </script>
 </body>
 </html>

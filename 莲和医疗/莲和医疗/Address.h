@@ -30,6 +30,7 @@
 
 #define PRODUCT1_URL   @"http://mapi.lhgene.cn/m/product/1"
 #define PRODUCT2_URL   @"http://mapi.lhgene.cn/m/product/2"
+#define PRODUCT3_URL   @"http://mapi.lhgene.cn/m/product/3"
 
 #define orderRequest_RUL @"http://mapi.lhgene.cn/m/api/order"
 
