@@ -98,7 +98,7 @@
     firstView.firstLableText = @"  填写检测同意书和问卷";
     firstView.secendLableText = @"  采集10毫升血液";
     firstView.thirdLableText = @"  送到医学检验所检验";
-    firstView.leftImage = [UIImage imageNamed:deviceImageSelect(@"iconCaiji.png")];
+    firstView.leftImage = [UIImage imageNamed:@"iconCaiji"];
     firstView.imgText = @"血液样本采集";
     
     [firstView addUnitView];
@@ -109,7 +109,7 @@
     secondView.firstLableText = @"  ctDNA提取";
     secondView.secendLableText = @"  建库及质控";
     secondView.thirdLableText = @"  样本测序";
-    secondView.leftImage = [UIImage imageNamed:deviceImageSelect(@"iconLiucheng.png")];
+    secondView.leftImage = [UIImage imageNamed:@"iconLiucheng"];
     secondView.imgText = @"ctDNA\r\n实验流程";
     [secondView addUnitView];
     [self.view addSubview:secondView];
@@ -119,7 +119,7 @@
     thirdView.secendLableText = @"  注释和报告生成";
     thirdView.thirdLableText = @"  资讯解读服务";
     thirdView.imgText = @"结果注释和解读";
-    thirdView.leftImage = [UIImage imageNamed:deviceImageSelect(@"iconJiedu.png")];
+    thirdView.leftImage = [UIImage imageNamed:@"iconJiedu"];
     [thirdView addUnitView];
     [self.view addSubview:thirdView];
     

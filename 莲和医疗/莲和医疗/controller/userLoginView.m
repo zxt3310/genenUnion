@@ -8,6 +8,9 @@
 
 #import "userLoginView.h"
 @implementation userLoginView
+{
+    LoadingView *loadingView;
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     
@@ -23,7 +26,7 @@
 -(void)viewDidLoad
 {
     //背景图
-    UIImage *backGroundImage = [UIImage imageNamed:deviceImageSelect(@"loginBGI.png")];
+    UIImage *backGroundImage = [UIImage imageNamed:@"loginBGI"];
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WEIGHT, SCREEN_HEIGHT)];
     backImageView.image = backGroundImage;
     [self.view addSubview:backImageView];
@@ -88,7 +91,7 @@
     self.Bt_Login.backgroundColor = [UIColor colorWithRed:201.0/255 green:193.0/255 blue:232.0/255 alpha:1];
     self.Bt_SendMsg.titleLabel.attributedText = [[NSAttributedString alloc] initWithString:@"获取验证码" attributes:@{NSFontAttributeName:[UIFont fontWithName:@"FZXDXJW--GB1-0" size:13],
                                                                                                                  NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    UIImage *image = [UIImage imageNamed:deviceImageSelect(@"dengru.png")];
+    UIImage *image = [UIImage imageNamed:@"dengru"];
 
     [_Bt_Login setImage:image forState:UIControlStateNormal];
     
@@ -102,11 +105,22 @@
     [self.view addSubview:Bt_Register];
     
     //取消按钮
-    UIImage *cancelBtImg = [UIImage imageNamed:deviceImageSelect(@"iconBack.png")];
+    UIImage *cancelBtImg = [UIImage imageNamed:@"iconBack"];
     UIButton *Bt_Cancel = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/25, SCREEN_HEIGHT/21.52 , SCREEN_WEIGHT/20.83 , SCREEN_WEIGHT/20.83 )];
     [Bt_Cancel setImage:cancelBtImg forState:UIControlStateNormal];
     [Bt_Cancel addTarget:self action:@selector(swipeGesture:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:Bt_Cancel];
+    
+    //loading 动画
+    float topY = 180;
+    if ([UIScreen mainScreen].bounds.size.height > 480.0) {
+        topY += 40;
+    }
+    loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2.5, topY, 80, 79)];
+    loadingView.hidden = YES;
+    loadingView.dscpLabel.text = @"请稍后";
+    [self.view addSubview:loadingView];
+
     
     //向下轻扫
     UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGesture:)];
@@ -118,7 +132,7 @@
     {
         Bt_Register.hidden = YES;
         logLable.text = @"注册";
-        UIImage *registerImg = [UIImage imageNamed:deviceImageSelect(@"register.png")];
+        UIImage *registerImg = [UIImage imageNamed:@"register"];
         [_Bt_Login setImage:registerImg forState:UIControlStateNormal];
     }
     
@@ -142,6 +156,7 @@
 
 - (IBAction)Bt_LoginClick:(id)sender
 {
+    loadingView.hidden = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/validation?mobile=%@&code=%@"
                                         ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]
@@ -153,7 +168,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (response==nil){
-               // [self.hud hide];
+                loadingView.hidden = YES;
+                [self alertMsgView:@"服务器连接失败，请稍后重试或检查网络连接。"];
                 NSLog(@" response is null check net!");
                 return;
             }
@@ -163,11 +179,19 @@
             NSDictionary *jsonData = parseJsonResponse(response);
             if (!jsonData)
             {
+                loadingView.hidden = YES;
+                [self alertMsgView:@"服务器连接失败，请稍后重试或检查网络连接。"];
                // [self.hud hide];
+                
                 return;
             }
             
             NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
+            if (result == nil) {
+                loadingView.hidden = YES;
+                alertMsgView(@"服务器维护中，请稍后再试.", self);
+                return;
+            }
             if ([result integerValue] != 1) {
              //   [self.hud hide];
                 NSLog(@"listarea result invalid: %@", strResp);
@@ -179,7 +203,7 @@
             {
                 NSString *errmsgInZhcn = replaceUnicode(errmsg);
                 NSLog(@"errormesg : %@" , errmsgInZhcn);
-                
+                loadingView.hidden = YES;
                 [self alertMsgView:@"您输入的手机号或验证码有误"];
                 
                 return;
@@ -188,7 +212,10 @@
             NSString *token = JsonValue([jsonData objectForKey:@"token"], CLASS_STRING);
             if(!token)
             {
+                loadingView.hidden = YES;
+                [self alertMsgView:@"登录失败,请好后重试"];
                 NSLog(@"service error : no token");
+                return;
             }
              NSLog(@"listarea result invalid: %@", strResp);
            // [self setInt:([[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""] integerValue]) forKey:@"userPhoneNo"];
@@ -199,6 +226,8 @@
             setIntObjectForKey([[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""] integerValue],
                                                                                                               @"userPhoneNo");
             setStringObjectForKey(token, @"token");
+            
+            loadingView.hidden = YES;
             
             //给侧边栏推送刷新cell的通知
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
@@ -232,7 +261,7 @@
 - (IBAction)Bt_SendMsgClick:(id)sender
 {
     [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(sendLoginRequest) object:sender];
-    [self performSelector:@selector(sendLoginRequest) withObject:sender afterDelay:1.0f];
+    [self performSelector:@selector(sendLoginRequest) withObject:sender afterDelay:0.5f];
 }
 
 - (void)sendLoginRequest
@@ -248,6 +277,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (response==nil){
                 // [self.hud hide];
+                alertMsgView(@"服务器连接失败，请稍后重试或检查网络连接.", self);
                 NSLog(@" response is null check net!");
                 return;
             }
@@ -258,10 +288,15 @@
             if (!jsonData)
             {
                 // [self.hud hide];
+                alertMsgView(@"服务器维护中，请稍后再试.", self);
                 return;
             }
             
             NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
+            if (result == nil) {
+                alertMsgView(@"服务器维护中，请稍后再试.", self);
+                return;
+            }
             if ([result integerValue] != 1) {
                 //   [self.hud hide];
                 NSLog(@"listarea result invalid: %@", strResp);
@@ -291,7 +326,7 @@
     if(alertMsg)
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"消息" message:alertMsg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ula = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *ula = [UIAlertAction actionWithTitle:@"关闭" style:UIAlertActionStyleCancel handler:nil];
     
         [alert addAction:ula];
         [self presentViewController:alert animated:YES completion:nil];

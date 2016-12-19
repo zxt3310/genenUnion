@@ -56,7 +56,7 @@
     
     //报告完成指示图
     UIImageView *complateView = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(318, 0, 60, 60)];
-    complateView.image = [UIImage imageNamed:deviceImageSelect(@"千图网-红色的英文印章.png")];
+    complateView.image = [UIImage imageNamed:@"千图网-红色的英文印章"];
     complateView.hidden = YES;
     if(_progress == 1)
     {
@@ -65,7 +65,7 @@
     [reportScrollView addSubview:complateView];
     
     UIImageView *backImage = [[UIImageView alloc] initWithFrame:CGRectMakeWithAutoSize(0, 163, 375, 1139)];
-    backImage.image = [UIImage imageNamed:deviceImageSelect(@"reportDitail.png")];
+    backImage.image = [UIImage imageNamed:@"reportDitail"];
     [reportScrollView addSubview:backImage];
     
     //产品名
@@ -111,7 +111,7 @@
     [reportScrollView addSubview:sexLable];
     
     //带阴影的横线
-    UILabel *shadowLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 127, 375, 1)];
+    UILabel *shadowLine = [[UILabel alloc]initWithFrame:CGRectMake(0, 127*SCREEN_HEIGHT/667, SCREEN_WEIGHT, 1)];
     shadowLine.layer.borderWidth = 1;
     shadowLine.layer.borderColor = [UIColor colorWithMyNeed:235 green:232 blue:250 alpha:1].CGColor;
     shadowLine.layer.shadowOpacity = 1;
@@ -130,11 +130,11 @@
     [reportBt addTarget:self action:@selector(reportBtClick:) forControlEvents:UIControlEventTouchUpInside];
     reportBt.enabled = NO;
     
-    [reportBt setBackgroundImage:[UIImage imageNamed:deviceImageSelect(@"anniu.png")] forState:UIControlStateNormal];
+    [reportBt setBackgroundImage:[UIImage imageNamed:@"anniu"] forState:UIControlStateNormal];
     if(_progress == 1)
     {
         reportBt.enabled = YES;
-        [reportBt setBackgroundImage:[UIImage imageNamed:deviceImageSelect(@"anniuend.png")] forState:UIControlStateNormal];
+        [reportBt setBackgroundImage:[UIImage imageNamed:@"anniuend"] forState:UIControlStateNormal];
     }
     [reportScrollView addSubview:reportBt];
 
@@ -252,7 +252,7 @@
         [string insertString:@"!" atIndex:n];
     }
     imgName = [string copy];
-    imgName = deviceImageSelect(imgName);
+    //imgName = deviceImageSelect(imgName);
     return imgName;
 }
 

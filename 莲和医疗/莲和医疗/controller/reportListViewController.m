@@ -67,7 +67,7 @@
     
     //无报告上半部分-------------------------------------------------------------------------------------
     noReportImgView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(166, 115, 44, 55)];
-    noReportImgView.image = [UIImage imageNamed:deviceImageSelect(@"病理报告.png")];
+    noReportImgView.image = [UIImage imageNamed:@"病理报告"];
     noReportImgView.userInteractionEnabled = YES;
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction)];
     longPress.minimumPressDuration = 10;
@@ -164,7 +164,7 @@
     [self.view addSubview:noReportView];
 
     
-    [self loadRequest];
+    
     //[self.tableView reloadData];
     
     
@@ -179,6 +179,7 @@
     [[UIApplication sharedApplication].keyWindow addSubview:loadingView];
 
 }
+
 
 - (void)longPressAction
 {
@@ -214,6 +215,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    [self loadRequest];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -286,7 +288,7 @@
         
         //进度指示器 tag 6
         UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMakeWithAutoSize(40, 146, 55, 20)];
-        tagView.image = [UIImage imageNamed:deviceImageSelect(@"rectangle150.png")];
+        tagView.image = [UIImage imageNamed:@"rectangle150"];
         tagView.tag = 6;
         [backgroundView addSubview:tagView];
         //指示器文字 tag 7
@@ -339,7 +341,7 @@
     UILabel *tagLable = (UILabel *)[imageView viewWithTag:7];
     tagLable.text = [dic objectForKey:@"current_step"];
     tagLable.frame = CGRectMakeWithAutoSize(3, 2, 48 + (tagLable.text.length - 4) * 12, 12);
-    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, prograssView.frame.origin.y - 25, tagLable.frame.size.width + 5/*56 + (tagLable.text.length - 4) * 12*/, SCREEN_HEIGHT/33.35);
+    imageView.frame = CGRectMake(prograssView.frame.origin.x + prograssView.frame.size.width - 20, prograssView.frame.origin.y - SCREEN_HEIGHT/33.5 - 5, tagLable.frame.size.width + 5/*56 + (tagLable.text.length - 4) * 12*/, SCREEN_HEIGHT/33.35);
     
     
     UIButton *button = (UIButton *)[backView viewWithTag:8];
@@ -380,45 +382,65 @@
 - (void)loadRequest
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@?token=%@",WDJC_REQUEST,_token];
-                        
     
-    NSData *response = sendGETRequest(urlStr);
+    loadingView.hidden = NO;
     
-        if (response==nil){
-            // [self.hud hide]
-            NSLog(@" response is null check net!");
-            return;
-        }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *response = sendGETRequest(urlStr);
+        dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSString *strResp = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-        
-        NSDictionary *jsonData = parseJsonResponse(response);
-        if (!jsonData)
-        {
-            return;
-        }
-        
-        NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
-        if ([result integerValue] != 1) {
-            //   [self.hud hide];
-            NSLog(@"listarea result invalid: %@", strResp);
-        }
-        NSString *errmsg = JsonValue([jsonData objectForKey:@"errmsg"], CLASS_STRING);
-        if (errmsg.length > 0)
-        {
-            NSString *errmsgInZhcn = replaceUnicode(errmsg);
-            NSLog(@"errormesg : %@" , errmsgInZhcn);
-            alertMsgView(errmsgInZhcn, self);
-            return;
-        }
-        reportArray = JsonValue([jsonData objectForKey:@"data"],@"NSArray");
-        if(reportArray.count == 0)
-        {
-            noReportLable.hidden = NO;
-            noReportImgView.hidden = NO;
-            noReportView.hidden = NO;
-            return;
-        }
+                if (response==nil){
+                    // [self.hud hide]
+                    alertMsgView(@"服务器连接失败，请稍后重试或检查网络连接.", self);
+                    loadingView.hidden = YES;
+                    NSLog(@" response is null check net!");
+                    return;
+                }
+                
+                NSString *strResp = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+                
+                NSDictionary *jsonData = parseJsonResponse(response);
+                if (!jsonData)
+                {
+                    alertMsgView(@"服务器维护中，请稍后重试。", self);
+                    loadingView.hidden = YES;
+                    return;
+                }
+                
+                NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
+            
+                if (result == nil) {
+                    alertMsgView(@"服务器维护中，请稍后再试.", self);
+                    loadingView.hidden = YES;
+                    return;
+                }
+            
+                if ([result integerValue] != 1) {
+
+                    NSLog(@"listarea result invalid: %@", strResp);
+                }
+                NSString *errmsg = JsonValue([jsonData objectForKey:@"errmsg"], CLASS_STRING);
+                if (errmsg.length > 0)
+                {
+                    NSString *errmsgInZhcn = replaceUnicode(errmsg);
+                    NSLog(@"errormesg : %@" , errmsgInZhcn);
+                    alertMsgView(errmsgInZhcn, self);
+                    loadingView.hidden = YES;
+                    return;
+                }
+                reportArray = JsonValue([jsonData objectForKey:@"data"],@"NSArray");
+                if(reportArray.count == 0)
+                {
+                    loadingView.hidden = YES;
+                    noReportLable.hidden = NO;
+                    noReportImgView.hidden = NO;
+                    noReportView.hidden = NO;
+                    return;
+                }
+                [self.tableView reloadData];
+            loadingView.hidden = YES;
+        });
+    });
 }
 
 - (void)ditailLoadRequest:(NSString *)reportId
@@ -435,6 +457,7 @@
             
             if (response==nil){
                 // [self.hud hide]
+                alertMsgView(@"服务器连接失败，请稍后重试或检查网络连接.", self);
                 NSLog(@" response is null check net!");
                 loadingView.hidden = YES;
                 return;
@@ -445,11 +468,16 @@
             NSDictionary *jsonData = parseJsonResponse(response);
             if (!jsonData)
             {
+                alertMsgView(@"服务器维护中，请稍后再试", self);
                 loadingView.hidden = YES;
                 return;
             }
             
             NSNumber *result = JsonValue([jsonData objectForKey:@"ret"], CLASS_NUMBER);
+            if (result == nil) {
+                alertMsgView(@"服务器维护中，请稍后再试.", self);
+                return;
+            }
             if ([result integerValue] != 1) {
                 //   [self.hud hide];
                 NSLog(@"listarea result invalid: %@", strResp);
@@ -469,8 +497,6 @@
             {
                 alertMsgView(@"您尚未有报告", self);
                 loadingView.hidden = YES;
-                
-    
                 return;
             }
             else

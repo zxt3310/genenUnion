@@ -121,8 +121,8 @@
 {
     self=[super init];
     if (self) {
-        selectedImg = [UIImage imageNamed:deviceImageSelect(@"nvxinganniu.png")];
-        unSelectedImg = [UIImage imageNamed:deviceImageSelect(@"oval77.png")];
+        selectedImg = [UIImage imageNamed:@"nvxinganniu"];
+        unSelectedImg = [UIImage imageNamed:@"oval77"];
         userSex = @"0";
 
         isMale = YES;
@@ -320,6 +320,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
            if(!requestData)
            {
+               alertMsgView(@"服务器连接失败，请稍后重试或检查网络连接.", self);
                NSLog(@"send order FAILED check");
                return ;
            }
@@ -328,6 +329,10 @@
             
             NSDictionary *requestDic = parseJsonResponse(requestData);
             NSString *resault = JsonValue([requestDic objectForKey:@"err"],@"NSString");
+            if(resault == nil)
+            {
+                alertMsgView(@"服务器维护中，请稍后重试.", self);
+            }
             NSInteger err = [resault integerValue];
             
             if(err > 0)
@@ -336,6 +341,7 @@
                 alertMsgView(@"您已预约过服务，如需变更预约时间请与客服联系，谢谢！", self);
                 return;
             }
+            
             
             for(id object in self.view.subviews)
             {

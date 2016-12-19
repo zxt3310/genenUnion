@@ -64,7 +64,7 @@
     
     UIImageView *logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5.14, SCREEN_HEIGHT/1.29, SCREEN_WEIGHT/3.21, SCREEN_HEIGHT/6.67)];
     
-    logoImage.image = [UIImage imageNamed:deviceImageSelect(@"101.png")];
+    logoImage.image = [UIImage imageNamed:@"101"];
     
     [self.tableView addSubview:logoImage];
     
@@ -120,7 +120,7 @@
     
     cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5, SCREEN_HEIGHT/31, SCREEN_HEIGHT/31.76, SCREEN_HEIGHT/31.76)];   //侧边栏图标
     
-    cellImageView.image =[UIImage imageNamed:deviceImageSelect(self.itemsImageName[indexPath.row])];
+    cellImageView.image =[UIImage imageNamed:self.itemsImageName[indexPath.row]];
     [cell.contentView addSubview:cellImageView];
     return cell;
 }
@@ -229,7 +229,7 @@
     if(alertMsg)
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"消息" message:alertMsg preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ula = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *ula = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
         
         [alert addAction:ula];
         [self presentViewController:alert animated:YES completion:nil];
