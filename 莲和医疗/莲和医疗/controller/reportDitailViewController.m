@@ -85,7 +85,7 @@
     [reportScrollView addSubview:productNameLable];
     
     //姓名
-    UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(60, 63, 100, 20)];
+    UILabel *usernameLable = [[UILabel alloc]initWithFrame:CGRectMakeWithAutoSize(60, 61, 100, 20)];
     usernameLable.font = [UIFont app_FontSize:13];
     usernameLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     usernameLable.text = [NSString stringWithFormat:@"姓名：%@",[reportDitailDic objectForKey:@"name"]];
