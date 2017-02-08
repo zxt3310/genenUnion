@@ -157,6 +157,8 @@
 - (IBAction)Bt_LoginClick:(id)sender
 {
     loadingView.hidden = NO;
+    [[Mixpanel sharedInstance] track:@"用户点击登录按钮"];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/validation?mobile=%@&code=%@"
                                         ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]
@@ -240,7 +242,6 @@
                     [_delegate loginPushReport:token];
                  }
              }];
- 
             return;
         });
     });
@@ -266,6 +267,8 @@
 
 - (void)sendLoginRequest
 {
+    [[Mixpanel sharedInstance] track:@"用户获取验证码"];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
         //,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];

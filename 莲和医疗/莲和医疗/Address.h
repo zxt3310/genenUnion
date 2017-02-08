@@ -7,6 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Mixpanel.h"
 
 #ifndef Adress_h
 #define Adress_h
@@ -66,6 +67,8 @@
 #define GAOTONGCEXU_IMG   @"Gaotong.png"
 #define SHENGWUFENXI_IMG  @"Fenxi.png"
 #define CHUBAOGAO_IMG     @"Chubaogao.png"
+
+#define MIXPANEL_TOKEN @"af67f0a0fb4591e37e976e52e83c058a"
 
 @interface UIFont (custom)
 

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "Mixpanel.h"
 
 @interface AppDelegate ()
 
@@ -88,6 +88,8 @@
         GuideView *guide = [[GuideView alloc] initWithFrame:self.window.bounds];
         [self.window addSubview:guide];
     }
+    
+    [[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN] track:@"Luanch App"];
     
     return YES;
 }

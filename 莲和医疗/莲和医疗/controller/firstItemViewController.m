@@ -18,6 +18,7 @@
 {
     UIButton *orderBt;
     UIButton *zixunBt;
+    NSInteger ProNo;
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -47,27 +48,48 @@
     _html5WebView.delegate = self;
     
    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
- 
     
     if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
     {
-    orderBt = [[UIButton alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT  - 44, SCREEN_WEIGHT/2, 44)];
-    [orderBt setTitle:@"预约取样" forState:UIControlStateNormal];
-    [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
-    orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
-    orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
-    [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:orderBt];
-    
-    zixunBt = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2, SCREEN_HEIGHT - 44, SCREEN_WEIGHT/2, 44)];
-    [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
-    zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
-    zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
-    [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
-    [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
+        ProNo = [[_strURL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn/m/product/" withString:@""] integerValue];
+        switch (ProNo) {
+            case 1:
+                [[Mixpanel sharedInstance] track:@"进入产品页" properties:@{@"product":@"和普安"}];
+                break;
+            case 2:
+                [[Mixpanel sharedInstance] track:@"进入产品页" properties:@{@"product":@"和家安"}];
+                break;
+            case 3:
+                [[Mixpanel sharedInstance] track:@"进入产品页" properties:@{@"product":@"和美安"}];
+                break;
+            default:
+                break;
+        }
+        orderBt = [[UIButton alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT  - 44, SCREEN_WEIGHT/2, 44)];
+        [orderBt setTitle:@"预约取样" forState:UIControlStateNormal];
+        [orderBt setTitleColor:[UIColor colorWithMyNeed:74 green:108 blue:204 alpha:1] forState:UIControlStateNormal];
+        orderBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
+        orderBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
+        [orderBt addTarget:self action:@selector(orderBtClick) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:orderBt];
+        
+        zixunBt = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2, SCREEN_HEIGHT - 44, SCREEN_WEIGHT/2, 44)];
+        [zixunBt setTitle:@"在线咨询" forState:UIControlStateNormal];
+        zixunBt.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
+        zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
+        [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
+        [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
 
-    [self.view addSubview:zixunBt];
+        [self.view addSubview:zixunBt];
+    }
     
+    if([_strURL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/faq"])
+    {
+        [[Mixpanel sharedInstance] track:@"进入FAQ页面"];
+    }
+    if([_strURL.absoluteString isEqualToString:ZXZX_PAGE])
+    {
+        [[Mixpanel sharedInstance] track:@"进入在线咨询一面"];
     }
     
     _html5WebView.scalesPageToFit = YES;
@@ -90,6 +112,22 @@
         ovc.price = @"";
     }
     
+    switch (ProNo) {
+        case 1:
+            [[Mixpanel sharedInstance] track:@"预约取样" properties:@{@"product":@"和普安"}];
+            break;
+        case 2:
+            [[Mixpanel sharedInstance] track:@"预约取样" properties:@{@"product":@"和家安"}];
+            break;
+        case 3:
+            [[Mixpanel sharedInstance] track:@"预约取样" properties:@{@"product":@"和美安"}];
+            break;
+        default:
+            break;
+    }
+
+    
+    
     [self.navigationController pushViewController:ovc animated:YES];
 }
 
@@ -98,26 +136,36 @@
     NSString *zXurl = [NSString stringWithFormat:ZXZX_PAGE];
     [self.html5WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:zXurl]]];
     orderBt.hidden = zixunBt.hidden = YES;
+    
+    switch (ProNo) {
+        case 1:
+            [[Mixpanel sharedInstance] track:@"进入咨询页" properties:@{@"product":@"和普安"}];
+            break;
+        case 2:
+            [[Mixpanel sharedInstance] track:@"进入咨询页" properties:@{@"product":@"和家安"}];
+            break;
+        case 3:
+            [[Mixpanel sharedInstance] track:@"进入咨询页" properties:@{@"product":@"和美安"}];
+            break;
+        default:
+            break;
+    }
+
 }
 
 - (void)setLeftBarButtonItem{
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@" 返回" style:UIBarButtonItemStylePlain target:self action:@selector(leftAction)];
          self.navigationItem.leftBarButtonItem = item;
-    
-    
-  
 }
 
 - (void)leftAction{
     
-    
-        if ([_html5WebView canGoBack])
-             {
-                 [_html5WebView goBack];
-             }
-
+    if ([_html5WebView canGoBack])
+    {
+        [_html5WebView goBack];
     }
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -148,7 +196,6 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-
     return YES;
 }
 
@@ -168,7 +215,6 @@
         title = [[title substringWithRange:NSMakeRange(0, 11)] stringByAppendingString:@"..."];
     }
     
-    
     self.navigationItem.title = title;
     
     
@@ -187,6 +233,10 @@
         zixunBt.hidden = NO;
     }
 
+    if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/db/topic/"]) {
+        
+        [[Mixpanel sharedInstance] track:@"用户浏览文章" properties:@{@"news":title}];
+    }
     
     loadingView.hidden = YES;
 }

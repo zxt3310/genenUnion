@@ -256,6 +256,8 @@
     toolbar.items = @[item0];
     
     orderTimeTF.inputAccessoryView = toolbar;
+    
+    [[Mixpanel sharedInstance] track:@"进入预约页面"];
 }
 
 - (void)tapAction
