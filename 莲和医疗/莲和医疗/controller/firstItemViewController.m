@@ -85,11 +85,11 @@
     
     if([_strURL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/faq"])
     {
-        [[Mixpanel sharedInstance] track:@"进入FAQ页面"];
+        [[Mixpanel sharedInstance] track:@"首页点击FAQ"];
     }
     if([_strURL.absoluteString isEqualToString:ZXZX_PAGE])
     {
-        [[Mixpanel sharedInstance] track:@"进入在线咨询一面"];
+        [[Mixpanel sharedInstance] track:@"首页点击在线咨询"];
     }
     
     _html5WebView.scalesPageToFit = YES;
@@ -235,7 +235,8 @@
 
     if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/db/topic/"]) {
         
-        [[Mixpanel sharedInstance] track:@"用户浏览文章" properties:@{@"news":title}];
+        NSString *newsContains = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('h3')[0].innerHTML"];
+        [[Mixpanel sharedInstance] track:@"用户浏览文章" properties:@{@"news":newsContains}];
     }
     
     loadingView.hidden = YES;

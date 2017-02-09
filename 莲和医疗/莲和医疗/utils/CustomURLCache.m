@@ -42,11 +42,31 @@
 
 
 - (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request {
-    if ([request.HTTPMethod compare:@"GET"] != NSOrderedSame) {
+    
+    if ([request.URL.absoluteString containsString:@"mapi.lhgene.cn/m/db/newslist"]) {
+        
+        NSString *curUrl = [request.URL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn/m/db/newslist/" withString:@""];
+        NSInteger listId = [curUrl integerValue];
+        switch (listId) {
+            case 1:
+                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"精准医疗"}];
+                break;
+            case 140:
+                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"行业动态"}];
+                break;
+            case 141:
+                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"科普天地"}];
+                break;
+            case 142:
+                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"名家专栏"}];
+                break;
+            default:
+                break;
+        }
         return [super cachedResponseForRequest:request];
     }
-    if (![request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/resources/mobile"]])
-    {
+    
+    if (![request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/resources/mobile"]]){
         return [super cachedResponseForRequest:request];
     }
     

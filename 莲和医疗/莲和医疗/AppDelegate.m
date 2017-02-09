@@ -89,7 +89,7 @@
         [self.window addSubview:guide];
     }
     
-    [[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN] track:@"Luanch App"];
+    [[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN] track:@"启动APP"];
     
     return YES;
 }
