@@ -12,7 +12,8 @@
 #import "orderViewController.h"
 #import "CMCustomViews.h"
 #import "Address.h"
-@interface firstItemViewController : UIViewController<UIWebViewDelegate>
+#import "WXApi.h"
+@interface firstItemViewController : UIViewController<UIWebViewDelegate,UIActionSheetDelegate>
 {
     UIWebView *webViewHtml5;
     BOOL hasLogin;

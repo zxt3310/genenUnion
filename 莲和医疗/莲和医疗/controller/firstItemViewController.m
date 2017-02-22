@@ -19,6 +19,8 @@
     UIButton *orderBt;
     UIButton *zixunBt;
     NSInteger ProNo;
+    UIView *shareView;
+    UIAlertController *aletCtrol;
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -32,6 +34,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:.99];
 
+    UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareButton setBackgroundImage:[UIImage imageNamed:@"4"] forState:UIControlStateNormal];
+    shareButton.frame = CGRectMake(0,0,20,20);
+    [shareButton addTarget:self action:@selector(shareBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:shareButton];
     
     //loading 动画
     float topY = 180;
@@ -95,6 +102,10 @@
     _html5WebView.scalesPageToFit = YES;
     [_html5WebView loadRequest:[NSURLRequest requestWithURL:_strURL]];
     
+    shareView = [[UIView alloc] initWithFrame:CGRectMake(0,0,300,209)];//(0, SCREEN_HEIGHT, SCREEN_WEIGHT, 209*SCREEN_HEIGHT/667)];
+    shareView.backgroundColor = [UIColor redColor];//[UIColor colorWithMyNeed:255 green:255 blue:255 alpha:0.77];
+    //[self.view addSubview:shareView];
+
 
 }
 
@@ -247,7 +258,117 @@
     loadingView.hidden = YES;
 }
 
+- (void)shareBtnAction
+{
+//    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+//    
+//        shareView.transform = CGAffineTransformMakeTranslation(0, -(shareView.frame.size.height));
+//    } completion:^(BOOL finished){
+//        
+//    }];
+#define Button_SIZE 54*SCREEN_WEIGHT/375
+#define Lb_SIZE [UIFont fontWithName:@"STHeitiSC-Light" size:12]
+#define weixin_TAG 10;
+#define pengyouquan_TAG 20;
+#define QQ_TAG 30;
+#define kongjian_TAG 40;
+#define weibo_TAG 50;
+    aletCtrol = [UIAlertController alertControllerWithTitle:@"分享到\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cacle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+    }];
+    
+    aletCtrol.view.layer.cornerRadius = 10;
+    UIButton *weixinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    weixinBtn.frame = CGRectMake(20 * SCREEN_WEIGHT/375, 40 *SCREEN_HEIGHT/667, Button_SIZE, Button_SIZE);
+    [weixinBtn setBackgroundImage:[UIImage imageNamed:@"weixin"] forState:UIControlStateNormal];
+    [weixinBtn addTarget:self action:@selector(shareToAppBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    weixinBtn.tag = weixin_TAG;
+    [aletCtrol.view addSubview:weixinBtn];
+    
+    UILabel *weixinLb = [[UILabel alloc] initWithFrame:CGRectMake(23 * SCREEN_WEIGHT/375, 102 *SCREEN_HEIGHT/667, 48, 12)];
+    weixinLb.text = @"微信好友";
+    weixinLb.font = [UIFont fontWithName:@"STHeitiSC-Light" size:12];
+    [aletCtrol.view addSubview:weixinLb];
+    
+    UIButton *friendCycleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    friendCycleBtn.frame = CGRectMake(107 * SCREEN_WEIGHT/375, 40 * SCREEN_HEIGHT/667, Button_SIZE, Button_SIZE);
+    [friendCycleBtn setBackgroundImage:[UIImage imageNamed:@"penyouquan"] forState:UIControlStateNormal];
+    [friendCycleBtn addTarget:self action:@selector(shareToAppBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    friendCycleBtn.tag = pengyouquan_TAG;
+    [aletCtrol.view addSubview:friendCycleBtn];
+    
+    UILabel *friendCycleLb = [[UILabel alloc] initWithFrame:CGRectMake(116 * SCREEN_WEIGHT/375, 102 * SCREEN_HEIGHT/667, 36, 12)];
+    friendCycleLb.text = @"朋友圈";
+    friendCycleLb.font = Lb_SIZE;
+    [aletCtrol.view addSubview:friendCycleLb];
+    
+    UIButton *qqBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    qqBtn.frame = CGRectMake(194 *SCREEN_WEIGHT/375, 40 *SCREEN_HEIGHT/667, Button_SIZE, Button_SIZE);
+    [qqBtn setBackgroundImage:[UIImage imageNamed:@"qq"] forState:UIControlStateNormal];
+    [qqBtn addTarget:self action:@selector(shareToAppBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    qqBtn.tag = QQ_TAG;
+    [aletCtrol.view addSubview:qqBtn];
+    
+    UILabel *qqLb = [[UILabel alloc] initWithFrame:CGRectMake(199 *SCREEN_WEIGHT/375, 102 *SCREEN_HEIGHT/667, 43, 12)];
+    qqLb.text = @"QQ好友";
+    qqLb.font = Lb_SIZE;
+    [aletCtrol.view addSubview:qqLb];
+    
+    UIButton *qqkongjianBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    qqkongjianBtn.frame = CGRectMake(281 *SCREEN_WEIGHT/375, 40 *SCREEN_HEIGHT/667, Button_SIZE, Button_SIZE);
+    [qqkongjianBtn setBackgroundImage:[UIImage imageNamed:@"qqkongjian"] forState:UIControlStateNormal];
+    [qqkongjianBtn addTarget:self action:@selector(shareToAppBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    qqkongjianBtn.tag = kongjian_TAG;
+    [aletCtrol.view addSubview:qqkongjianBtn];
+    
+    UILabel *qqkongjianLb = [[UILabel alloc] initWithFrame:CGRectMake(287 *SCREEN_WEIGHT/375, 102 *SCREEN_HEIGHT/667, 43, 12)];
+    qqkongjianLb.text = @"QQ空间";
+    qqkongjianLb.font = Lb_SIZE;
+    [aletCtrol.view addSubview:qqkongjianLb];
+    
+    
+    UIButton *weiboBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    weiboBtn.frame = CGRectMake(20 *SCREEN_WEIGHT/375, 131*SCREEN_HEIGHT/667, Button_SIZE, Button_SIZE);
+    [weiboBtn setBackgroundImage:[UIImage imageNamed:@"weibo"] forState:UIControlStateNormal];
+    [weiboBtn addTarget:self action:@selector(shareToAppBtnAction:) forControlEvents:UIControlEventTouchUpInside];
+    weiboBtn.tag = weibo_TAG;
+    [aletCtrol.view addSubview:weiboBtn];
+    
+    UILabel *weiboLb = [[UILabel alloc] initWithFrame:CGRectMake(23*SCREEN_WEIGHT/375, 192 *SCREEN_HEIGHT/667, 48, 12)];
+    weiboLb.text = @"新浪微博";
+    weiboLb.font = Lb_SIZE;
+    [aletCtrol.view addSubview:weiboLb];
+    
+    [aletCtrol addAction:cacle];
+    [self presentViewController:aletCtrol animated:YES completion:nil];
+    
+}
 
+- (void)shareToAppBtnAction:(UIButton *)sender
+{
+    [aletCtrol dismissViewControllerAnimated:YES completion:^{
+    
+        SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
+        sendReq.bText = NO;
+        sendReq.scene = 0;
+        
+        WXMediaMessage *urlMessage = [WXMediaMessage message];
+        urlMessage.title = self.navigationItem.title;
+        urlMessage.description = @"测试测试测试测试测试测试";
+        //[urlMessage setThumbImage:[UIImage imageNamed:@"weibo"]];
+        
+        WXWebpageObject *webObj = [WXWebpageObject object];
+        webObj.webpageUrl = _html5WebView.request.URL.absoluteString;
+        urlMessage.mediaObject = webObj;
+        
+        sendReq.message = urlMessage;
+        
+        [WXApi sendReq:sendReq];
+        
+        NSLog(@" 成功和失败 - %d",[WXApi sendReq:sendReq]);
+    }];
+}
 
 -(void)receivedNotif:(NSNotification *)notification {
     hasLogin = YES;

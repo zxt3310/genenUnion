@@ -12,8 +12,9 @@
 #import "UFanViewController.h"
 #import "leftDrawerViewController.h"
 #import "GuideView.h"
+#import "WXApi.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -24,6 +25,7 @@
 + (AppDelegate *)Delegate;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
 
 
 @end

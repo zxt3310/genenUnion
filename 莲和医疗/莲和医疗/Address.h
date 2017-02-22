@@ -69,6 +69,8 @@
 #define CHUBAOGAO_IMG     @"Chubaogao.png"
 
 #define MIXPANEL_TOKEN @"af67f0a0fb4591e37e976e52e83c058a"
+#define WeChat_AppId @"wx46e3337f9221fdf4"
+#define WeChat_AppSecret @"45f989118eda1a8d5bc5928a4c1a6ee5"
 
 @interface UIFont (custom)
 
