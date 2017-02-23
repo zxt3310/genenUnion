@@ -72,6 +72,9 @@
 #define WeChat_AppId @"wx46e3337f9221fdf4"
 #define WeChat_AppSecret @"45f989118eda1a8d5bc5928a4c1a6ee5"
 
+#define QQ_AppId @"1106003542"
+#define QQ_AppKey @"WjNYIaJcQ55v7J1s"
+
 @interface UIFont (custom)
 
 +(UIFont*) app_FontSize:(CGFloat) size;

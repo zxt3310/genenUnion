@@ -849,11 +849,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
-            timestampString = "509452327.573095"
+            timestampString = "509538233.712172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-isFirstLauch"
             landmarkType = "7">
          </BreakpointContent>
@@ -865,11 +865,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
-            timestampString = "509452327.573095"
+            timestampString = "509538233.712172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-isFirstLauch"
             landmarkType = "7">
          </BreakpointContent>
@@ -961,11 +961,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
-            timestampString = "508139322.869092"
+            timestampString = "509538233.712172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1137,11 +1137,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
-            timestampString = "509452327.573095"
+            timestampString = "509538233.712172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-applicationDidEnterBackground:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1153,11 +1153,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
-            timestampString = "509452327.573095"
+            timestampString = "509538233.712172"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "-applicationWillEnterForeground:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1233,12 +1233,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/firstItemViewController.m"
-            timestampString = "509452962.140451"
+            timestampString = "509538365.634911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "368"
-            endingLineNumber = "368"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "-shareToAppBtnAction:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[firstItemViewController shareToAppBtnAction:]"
+                  moduleName = "&#x83b2;&#x548c;&#x533b;&#x7597;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/damon/Documents/%E6%AD%A3%E5%BC%8F%E5%B7%A5%E7%A8%8B/%E8%8E%B2%E5%92%8C%E5%9F%BA%E5%9B%A0/%E8%8E%B2%E5%92%8C%E5%8C%BB%E7%96%97/%E8%8E%B2%E5%92%8C%E5%8C%BB%E7%96%97/controller/firstItemViewController.m"
+                  timestampString = "509524912.590084"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "355"
+                  endingLineNumber = "355"
+                  offsetFromSymbolStart = "260">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__47-[firstItemViewController shareToAppBtnAction:]_block_invoke"
+                  moduleName = "&#x83b2;&#x548c;&#x533b;&#x7597;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/damon/Documents/%E6%AD%A3%E5%BC%8F%E5%B7%A5%E7%A8%8B/%E8%8E%B2%E5%92%8C%E5%9F%BA%E5%9B%A0/%E8%8E%B2%E5%92%8C%E5%8C%BB%E7%96%97/%E8%8E%B2%E5%92%8C%E5%8C%BB%E7%96%97/controller/firstItemViewController.m"
+                  timestampString = "509524912.593255"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "355"
+                  endingLineNumber = "355"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
+            timestampString = "509538233.712172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-onResp:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/AppDelegate.m"
+            timestampString = "509538233.712172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-application:openURL:options:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1249,11 +1313,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x83b2;&#x548c;&#x533b;&#x7597;/controller/firstItemViewController.m"
-            timestampString = "509451549.754371"
+            timestampString = "509538365.634911"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "-shareToAppBtnAction:"
             landmarkType = "7">
          </BreakpointContent>

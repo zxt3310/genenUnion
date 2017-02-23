@@ -88,14 +88,18 @@
         GuideView *guide = [[GuideView alloc] initWithFrame:self.window.bounds];
         [self.window addSubview:guide];
     }
+    
+    
     [WXApi registerApp:WeChat_AppId];
+    
+    [[TencentOAuth alloc] initWithAppId:QQ_AppId andDelegate:nil];
     [[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN] track:@"启动APP"];
     
     
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return [WXApi handleOpenURL:url delegate:self];
 }
@@ -105,6 +109,12 @@
     return [WXApi handleOpenURL:url delegate:self];
 }
 
+- (void)onResp:(BaseResp *)resp
+{
+    SendMessageToWXResp *sendResp = (SendMessageToWXResp *)resp;
+    NSString *str = [NSString stringWithFormat:@"%d---%@",sendResp.errCode,sendResp.errStr];
+    NSLog(@"%@",str);
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -37,7 +37,7 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>weixin</string>
+		<string>urlscheme</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

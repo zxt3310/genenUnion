@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583F1E4B1E5EE329005AA677 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 583F1E4A1E5EE329005AA677 /* TencentOpenAPI.framework */; };
 		5849C7841DB7177D00B97AF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849C7831DB7177D00B97AF6 /* main.m */; };
 		5849C7871DB7177D00B97AF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849C7861DB7177D00B97AF6 /* AppDelegate.m */; };
 		5849C78F1DB7177D00B97AF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5849C78E1DB7177D00B97AF6 /* Assets.xcassets */; };
@@ -484,6 +485,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		583F1E4A1E5EE329005AA677 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		5849C77F1DB7177D00B97AF6 /* 莲和医疗.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "莲和医疗.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5849C7831DB7177D00B97AF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5849C7851DB7177D00B97AF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 				5887475A1E5D92F900279BB8 /* libc++.tbd in Frameworks */,
 				588747581E5D911D00279BB8 /* libsqlite3.0.tbd in Frameworks */,
 				588747561E5D90FA00279BB8 /* libz.tbd in Frameworks */,
+				583F1E4B1E5EE329005AA677 /* TencentOpenAPI.framework in Frameworks */,
 				588747541E5D901400279BB8 /* SystemConfiguration.framework in Frameworks */,
 				588747511E5D8FD900279BB8 /* libWeChatSDK.a in Frameworks */,
 				584C4B671E498FBF0095DDB3 /* QuartzCore.framework in Frameworks */,
@@ -1099,6 +1102,7 @@
 		584C49531E4988010095DDB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				583F1E4A1E5EE329005AA677 /* TencentOpenAPI.framework */,
 				5887475B1E5D9CB900279BB8 /* CoreTelephony.framework */,
 				588747591E5D92F900279BB8 /* libc++.tbd */,
 				588747571E5D911D00279BB8 /* libsqlite3.0.tbd */,

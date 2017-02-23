@@ -13,6 +13,7 @@
 #import "leftDrawerViewController.h"
 #import "GuideView.h"
 #import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
 

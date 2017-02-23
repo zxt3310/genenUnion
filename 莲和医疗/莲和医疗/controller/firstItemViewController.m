@@ -268,11 +268,11 @@
 //    }];
 #define Button_SIZE 54*SCREEN_WEIGHT/375
 #define Lb_SIZE [UIFont fontWithName:@"STHeitiSC-Light" size:12]
-#define weixin_TAG 10;
-#define pengyouquan_TAG 20;
-#define QQ_TAG 30;
-#define kongjian_TAG 40;
-#define weibo_TAG 50;
+#define weixin_TAG 10
+#define pengyouquan_TAG 20
+#define QQ_TAG 30
+#define kongjian_TAG 40
+#define weibo_TAG 50
     aletCtrol = [UIAlertController alertControllerWithTitle:@"分享到\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cacle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
@@ -347,26 +347,37 @@
 
 - (void)shareToAppBtnAction:(UIButton *)sender
 {
+    NSString *shareUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_html5WebView.request.URL.absoluteString];
     [aletCtrol dismissViewControllerAnimated:YES completion:^{
-    
-        SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
-        sendReq.bText = NO;
-        sendReq.scene = 0;
-        
-        WXMediaMessage *urlMessage = [WXMediaMessage message];
-        urlMessage.title = self.navigationItem.title;
-        urlMessage.description = @"测试测试测试测试测试测试";
-        //[urlMessage setThumbImage:[UIImage imageNamed:@"weibo"]];
-        
-        WXWebpageObject *webObj = [WXWebpageObject object];
-        webObj.webpageUrl = _html5WebView.request.URL.absoluteString;
-        urlMessage.mediaObject = webObj;
-        
-        sendReq.message = urlMessage;
-        
-        [WXApi sendReq:sendReq];
-        
-        NSLog(@" 成功和失败 - %d",[WXApi sendReq:sendReq]);
+        switch (sender.tag) {
+            case weixin_TAG:{
+                SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
+                sendReq.bText = NO;
+                sendReq.scene = 0;
+                
+                WXMediaMessage *urlMessage = [WXMediaMessage message];
+                urlMessage.title = self.navigationItem.title;
+                urlMessage.description = @"测试测试测试测试测试测试";
+                //[urlMessage setThumbImage:[UIImage imageNamed:@"weibo"]];
+                
+                WXWebpageObject *webObj = [WXWebpageObject object];
+                webObj.webpageUrl = shareUrlStr;
+                urlMessage.mediaObject = webObj;
+                
+                sendReq.message = urlMessage;
+                
+                [WXApi sendReq:sendReq];
+                
+                NSLog(@" 成功和失败 - %d",[WXApi sendReq:sendReq]);
+            }
+                break;
+            case QQ_TAG:{
+                
+            }
+            default:
+                break;
+        }
+       
     }];
 }
 
