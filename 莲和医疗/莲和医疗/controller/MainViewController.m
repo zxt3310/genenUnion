@@ -211,18 +211,7 @@
         if(!hostReach.isReachable)
         {
             if(appUseCount == 0)
-            {
-//                NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
-//                    
-//                NSString *htmlString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-//                    
-//                NSString *basePath = [[NSBundle mainBundle] bundlePath];
-//                    
-//                NSURL *baseURL = [NSURL fileURLWithPath:basePath];
-//                    
-//                [self.html5View loadHTMLString:htmlString baseURL:baseURL];
-//                URL = baseURL;
-                
+            {                
                 NSURLRequest *request = [NSURLRequest requestWithURL:urlLocal];
                 
                 [_html5View loadRequest:request];

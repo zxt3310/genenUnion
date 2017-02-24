@@ -21,6 +21,7 @@
     NSInteger ProNo;
     UIView *shareView;
     UIAlertController *aletCtrol;
+    NSString *newsContains;
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -246,7 +247,7 @@
 
     if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/db/topic/"]) {
         
-        NSString *newsContains = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('h3')[0].innerHTML"];
+        newsContains = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('h3')[0].innerHTML"];
         [[Mixpanel sharedInstance] track:@"用户浏览文章" properties:@{@"news":newsContains}];
     }
     
@@ -347,33 +348,56 @@
 
 - (void)shareToAppBtnAction:(UIButton *)sender
 {
-    NSString *shareUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_html5WebView.request.URL.absoluteString];
+    NSString *shareWeixinUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_html5WebView.request.URL.absoluteString];
+    NSString *shareQQUrlStr = [NSString stringWithFormat:@"%@?share=qq",_html5WebView.request.URL.absoluteString];
     [aletCtrol dismissViewControllerAnimated:YES completion:^{
         switch (sender.tag) {
-            case weixin_TAG:{
+            case weixin_TAG:
+            case pengyouquan_TAG:{
                 SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
-                sendReq.bText = NO;
-                sendReq.scene = 0;
+                              sendReq.bText = NO;
+                 WXMediaMessage *urlMessage = [WXMediaMessage message];
+                           urlMessage.title = newsContains;
+                     urlMessage.description = @"测试测试测试测试测试测试";
                 
-                WXMediaMessage *urlMessage = [WXMediaMessage message];
-                urlMessage.title = self.navigationItem.title;
-                urlMessage.description = @"测试测试测试测试测试测试";
-                //[urlMessage setThumbImage:[UIImage imageNamed:@"weibo"]];
+                    WXWebpageObject *webObj = [WXWebpageObject object];
+                          webObj.webpageUrl = shareWeixinUrlStr;
+                     urlMessage.mediaObject = webObj;
+                            sendReq.message = urlMessage;
                 
-                WXWebpageObject *webObj = [WXWebpageObject object];
-                webObj.webpageUrl = shareUrlStr;
-                urlMessage.mediaObject = webObj;
-                
-                sendReq.message = urlMessage;
+                if (sender.tag == weixin_TAG) {
+                    sendReq.scene = 0;
+                }
+                else
+                    sendReq.scene = 1;
                 
                 [WXApi sendReq:sendReq];
                 
                 NSLog(@" 成功和失败 - %d",[WXApi sendReq:sendReq]);
             }
                 break;
-            case QQ_TAG:{
-                
+            case QQ_TAG:
+            case kongjian_TAG:{
+                QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareQQUrlStr] title:newsContains description:@"测试测试" previewImageURL:[NSURL URLWithString:@"http://lifehealthcare.com/wp-content/uploads/2017/02/健康生活-300x200.jpg"]];
+                SendMessageToQQReq *sendRep = [SendMessageToQQReq reqWithContent:newObj];
+                if (sender.tag == QQ_TAG) {
+                    [QQApiInterface sendReq:sendRep];
+                }
+                else
+                    [QQApiInterface SendReqToQZone:sendRep];
             }
+                break;
+            case weibo_TAG:{
+                                 WBMessageObject *obj = [[WBMessageObject alloc] init];
+                            WBWebpageObject *mediaObj = [[WBWebpageObject alloc] init];
+                                       mediaObj.title = self.navigationItem.title;
+                                 mediaObj.description = @"测试测试";
+                                  mediaObj.webpageUrl = shareQQUrlStr;
+                                      obj.mediaObject = mediaObj;
+                WBSendMessageToWeiboRequest *weiboReq = [WBSendMessageToWeiboRequest requestWithMessage:obj];
+                [WeiboSDK sendRequest:weiboReq];
+            }
+                break;
             default:
                 break;
         }

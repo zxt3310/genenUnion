@@ -12,10 +12,9 @@
 #import "UFanViewController.h"
 #import "leftDrawerViewController.h"
 #import "GuideView.h"
-#import "WXApi.h"
-#import <TencentOpenAPI/TencentOAuth.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,WXApiDelegate>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate,WeiboSDKDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

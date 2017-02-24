@@ -8,6 +8,43 @@
 
 #import "Address.h"
 
+@implementation WeixinBackTools
+
+- (void)onResp:(BaseResp *)resp
+{
+    SendMessageToWXResp *sendResp = (SendMessageToWXResp *)resp;
+    NSString *str = [NSString stringWithFormat:@"%d---%@",sendResp.errCode,sendResp.errStr];
+    alertMsgView(@"分享成功", [UIApplication sharedApplication].keyWindow.rootViewController);
+    NSLog(@"%@",str);
+}
+
+@end
+
+@implementation QQBackTools
+
+- (void)onResp:(QQBaseResp *)resp
+{
+    SendMessageToQQResp *sendResp = (SendMessageToQQResp *)resp;
+    if(!sendResp.errorDescription)
+    {
+        alertMsgView(@"分享成功", [UIApplication sharedApplication].keyWindow.rootViewController);
+    }
+    else
+        NSLog(@"分享失败%@",sendResp.errorDescription);
+}
+
+- (void)onReq:(QQBaseReq *)req
+{
+    
+}
+
+- (void)isOnlineResponse:(NSDictionary *)response
+{
+    
+}
+
+@end
+
 @implementation UIFont (custom)
 
 +(UIFont *)app_FontSize:(CGFloat)size

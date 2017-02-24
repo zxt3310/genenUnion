@@ -27,7 +27,7 @@
     {
         NSDate *currentTime = getCurrentDate();
         NSTimeInterval time = [currentTime timeIntervalSinceDate:lastTime];
-        
+        //12小时后登录失效
         if (time >(12*60*60)) {
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNo"];
@@ -38,7 +38,6 @@
     UIColor *startColor = [UIColor colorWithRed:196.0/255 green:174.0/255 blue:228.0/255 alpha:1];
     UIColor *endColor = [UIColor colorWithRed:135.0/255 green:126.0/255 blue:188.0/255 alpha:1];
     CGRect rect = CGRectMake(0, 0, SCREEN_WEIGHT, 64);
-
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -48,37 +47,21 @@
     MainViewController *mainVC = [[MainViewController alloc] initWithNibName:@"MainViewController" bundle:nil];
     mainVC.barColor = [self drawImageWithColor:startColor endColor:endColor rect:rect];
     [mainVC setStrURL:[[NSString alloc] initWithFormat:MAIN_PAGE]];
-    // webVC.isMainTabPage = true;
-
-    
-    
-    
-    //UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
+  
     leftDrawerViewController *leftVC = [[leftDrawerViewController alloc] init];
     UFanViewController *uFanVC = [[UFanViewController alloc] initWithCenterViewController:mainVC leftDrawerViewController:leftVC];
     uFanVC.showShadow = YES;
     self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:uFanVC];
     
-    
     uFanVC.navigationItem.title = @"和普安";
     [self.rootNavigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont fontWithName:@"FZXDXJW--GB1-0" size:18],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    
-    //self.rootNavigationController.navigationBar.barTintColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:0];
-    
-    
-    
-    //UIImage *image = [UIImage imageNamed:@"Rectangle 28@3x.png"];
+  
     [self.rootNavigationController.navigationBar setBackgroundImage:[self drawImageWithColor:startColor endColor:endColor rect:rect] forBarMetrics:UIBarMetricsDefault];
-
     self.rootNavigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    
     [[self window] setRootViewController:self.rootNavigationController];
-   
-    
-    //self.window.rootViewController = uFanVC;
     [self.window makeKeyAndVisible];
     
     sleep(1);
@@ -88,32 +71,49 @@
         GuideView *guide = [[GuideView alloc] initWithFrame:self.window.bounds];
         [self.window addSubview:guide];
     }
-    
-    
+    //注册微信
     [WXApi registerApp:WeChat_AppId];
+    //注册QQ
+    TencentOAuth *tencentDemo = [[TencentOAuth alloc] initWithAppId:QQ_AppId andDelegate:nil];
+    NSLog(@"%@",tencentDemo.accessToken);
+    //注册微博
+    [WeiboSDK registerApp:WeiBo_AppId];
+    //注册美洽
+    [MQManager initWithAppkey:MQ_App_Key completion:^(NSString *clientId,NSError *error){
+        NSLog(@"clientId = %@",clientId);
+        if (error) {
+            NSLog(@"%@",error);
+        }
+    }];
     
-    [[TencentOAuth alloc] initWithAppId:QQ_AppId andDelegate:nil];
     [[Mixpanel sharedInstanceWithToken:MIXPANEL_TOKEN] track:@"启动APP"];
     
     
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [WXApi handleOpenURL:url delegate:self];
-}
-
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    return [WXApi handleOpenURL:url delegate:self];
+    if ([url.scheme isEqualToString:WeChat_AppId]) {
+        WeixinBackTools *wxResp = [[WeixinBackTools alloc] init];
+        return [WXApi handleOpenURL:url delegate:wxResp];
+    }
+    else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"QQ%@",@"41EC4656"]])
+    {
+        QQBackTools *qqRest = [[QQBackTools alloc] init];
+        return [QQApiInterface handleOpenURL:url delegate:qqRest];
+    }
+    else if ([url.scheme isEqualToString:[NSString stringWithFormat:@"wb7a5d2d6d"]])
+    {
+        return [WeiboSDK handleOpenURL:url delegate:self];
+    }
+    else
+        return YES;
 }
 
-- (void)onResp:(BaseResp *)resp
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response
 {
-    SendMessageToWXResp *sendResp = (SendMessageToWXResp *)resp;
-    NSString *str = [NSString stringWithFormat:@"%d---%@",sendResp.errCode,sendResp.errStr];
-    NSLog(@"%@",str);
+   
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
