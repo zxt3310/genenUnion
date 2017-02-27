@@ -401,6 +401,7 @@
 		5861B6291DFE54860089E185 /* 千图网-红色的英文印章.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B4AF1DFE54850089E185 /* 千图网-红色的英文印章.png */; };
 		5861B62A1DFE54860089E185 /* 千图网-红色的英文印章@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B4B01DFE54850089E185 /* 千图网-红色的英文印章@2x.png */; };
 		5861B62B1DFE54860089E185 /* 千图网-红色的英文印章@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B4B11DFE54850089E185 /* 千图网-红色的英文印章@3x.png */; };
+		587863081E6427D300F529FB /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = 587863071E6427D300F529FB /* 120.png */; };
 		588574831E5FE19200DCAC4B /* MeiQiaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5885733C1E5FE19200DCAC4B /* MeiQiaSDK.framework */; };
 		588574841E5FE19200DCAC4B /* MQServiceToViewInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 5885733F1E5FE19200DCAC4B /* MQServiceToViewInterface.m */; };
 		588574851E5FE19200DCAC4B /* MQAnimatorPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 588573431E5FE19200DCAC4B /* MQAnimatorPush.m */; };
@@ -1040,6 +1041,7 @@
 		5861B4AF1DFE54850089E185 /* 千图网-红色的英文印章.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "千图网-红色的英文印章.png"; sourceTree = "<group>"; };
 		5861B4B01DFE54850089E185 /* 千图网-红色的英文印章@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "千图网-红色的英文印章@2x.png"; sourceTree = "<group>"; };
 		5861B4B11DFE54850089E185 /* 千图网-红色的英文印章@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "千图网-红色的英文印章@3x.png"; sourceTree = "<group>"; };
+		587863071E6427D300F529FB /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
 		5885733C1E5FE19200DCAC4B /* MeiQiaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MeiQiaSDK.framework; sourceTree = "<group>"; };
 		5885733E1E5FE19200DCAC4B /* MQServiceToViewInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MQServiceToViewInterface.h; sourceTree = "<group>"; };
 		5885733F1E5FE19200DCAC4B /* MQServiceToViewInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MQServiceToViewInterface.m; sourceTree = "<group>"; };
@@ -1615,6 +1617,7 @@
 		5861B3251DFE54850089E185 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				587863071E6427D300F529FB /* 120.png */,
 				5887472C1E5D704200279BB8 /* 分享 */,
 				589543791E5C30A0003DDD5D /* 4@2x.png */,
 				5895437A1E5C30A0003DDD5D /* 4.png */,
@@ -3122,6 +3125,7 @@
 				5861B5AE1DFE54850089E185 /* iconLiucheng@3x.png in Resources */,
 				5861B5D11DFE54850089E185 /* 10-device-access-storage.png in Resources */,
 				5861B5301DFE54850089E185 /* ico_kouqiang@2x.png in Resources */,
+				587863081E6427D300F529FB /* 120.png in Resources */,
 				5861B5B61DFE54850089E185 /* 引导页3@2x.png in Resources */,
 				5861B6291DFE54860089E185 /* 千图网-红色的英文印章.png in Resources */,
 				5861B5B41DFE54850089E185 /* 引导页2@3x.png in Resources */,

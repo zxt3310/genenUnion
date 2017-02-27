@@ -12,6 +12,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <MeiQiaSDK/MQManager.h>
 #import "WeiboSDK.h"
+#import "MQChatViewManager.h"
 #import "Mixpanel.h"
 
 #ifndef Adress_h
@@ -23,6 +24,7 @@
 #define LJYY_PAGE                        @"http://ctdna.m3gene.com:81/m/order"
 #define WDJC_PAGE                        @"http://mapi.lhgene.cn/m/my/report"
 #define FWLC_PAGE                        @"http://mapi.lhgene.cn/m/procedure"
+#define FAQ_PAGE                         @"http://mapi.lhgene.cn/m/faq"
 #define LOIGN_PAGE                       @""
 
 #define WDJC_REQUEST                     @"http://mapi.lhgene.cn/m/api/reports"

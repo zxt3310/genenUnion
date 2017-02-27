@@ -49,16 +49,16 @@
         NSInteger listId = [curUrl integerValue];
         switch (listId) {
             case 1:
-                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"精准医疗"}];
+                [[Mixpanel sharedInstance] track:@"基因世界“精准医疗”选项的点击"];
                 break;
             case 140:
-                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"行业动态"}];
+                [[Mixpanel sharedInstance] track:@"基因世界“行业动态”选项的点击"];
                 break;
             case 141:
-                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"科普天地"}];
+                [[Mixpanel sharedInstance] track:@"基因世界“科普天地”选项的点击"];
                 break;
             case 142:
-                [[Mixpanel sharedInstance] track:@"点击基因世界分页" properties:@{@"option":@"名家专栏"}];
+                [[Mixpanel sharedInstance] track:@"基因世界“名家专栏”选项的点击"];
                 break;
             default:
                 break;

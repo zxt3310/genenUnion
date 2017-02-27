@@ -52,7 +52,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[Mixpanel sharedInstance] track:@"用户进入我的检测"];
+    [[Mixpanel sharedInstance] track:@"首页“我的检测”点击"];
     
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
     

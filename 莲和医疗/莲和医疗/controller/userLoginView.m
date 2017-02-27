@@ -157,7 +157,7 @@
 - (IBAction)Bt_LoginClick:(id)sender
 {
     loadingView.hidden = NO;
-    [[Mixpanel sharedInstance] track:@"用户点击登录按钮"];
+    [[Mixpanel sharedInstance] track:@"登陆页面“登录”按钮点击"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/validation?mobile=%@&code=%@"
@@ -220,8 +220,6 @@
                 return;
             }
              NSLog(@"listarea result invalid: %@", strResp);
-           // [self setInt:([[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""] integerValue]) forKey:@"userPhoneNo"];
-            //[self setString:token objctForKey:@"token"];
             
             [[NSUserDefaults standardUserDefaults] setObject:getCurrentDate() forKey:@"lastLoginTIme"];
            
@@ -240,13 +238,13 @@
                  if(_isReportTap)
                  {
                     [_delegate loginPushReport:token];
+                     [[Mixpanel sharedInstance] track:@"登录成功"];
                  }
              }];
             return;
         });
-    });
-    
-   }
+    });    
+}
 
 -(void)closeDrawerAnimtaion:(BOOL)animatied complete:(void (^)(BOOL))completion {
     if (animatied) {
@@ -267,7 +265,7 @@
 
 - (void)sendLoginRequest
 {
-    [[Mixpanel sharedInstance] track:@"用户获取验证码"];
+    [[Mixpanel sharedInstance] track:@"登陆页面“获取验证码”按钮点击"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
