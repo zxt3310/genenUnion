@@ -36,7 +36,7 @@
     [super viewDidLoad];  
     
     self.view.backgroundColor = [UIColor grayColor];
-    self.items = @[@"",WDJC_PAGE,ZXZX_PAGE,FWLC_PAGE,GYWM_PAGE,LOIGN_PAGE];
+    self.items = @[@"",WDJC_PAGE,ZXZX_PAGE,FWLC_PAGE,advise_URL,LOIGN_PAGE];
     self.itemsMenu = @[@"",@"我的检测",@"在线咨询",@"服务流程",@"关于我们",@"登        录"];
     self.itemsImageName =@[@"",WDJC_IMAGE,ZXZX_IMAGE,FWLC_IMAGE,GYWM_IMAGE,LOIGN_IMAGE];
     // Do any additional setup after loading the view.
@@ -182,9 +182,9 @@
                 }
                 else
                 {
-                firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
-                firstVC.strURL = url;
-                [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
+                    firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
+                    firstVC.strURL = url;
+                    [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
                 }
             }
             else

@@ -42,6 +42,8 @@
 
 #define orderRequest_RUL                 @"http://mapi.lhgene.cn/m/api/order"
 
+#define advise_URL  @"http://a.eqxiu.com/s/b7uWplIt?eqrcode=1&from=singlemessage&isappinstalled=0"
+
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WEIGHT [[UIScreen mainScreen] bounds].size.width
 

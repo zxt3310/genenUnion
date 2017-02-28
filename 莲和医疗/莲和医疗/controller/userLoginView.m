@@ -234,11 +234,11 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"hasLoginState" object:nil];
              [self closeDrawerAnimtaion:YES complete:^(BOOL finished)
              {
+                 [[Mixpanel sharedInstance] track:@"登录成功"];
                  [[NSNotificationCenter defaultCenter] postNotificationName:@"updateToken" object:nil];
                  if(_isReportTap)
                  {
                     [_delegate loginPushReport:token];
-                     [[Mixpanel sharedInstance] track:@"登录成功"];
                  }
              }];
             return;

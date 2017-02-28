@@ -48,6 +48,7 @@
     [super viewDidLoad];
     
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNewMQMessages:) name:MQ_RECEIVED_NEW_MESSAGES_NOTIFICATION object:nil];
     
     _html5View123.hidden = YES;
     
@@ -70,7 +71,6 @@
     [self setNewBar];
     
 }
-
 
 - (void)setNewBar
 {
@@ -127,23 +127,6 @@
     [eMailBtn setHidden:NO];
     [eMailBtn addTarget:self action:@selector(eMailBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.bar.topItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:eMailBtn];
-    
-    
-    /* 两种设置button的方式 上面更适合图片 下面的方式会造成button为不变的蓝色
-    UIImage *image2 = [UIImage imageNamed:@"SIDE-list.png"];
-    UIBarButtonItem *navLeftButton = [[UIBarButtonItem alloc] initWithImage:image2
-                                                                      style:UIBarButtonItemStylePlain
-                                                                     target:self
-                                                                     action:@selector(leftAction)];
-    
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
-    negativeSpacer.width = 0 ;//这个数值可以根据情况自由变化
-    negativeSpacer.customView.backgroundColor = [UIColor whiteColor];
-    self.UF_ViewController.navigationItem.leftBarButtonItems = @[negativeSpacer,navLeftButton];
-    
-    */
-    
 }
 
 - (void)viewWillLayoutSubviews
@@ -275,7 +258,12 @@
         isMainPage = NO;
         return NO;
     }
-
+    
+    if([currentUrl.absoluteString isEqualToString:ZXZX_PAGE])
+    {
+        MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
+        [chatViewManager pushMQChatViewControllerInViewController:self];
+    }
    
     if (![currentUrl isEqual:URL] & ![currentUrl isEqual:urlLocal] & ![a isEqualToString:@"about:blank"])
     {
@@ -327,6 +315,16 @@
     [self.html5View stringByEvaluatingJavaScriptFromString:js];
 
 }
+
+- (void)didReceiveNewMQMessages:(NSNotification *)notification{
+
+    [MQManager getUnreadMessagesWithCompletion:^(NSArray *messages, NSError *error){
+    
+        NSLog(@"%lu",(unsigned long)messages.count);
+    }];
+    
+}
+
 
 -(void)loginPushReport:(NSString *)token
 {

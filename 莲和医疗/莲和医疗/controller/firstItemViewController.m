@@ -24,19 +24,20 @@
     NSString *newsContains;
     UIButton *shareButton;
     NSString *descriptionStr;
+    WebViewJavascriptBridge *brige;
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
-  //  [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,-60) forBarMetrics:UIBarMetricsDefault];
+    _html5WebView.delegate = self;
     
     [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont systemFontOfSize:19],
-       NSForegroundColorAttributeName:[UIColor whiteColor]}];
+                                              @{NSFontAttributeName:[UIFont systemFontOfSize:19],
+                                     NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:.99];
-    
+
+    //分享按钮
     shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareButton setBackgroundImage:[UIImage imageNamed:@"4"] forState:UIControlStateNormal];
     shareButton.frame = CGRectMake(0,0,20,20);
@@ -53,12 +54,8 @@
     [self.view addSubview:loadingView];
     
     hasLogin = NO;
-   
     
-    _html5WebView.delegate = self;
-    
-   // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"hasLoginState" object:nil];
-    
+    //点击追踪
     if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
     {
         ProNo = [[_strURL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn/m/product/" withString:@""] integerValue];
@@ -108,9 +105,12 @@
     _html5WebView.scalesPageToFit = YES;
     [_html5WebView loadRequest:[NSURLRequest requestWithURL:_strURL]];
     
-//    shareView = [[UIView alloc] initWithFrame:CGRectMake(0,0,300,209)];//(0, SCREEN_HEIGHT, SCREEN_WEIGHT, 209*SCREEN_HEIGHT/667)];
-//    shareView.backgroundColor = [UIColor redColor];//[UIColor colorWithMyNeed:255 green:255 blue:255 alpha:0.77];
-//    //[self.view addSubview:shareView];
+    //java桥接
+//    brige = [WebViewJavascriptBridge bridgeForWebView:_html5WebView];
+//    [brige registerHandler:@"jsInvokeJava();" handler:^(id data,WVJBResponseCallback response){
+//    
+//        NSLog(@"%@",data);
+//    }];
 }
 
 - (void)orderBtClick
@@ -211,8 +211,12 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    if ([request.URL.scheme isEqualToString:@"objectc"]) {
+        [[Mixpanel sharedInstance] track:@"活动图：活动宣传H5第九页“提交”按钮的点击"];
+        return NO;
+    }
     //隐藏分享按钮
-    if ([request.URL.absoluteString isEqualToString:ZXZX_PAGE] || [request.URL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/news"]) {
+    if ([request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/my/report"] || [request.URL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/news"]) {
         shareButton.hidden = YES;
     }
     else
@@ -253,7 +257,6 @@
         zixunBt.hidden = NO;
     }
     //获取文章
-    
     if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/db/topic/"]) {
         newsContains = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('h3')[0].innerHTML"];
         NSString *curStr = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].innerHTML"];
@@ -265,8 +268,21 @@
         newsContains = self.navigationItem.title;
         descriptionStr = @"常见问题";
     }
+    
+    if ([webView.request.URL.absoluteString isEqualToString:advise_URL])
+    {
+        newsContains = self.navigationItem.title;
+        descriptionStr = @"";
+        [[Mixpanel sharedInstance] track:@"活动图：活动宣传图点击次数"];
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1*NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+        [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"(function(){$('.comp_button').click(function(){window.location.href='objectC://'});})()"]];
+    });
+    
     loadingView.hidden = YES;
 }
+
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
@@ -275,6 +291,7 @@
 
 - (void)shareBtnAction
 {
+    //[_html5WebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"(function(){$('.comp_button').click(function(){window.location.href='http://www.baidu.com'});})()"]];
 //    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
 //    
 //        shareView.transform = CGAffineTransformMakeTranslation(0, -(shareView.frame.size.height));
@@ -418,7 +435,14 @@
                                       obj.imageObject = imageObj;
                                              obj.text = [NSString stringWithFormat:@"%@ %@",newsContains,shareWeiboUrlStr];
                 WBSendMessageToWeiboRequest *weiboReq = [WBSendMessageToWeiboRequest requestWithMessage:obj];
-                [WeiboSDK sendRequest:weiboReq];
+                @try {
+                    [WeiboSDK sendRequest:weiboReq];
+                } @catch (NSException *exception) {
+                    NSLog(@"%@",exception);
+                    return;
+                } @finally {
+                    
+                }                
             }
                 break;
             default:
