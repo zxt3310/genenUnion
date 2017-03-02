@@ -18,7 +18,7 @@
 #ifndef Adress_h
 #define Adress_h
 
-#define MAIN_PAGE                        @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/index.html"
+#define MAIN_PAGE                        @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/dev-index.html"// @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/index.html"
 #define ZXZX_PAGE                        @"https://static.meiqia.com/dist/standalone.html?eid=33791"
 #define GYWM_PAGE                        @"http://mapi.lhgene.cn/m/about"
 #define LJYY_PAGE                        @"http://ctdna.m3gene.com:81/m/order"
@@ -35,6 +35,7 @@
 #define WDJC_IMAGE                       @"iconfontZixunjiluzixun"
 #define FWLC_IMAGE                       @"iconfontIuchengrenwu"
 #define LOIGN_IMAGE                      @"iconfontLogout"
+#define LXWM_IMAGE                       @"联系我们"
 
 #define PRODUCT1_URL                     @"http://mapi.lhgene.cn/m/product/1"
 #define PRODUCT2_URL                     @"http://mapi.lhgene.cn/m/product/2"
@@ -42,7 +43,7 @@
 
 #define orderRequest_RUL                 @"http://mapi.lhgene.cn/m/api/order"
 
-#define advise_URL  @"http://a.eqxiu.com/s/b7uWplIt?eqrcode=1&from=singlemessage&isappinstalled=0"
+#define advise_URL  @"http://a.eqxiu.com/s/b7uWplIt?eqrcode=1&from=singlemessage&isappinstalled=0&lhtype=share"
 
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define SCREEN_WEIGHT [[UIScreen mainScreen] bounds].size.width

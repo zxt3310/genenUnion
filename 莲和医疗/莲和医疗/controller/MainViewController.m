@@ -263,6 +263,8 @@
     {
         MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
         [chatViewManager pushMQChatViewControllerInViewController:self];
+        [[Mixpanel sharedInstance] track:@"首页“在线咨询”点击"];
+        return NO;
     }
    
     if (![currentUrl isEqual:URL] & ![currentUrl isEqual:urlLocal] & ![a isEqualToString:@"about:blank"])

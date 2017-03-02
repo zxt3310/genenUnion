@@ -58,6 +58,7 @@
     //点击追踪
     if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
     {
+        descriptionStr = @"莲和医疗致力于肿瘤基因检测在临床医学与健康服务中的推广和应用，为个人及家庭提供个性化健康指导和全方位的干预管理。";
         ProNo = [[_strURL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn/m/product/" withString:@""] integerValue];
         switch (ProNo) {
             case 1:
@@ -95,11 +96,9 @@
     
     if([_strURL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/faq"])
     {
+        newsContains = @"肿瘤基因超早期检测";
+        descriptionStr = @"什么是癌症，癌症是如何发生的？";
         [[Mixpanel sharedInstance] track:@"首页“FAQ”点击"];
-    }
-    if([_strURL.absoluteString isEqualToString:ZXZX_PAGE])
-    {
-        [[Mixpanel sharedInstance] track:@"首页“在线咨询”点击"];
     }
     
     _html5WebView.scalesPageToFit = YES;
@@ -140,17 +139,15 @@
         default:
             break;
     }
-
-    
     
     [self.navigationController pushViewController:ovc animated:YES];
 }
 
 - (void)zixunBtClick
 {
-    NSString *zXurl = [NSString stringWithFormat:ZXZX_PAGE];
-    [self.html5WebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:zXurl]]];
-    orderBt.hidden = zixunBt.hidden = YES;
+    MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
+    
+//    orderBt.hidden = zixunBt.hidden = YES;
     
     switch (ProNo) {
         case 1:
@@ -166,6 +163,7 @@
             break;
     }
 
+    [chatViewManager pushMQChatViewControllerInViewController:self];
 }
 
 - (void)setLeftBarButtonItem{
@@ -265,18 +263,18 @@
         [[Mixpanel sharedInstance] track:@"文章点击" properties:@{@"title":newsContains}];
     }
     if ([webView.request.URL.absoluteString isEqualToString:FAQ_PAGE]) {
-        newsContains = self.navigationItem.title;
-        descriptionStr = @"常见问题";
+        newsContains = @"肿瘤基因超早期检测";
+        descriptionStr = @"什么是癌症，癌症是如何发生的？";
     }
     
     if ([webView.request.URL.absoluteString isEqualToString:advise_URL])
     {
         newsContains = self.navigationItem.title;
-        descriptionStr = @"";
+        descriptionStr = @"我确定这份奢侈品是你想要的";
         [[Mixpanel sharedInstance] track:@"活动图：活动宣传图点击次数"];
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1*NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3*NSEC_PER_SEC)), dispatch_get_main_queue(),^{
         [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"(function(){$('.comp_button').click(function(){window.location.href='objectC://'});})()"]];
     });
     
@@ -305,7 +303,7 @@
 #define QQ_TAG 30
 #define kongjian_TAG 40
 #define weibo_TAG 50
-    aletCtrol = [UIAlertController alertControllerWithTitle:@"分享到\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    aletCtrol = [UIAlertController alertControllerWithTitle:@"分享到\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *cacle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
     }];
@@ -374,7 +372,6 @@
     
     [aletCtrol addAction:cacle];
     [self presentViewController:aletCtrol animated:YES completion:nil];
-    
 }
 
 - (void)shareToAppBtnAction:(UIButton *)sender
@@ -384,6 +381,7 @@
     NSString *shareWeixinUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_html5WebView.request.URL.absoluteString];
     NSString *shareQQUrlStr = [NSString stringWithFormat:@"%@?share=qq",_html5WebView.request.URL.absoluteString];
     NSString *shareWeiboUrlStr = [NSString stringWithFormat:@"%@?share=weibo",_html5WebView.request.URL.absoluteString];
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"120"]);;
     [aletCtrol dismissViewControllerAnimated:YES completion:^{
         switch (sender.tag) {
             case weixin_TAG:
@@ -396,6 +394,7 @@
                               sendReq.bText = NO;
                  WXMediaMessage *urlMessage = [WXMediaMessage message];
                            urlMessage.title = newsContains;
+                       urlMessage.thumbData = imageData;
                      urlMessage.description = descriptionStr;
                     WXWebpageObject *webObj = [WXWebpageObject object];
                           webObj.webpageUrl = shareWeixinUrlStr;
@@ -419,7 +418,7 @@
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[QQApiInterface getQQInstallUrl]]];
                     return;
                 }
-                QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareQQUrlStr] title:newsContains description:descriptionStr previewImageURL:nil];
+                QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareQQUrlStr] title:newsContains description:descriptionStr previewImageData:imageData];
                 SendMessageToQQReq *sendRep = [SendMessageToQQReq reqWithContent:newObj];
                 if (sender.tag == QQ_TAG) {
                     [QQApiInterface sendReq:sendRep];

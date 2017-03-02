@@ -36,9 +36,9 @@
     [super viewDidLoad];  
     
     self.view.backgroundColor = [UIColor grayColor];
-    self.items = @[@"",WDJC_PAGE,ZXZX_PAGE,FWLC_PAGE,advise_URL,LOIGN_PAGE];
-    self.itemsMenu = @[@"",@"我的检测",@"在线咨询",@"服务流程",@"关于我们",@"登        录"];
-    self.itemsImageName =@[@"",WDJC_IMAGE,ZXZX_IMAGE,FWLC_IMAGE,GYWM_IMAGE,LOIGN_IMAGE];
+    self.items = @[@"",FWLC_PAGE,@"联系我们",ZXZX_PAGE,GYWM_PAGE,LOIGN_PAGE];
+    self.itemsMenu = @[@"",@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"登        录"];
+    self.itemsImageName =@[@"",FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,LOIGN_IMAGE];
     // Do any additional setup after loading the view.
     
     userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
@@ -170,10 +170,18 @@
                         [self.navigationController presentViewController:unv animated:YES completion:nil];
                     }
                 }
+                else if ([cellText isEqualToString:@"联系我们"])
+                {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:400-601-0982"]];
+                    });                    
+                }
                 else if ([cellText isEqualToString:ZXZX_PAGE])
                 {
                     MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
                     [chatViewManager pushMQChatViewControllerInViewController:self];
+                    [[Mixpanel sharedInstance] track:@"首页“在线咨询”点击"];
                 }
                 else if([cellText isEqualToString:FWLC_PAGE])
                 {
