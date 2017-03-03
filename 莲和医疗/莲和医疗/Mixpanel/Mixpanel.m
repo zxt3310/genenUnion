@@ -13,10 +13,10 @@
 #import "MPLogger.h"
 #import "MPFoundation.h"
 
-#if defined(MIXPANEL_WATCH_EXTENSION)
-#import "MixpanelWatchProperties.h"
-#import <WatchKit/WatchKit.h>
-#endif
+//#if defined(MIXPANEL_WATCH_EXTENSION)
+////#import "MixpanelWatchProperties.h"
+////#import <WatchKit/WatchKit.h>
+//#endif
 
 #define MIXPANEL_NO_APP_LIFECYCLE_SUPPORT (defined(MIXPANEL_APP_EXTENSION) || defined(MIXPANEL_WATCH_EXTENSION))
 #define MIXPANEL_NO_UIAPPLICATION_ACCESS (defined(MIXPANEL_APP_EXTENSION) || defined(MIXPANEL_WATCH_EXTENSION))
