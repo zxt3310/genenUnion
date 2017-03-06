@@ -174,15 +174,14 @@
     else
     {
         hasLogin = NO;
-    }
+    }    
     
-     self.navigationController.navigationBar.hidden = YES;
-  
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
     
     hostReach = [Reachability reachabilityWithHostname:@"http://mapi.lhgene.cn"];
     

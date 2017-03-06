@@ -36,9 +36,9 @@
     [super viewDidLoad];  
     
     self.view.backgroundColor = [UIColor grayColor];
-    self.items = @[@"",FWLC_PAGE,@"联系我们",ZXZX_PAGE,GYWM_PAGE,LOIGN_PAGE];
-    self.itemsMenu = @[@"",@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"登        录"];
-    self.itemsImageName =@[@"",FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,LOIGN_IMAGE];
+    self.items = @[@"",FWLC_PAGE,@"联系我们",ZXZX_PAGE,GYWM_PAGE,@"检查更新",@"分享给好友",@"意见反馈",LOIGN_PAGE];
+    self.itemsMenu = @[@"",@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"检查更新",@"分享给好友",@"意见反馈",@"登        录"];
+    self.itemsImageName =@[@"",FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,@"",@"",@"",LOIGN_IMAGE];
     // Do any additional setup after loading the view.
     
     userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
@@ -185,8 +185,23 @@
                 }
                 else if([cellText isEqualToString:FWLC_PAGE])
                 {
-                    serviceHelperViewController *shvc = [[serviceHelperViewController alloc]init];
+//                    serviceHelperViewController *shvc = [[serviceHelperViewController alloc]init];
+                    serviceHelperNewViewController *shvc = [[serviceHelperNewViewController alloc] init];
                     [self.UF_ViewController.navigationController pushViewController:shvc animated:YES];
+                }
+                else if ([cellText isEqualToString:@"检查更新"]){
+                    appUpdateViewController *auvc = [[appUpdateViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                }
+                else if ([cellText isEqualToString:@"分享给好友"])
+                {
+                    appShareViewController *auvc = [[appShareViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                }
+                else if ([cellText isEqualToString:@"意见反馈"])
+                {
+                    FeedbackViewController *auvc = [[FeedbackViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
                 }
                 else
                 {

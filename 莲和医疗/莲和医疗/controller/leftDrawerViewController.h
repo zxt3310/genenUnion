@@ -10,9 +10,13 @@
 #import "reportListViewController.h"
 #import "aboutUsViewController.h"
 #import "serviceHelperViewController.h"
+#import "serviceHelperNewViewController.h"
 #import "firstItemViewController.h"
 #import "UIViewController+UFanViewController.h"
 #import "userLoginView.h"
+#import "appUpdateViewController.h"
+#import "appShareViewController.h"
+#import "FeedbackViewController.h"
 //#import "Address.h"
 
 @interface leftDrawerViewController : UFanBasicViewController <FFGlobalLoginDelegate>

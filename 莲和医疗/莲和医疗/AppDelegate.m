@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Mixpanel.h"
 
 @interface AppDelegate ()
 
@@ -53,7 +52,7 @@
     uFanVC.showShadow = YES;
     self.rootNavigationController = [[UINavigationController alloc] initWithRootViewController:uFanVC];
     
-    uFanVC.navigationItem.title = @"和普安";
+    uFanVC.navigationItem.title = @"";
     [self.rootNavigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont fontWithName:@"FZXDXJW--GB1-0" size:18],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -134,11 +133,11 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [MQManager closeMeiqiaService];
+   // [MQManager closeMeiqiaService];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    [MQManager openMeiqiaService];
+    //[MQManager openMeiqiaService];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

@@ -127,7 +127,7 @@
     underLable.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     underLable.textAlignment = NSTextAlignmentCenter;
     underLable.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
-    underLable.text = @"检测周期：只需10个工作日";
+    underLable.text = @"检测周期：7-10个工作日";
     [self.view addSubview:underLable];
     
     // Do any additional setup after loading the view.

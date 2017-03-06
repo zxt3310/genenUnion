@@ -11,6 +11,7 @@
 #import "CMCustomViews.h"
 #import "CMImageUtils.h"
 #import "userLoginView.h"
+#import <objc/runtime.h>
 
 #define UFSCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define UFSCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
@@ -30,6 +31,7 @@
     [super viewDidLoad];
     _html5WebView.delegate = self;
     
+    [_html5WebView setMediaPlaybackRequiresUserAction:NO];
     [self.navigationController.navigationBar setTitleTextAttributes:
                                               @{NSFontAttributeName:[UIFont systemFontOfSize:19],
                                      NSForegroundColorAttributeName:[UIColor whiteColor]}];
@@ -94,22 +96,21 @@
         [self.view addSubview:zixunBt];
     }
     
-    if([_strURL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/faq"])
+    if([_strURL.absoluteString isEqualToString:FAQ_PAGE])
     {
         newsContains = @"肿瘤基因超早期检测";
         descriptionStr = @"什么是癌症，癌症是如何发生的？";
         [[Mixpanel sharedInstance] track:@"首页“FAQ”点击"];
     }
+    if ([_strURL.absoluteString isEqualToString:advise_URL])
+    {
+        newsContains = @"女性的节日 莲和的礼物";
+        descriptionStr = @"我确定这份奢侈品是你想要的";
+        [[Mixpanel sharedInstance] track:@"活动图：活动宣传图点击次数"];
+    }
     
     _html5WebView.scalesPageToFit = YES;
     [_html5WebView loadRequest:[NSURLRequest requestWithURL:_strURL]];
-    
-    //java桥接
-//    brige = [WebViewJavascriptBridge bridgeForWebView:_html5WebView];
-//    [brige registerHandler:@"jsInvokeJava();" handler:^(id data,WVJBResponseCallback response){
-//    
-//        NSLog(@"%@",data);
-//    }];
 }
 
 - (void)orderBtClick
@@ -195,15 +196,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
-
-//    if(hasLogin & ![_strURL.absoluteString isEqual:ZXZX_PAGE])
-//    {
-//        NSString *str = [NSString stringWithFormat:@"%@?token=%@",_strURL.absoluteString,lastToken];
-//        NSURL *str_URL_withToken = [[NSURL alloc] initWithString:str];
-//        _strURL = str_URL_withToken;
-//    }
-    
+    [super viewDidAppear:animated];    
     NSLog(@"WebViewController URL: %@", _strURL);
 }
 
@@ -213,8 +206,9 @@
         [[Mixpanel sharedInstance] track:@"活动图：活动宣传H5第九页“提交”按钮的点击"];
         return NO;
     }
+    self.strURL = request.URL;
     //隐藏分享按钮
-    if ([request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/my/report"] || [request.URL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/news"]) {
+    if ([request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/my/report"] || [request.URL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/news"] || [request.URL.absoluteString isEqualToString:GYWM_PAGE]) {
         shareButton.hidden = YES;
     }
     else
@@ -227,7 +221,10 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     loadingView.hidden = NO;
-    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3*NSEC_PER_SEC)), dispatch_get_main_queue(),^{
+        [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"(function(){$('.comp_button').click(function(){window.location.href='objectC://'});})()"]];
+    });
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
@@ -238,7 +235,6 @@
     }
     
     self.navigationItem.title = title;
-    
     
     if([_html5WebView canGoBack])
     {
@@ -258,20 +254,9 @@
     if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/db/topic/"]) {
         newsContains = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('h3')[0].innerHTML"];
         NSString *curStr = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].innerHTML"];
-        NSString *replaceStr = [self flattenHTML:curStr trimWhiteSpace:YES];
+        NSString *replaceStr = [self flattenHTML:curStr trimWhiteSpace:NO];
         descriptionStr = [replaceStr substringWithRange:NSMakeRange(0, 30)];
         [[Mixpanel sharedInstance] track:@"文章点击" properties:@{@"title":newsContains}];
-    }
-    if ([webView.request.URL.absoluteString isEqualToString:FAQ_PAGE]) {
-        newsContains = @"肿瘤基因超早期检测";
-        descriptionStr = @"什么是癌症，癌症是如何发生的？";
-    }
-    
-    if ([webView.request.URL.absoluteString isEqualToString:advise_URL])
-    {
-        newsContains = self.navigationItem.title;
-        descriptionStr = @"我确定这份奢侈品是你想要的";
-        [[Mixpanel sharedInstance] track:@"活动图：活动宣传图点击次数"];
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3*NSEC_PER_SEC)), dispatch_get_main_queue(),^{
@@ -289,13 +274,13 @@
 
 - (void)shareBtnAction
 {
-    //[_html5WebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"(function(){$('.comp_button').click(function(){window.location.href='http://www.baidu.com'});})()"]];
-//    [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-//    
-//        shareView.transform = CGAffineTransformMakeTranslation(0, -(shareView.frame.size.height));
-//    } completion:^(BOOL finished){
-//        
-//    }];
+//    unsigned int count = 0;
+//    Method *memberFuncs = class_copyMethodList([self class], &count);
+//    for (int i=0; i<count; i++) {
+//        SEL name = method_getName(memberFuncs[i]);
+//        NSString *methodName = [NSString stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
+//        NSLog(@"member method:%@",methodName);
+//    }
 #define Button_SIZE 54*SCREEN_WEIGHT/375
 #define Lb_SIZE [UIFont fontWithName:@"STHeitiSC-Light" size:12]
 #define weixin_TAG 10
@@ -378,10 +363,10 @@
 {
     [self shareTrack];
     
-    NSString *shareWeixinUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_html5WebView.request.URL.absoluteString];
-    NSString *shareQQUrlStr = [NSString stringWithFormat:@"%@?share=qq",_html5WebView.request.URL.absoluteString];
-    NSString *shareWeiboUrlStr = [NSString stringWithFormat:@"%@?share=weibo",_html5WebView.request.URL.absoluteString];
-    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"120"]);;
+    NSString *shareWeixinUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_strURL.absoluteString];
+    NSString *shareQQUrlStr = [NSString stringWithFormat:@"%@?share=qq",_strURL.absoluteString];
+    NSString *shareWeiboUrlStr = [NSString stringWithFormat:@"%@?share=weibo",_strURL.absoluteString];
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"120"]);
     [aletCtrol dismissViewControllerAnimated:YES completion:^{
         switch (sender.tag) {
             case weixin_TAG:

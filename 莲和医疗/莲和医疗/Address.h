@@ -18,7 +18,7 @@
 #ifndef Adress_h
 #define Adress_h
 
-#define MAIN_PAGE                        @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/dev-index.html"// @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/index.html"
+#define MAIN_PAGE                        @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/index.html"
 #define ZXZX_PAGE                        @"https://static.meiqia.com/dist/standalone.html?eid=33791"
 #define GYWM_PAGE                        @"http://mapi.lhgene.cn/m/about"
 #define LJYY_PAGE                        @"http://ctdna.m3gene.com:81/m/order"
@@ -35,7 +35,7 @@
 #define WDJC_IMAGE                       @"iconfontZixunjiluzixun"
 #define FWLC_IMAGE                       @"iconfontIuchengrenwu"
 #define LOIGN_IMAGE                      @"iconfontLogout"
-#define LXWM_IMAGE                       @"联系我们"
+#define LXWM_IMAGE                       @"联系我们 copy"
 
 #define PRODUCT1_URL                     @"http://mapi.lhgene.cn/m/product/1"
 #define PRODUCT2_URL                     @"http://mapi.lhgene.cn/m/product/2"
@@ -91,6 +91,10 @@
 //美洽在线咨询 第三方包
 #define MQ_App_Key                        @"7fd14f3b45c51ecad67d97f6cc937b03"
 #define SEC_Key                           @"$2a$12$xiFz3TgAv.i576UV.88XXObs.dS9s8SBegQhAKPqJLD4uyRLVyqfS"
+
+//苹果官方判断版本接口
+#define appleID                           @"1176774735"
+#define appStore_Version_POST_URL         @"http://itunes.apple.com/cn/lookup"
 
 @interface WeixinBackTools : NSObject <WXApiDelegate>
 
