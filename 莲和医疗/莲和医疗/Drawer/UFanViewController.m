@@ -9,8 +9,8 @@
 #define UFSCREEN_WIDTH  [[UIScreen mainScreen] bounds].size.width
 #define UFShadowRadius 10.0f
 #define UFShadowOpacity 0.8
-#define UFDrawerWidth UFSCREEN_WIDTH/1.3
-#define UFDrawerTime .1
+#define UFDrawerWidth 375//UFSCREEN_WIDTH/1.3
+#define UFDrawerTime 3.1
 #define UFDrawerSpeed UFDrawerWidth/UFDrawerTime
 
 #import "UFanViewController.h"
@@ -56,7 +56,6 @@
    // [backButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontSize] forState:<#(UIControlState)#>
     self.navigationItem.backBarButtonItem = backButton ;
     isShow = NO;
-    
     
 }
 
@@ -200,8 +199,10 @@
 
 -(CGRect)setLeftDrawerViewFrame {
     CGRect frame = self.view.frame;
-    frame.origin = CGPointMake(-UFDrawerWidth, 0);
+    frame.origin = CGPointMake(0,0);//CGPointMake(-UFDrawerWidth, 0);
     frame.size.width = UFDrawerWidth;
+    _leftDrawerViewController.view.hidden = YES;
+    _leftDrawerViewController.view.alpha = 0;
     return frame;
 }
 
@@ -245,11 +246,13 @@
     
     [UIView animateWithDuration:UFDrawerTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         //
-        self.coverView.alpha = 1;
-        //self.leftDrawerViewController.view.backgroundColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:1];
-        self.leftDrawerViewController.view.alpha = .8;
-        self.coverView.backgroundColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:.5];
-        self.leftDrawerViewController.view.transform = CGAffineTransformMakeTranslation(UFDrawerWidth, 0);
+//        self.coverView.alpha = 1;
+//        //self.leftDrawerViewController.view.backgroundColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:1];
+//        self.leftDrawerViewController.view.alpha = .8;
+//        self.coverView.backgroundColor = [UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:.5];
+//        self.leftDrawerViewController.view.transform = CGAffineTransformMakeTranslation(UFDrawerWidth, 0);
+        self.leftDrawerViewController.view.hidden = NO;
+        self.leftDrawerViewController.view.alpha = 0.93;
     } completion:^(BOOL finished) {
         //
     }];
@@ -260,9 +263,11 @@
     
     [UIView animateWithDuration:UFDrawerTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         //
-        self.leftDrawerViewController.view.transform = CGAffineTransformIdentity;
+        //self.leftDrawerViewController.view.transform = CGAffineTransformIdentity;
+        self.leftDrawerViewController.view.alpha = 0;
     } completion:^(BOOL finished) {
         //
+        self.leftDrawerViewController.view.hidden = YES;
         if (self.showShadow) {
             [self updateShadowOfLeftView:NO];
         }

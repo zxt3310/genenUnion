@@ -7,6 +7,7 @@
 //
 
 #import "UFanViewController.h"
+#import "NetUtils.h"
 
 @interface FeedbackViewController : UIViewController <UITextViewDelegate>
 

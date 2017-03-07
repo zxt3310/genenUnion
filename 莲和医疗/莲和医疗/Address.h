@@ -42,6 +42,7 @@
 #define PRODUCT3_URL                     @"http://mapi.lhgene.cn/m/product/3"
 
 #define orderRequest_RUL                 @"http://mapi.lhgene.cn/m/api/order"
+#define feedBack_URL                     @"http://mapi.lhgene.cn/m/api/feedback"
 
 #define advise_URL  @"http://a.eqxiu.com/s/b7uWplIt?eqrcode=1&from=singlemessage&isappinstalled=0&lhtype=share"
 

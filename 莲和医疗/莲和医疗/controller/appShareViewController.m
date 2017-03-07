@@ -75,7 +75,7 @@
     UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                107 *SCREEN_HEIGHT/667,
                                                                SCREEN_WEIGHT,
-                                                               16*SCREEN_HEIGHT/667)];
+                                                               16 *SCREEN_HEIGHT/667)];
     lable.text = @"每一次分享都承载着你对朋友的关心";
     lable.textAlignment = NSTextAlignmentCenter;
     lable.textColor = shareColor;
@@ -87,9 +87,9 @@
     
     for (int i=0; i<5; i++) {
         unitButton *shareAppTF = [[unitButton alloc] initWithFrame:CGRectMake(151,
-                                                                                    168 + i*83*SCREEN_HEIGHT/667,
-                                                                                    73 *SCREEN_WEIGHT/375,
-                                                                                    73*SCREEN_WEIGHT/375)];
+                                                                              168 + i*83*SCREEN_HEIGHT/667,
+                                                                              73 *SCREEN_WEIGHT/375,
+                                                                              73 *SCREEN_WEIGHT/375)];
         shareAppTF.imageName = appImgAry[i];
         shareAppTF.appName = appNameAry[i];
         shareAppTF.tag = (i+1)*10;
@@ -108,7 +108,7 @@
     NSString *newsContains = @"莲和基因——联接生命与爱";
     NSString *descriptionStr = @"";
     NSString *shareAppUrl = @"http://mapi.lhgene.cn/m/app/share";
-    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"120"]);
+    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"180"]);
     switch (sender.tag) {
         case weixin_TAG:
         case pengyouquan_TAG:{
@@ -117,15 +117,15 @@
                 return;
             }
             SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
-            sendReq.bText = NO;
-            WXMediaMessage *urlMessage = [WXMediaMessage message];
-            urlMessage.title = newsContains;
-            urlMessage.thumbData = imageData;
-            urlMessage.description = descriptionStr;
-            WXWebpageObject *webObj = [WXWebpageObject object];
-            webObj.webpageUrl = shareAppUrl;
-            urlMessage.mediaObject = webObj;
-            sendReq.message = urlMessage;
+                          sendReq.bText = NO;
+             WXMediaMessage *urlMessage = [WXMediaMessage message];
+                       urlMessage.title = newsContains;
+                   urlMessage.thumbData = imageData;
+                 urlMessage.description = descriptionStr;
+                WXWebpageObject *webObj = [WXWebpageObject object];
+                      webObj.webpageUrl = shareAppUrl;
+                 urlMessage.mediaObject = webObj;
+                        sendReq.message = urlMessage;
             
             if (sender.tag == weixin_TAG) {
                 sendReq.scene = 0;
@@ -134,8 +134,6 @@
                 sendReq.scene = 1;
             
             [WXApi sendReq:sendReq];
-            
-            NSLog(@" 成功和失败 - %d",[WXApi sendReq:sendReq]);
         }
             break;
         case QQ_TAG:
@@ -144,7 +142,11 @@
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[QQApiInterface getQQInstallUrl]]];
                 return;
             }
-            QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareAppUrl] title:newsContains description:descriptionStr previewImageData:imageData];
+            QQApiNewsObject *newObj = [QQApiNewsObject objectWithURL:[NSURL URLWithString:shareAppUrl]
+                                                               title:newsContains
+                                                         description:descriptionStr
+                                                    previewImageData:imageData];
+            
             SendMessageToQQReq *sendRep = [SendMessageToQQReq reqWithContent:newObj];
             if (sender.tag == QQ_TAG) {
                 [QQApiInterface sendReq:sendRep];
@@ -154,11 +156,11 @@
         }
             break;
         case weibo_TAG:{
-            WBMessageObject *obj = [WBMessageObject message];
-            WBImageObject *imageObj = [WBImageObject object];
-            imageObj.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"120"]);
-            obj.imageObject = imageObj;
-            obj.text = [NSString stringWithFormat:@"%@ %@",newsContains,shareAppUrl];
+                             WBMessageObject *obj = [WBMessageObject message];
+                          WBImageObject *imageObj = [WBImageObject object];
+                               imageObj.imageData = imageData;
+                                  obj.imageObject = imageObj;
+                                         obj.text = [NSString stringWithFormat:@"%@ %@",newsContains,shareAppUrl];
             WBSendMessageToWeiboRequest *weiboReq = [WBSendMessageToWeiboRequest requestWithMessage:obj];
             @try {
                 [WeiboSDK sendRequest:weiboReq];

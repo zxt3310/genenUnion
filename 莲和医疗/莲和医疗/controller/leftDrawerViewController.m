@@ -45,7 +45,6 @@
     unv = [[UINavigationController alloc] initWithRootViewController:uLv];
     unv.navigationBar.hidden = YES;
 
-    
     hasLogin = NO;
     lastUserPhone =  [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"];
     lastToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
@@ -54,9 +53,9 @@
         hasLogin = YES;
     }
 
-    starColor = [UIColor colorWithRed:114.0/255 green:97.0/255 blue:179.0/255 alpha:1];
+    starColor = [UIColor whiteColor];
     midColor =  [UIColor colorWithRed:140.0/255 green:121.0/255 blue:214.0/255 alpha:1];
-    endColor = [UIColor whiteColor];
+    endColor = [UIColor colorWithRed:114.0/255 green:97.0/255 blue:179.0/255 alpha:1];
     
     UIImage *leftImage = drawImageWithColor(starColor, midColor, endColor, self.view.frame);
     self.view.backgroundColor = [UIColor colorWithPatternImage:leftImage];

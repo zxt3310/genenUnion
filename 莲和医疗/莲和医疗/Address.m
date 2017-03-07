@@ -14,7 +14,12 @@
 {
     SendMessageToWXResp *sendResp = (SendMessageToWXResp *)resp;
     NSString *str = [NSString stringWithFormat:@"%d---%@",sendResp.errCode,sendResp.errStr];
-    alertMsgView(@"分享成功", [UIApplication sharedApplication].keyWindow.rootViewController);
+    if (sendResp.errCode == -2) {
+        alertMsgView(@"取消分享", [UIApplication sharedApplication].keyWindow.rootViewController);
+    }
+    else if (sendResp.errCode == 0){
+        alertMsgView(@"分享成功", [UIApplication sharedApplication].keyWindow.rootViewController);
+    }
     NSLog(@"%@",str);
 }
 
@@ -30,7 +35,9 @@
         alertMsgView(@"分享成功", [UIApplication sharedApplication].keyWindow.rootViewController);
     }
     else
-        NSLog(@"分享失败%@",sendResp.errorDescription);
+    {
+        alertMsgView(@"取消分享", [UIApplication sharedApplication].keyWindow.rootViewController);
+    }
 }
 
 - (void)onReq:(QQBaseReq *)req
@@ -164,7 +171,7 @@ void drawLinearGradient(CGContextRef context , CGPathRef path , CGColorRef start
 //endColor:(CGColorRef)endColor
 {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat locations[] = { 0.3,0.6, 1.0 };
+    CGFloat locations[] = { 0.1,0.35, 0.5 };
     
     NSArray *colors = @[(__bridge id) startColor, (__bridge id)midColor, (__bridge id) endColor];
     

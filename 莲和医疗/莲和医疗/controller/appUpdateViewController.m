@@ -14,6 +14,7 @@
     UIButton *updateBtn;
     NSString *current_version;
     NSString *update_Url;
+    LoadingView *loadingView;
 }
 @end
 
@@ -67,6 +68,14 @@
          versionLB.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14];
          versionLB.text = [NSString stringWithFormat:@"当前版本%@",current_version];;
     [self.view addSubview:versionLB];
+    
+    //loading 动画
+    float topY = updateLB.frame.origin.y;
+    loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2-40, topY, 80, 70)];
+    loadingView.hidden = YES;
+    loadingView.dscpLabel.text = @"检查更新";
+    [self.view addSubview:loadingView];
+    
     [self checkUpdate];
     
 }
@@ -81,6 +90,7 @@
 }
 - (void)checkUpdate
 {
+    loadingView.hidden = NO;
     NSString *urlStr = [NSString stringWithFormat:@"%@?id=%@",appStore_Version_POST_URL,appleID];// @"http://itunes.apple.com/cn/lookup?id=1203188094";
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
         
@@ -91,6 +101,7 @@
             if (!responseData) {
                 NSLog(@"netWork doesn't work");
                 updateLB.text = @"无法连接服务器，请检查网络或稍后再试";
+                loadingView.hidden = YES;
                 return ;
             }
             
@@ -98,6 +109,7 @@
             if (!returnDic) {
                 NSLog(@"return Wrong Data");
                 updateLB.text = @"连接失败，请重试";
+                loadingView.hidden = YES;
                 return;
             }
             
@@ -105,13 +117,15 @@
             if (!resault) {
                 NSLog(@"return Wrong Data Check API");
                 updateLB.text = @"返回数据格式错误，请稍后再试";
+                loadingView.hidden = YES;
                 return;
             }
             
             NSInteger code = [resault integerValue];
             if (code == 0) {
-                NSString *errmsg = @"fail to check version";//JsonValue([returnDic objectForKey:@"message"], @"NSString");
+                NSString *errmsg = @"fail to check version";
                 NSLog(@"%@",errmsg);
+                loadingView.hidden = YES;
                 return;
             }
             
@@ -119,6 +133,7 @@
             if (stroeInfoDic.count == 0) {
                 NSLog(@"this app is not exist in appstore");
                 updateLB.text = @"fail to checkUpdate";
+                loadingView.hidden = YES;
                 return;
             }
             NSString *newVersion = [stroeInfoDic[0] objectForKey:@"version"];
@@ -132,6 +147,7 @@
                 updateLB.text = @"发现新版本，快去看一下！";
                 updateBtn.hidden = NO;
             }
+            loadingView.hidden = YES;
         });
     });
 }

@@ -392,8 +392,6 @@
                 else
                     sendReq.scene = 1;
                 
-                [WXApi sendReq:sendReq];
-                
                 NSLog(@" 成功和失败 - %d",[WXApi sendReq:sendReq]);
             }
                 break;

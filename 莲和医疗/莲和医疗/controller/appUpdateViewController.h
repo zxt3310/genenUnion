@@ -9,6 +9,7 @@
 #import "UFanViewController.h"
 #import "Address.h"
 #import "NetUtils.h"
+#import "CMCustomViews.h"
 
 @interface appUpdateViewController : UFanViewController
 
