@@ -256,6 +256,18 @@
 		58E0D2611DB71A6E0058EB54 /* UIViewController+UFanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2461DB71A6E0058EB54 /* UIViewController+UFanViewController.m */; };
 		58E0D2621DB71A6E0058EB54 /* CMCustomViews.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0D2491DB71A6E0058EB54 /* CMCustomViews.m */; };
 		58F6393C1DF54BF900179908 /* h5_main in Resources */ = {isa = PBXBuildFile; fileRef = 58F6393B1DF54BF900179908 /* h5_main */; };
+		70059A161E6FB78400C9642F /* sidecancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A131E6FB78400C9642F /* sidecancel.png */; };
+		70059A171E6FB78400C9642F /* sidecancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A141E6FB78400C9642F /* sidecancel@2x.png */; };
+		70059A181E6FB78400C9642F /* sidecancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A151E6FB78400C9642F /* sidecancel@3x.png */; };
+		70059A221E6FDED400C9642F /* 版本更新.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A191E6FDED400C9642F /* 版本更新.png */; };
+		70059A231E6FDED400C9642F /* 版本更新@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A1A1E6FDED400C9642F /* 版本更新@2x.png */; };
+		70059A241E6FDED400C9642F /* 版本更新@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A1B1E6FDED400C9642F /* 版本更新@3x.png */; };
+		70059A251E6FDED400C9642F /* 帮助与反馈.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A1C1E6FDED400C9642F /* 帮助与反馈.png */; };
+		70059A261E6FDED400C9642F /* 帮助与反馈@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A1D1E6FDED400C9642F /* 帮助与反馈@2x.png */; };
+		70059A271E6FDED400C9642F /* 帮助与反馈@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A1E1E6FDED400C9642F /* 帮助与反馈@3x.png */; };
+		70059A281E6FDED400C9642F /* 侧栏分享.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A1F1E6FDED400C9642F /* 侧栏分享.png */; };
+		70059A291E6FDED400C9642F /* 侧栏分享@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A201E6FDED400C9642F /* 侧栏分享@2x.png */; };
+		70059A2A1E6FDED400C9642F /* 侧栏分享@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 70059A211E6FDED400C9642F /* 侧栏分享@3x.png */; };
 		701398101E6813610081BD2D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7013980F1E6813610081BD2D /* ImageIO.framework */; };
 		701398121E6814BF0081BD2D /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 701398111E6814BF0081BD2D /* libicucore.tbd */; };
 		701398141E6814DF0081BD2D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 701398131E6814DF0081BD2D /* libz.tbd */; };
@@ -849,6 +861,18 @@
 		58E0D2481DB71A6E0058EB54 /* CMCustomViews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCustomViews.h; sourceTree = "<group>"; };
 		58E0D2491DB71A6E0058EB54 /* CMCustomViews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCustomViews.m; sourceTree = "<group>"; };
 		58F6393B1DF54BF900179908 /* h5_main */ = {isa = PBXFileReference; lastKnownFileType = folder; name = h5_main; path = h5/h5_main; sourceTree = "<group>"; };
+		70059A131E6FB78400C9642F /* sidecancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidecancel.png; sourceTree = "<group>"; };
+		70059A141E6FB78400C9642F /* sidecancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidecancel@2x.png"; sourceTree = "<group>"; };
+		70059A151E6FB78400C9642F /* sidecancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidecancel@3x.png"; sourceTree = "<group>"; };
+		70059A191E6FDED400C9642F /* 版本更新.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "版本更新.png"; sourceTree = "<group>"; };
+		70059A1A1E6FDED400C9642F /* 版本更新@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "版本更新@2x.png"; sourceTree = "<group>"; };
+		70059A1B1E6FDED400C9642F /* 版本更新@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "版本更新@3x.png"; sourceTree = "<group>"; };
+		70059A1C1E6FDED400C9642F /* 帮助与反馈.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帮助与反馈.png"; sourceTree = "<group>"; };
+		70059A1D1E6FDED400C9642F /* 帮助与反馈@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帮助与反馈@2x.png"; sourceTree = "<group>"; };
+		70059A1E1E6FDED400C9642F /* 帮助与反馈@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "帮助与反馈@3x.png"; sourceTree = "<group>"; };
+		70059A1F1E6FDED400C9642F /* 侧栏分享.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "侧栏分享.png"; sourceTree = "<group>"; };
+		70059A201E6FDED400C9642F /* 侧栏分享@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "侧栏分享@2x.png"; sourceTree = "<group>"; };
+		70059A211E6FDED400C9642F /* 侧栏分享@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "侧栏分享@3x.png"; sourceTree = "<group>"; };
 		7013980F1E6813610081BD2D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		701398111E6814BF0081BD2D /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		701398131E6814DF0081BD2D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -1779,6 +1803,18 @@
 		5861B4521DFE54850089E185 /* 侧栏 */ = {
 			isa = PBXGroup;
 			children = (
+				70059A191E6FDED400C9642F /* 版本更新.png */,
+				70059A1A1E6FDED400C9642F /* 版本更新@2x.png */,
+				70059A1B1E6FDED400C9642F /* 版本更新@3x.png */,
+				70059A1C1E6FDED400C9642F /* 帮助与反馈.png */,
+				70059A1D1E6FDED400C9642F /* 帮助与反馈@2x.png */,
+				70059A1E1E6FDED400C9642F /* 帮助与反馈@3x.png */,
+				70059A1F1E6FDED400C9642F /* 侧栏分享.png */,
+				70059A201E6FDED400C9642F /* 侧栏分享@2x.png */,
+				70059A211E6FDED400C9642F /* 侧栏分享@3x.png */,
+				70059A131E6FB78400C9642F /* sidecancel.png */,
+				70059A141E6FB78400C9642F /* sidecancel@2x.png */,
+				70059A151E6FB78400C9642F /* sidecancel@3x.png */,
 				5861B4531DFE54850089E185 /* 10-device-access-storage.png */,
 				5861B4541DFE54850089E185 /* 10_device_access_storage.png */,
 				5861B4551DFE54850089E185 /* 614-list.png */,
@@ -3043,8 +3079,10 @@
 				5861B4D31DFE54850089E185 /* Fenli&.png in Resources */,
 				5861B4BB1DFE54850089E185 /* Chouxue!.png in Resources */,
 				5861B4C81DFE54850089E185 /* Chubaogao$@2x.png in Resources */,
+				70059A241E6FDED400C9642F /* 版本更新@3x.png in Resources */,
 				5861B4C21DFE54850089E185 /* Chouxue&@2x.png in Resources */,
 				5861B5E41DFE54850089E185 /* iconfontZaixianzixunicon81889.png in Resources */,
+				70059A221E6FDED400C9642F /* 版本更新.png in Resources */,
 				70B16C6D1E6915EE00221317 /* MQChatViewAsset.bundle.zip in Resources */,
 				5861B4B81DFE54850089E185 /* aboutus.png in Resources */,
 				70F64FF91E67CC7200A49466 /* 联系我们 copy@3x.png in Resources */,
@@ -3066,9 +3104,11 @@
 				5894F7C81E00EF4D0019DC8A /* ruxian@2x.png in Resources */,
 				5861B5E81DFE54850089E185 /* iconfontZixunjiluzixun@2x.png in Resources */,
 				5861B5AE1DFE54850089E185 /* iconLiucheng@3x.png in Resources */,
+				70059A161E6FB78400C9642F /* sidecancel.png in Resources */,
 				70B16D9D1E69206B00221317 /* MPCheckmark@2x.png in Resources */,
 				703D41631E6D5A2100ABC295 /* shareWB.png in Resources */,
 				5861B5D11DFE54850089E185 /* 10-device-access-storage.png in Resources */,
+				70059A281E6FDED400C9642F /* 侧栏分享.png in Resources */,
 				70B16DA41E69206B00221317 /* MPLogo@2x.png in Resources */,
 				5861B6291DFE54860089E185 /* 千图网-红色的英文印章.png in Resources */,
 				5861B5B41DFE54850089E185 /* 引导页2@3x.png in Resources */,
@@ -3112,8 +3152,10 @@
 				70B16DC51E69206B00221317 /* MPNotification~ipad.storyboard in Resources */,
 				5861B5EB1DFE54850089E185 /* 120.png in Resources */,
 				5861B4D71DFE54850089E185 /* Fenxi!@2x.png in Resources */,
+				70059A261E6FDED400C9642F /* 帮助与反馈@2x.png in Resources */,
 				5861B5D51DFE54850089E185 /* iconfont-iconfontkefu@3x.png in Resources */,
 				5861B6001DFE54860089E185 /* icon_close.png in Resources */,
+				70059A291E6FDED400C9642F /* 侧栏分享@2x.png in Resources */,
 				5861B4C41DFE54850089E185 /* Chubaogao!.png in Resources */,
 				5861B61C1DFE54860089E185 /* oval77@3x.png in Resources */,
 				70B16D9B1E69206B00221317 /* MPArrowRight@2x.png in Resources */,
@@ -3121,6 +3163,7 @@
 				5861B6151DFE54860089E185 /* register@2x.png in Resources */,
 				5861B6191DFE54860089E185 /* nvxinganniu@3x.png in Resources */,
 				703D415B1E6D5A2100ABC295 /* shareKJ@2x.png in Resources */,
+				70059A231E6FDED400C9642F /* 版本更新@2x.png in Resources */,
 				588973C51E6560CD00F219E2 /* 101@3x.png in Resources */,
 				5849C78F1DB7177D00B97AF6 /* Assets.xcassets in Resources */,
 				588747451E5D704200279BB8 /* weibo.png in Resources */,
@@ -3169,6 +3212,7 @@
 				5861B4D11DFE54850089E185 /* Fenli$@2x.png in Resources */,
 				5861B4FC1DFE54850089E185 /* iconYangben!@3x.png in Resources */,
 				5861B60B1DFE54860089E185 /* dengru.png in Resources */,
+				70059A251E6FDED400C9642F /* 帮助与反馈.png in Resources */,
 				5861B5E71DFE54850089E185 /* iconfontZixunjiluzixun.png in Resources */,
 				703D41671E6D5A2100ABC295 /* shareWX@2x.png in Resources */,
 				5861B4C61DFE54850089E185 /* Chubaogao!@3x.png in Resources */,
@@ -3203,6 +3247,7 @@
 				5861B4E11DFE54850089E185 /* Gaotong!@3x.png in Resources */,
 				5861B4D01DFE54850089E185 /* Fenli$.png in Resources */,
 				5861B6181DFE54860089E185 /* nvxinganniu@2x.png in Resources */,
+				70059A181E6FB78400C9642F /* sidecancel@3x.png in Resources */,
 				5861B4FA1DFE54850089E185 /* iconYangben!.png in Resources */,
 				5861B4BE1DFE54850089E185 /* Chouxue$.png in Resources */,
 				5861B4BA1DFE54850089E185 /* aboutus@3x.png in Resources */,
@@ -3222,6 +3267,7 @@
 				5861B5AA1DFE54850089E185 /* iconJiedu@2x.png in Resources */,
 				5861B5FB1DFE54860089E185 /* 病理报告@2x.png in Resources */,
 				703D415C1E6D5A2100ABC295 /* shareKJ@3x.png in Resources */,
+				70059A171E6FB78400C9642F /* sidecancel@2x.png in Resources */,
 				5861B5BD1DFE54850089E185 /* anniuend.png in Resources */,
 				5861B6271DFE54860089E185 /* reportDitail@3x.png in Resources */,
 				5861B4F41DFE54850089E185 /* tiqu$.png in Resources */,
@@ -3247,6 +3293,7 @@
 				5861B5C61DFE54850089E185 /* loding 1242x2208.png in Resources */,
 				5861B4C91DFE54850089E185 /* Chubaogao$@3x.png in Resources */,
 				5861B5FC1DFE54860089E185 /* 病理报告@3x.png in Resources */,
+				70059A271E6FDED400C9642F /* 帮助与反馈@3x.png in Resources */,
 				5861B5BE1DFE54850089E185 /* anniuend@2x.png in Resources */,
 				5861B6251DFE54860089E185 /* reportDitail.png in Resources */,
 				5861B6221DFE54860089E185 /* rectangle150.png in Resources */,
@@ -3303,6 +3350,7 @@
 				5861B4E61DFE54850089E185 /* Gaotong&@2x.png in Resources */,
 				5861B4E41DFE54850089E185 /* Gaotong$@3x.png in Resources */,
 				58E0D2501DB71A6E0058EB54 /* userloginView.xib in Resources */,
+				70059A2A1E6FDED400C9642F /* 侧栏分享@3x.png in Resources */,
 				5861B4DA1DFE54850089E185 /* Fenxi$@2x.png in Resources */,
 				5861B6121DFE54860089E185 /* loginBGI@2x.png in Resources */,
 				5861B5C71DFE54850089E185 /* loding 640x1136.png in Resources */,

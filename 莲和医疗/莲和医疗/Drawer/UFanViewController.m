@@ -10,7 +10,7 @@
 #define UFShadowRadius 10.0f
 #define UFShadowOpacity 0.8
 #define UFDrawerWidth 375//UFSCREEN_WIDTH/1.3
-#define UFDrawerTime 3.1
+#define UFDrawerTime 0.15
 #define UFDrawerSpeed UFDrawerWidth/UFDrawerTime
 
 #import "UFanViewController.h"
@@ -47,8 +47,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.view.backgroundColor = [UIColor blackColor];
-    [self setUpGestureRecognizers];
-    [self setUp];
+    //[self setUpGestureRecognizers];
+    //[self setUp];
     
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     backButton .title = @"首页";
@@ -240,10 +240,13 @@
         return;
     }
     
-    if (self.showShadow) {
-        [self updateShadowOfLeftView:self.showShadow];
-    }
+//    if (self.showShadow) {
+//        [self updateShadowOfLeftView:self.showShadow];
+//    }
     
+    CGAffineTransform t1 = CGAffineTransformMakeScale(1, 1);
+    CGAffineTransform t2 = CGAffineTransformMakeScale(0.9, 0.9);
+    self.leftDrawerViewController.view.transform = t2;
     [UIView animateWithDuration:UFDrawerTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         //
 //        self.coverView.alpha = 1;
@@ -253,6 +256,7 @@
 //        self.leftDrawerViewController.view.transform = CGAffineTransformMakeTranslation(UFDrawerWidth, 0);
         self.leftDrawerViewController.view.hidden = NO;
         self.leftDrawerViewController.view.alpha = 0.93;
+        self.leftDrawerViewController.view.transform = t1;
     } completion:^(BOOL finished) {
         //
     }];
@@ -260,11 +264,12 @@
 }
 
 -(void)disMissLeftDrawer {
-    
+    CGAffineTransform t2 = CGAffineTransformMakeScale(0.9, 0.9);
     [UIView animateWithDuration:UFDrawerTime delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
         //
         //self.leftDrawerViewController.view.transform = CGAffineTransformIdentity;
         self.leftDrawerViewController.view.alpha = 0;
+        self.leftDrawerViewController.view.transform = t2;
     } completion:^(BOOL finished) {
         //
         self.leftDrawerViewController.view.hidden = YES;

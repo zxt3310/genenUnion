@@ -25,7 +25,6 @@
     NSString *newsContains;
     UIButton *shareButton;
     NSString *descriptionStr;
-    WebViewJavascriptBridge *brige;
 }
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -54,8 +53,6 @@
     loadingView = [[LoadingView alloc] initWithFrame:CGRectMake(UFSCREEN_WIDTH/2.5, topY, 80, 70)];
     loadingView.hidden = YES;
     [self.view addSubview:loadingView];
-    
-    hasLogin = NO;
     
     //点击追踪
     if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
@@ -185,19 +182,21 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
-    
-    lastUserPhone = getStringForKey(@"userPhoneNo");
-    lastToken = getStringForKey(@"token");
-    if (lastToken !=nil & lastUserPhone !=nil)
-    {
-        hasLogin = YES;
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];    
     NSLog(@"WebViewController URL: %@", _strURL);
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.html5WebView.delegate = nil;
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -457,10 +456,6 @@
     }
 }
 
--(void)receivedNotif:(NSNotification *)notification {
-    hasLogin = YES;
-}
-
 -(NSString *)flattenHTML:(NSString *)html trimWhiteSpace:(BOOL)trim
 {
     NSScanner *theScanner = [NSScanner scannerWithString:html];
@@ -479,6 +474,11 @@
     }
     
     return trim ? [html stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : html;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

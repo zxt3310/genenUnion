@@ -13,6 +13,8 @@
     UIColor *starColor;
     UIColor *midColor;
     UIColor *endColor;
+    UIButton *loginBtn;
+    UILabel *userLB;
 }
 //@property (nonatomic, strong) UITableView *tableView;
 
@@ -21,32 +23,33 @@
 @implementation leftDrawerViewController
 
 -(void)loadView {
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
-    [self.tableView setDataSource:self];
-    [self.tableView setDelegate:self];
-    self.tableView.scrollEnabled = NO;
-    self.view = self.tableView;
-    self.tableView.separatorStyle = UITableViewCellEditingStyleNone;
-    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [super loadView];
+//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
+//    [self.tableView setDataSource:self];
+//    [self.tableView setDelegate:self];
+//    self.tableView.scrollEnabled = NO;
+//    //self.view = self.tableView;
+//    self.tableView.separatorStyle = UITableViewCellEditingStyleNone;
+//    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    
+   
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];  
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"ReloadView" object:nil];
     self.view.backgroundColor = [UIColor grayColor];
-    self.items = @[@"",FWLC_PAGE,@"联系我们",ZXZX_PAGE,GYWM_PAGE,@"检查更新",@"分享给好友",@"意见反馈",LOIGN_PAGE];
-    self.itemsMenu = @[@"",@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"检查更新",@"分享给好友",@"意见反馈",@"登        录"];
-    self.itemsImageName =@[@"",FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,@"",@"",@"",LOIGN_IMAGE];
-    // Do any additional setup after loading the view.
-    
+//    self.items = @[@"",FWLC_PAGE,@"联系我们",ZXZX_PAGE,GYWM_PAGE,@"检查更新",@"分享给好友",@"意见反馈",LOIGN_PAGE];
+//    self.itemsMenu = @[@"",@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"检查更新",@"分享给好友",@"意见反馈",@"登        录"];
+//    self.itemsImageName =@[@"",FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,@"",@"",@"",LOIGN_IMAGE];
+
     userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
     unv = [[UINavigationController alloc] initWithRootViewController:uLv];
     unv.navigationBar.hidden = YES;
 
     hasLogin = NO;
-    lastUserPhone =  [[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"];
+    lastUserPhone = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"]];
     lastToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     if (lastToken !=nil & lastUserPhone !=nil)
     {
@@ -54,22 +57,174 @@
     }
 
     starColor = [UIColor whiteColor];
-    midColor =  [UIColor colorWithRed:140.0/255 green:121.0/255 blue:214.0/255 alpha:1];
+    midColor = [UIColor colorWithRed:140.0/255 green:121.0/255 blue:214.0/255 alpha:1];
     endColor = [UIColor colorWithRed:114.0/255 green:97.0/255 blue:179.0/255 alpha:1];
     
     UIImage *leftImage = drawImageWithColor(starColor, midColor, endColor, self.view.frame);
     self.view.backgroundColor = [UIColor colorWithPatternImage:leftImage];
     
     
-    UIImageView *logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5.14, SCREEN_HEIGHT/1.29, SCREEN_WEIGHT/3.21, SCREEN_HEIGHT/6.67)];
-    
+    UIImageView *logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(148 *SCREEN_WEIGHT/375,
+                                                                           56 *SCREEN_HEIGHT/667,
+                                                                           83 *SCREEN_WEIGHT/375,
+                                                                           77 *SCREEN_HEIGHT/667)];
     logoImage.image = [UIImage imageNamed:@"101"];
+    [self.view addSubview:logoImage];
     
-    [self.tableView addSubview:logoImage];
+    userLB = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                       149 *SCREEN_HEIGHT/667,
+                                                       self.view.frame.size.width,
+                                                       14 *SCREEN_HEIGHT/667)];
+    userLB.textAlignment = NSTextAlignmentCenter;
+    userLB.textColor = [UIColor colorWithMyNeed:74 green:74 blue:74 alpha:1];
+    userLB.font = [UIFont fontWithName:@"STHeitiSC-Light" size:14 *SCREEN_HEIGHT/667];
+    if (hasLogin) {
+        NSString *phoneNo = [lastUserPhone stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        userLB.text = [NSString stringWithFormat:@"欢迎您，%@",phoneNo];
+    }
+    else{
+        userLB.text = @"请先登录";
+    }
+        [self.view addSubview:userLB];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedNotif:) name:@"ReloadView" object:nil];
+    loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    loginBtn.layer.borderWidth = 1;
+    loginBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    loginBtn.layer.cornerRadius = 15;
+    loginBtn.tintColor = [UIColor whiteColor];
+    loginBtn.frame = CGRectMake(135 *SCREEN_WEIGHT/375,
+                                192 *SCREEN_HEIGHT/667,
+                                110 *SCREEN_WEIGHT/375,
+                                30 *SCREEN_HEIGHT/667);
+    if (!hasLogin) {
+        [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    }
+    else
+        [loginBtn setTitle:@"注销" forState:UIControlStateNormal];
+    [loginBtn addTarget:self action:@selector(loginBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:loginBtn];
     
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelBtn.frame = CGRectMake(16, 35, 18, 18);
+    [cancelBtn setBackgroundImage:[UIImage imageNamed:@"sidecancel"] forState:UIControlStateNormal];
+    [cancelBtn addTarget:self action:@selector(sideCancelAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelBtn];
+    
+    [self setMenuBtnView];
 }
+
+- (void)sideCancelAction{
+    [self.UF_ViewController disMissLeftDrawer];
+}
+
+- (void)setMenuBtnView{
+    NSArray *menuImgAry = @[FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,FX_IMAGE,FEEDBACK_IMAGE,BBGX_IMAGE];
+    NSArray *menuLbText = @[@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"分享给好友",@"帮助与反馈",@"版本更新"];
+    for (int i = 0; i<7; i++) {
+        int n = i%2;
+        int j = i/2;
+        UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        menuBtn.frame = CGRectMake((65 + n * 176)*SCREEN_WEIGHT/375 ,
+                                   (289 + j * 90)*SCREEN_HEIGHT/667,
+                                   70 *SCREEN_WEIGHT/375,
+                                   55 *SCREEN_HEIGHT/667);
+        menuBtn.tag = (i+1)*10;
+        [menuBtn addTarget:self action:@selector(menuBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:menuBtn];
+        
+        UIImageView *menuImgView = [[UIImageView alloc] initWithFrame:CGRectMake(21 *SCREEN_WEIGHT/375,
+                                                                                 0,
+                                                                                 28 *SCREEN_WEIGHT/375,
+                                                                                 28 *SCREEN_WEIGHT/375)];
+        menuImgView.image = [UIImage imageNamed:menuImgAry[i]];
+        [menuBtn addSubview:menuImgView];
+        
+        UILabel *menuLB = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                    40 *SCREEN_HEIGHT/667,
+                                                                    70 *SCREEN_WEIGHT/375,
+                                                                    15 *SCREEN_WEIGHT/375)];
+        menuLB.textColor = [UIColor whiteColor];
+        menuLB.textAlignment = NSTextAlignmentCenter;
+        menuLB.font = [UIFont fontWithName:@"FZXDXJW--GB1-0" size:14];
+        menuLB.text = menuLbText[i];
+        [menuBtn addSubview:menuLB];
+        
+    }
+}
+
+- (void)loginBtnClickAction:(UIButton *)sender{
+    if(!hasLogin)
+    {
+        userLoginView *uLv = [[userLoginView alloc] initWithNibName:@"userloginView" bundle:nil];
+        unv = [[UINavigationController alloc] initWithRootViewController:uLv];
+        unv.navigationBar.hidden = YES;
+        uLv.isReportTap = NO;
+        [self.navigationController presentViewController:unv animated:YES completion:nil];
+    }
+    else
+    {
+      
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNo"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"updateToken" object:nil];
+        [sender setTitle:@"登录" forState:UIControlStateNormal];
+        //[self alertMsgView:@"您已成功注销"];
+    }
+}
+
+- (void)menuBtnClickAction:(UIButton *)sender{
+    
+    [self.UF_ViewController closeDrawerAnimtaion:YES complete:^(BOOL finished){
+         if(finished)
+         {
+            switch (sender.tag) {
+                case 10:{
+                    serviceHelperNewViewController *shvc = [[serviceHelperNewViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:shvc animated:YES];
+                }
+                    break;
+                case 20:{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:400-601-0982"]];
+                    });
+                }
+                    break;
+                case 30:{
+                    MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
+                    [chatViewManager pushMQChatViewControllerInViewController:self];
+                    [[Mixpanel sharedInstance] track:@"首页“在线咨询”点击"];
+                }
+                    break;
+                case 40:{
+                    firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
+                    firstVC.strURL = [NSURL URLWithString:GYWM_PAGE];
+                    [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
+                }
+                    break;
+                case 50:{
+                    appShareViewController *auvc = [[appShareViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                }
+                    break;
+                case 60:{
+                    FeedbackViewController *auvc = [[FeedbackViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                }
+                    break;
+                default:{
+                    appUpdateViewController *auvc = [[appUpdateViewController alloc] init];
+                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                }
+                    break;
+            }
+         }
+    }];
+}
+
+//第一版侧栏-------------------------------------------------------------------------------------------------------
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -108,14 +263,8 @@
     cell.backgroundColor = nil; //[UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:0]; //cell背景色
     if(!indexPath.row)
       {
-//        UIFont *myFont = [UIFont fontWithName: @"Arial" size: 25.0 ];
-//        cell.textLabel.font  = myFont;
-//        cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/40, SCREEN_HEIGHT/18, SCREEN_HEIGHT/8, SCREEN_HEIGHT/8)];
-//        cell.textLabel.textAlignment = NSTextAlignmentRight;
           cell.userInteractionEnabled = NO;
       }
-//    else
-    
     
     cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5, SCREEN_HEIGHT/31, SCREEN_HEIGHT/31.76, SCREEN_HEIGHT/31.76)];   //侧边栏图标
     
@@ -260,8 +409,15 @@
 
 -(void)receivedNotif:(NSNotification *)notification {
     hasLogin = !hasLogin;
-    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:5 inSection:0];
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+//    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:5 inSection:0];
+//    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    if (hasLogin) {
+        lastUserPhone = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"]];
+        userLB.text = [lastUserPhone stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"];
+    }
+    else
+        userLB.text = @"请先登录";
+    [loginBtn setTitle:@"注销" forState:UIControlStateNormal];
 }
 
 -(void)loginPushReport:(NSString *)token

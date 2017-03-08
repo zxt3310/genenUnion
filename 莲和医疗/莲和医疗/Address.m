@@ -171,7 +171,7 @@ void drawLinearGradient(CGContextRef context , CGPathRef path , CGColorRef start
 //endColor:(CGColorRef)endColor
 {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat locations[] = { 0.1,0.35, 0.5 };
+    CGFloat locations[] = { 0,0.38, 0.6 };
     
     NSArray *colors = @[(__bridge id) startColor, (__bridge id)midColor, (__bridge id) endColor];
     

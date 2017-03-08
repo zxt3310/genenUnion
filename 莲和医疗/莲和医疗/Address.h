@@ -36,6 +36,9 @@
 #define FWLC_IMAGE                       @"iconfontIuchengrenwu"
 #define LOIGN_IMAGE                      @"iconfontLogout"
 #define LXWM_IMAGE                       @"联系我们 copy"
+#define FX_IMAGE                         @"侧栏分享"
+#define FEEDBACK_IMAGE                   @"帮助与反馈"
+#define BBGX_IMAGE                       @"版本更新"
 
 #define PRODUCT1_URL                     @"http://mapi.lhgene.cn/m/product/1"
 #define PRODUCT2_URL                     @"http://mapi.lhgene.cn/m/product/2"
