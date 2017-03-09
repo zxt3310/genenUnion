@@ -255,7 +255,7 @@
         NSString *curStr = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].innerHTML"];
         NSString *replaceStr = [self flattenHTML:curStr trimWhiteSpace:NO];
         descriptionStr = [replaceStr substringWithRange:NSMakeRange(0, 30)];
-        [[Mixpanel sharedInstance] track:@"文章点击" properties:@{@"title":newsContains}];
+        [[Mixpanel sharedInstance] track:@"文章浏览量" properties:@{@"title":newsContains}];
     }
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3*NSEC_PER_SEC)), dispatch_get_main_queue(),^{
@@ -360,7 +360,7 @@
 
 - (void)shareToAppBtnAction:(UIButton *)sender
 {
-    [self shareTrack];
+    [self shareTrack:sender.tag];
     
     NSString *shareWeixinUrlStr = [NSString stringWithFormat:@"%@?share=weixin",_strURL.absoluteString];
     NSString *shareQQUrlStr = [NSString stringWithFormat:@"%@?share=qq",_strURL.absoluteString];
@@ -432,27 +432,47 @@
     }];
 }
 
-- (void)shareTrack
+- (void)shareTrack:(NSInteger) tag
 {
+    NSString *shareTo;
+    switch (tag) {
+        case 10:
+            shareTo = @"微信";
+            break;
+        case 20:
+            shareTo = @"朋友圈";
+            break;
+        case 30:
+            shareTo = @"QQ";
+            break;
+        case 40:
+            shareTo = @"QQ空间";
+            break;
+        case 50:
+            shareTo = @"新浪微博";
+            break;
+        default:
+            break;
+    }
     NSString *urlStr = _html5WebView.request.URL.absoluteString;
     if ([urlStr isEqualToString:FAQ_PAGE]) {
-        [[Mixpanel sharedInstance] track:@"转发：FAQ页面转发按钮的点击"];
+        [[Mixpanel sharedInstance] track:@"转发：FAQ页面转发按钮的点击" properties:@{@"ShareTo":shareTo}];
     }
     else if ([urlStr isEqualToString:PRODUCT1_URL])
     {
-        [[Mixpanel sharedInstance] track:@"转发：和普安转发按钮的点击"];
+        [[Mixpanel sharedInstance] track:@"转发：和普安转发按钮的点击" properties:@{@"ShareTo":shareTo}];
     }
     else if ([urlStr isEqualToString:PRODUCT2_URL])
     {
-        [[Mixpanel sharedInstance] track:@"转发：和美安转发按钮的点击"];
+        [[Mixpanel sharedInstance] track:@"转发：和美安转发按钮的点击" properties:@{@"ShareTo":shareTo}];
     }
     else if ([urlStr isEqualToString:PRODUCT3_URL])
     {
-        [[Mixpanel sharedInstance] track:@"转发：和家安转发按钮的点击"];
+        [[Mixpanel sharedInstance] track:@"转发：和家安转发按钮的点击" properties:@{@"ShareTo":shareTo}];
     }
     else if ([urlStr containsString:@"http://mapi.lhgene.cn/m/db/topic/"])
     {
-        [[Mixpanel sharedInstance] track:@"转发：所有文章发转发总和"];
+        [[Mixpanel sharedInstance] track:@"所有文章转发" properties:@{@"title":newsContains,@"ShareTo":shareTo}];
     }
 }
 

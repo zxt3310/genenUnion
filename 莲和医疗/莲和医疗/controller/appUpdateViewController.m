@@ -140,7 +140,7 @@
             update_Url = [stroeInfoDic[0] objectForKey:@"trackViewUrl"];
             
             if ([newVersion isEqualToString:current_version]) {
-                updateLB.text = @"你已经是最新版本了，首页有惊喜！";
+                updateLB.text = @"你已经是最新版本了，返回首页有惊喜！";
             }
             else
             {

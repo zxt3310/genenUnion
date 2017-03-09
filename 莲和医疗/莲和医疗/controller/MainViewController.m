@@ -86,8 +86,8 @@
     [backBtn setTitle:@"" forState:UIControlStateNormal];
     [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [backBtn setImage:[UIImage imageNamed:@"iconfontMulu.png"] forState:UIControlStateNormal];
-    [backBtn setImage:[UIImage imageNamed:@"iconfontMulu.png"] forState:UIControlStateHighlighted];
+    [backBtn setImage:[UIImage imageNamed:@"菜单"] forState:UIControlStateNormal];
+    [backBtn setImage:[UIImage imageNamed:@"菜单"] forState:UIControlStateHighlighted];
     [backBtn setImageEdgeInsets:UIEdgeInsetsMake(7, 0, 7, 8)];
     [backBtn addTarget:self action:@selector(leftAction) forControlEvents:UIControlEventTouchUpInside];
     [backBtn sizeToFit];

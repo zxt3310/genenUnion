@@ -30,7 +30,7 @@
 #define WDJC_REQUEST                     @"http://mapi.lhgene.cn/m/api/reports"
 
 #define ZXZX_IMAGE                       @"iconfontZaixianzixunicon81889"
-#define GYWM_IMAGE                       @"iconfontGuanyuwomen2"
+#define GYWM_IMAGE                       @"iconfontGuanyuwomen"
 #define LJYY_IMAGE                       @"iconfont-wodeyuyue@3x.png"
 #define WDJC_IMAGE                       @"iconfontZixunjiluzixun"
 #define FWLC_IMAGE                       @"iconfontIuchengrenwu"

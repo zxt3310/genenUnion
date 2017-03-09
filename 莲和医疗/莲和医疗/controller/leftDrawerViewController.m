@@ -90,8 +90,9 @@
     loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     loginBtn.layer.borderWidth = 1;
     loginBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    loginBtn.layer.cornerRadius = 15;
+    loginBtn.layer.cornerRadius = 15 *SCREEN_WEIGHT/375;
     loginBtn.tintColor = [UIColor whiteColor];
+    loginBtn.tag = 80;
     loginBtn.frame = CGRectMake(135 *SCREEN_WEIGHT/375,
                                 192 *SCREEN_HEIGHT/667,
                                 110 *SCREEN_WEIGHT/375,
@@ -101,12 +102,13 @@
     }
     else
         [loginBtn setTitle:@"注销" forState:UIControlStateNormal];
-    [loginBtn addTarget:self action:@selector(loginBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
+    [loginBtn addTarget:self action:@selector(menuBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginBtn];
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    cancelBtn.frame = CGRectMake(16, 35, 18, 18);
-    [cancelBtn setBackgroundImage:[UIImage imageNamed:@"sidecancel"] forState:UIControlStateNormal];
+    cancelBtn.frame = CGRectMake(0, 0, 64, 64);
+    cancelBtn.imageEdgeInsets = UIEdgeInsetsMake(34, 14, 16, 36);
+    [cancelBtn setImage:[UIImage imageNamed:@"sidecancel"] forState:UIControlStateNormal];
     [cancelBtn addTarget:self action:@selector(sideCancelAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancelBtn];
     
@@ -124,10 +126,10 @@
         int n = i%2;
         int j = i/2;
         UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        menuBtn.frame = CGRectMake((65 + n * 176)*SCREEN_WEIGHT/375 ,
+        menuBtn.frame = CGRectMake((65 + n * 176)*SCREEN_WEIGHT/375,
                                    (289 + j * 90)*SCREEN_HEIGHT/667,
-                                   70 *SCREEN_WEIGHT/375,
-                                   55 *SCREEN_HEIGHT/667);
+                                    70 *SCREEN_WEIGHT/375,
+                                    55 *SCREEN_HEIGHT/667);
         menuBtn.tag = (i+1)*10;
         [menuBtn addTarget:self action:@selector(menuBtnClickAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:menuBtn];
@@ -145,7 +147,7 @@
                                                                     15 *SCREEN_WEIGHT/375)];
         menuLB.textColor = [UIColor whiteColor];
         menuLB.textAlignment = NSTextAlignmentCenter;
-        menuLB.font = [UIFont fontWithName:@"FZXDXJW--GB1-0" size:14];
+        menuLB.font = [UIFont fontWithName:@"FZXDXJW--GB1-0" size:14*SCREEN_WEIGHT/375];
         menuLB.text = menuLbText[i];
         [menuBtn addSubview:menuLB];
         
@@ -171,7 +173,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"updateToken" object:nil];
         [sender setTitle:@"登录" forState:UIControlStateNormal];
-        //[self alertMsgView:@"您已成功注销"];
+        [self alertMsgView:@"您已成功注销"];
     }
 }
 
@@ -180,46 +182,50 @@
     [self.UF_ViewController closeDrawerAnimtaion:YES complete:^(BOOL finished){
          if(finished)
          {
-            switch (sender.tag) {
-                case 10:{
-                    serviceHelperNewViewController *shvc = [[serviceHelperNewViewController alloc] init];
-                    [self.UF_ViewController.navigationController pushViewController:shvc animated:YES];
-                }
-                    break;
-                case 20:{
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.18*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                switch (sender.tag) {
+                    case 10:{
+                        serviceHelperNewViewController *shvc = [[serviceHelperNewViewController alloc] init];
+                        [self.UF_ViewController.navigationController pushViewController:shvc animated:YES];
+                    }
+                        break;
+                    case 20:{
+                        
                         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:400-601-0982"]];
-                    });
+                    }
+                        break;
+                    case 30:{
+                        MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
+                        [chatViewManager pushMQChatViewControllerInViewController:self];
+                        [[Mixpanel sharedInstance] track:@"首页“在线咨询”点击"];
+                    }
+                        break;
+                    case 40:{
+                        firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
+                        firstVC.strURL = [NSURL URLWithString:GYWM_PAGE];
+                        [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
+                    }
+                        break;
+                    case 50:{
+                        appShareViewController *auvc = [[appShareViewController alloc] init];
+                        [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                    }
+                        break;
+                    case 60:{
+                        FeedbackViewController *auvc = [[FeedbackViewController alloc] init];
+                        [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                    }
+                        break;
+                    case 70:{
+                        appUpdateViewController *auvc = [[appUpdateViewController alloc] init];
+                        [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
+                    }
+                        break;
+                    default:
+                        [self loginBtnClickAction:loginBtn];
+                        break;
                 }
-                    break;
-                case 30:{
-                    MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
-                    [chatViewManager pushMQChatViewControllerInViewController:self];
-                    [[Mixpanel sharedInstance] track:@"首页“在线咨询”点击"];
-                }
-                    break;
-                case 40:{
-                    firstItemViewController *firstVC = [[firstItemViewController alloc] initWithNibName:@"firstItemViewController" bundle:nil];
-                    firstVC.strURL = [NSURL URLWithString:GYWM_PAGE];
-                    [self.UF_ViewController.navigationController pushViewController:firstVC animated:YES];
-                }
-                    break;
-                case 50:{
-                    appShareViewController *auvc = [[appShareViewController alloc] init];
-                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
-                }
-                    break;
-                case 60:{
-                    FeedbackViewController *auvc = [[FeedbackViewController alloc] init];
-                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
-                }
-                    break;
-                default:{
-                    appUpdateViewController *auvc = [[appUpdateViewController alloc] init];
-                    [self.UF_ViewController.navigationController pushViewController:auvc animated:YES];
-                }
-                    break;
-            }
+              });
          }
     }];
 }
@@ -409,11 +415,12 @@
 
 -(void)receivedNotif:(NSNotification *)notification {
     hasLogin = !hasLogin;
+    lastUserPhone = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"]];
 //    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:5 inSection:0];
 //    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
     if (hasLogin) {
-        lastUserPhone = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"userPhoneNo"]];
-        userLB.text = [lastUserPhone stringByReplacingCharactersInRange:NSMakeRange(3,4) withString:@"****"];
+        NSString *phoneNo = [lastUserPhone stringByReplacingCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+        userLB.text = [NSString stringWithFormat:@"欢迎您，%@",phoneNo];
     }
     else
         userLB.text = @"请先登录";

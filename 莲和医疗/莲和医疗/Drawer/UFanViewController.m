@@ -10,7 +10,7 @@
 #define UFShadowRadius 10.0f
 #define UFShadowOpacity 0.8
 #define UFDrawerWidth 375//UFSCREEN_WIDTH/1.3
-#define UFDrawerTime 0.15
+#define UFDrawerTime 0.18
 #define UFDrawerSpeed UFDrawerWidth/UFDrawerTime
 
 #import "UFanViewController.h"

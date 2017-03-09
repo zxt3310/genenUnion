@@ -86,8 +86,8 @@
     NSArray *appNameAry = @[@"微信好友",@"朋友圈",@"QQ",@"QQ空间",@"新浪微博"];
     
     for (int i=0; i<5; i++) {
-        unitButton *shareAppTF = [[unitButton alloc] initWithFrame:CGRectMake(151,
-                                                                              168 + i*83*SCREEN_HEIGHT/667,
+        unitButton *shareAppTF = [[unitButton alloc] initWithFrame:CGRectMake(151 *SCREEN_WEIGHT/375,
+                                                                              (168 + i*83)*SCREEN_HEIGHT/667,
                                                                               73 *SCREEN_WEIGHT/375,
                                                                               73 *SCREEN_WEIGHT/375)];
         shareAppTF.imageName = appImgAry[i];
@@ -105,7 +105,7 @@
 #define QQ_TAG 30
 #define kongjian_TAG 40
 #define weibo_TAG 50
-    NSString *newsContains = @"莲和基因——联接生命与爱";
+    NSString *newsContains = @"莲和基因——连接生命与爱";
     NSString *descriptionStr = @"";
     NSString *shareAppUrl = @"http://mapi.lhgene.cn/m/app/share";
     NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"180"]);

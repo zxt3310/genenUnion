@@ -25,10 +25,10 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = NO;
     
-    bugQuestTV = [[UITextView alloc] initWithFrame:CGRectMake(25 *SCREEN_WEIGHT/375,
-                                                              98 *SCREEN_HEIGHT/667,
+    bugQuestTV = [[UITextView alloc] initWithFrame:CGRectMake(25  *SCREEN_WEIGHT/375,
+                                                              98  *SCREEN_HEIGHT/667,
                                                               326 *SCREEN_WEIGHT/375,
-                                                              97 *SCREEN_HEIGHT/667)];
+                                                              97  *SCREEN_HEIGHT/667)];
     bugQuestTV.layer.borderWidth = 1;
     bugQuestTV.textColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
     bugQuestTV.layer.borderColor = bugQuestTV.textColor.CGColor;
@@ -46,10 +46,10 @@
     placeLB.textAlignment = NSTextAlignmentCenter;
     [bugQuestTV addSubview:placeLB];
     
-    contectTF = [[UITextField alloc] initWithFrame:CGRectMake(25 *SCREEN_WEIGHT/375,
-                                                              216 *SCREEN_HEIGHT/667,
-                                                              247*SCREEN_WEIGHT/375,
-                                                              40 *SCREEN_HEIGHT/667)];
+    contectTF = [[UITextField alloc] initWithFrame:CGRectMake(25  *SCREEN_WEIGHT/375,
+                                                              217 *SCREEN_HEIGHT/667,
+                                                              247 *SCREEN_WEIGHT/375,
+                                                              40  *SCREEN_HEIGHT/667)];
     contectTF.layer.borderWidth = 1;
     contectTF.textColor = bugQuestTV.textColor;
     contectTF.layer.borderColor = contectTF.textColor.CGColor;
@@ -61,8 +61,8 @@
     UIButton *sendBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     sendBtn.frame = CGRectMake(280 *SCREEN_WEIGHT/375,
                                217 *SCREEN_HEIGHT/667 ,
-                               71 *SCREEN_WEIGHT/375,
-                               40 *SCREEN_HEIGHT/667);
+                               71  *SCREEN_WEIGHT/375,
+                               40  *SCREEN_HEIGHT/667);
     sendBtn.tintColor = [UIColor whiteColor];
     [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
     [sendBtn setBackgroundColor:[UIColor colorWithMyNeed:162 green:150 blue:203 alpha:1]];
@@ -92,7 +92,7 @@
         placeLB.text = @"";
     }
     else
-        placeLB.text = @"告诉我你遇到的问题";
+        placeLB.text = @"请告诉我们你遇到的问题或想反馈的意见";
 }
 
 - (void)sendBtnAction{

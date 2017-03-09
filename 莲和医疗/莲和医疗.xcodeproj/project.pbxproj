@@ -131,9 +131,9 @@
 		5861B5D81DFE54850089E185 /* iconfont-wodeyuyue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45A1DFE54850089E185 /* iconfont-wodeyuyue@3x.png */; };
 		5861B5D91DFE54850089E185 /* iconfont-zaixianzixunicon81889@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45B1DFE54850089E185 /* iconfont-zaixianzixunicon81889@3x.png */; };
 		5861B5DA1DFE54850089E185 /* iconfont-zixunjiluzixun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45C1DFE54850089E185 /* iconfont-zixunjiluzixun@3x.png */; };
-		5861B5DB1DFE54850089E185 /* iconfontGuanyuwomen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45D1DFE54850089E185 /* iconfontGuanyuwomen2.png */; };
-		5861B5DC1DFE54850089E185 /* iconfontGuanyuwomen2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45E1DFE54850089E185 /* iconfontGuanyuwomen2@2x.png */; };
-		5861B5DD1DFE54850089E185 /* iconfontGuanyuwomen2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45F1DFE54850089E185 /* iconfontGuanyuwomen2@3x.png */; };
+		5861B5DB1DFE54850089E185 /* iconfontGuanyuwomen.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45D1DFE54850089E185 /* iconfontGuanyuwomen.png */; };
+		5861B5DC1DFE54850089E185 /* iconfontGuanyuwomen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45E1DFE54850089E185 /* iconfontGuanyuwomen@2x.png */; };
+		5861B5DD1DFE54850089E185 /* iconfontGuanyuwomen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B45F1DFE54850089E185 /* iconfontGuanyuwomen@3x.png */; };
 		5861B5DE1DFE54850089E185 /* iconfontIuchengrenwu.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B4601DFE54850089E185 /* iconfontIuchengrenwu.png */; };
 		5861B5DF1DFE54850089E185 /* iconfontIuchengrenwu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B4611DFE54850089E185 /* iconfontIuchengrenwu@2x.png */; };
 		5861B5E01DFE54850089E185 /* iconfontIuchengrenwu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5861B4621DFE54850089E185 /* iconfontIuchengrenwu@3x.png */; };
@@ -274,6 +274,9 @@
 		7013981A1E681AC60081BD2D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 588747571E5D911D00279BB8 /* libsqlite3.0.tbd */; };
 		70207DB61DD410CB0070D638 /* reportDitailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 70207DB51DD410CB0070D638 /* reportDitailViewController.m */; };
 		70207DBF1DD43B780070D638 /* ditailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70207DBE1DD43B780070D638 /* ditailView.m */; };
+		703368601E7128C700C0D91D /* 菜单.png in Resources */ = {isa = PBXBuildFile; fileRef = 7033685D1E7128C700C0D91D /* 菜单.png */; };
+		703368611E7128C700C0D91D /* 菜单@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7033685E1E7128C700C0D91D /* 菜单@2x.png */; };
+		703368621E7128C700C0D91D /* 菜单@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7033685F1E7128C700C0D91D /* 菜单@3x.png */; };
 		703D41491E6D4DAC00ABC295 /* appShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703D41481E6D4DAC00ABC295 /* appShareViewController.m */; };
 		703D415A1E6D5A2100ABC295 /* shareKJ.png in Resources */ = {isa = PBXBuildFile; fileRef = 703D414B1E6D5A2100ABC295 /* shareKJ.png */; };
 		703D415B1E6D5A2100ABC295 /* shareKJ@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 703D414C1E6D5A2100ABC295 /* shareKJ@2x.png */; };
@@ -707,9 +710,9 @@
 		5861B45A1DFE54850089E185 /* iconfont-wodeyuyue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-wodeyuyue@3x.png"; sourceTree = "<group>"; };
 		5861B45B1DFE54850089E185 /* iconfont-zaixianzixunicon81889@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-zaixianzixunicon81889@3x.png"; sourceTree = "<group>"; };
 		5861B45C1DFE54850089E185 /* iconfont-zixunjiluzixun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-zixunjiluzixun@3x.png"; sourceTree = "<group>"; };
-		5861B45D1DFE54850089E185 /* iconfontGuanyuwomen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfontGuanyuwomen2.png; sourceTree = "<group>"; };
-		5861B45E1DFE54850089E185 /* iconfontGuanyuwomen2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontGuanyuwomen2@2x.png"; sourceTree = "<group>"; };
-		5861B45F1DFE54850089E185 /* iconfontGuanyuwomen2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontGuanyuwomen2@3x.png"; sourceTree = "<group>"; };
+		5861B45D1DFE54850089E185 /* iconfontGuanyuwomen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfontGuanyuwomen.png; sourceTree = "<group>"; };
+		5861B45E1DFE54850089E185 /* iconfontGuanyuwomen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontGuanyuwomen@2x.png"; sourceTree = "<group>"; };
+		5861B45F1DFE54850089E185 /* iconfontGuanyuwomen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontGuanyuwomen@3x.png"; sourceTree = "<group>"; };
 		5861B4601DFE54850089E185 /* iconfontIuchengrenwu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfontIuchengrenwu.png; sourceTree = "<group>"; };
 		5861B4611DFE54850089E185 /* iconfontIuchengrenwu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontIuchengrenwu@2x.png"; sourceTree = "<group>"; };
 		5861B4621DFE54850089E185 /* iconfontIuchengrenwu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfontIuchengrenwu@3x.png"; sourceTree = "<group>"; };
@@ -880,6 +883,9 @@
 		70207DB51DD410CB0070D638 /* reportDitailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reportDitailViewController.m; sourceTree = "<group>"; };
 		70207DBD1DD43B780070D638 /* ditailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ditailView.h; sourceTree = "<group>"; };
 		70207DBE1DD43B780070D638 /* ditailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ditailView.m; sourceTree = "<group>"; };
+		7033685D1E7128C700C0D91D /* 菜单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "菜单.png"; sourceTree = "<group>"; };
+		7033685E1E7128C700C0D91D /* 菜单@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "菜单@2x.png"; sourceTree = "<group>"; };
+		7033685F1E7128C700C0D91D /* 菜单@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "菜单@3x.png"; sourceTree = "<group>"; };
 		703D41471E6D4DAC00ABC295 /* appShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appShareViewController.h; sourceTree = "<group>"; };
 		703D41481E6D4DAC00ABC295 /* appShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appShareViewController.m; sourceTree = "<group>"; };
 		703D414B1E6D5A2100ABC295 /* shareKJ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareKJ.png; sourceTree = "<group>"; };
@@ -1561,6 +1567,9 @@
 				5861B4241DFE54850089E185 /* FWLC */,
 				5861B42E1DFE54850089E185 /* guied page */,
 				5861B4391DFE54850089E185 /* icon */,
+				7033685D1E7128C700C0D91D /* 菜单.png */,
+				7033685E1E7128C700C0D91D /* 菜单@2x.png */,
+				7033685F1E7128C700C0D91D /* 菜单@3x.png */,
 				5861B4841DFE54850089E185 /* icon_close.png */,
 				5861B4851DFE54850089E185 /* iconfontMulu.png */,
 				5861B4861DFE54850089E185 /* iconfontMulu@2x.png */,
@@ -1825,9 +1834,9 @@
 				5861B45A1DFE54850089E185 /* iconfont-wodeyuyue@3x.png */,
 				5861B45B1DFE54850089E185 /* iconfont-zaixianzixunicon81889@3x.png */,
 				5861B45C1DFE54850089E185 /* iconfont-zixunjiluzixun@3x.png */,
-				5861B45D1DFE54850089E185 /* iconfontGuanyuwomen2.png */,
-				5861B45E1DFE54850089E185 /* iconfontGuanyuwomen2@2x.png */,
-				5861B45F1DFE54850089E185 /* iconfontGuanyuwomen2@3x.png */,
+				5861B45D1DFE54850089E185 /* iconfontGuanyuwomen.png */,
+				5861B45E1DFE54850089E185 /* iconfontGuanyuwomen@2x.png */,
+				5861B45F1DFE54850089E185 /* iconfontGuanyuwomen@3x.png */,
 				5861B4601DFE54850089E185 /* iconfontIuchengrenwu.png */,
 				5861B4611DFE54850089E185 /* iconfontIuchengrenwu@2x.png */,
 				5861B4621DFE54850089E185 /* iconfontIuchengrenwu@3x.png */,
@@ -3033,7 +3042,7 @@
 					5849C77E1DB7177D00B97AF6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = S2B89SD35E;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					5849C7971DB7177D00B97AF6 = {
 						CreatedOnToolsVersion = 8.0;
@@ -3143,7 +3152,7 @@
 				58F6393C1DF54BF900179908 /* h5_main in Resources */,
 				70B16DC61E69206B00221317 /* MPNotification~iphonelandscape.storyboard in Resources */,
 				5861B5F01DFE54850089E185 /* 87.png in Resources */,
-				5861B5DB1DFE54850089E185 /* iconfontGuanyuwomen2.png in Resources */,
+				5861B5DB1DFE54850089E185 /* iconfontGuanyuwomen.png in Resources */,
 				5861B5CA1DFE54850089E185 /* loding 750x1334.png in Resources */,
 				5861B5FA1DFE54860089E185 /* 病理报告.png in Resources */,
 				5894F7C41E00EF4D0019DC8A /* jiyin.png in Resources */,
@@ -3179,7 +3188,7 @@
 				5861B5FD1DFE54860089E185 /* iconfont-iconfontconsult@3x.png in Resources */,
 				5861B62A1DFE54860089E185 /* 千图网-红色的英文印章@2x.png in Resources */,
 				70B16E431E6978B100221317 /* logoUp.png in Resources */,
-				5861B5DD1DFE54850089E185 /* iconfontGuanyuwomen2@3x.png in Resources */,
+				5861B5DD1DFE54850089E185 /* iconfontGuanyuwomen@3x.png in Resources */,
 				5861B4EE1DFE54850089E185 /* kuozengjianku&.png in Resources */,
 				5861B5A91DFE54850089E185 /* iconJiedu.png in Resources */,
 				5861B5AC1DFE54850089E185 /* iconLiucheng.png in Resources */,
@@ -3218,7 +3227,7 @@
 				5861B4C61DFE54850089E185 /* Chubaogao!@3x.png in Resources */,
 				5861B4DB1DFE54850089E185 /* Fenxi$@3x.png in Resources */,
 				5861B5B11DFE54850089E185 /* 引导页1@3x.png in Resources */,
-				5861B5DC1DFE54850089E185 /* iconfontGuanyuwomen2@2x.png in Resources */,
+				5861B5DC1DFE54850089E185 /* iconfontGuanyuwomen@2x.png in Resources */,
 				5861B4E31DFE54850089E185 /* Gaotong$@2x.png in Resources */,
 				5861B4F01DFE54850089E185 /* kuozengjianku&@3x.png in Resources */,
 				5861B6261DFE54860089E185 /* reportDitail@2x.png in Resources */,
@@ -3243,6 +3252,7 @@
 				5861B5B91DFE54850089E185 /* android载入页.png in Resources */,
 				5861B4FF1DFE54850089E185 /* iconYangben$@3x.png in Resources */,
 				703D415D1E6D5A2100ABC295 /* sharePY.png in Resources */,
+				703368621E7128C700C0D91D /* 菜单@3x.png in Resources */,
 				5861B5D61DFE54850089E185 /* iconfont-iuchengrenwu@3x.png in Resources */,
 				5861B4E11DFE54850089E185 /* Gaotong!@3x.png in Resources */,
 				5861B4D01DFE54850089E185 /* Fenli$.png in Resources */,
@@ -3279,6 +3289,7 @@
 				70B16DD21E69206B00221317 /* MPSurvey.storyboard in Resources */,
 				5861B5E31DFE54850089E185 /* iconfontLogout@3x.png in Resources */,
 				703D41661E6D5A2100ABC295 /* shareWX.png in Resources */,
+				703368601E7128C700C0D91D /* 菜单.png in Resources */,
 				588747411E5D704200279BB8 /* qq@3x.png in Resources */,
 				70B16D9F1E69206B00221317 /* MPCloseButton@2x.png in Resources */,
 				5861B6051DFE54860089E185 /* iconfontYouxiang@2x.png in Resources */,
@@ -3328,6 +3339,7 @@
 				5861B5DA1DFE54850089E185 /* iconfont-zixunjiluzixun@3x.png in Resources */,
 				5861B5E01DFE54850089E185 /* iconfontIuchengrenwu@3x.png in Resources */,
 				5861B5EF1DFE54850089E185 /* 80.png in Resources */,
+				703368611E7128C700C0D91D /* 菜单@2x.png in Resources */,
 				5861B6101DFE54860089E185 /* iconBack@3x.png in Resources */,
 				5861B5EE1DFE54850089E185 /* 60.png in Resources */,
 				588747401E5D704200279BB8 /* qq@2x.png in Resources */,
@@ -3750,10 +3762,11 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Life Healthcare(Beijing) Co.,Ltd. (S2B89SD35E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = S2B89SD35E;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3790,8 +3803,9 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = S2B89SD35E;
 				ENABLE_BITCODE = YES;
@@ -3818,8 +3832,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.lhgene.lhyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "abfc9d86-9864-4ec9-b01c-0e0519a5a394";
+				PROVISIONING_PROFILE_SPECIFIER = lhyl.distribution;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
