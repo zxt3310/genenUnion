@@ -98,7 +98,7 @@
     backBtn.frame = rect;
     [header addSubview:backBtn];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(rect.size.width + 16, 20, SCREEN_WEIGHT - (rect.size.width+8) * 2, 44)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/2 - 80,20,160,44)];//(rect.size.width + 16, 20, SCREEN_WEIGHT - (rect.size.width+8) * 2, 44)];
     titleLabel.text = @"莲和基因";
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont boldSystemFontOfSize:18];

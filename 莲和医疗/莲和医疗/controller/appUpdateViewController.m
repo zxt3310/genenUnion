@@ -47,12 +47,12 @@
     //跟新按钮
           updateBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     updateBtn.frame = CGRectMake(121 *SCREEN_WEIGHT/375,
-                                 378*SCREEN_HEIGHT/667,
-                                 133*SCREEN_WEIGHT/375,
-                                 40*SCREEN_HEIGHT/667);
+                                 378 *SCREEN_HEIGHT/667,
+                                 133 *SCREEN_WEIGHT/375,
+                                 40  *SCREEN_HEIGHT/667);
              updateBtn.tintColor = [UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1];
        updateBtn.titleLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
-    updateBtn.layer.cornerRadius = 20;
+    updateBtn.layer.cornerRadius = 20 *SCREEN_WEIGHT/375;
      updateBtn.layer.borderWidth = 1;
      updateBtn.layer.borderColor = updateBtn.tintColor.CGColor;
                 updateBtn.hidden = YES;

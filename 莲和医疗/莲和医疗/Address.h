@@ -68,37 +68,37 @@
 //图片名称命名规则： iPhone5及以下 xxx.png  iphone 6 xxx@2x.png  iphone 6plus  xxx@3x.png
 
 
-#define CLASS_NUMBER                      @"NSNumber"
-#define CLASS_STRING                      @"NSString"
-#define CLASS_DICTIONARY                  @"NSDictionary"
-#define CLASS_ARRAY                       @"NSArray"
+#define CLASS_NUMBER              @"NSNumber"
+#define CLASS_STRING              @"NSString"
+#define CLASS_DICTIONARY          @"NSDictionary"
+#define CLASS_ARRAY               @"NSArray"
 
-#define CHOUXUE_IMG                       @"Chouxue.png"
-#define YANGBEN_IMG                       @"iconYangben.png"
-#define FENLI_IMG                         @"Fenli.png"
-#define TIQU_IMG                          @"tiqu.png"
-#define KUOZENGJIANKU_IMG                 @"kuozengjianku.png"
-#define GAOTONGCEXU_IMG                   @"Gaotong.png"
-#define SHENGWUFENXI_IMG                  @"Fenxi.png"
-#define CHUBAOGAO_IMG                     @"Chubaogao.png"
+#define CHOUXUE_IMG               @"Chouxue.png"
+#define YANGBEN_IMG               @"iconYangben.png"
+#define FENLI_IMG                 @"Fenli.png"
+#define TIQU_IMG                  @"tiqu.png"
+#define KUOZENGJIANKU_IMG         @"kuozengjianku.png"
+#define GAOTONGCEXU_IMG           @"Gaotong.png"
+#define SHENGWUFENXI_IMG          @"Fenxi.png"
+#define CHUBAOGAO_IMG             @"Chubaogao.png"
 
-#define MIXPANEL_TOKEN                    @"af67f0a0fb4591e37e976e52e83c058a"
+#define MIXPANEL_TOKEN            @"af67f0a0fb4591e37e976e52e83c058a"
 //微信分享
-#define WeChat_AppId                      @"wx46e3337f9221fdf4"
-#define WeChat_AppSecret                  @"45f989118eda1a8d5bc5928a4c1a6ee5"
+#define WeChat_AppId              @"wx46e3337f9221fdf4"
+#define WeChat_AppSecret          @"45f989118eda1a8d5bc5928a4c1a6ee5"
 //QQ 分享
-#define QQ_AppId                          @"1106003542"
-#define QQ_AppKey                         @"WjNYIaJcQ55v7J1s"
+#define QQ_AppId                  @"1106003542"
+#define QQ_AppKey                 @"WjNYIaJcQ55v7J1s"
 //微博分享
-#define WeiBo_AppId                       @"2052926829"
-#define WeiBo_AppSecret                   @"9a4475a48accb01dd0a60ebf57be6b23"
+#define WeiBo_AppId               @"2052926829"
+#define WeiBo_AppSecret           @"9a4475a48accb01dd0a60ebf57be6b23"
 //美洽在线咨询 第三方包
-#define MQ_App_Key                        @"7fd14f3b45c51ecad67d97f6cc937b03"
-#define SEC_Key                           @"$2a$12$xiFz3TgAv.i576UV.88XXObs.dS9s8SBegQhAKPqJLD4uyRLVyqfS"
+#define MQ_App_Key                @"7fd14f3b45c51ecad67d97f6cc937b03"
+#define SEC_Key                   @"$2a$12$xiFz3TgAv.i576UV.88XXObs.dS9s8SBegQhAKPqJLD4uyRLVyqfS"
 
 //苹果官方判断版本接口
-#define appleID                           @"1176774735"
-#define appStore_Version_POST_URL         @"http://itunes.apple.com/cn/lookup"
+#define appleID                   @"1176774735"
+#define appStore_Version_POST_URL @"http:                                                        //itunes.apple.com/cn/lookup"
 
 @interface WeixinBackTools : NSObject <WXApiDelegate>
 

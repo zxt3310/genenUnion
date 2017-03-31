@@ -388,7 +388,6 @@
             });
             time--;
         }
-       
     });
     dispatch_resume(_timer);
     

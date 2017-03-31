@@ -3042,7 +3042,7 @@
 					5849C77E1DB7177D00B97AF6 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = S2B89SD35E;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					5849C7971DB7177D00B97AF6 = {
 						CreatedOnToolsVersion = 8.0;
@@ -3766,7 +3766,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Life Healthcare(Beijing) Co.,Ltd. (S2B89SD35E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = S2B89SD35E;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3805,7 +3805,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = S2B89SD35E;
 				ENABLE_BITCODE = YES;
@@ -3832,8 +3832,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.lhgene.lhyl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "abfc9d86-9864-4ec9-b01c-0e0519a5a394";
-				PROVISIONING_PROFILE_SPECIFIER = lhyl.distribution;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

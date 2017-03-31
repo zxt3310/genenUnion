@@ -120,9 +120,9 @@
 }
 
 - (void)setMenuBtnView{
-    NSArray *menuImgAry = @[FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,FX_IMAGE,FEEDBACK_IMAGE,BBGX_IMAGE];
-    NSArray *menuLbText = @[@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"分享给好友",@"帮助与反馈",@"版本更新"];
-    for (int i = 0; i<7; i++) {
+    NSArray *menuImgAry = @[FWLC_IMAGE,LXWM_IMAGE,ZXZX_IMAGE,GYWM_IMAGE,FX_IMAGE,FEEDBACK_IMAGE];//,BBGX_IMAGE];
+    NSArray *menuLbText = @[@"服务流程",@"联系我们",@"在线咨询",@"关于我们",@"分享给好友",@"帮助与反馈"];//,@"版本更新"];
+    for (int i = 0; i<menuLbText.count; i++) {
         int n = i%2;
         int j = i/2;
         UIButton *menuBtn = [UIButton buttonWithType:UIButtonTypeSystem];

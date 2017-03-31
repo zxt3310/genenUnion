@@ -26,6 +26,7 @@
     UIButton *shareButton;
     NSString *descriptionStr;
 }
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     _html5WebView.delegate = self;
@@ -192,7 +193,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.html5WebView.delegate = nil;
+    //self.html5WebView.delegate = nil;
 }
 - (void)viewDidDisappear:(BOOL)animated
 {
