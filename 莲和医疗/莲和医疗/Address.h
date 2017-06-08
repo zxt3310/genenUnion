@@ -27,7 +27,7 @@
 #define FAQ_PAGE                         @"http://mapi.lhgene.cn/m/faq"
 #define LOIGN_PAGE                       @""
 
-#define WDJC_REQUEST                     @"http://mapi.lhgene.cn/m/api/reports"
+#define WDJC_REQUEST                     @"https://mapi.lhgene.cn/m/api/reports"
 
 #define ZXZX_IMAGE                       @"iconfontZaixianzixunicon81889"
 #define GYWM_IMAGE                       @"iconfontGuanyuwomen"
@@ -44,8 +44,8 @@
 #define PRODUCT2_URL                     @"http://mapi.lhgene.cn/m/product/2"
 #define PRODUCT3_URL                     @"http://mapi.lhgene.cn/m/product/3"
 
-#define orderRequest_RUL                 @"http://mapi.lhgene.cn/m/api/order"
-#define feedBack_URL                     @"http://mapi.lhgene.cn/m/api/feedback"
+#define orderRequest_RUL                 @"https://mapi.lhgene.cn/m/api/order"
+#define feedBack_URL                     @"https://mapi.lhgene.cn/m/api/feedback"
 
 #define advise_URL  @"http://a.eqxiu.com/s/b7uWplIt?eqrcode=1&from=singlemessage&isappinstalled=0&lhtype=share"
 

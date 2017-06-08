@@ -342,7 +342,6 @@
                 return;
             }
             
-            
             for(id object in self.view.subviews)
             {
                 if ([object isKindOfClass:[UITextField class]]) {
@@ -355,8 +354,6 @@
             
             [self.navigationController popViewControllerAnimated:YES];
         });
-    
-    
     });
 }
 

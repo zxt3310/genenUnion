@@ -160,7 +160,7 @@
     [[Mixpanel sharedInstance] track:@"登陆页面“登录”按钮点击"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/validation?mobile=%@&code=%@"
+        NSString *urlStr = [NSString stringWithFormat:@"https://mapi.lhgene.cn/m/api/validation?mobile=%@&code=%@"
                                         ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]
                                         ,[_Tx_Password.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
        // NSURL *url = [[NSURL alloc] initWithString:urlStr];
@@ -268,7 +268,7 @@
     [[Mixpanel sharedInstance] track:@"登陆页面“获取验证码”按钮点击"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
+        NSString *urlStr = [NSString stringWithFormat:@"https://mapi.lhgene.cn/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
         //,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
         
         // NSURL *url = [[NSURL alloc] initWithString:urlStr];

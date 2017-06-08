@@ -105,8 +105,8 @@
 #define QQ_TAG 30
 #define kongjian_TAG 40
 #define weibo_TAG 50
-    NSString *newsContains = @"莲和基因——连接生命与爱";
-    NSString *descriptionStr = @"";
+    NSString *newsContains = @"健康不是第一，而是唯一";
+    NSString *descriptionStr = @"可以把人生的财富和名誉看作无数个“0”，然而只有健康才是“1”。如果没有“1”，就算有无数个“0”也毫无意义。";
     NSString *shareAppUrl = @"http://mapi.lhgene.cn/m/app/share";
     NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"180"]);
     switch (sender.tag) {

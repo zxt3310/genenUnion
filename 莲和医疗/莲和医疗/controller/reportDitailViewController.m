@@ -195,24 +195,12 @@
     CGSize temp = reportScrollView.contentSize;
     temp.height = startHeight + SCREEN_HEIGHT/4.51 - 100;
     reportScrollView.contentSize = temp;
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)reportBtClick:(UIButton *)sender
 {
@@ -224,7 +212,6 @@
 //图片选择器  命名规则 已完成图片名+$   正在进行 图片名+&  未完成 图片名+！
 - (NSString *)selectReportImg:(NSInteger)index currentStep:(NSInteger)step;
 {
-    
     NSString *imgName = imgNameArray[index];
     
     NSMutableArray *arry = [[NSMutableArray alloc]init];

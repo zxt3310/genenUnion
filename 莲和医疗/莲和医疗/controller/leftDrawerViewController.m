@@ -24,16 +24,6 @@
 
 -(void)loadView {
     [super loadView];
-//    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height) style:UITableViewStyleGrouped];
-//    [self.tableView setDataSource:self];
-//    [self.tableView setDelegate:self];
-//    self.tableView.scrollEnabled = NO;
-//    //self.view = self.tableView;
-//    self.tableView.separatorStyle = UITableViewCellEditingStyleNone;
-//    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    
-   
-    
 }
 
 - (void)viewDidLoad {
@@ -85,7 +75,7 @@
     else{
         userLB.text = @"请先登录";
     }
-        [self.view addSubview:userLB];
+    [self.view addSubview:userLB];
     
     loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     loginBtn.layer.borderWidth = 1;
@@ -150,7 +140,6 @@
         menuLB.font = [UIFont fontWithName:@"FZXDXJW--GB1-0" size:14*SCREEN_WEIGHT/375];
         menuLB.text = menuLbText[i];
         [menuBtn addSubview:menuLB];
-        
     }
 }
 
@@ -165,7 +154,6 @@
     }
     else
     {
-      
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userPhoneNo"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"token"];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -268,9 +256,9 @@
     cell.selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.2];  //点击时颜色
     cell.backgroundColor = nil; //[UIColor colorWithRed:142.0/255 green:126.0/255 blue:188.0/255 alpha:0]; //cell背景色
     if(!indexPath.row)
-      {
-          cell.userInteractionEnabled = NO;
-      }
+    {
+        cell.userInteractionEnabled = NO;
+    }
     
     cellImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WEIGHT/5, SCREEN_HEIGHT/31, SCREEN_HEIGHT/31.76, SCREEN_HEIGHT/31.76)];   //侧边栏图标
     
@@ -285,7 +273,6 @@
     {
         return  SCREEN_HEIGHT * 20/667;
     }
-
     return SCREEN_HEIGHT/10;
 }
 
@@ -394,7 +381,6 @@
                 [self alertMsgView:@"您已成功注销"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadView" object:nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"updateToken" object:nil];
-
             }
         }
     }

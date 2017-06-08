@@ -448,7 +448,7 @@
 {
     loadingView.hidden = NO;
     
-    NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn/m/api/report/%@?token=%@",reportId,_token];
+    NSString *urlStr = [NSString stringWithFormat:@"https://mapi.lhgene.cn/m/api/report/%@?token=%@",reportId,_token];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
