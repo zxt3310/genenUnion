@@ -56,10 +56,10 @@
     [self.view addSubview:loadingView];
     
     //点击追踪
-    if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
+    if([_strURL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/product"]])
     {
         descriptionStr = @"莲和医疗致力于肿瘤基因检测在临床医学与健康服务中的推广和应用，为个人及家庭提供个性化健康指导和全方位的干预管理。";
-        ProNo = [[_strURL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn/m/product/" withString:@""] integerValue];
+        ProNo = [[_strURL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn:8088/m/product/" withString:@""] integerValue];
         switch (ProNo) {
             case 1:
                 newsContains = @"和普安ctDNA无创肿瘤基因检测";
@@ -90,7 +90,7 @@
         zixunBt.backgroundColor = [UIColor colorWithMyNeed:242 green:240 blue:254 alpha:1];
         [zixunBt setTitleColor:[UIColor colorWithMyNeed:135 green:126 blue:188 alpha:1] forState:UIControlStateNormal];
         [zixunBt addTarget:self action:@selector(zixunBtClick) forControlEvents:UIControlEventTouchUpInside];
-
+        
         [self.view addSubview:zixunBt];
     }
     
@@ -208,7 +208,7 @@
     }
     self.strURL = request.URL;
     //隐藏分享按钮
-    if ([request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/my/report"] || [request.URL.absoluteString isEqualToString:@"http://mapi.lhgene.cn/m/news"] || [request.URL.absoluteString isEqualToString:GYWM_PAGE]) {
+    if ([request.URL.absoluteString containsString:@"http://mapi.lhgene.cn:8088/m/my/report"] || [request.URL.absoluteString isEqualToString:@"http://mapi.lhgene.cn:8088/m/news"] || [request.URL.absoluteString isEqualToString:GYWM_PAGE]) {
         shareButton.hidden = YES;
     }
     else
@@ -245,13 +245,13 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
     
-    if([_html5WebView.request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/product"]])
+    if([_html5WebView.request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/product"]])
     {
         orderBt.hidden = NO;
         zixunBt.hidden = NO;
     }
     //获取文章
-    if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn/m/db/topic/"]) {
+    if ([webView.request.URL.absoluteString containsString:@"http://mapi.lhgene.cn:8088/m/db/topic/"]) {
         newsContains = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('h3')[0].innerHTML"];
         NSString *curStr = [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('p')[0].innerHTML"];
         NSString *replaceStr = [self flattenHTML:curStr trimWhiteSpace:NO];
@@ -355,8 +355,20 @@
     weiboLb.font = Lb_SIZE;
     [aletCtrol.view addSubview:weiboLb];
     
+//    跳转微信测试
+//    UIButton *jumpWx = [UIButton buttonWithType:UIButtonTypeSystem];
+//    [jumpWx setTitle:@"跳转到微信" forState:UIControlStateNormal];
+//    jumpWx.frame = CGRectMake(50, 131, 100, 30);
+//    [jumpWx addTarget:self action:@selector(jumpToWx) forControlEvents:UIControlEventTouchUpInside];
+//    [aletCtrol.view addSubview:jumpWx];
+//    
     [aletCtrol addAction:cacle];
     [self presentViewController:aletCtrol animated:YES completion:nil];
+}
+
+- (void)jumpToWx{
+ 
+    [WXApi openWXApp];
 }
 
 - (void)shareToAppBtnAction:(UIButton *)sender
@@ -471,7 +483,7 @@
     {
         [[Mixpanel sharedInstance] track:@"转发：和家安转发按钮的点击" properties:@{@"ShareTo":shareTo}];
     }
-    else if ([urlStr containsString:@"http://mapi.lhgene.cn/m/db/topic/"])
+    else if ([urlStr containsString:@"http://mapi.lhgene.cn:8088/m/db/topic/"])
     {
         [[Mixpanel sharedInstance] track:@"所有文章转发" properties:@{@"title":newsContains,@"ShareTo":shareTo}];
     }

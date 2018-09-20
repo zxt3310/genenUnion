@@ -18,16 +18,16 @@
 #ifndef Adress_h
 #define Adress_h
 
-#define MAIN_PAGE                        @"http://mapi.lhgene.cn/resources/mobile/h5_main/html/index.html"
-#define ZXZX_PAGE                        @"https://static.meiqia.com/dist/standalone.html?eid=33791"
-#define GYWM_PAGE                        @"http://mapi.lhgene.cn/m/about"
+#define MAIN_PAGE                        @"http://mapi.lhgene.cn:8088/resources/mobile/h5_main/html/index.html"
+#define ZXZX_PAGE                        @"http://static.meiqia.com/dist/standalone.html?eid=33791"
+#define GYWM_PAGE                        @"http://mapi.lhgene.cn:8088/m/about"
 #define LJYY_PAGE                        @"http://ctdna.m3gene.com:81/m/order"
-#define WDJC_PAGE                        @"http://mapi.lhgene.cn/m/my/report"
-#define FWLC_PAGE                        @"http://mapi.lhgene.cn/m/procedure"
-#define FAQ_PAGE                         @"http://mapi.lhgene.cn/m/faq"
+#define WDJC_PAGE                        @"http://mapi.lhgene.cn:8088/m/my/report"
+#define FWLC_PAGE                        @"http://mapi.lhgene.cn:8088/m/procedure"
+#define FAQ_PAGE                         @"http://mapi.lhgene.cn:8088/m/faq"
 #define LOIGN_PAGE                       @""
 
-#define WDJC_REQUEST                     @"https://mapi.lhgene.cn/m/api/reports"
+#define WDJC_REQUEST                     @"http://mapi.lhgene.cn:8088/m/api/reports"
 
 #define ZXZX_IMAGE                       @"iconfontZaixianzixunicon81889"
 #define GYWM_IMAGE                       @"iconfontGuanyuwomen"
@@ -40,12 +40,12 @@
 #define FEEDBACK_IMAGE                   @"帮助与反馈"
 #define BBGX_IMAGE                       @"版本更新"
 
-#define PRODUCT1_URL                     @"http://mapi.lhgene.cn/m/product/1"
-#define PRODUCT2_URL                     @"http://mapi.lhgene.cn/m/product/2"
-#define PRODUCT3_URL                     @"http://mapi.lhgene.cn/m/product/3"
+#define PRODUCT1_URL                     @"http://mapi.lhgene.cn:8088/m/product/1"
+#define PRODUCT2_URL                     @"http://mapi.lhgene.cn:8088/m/product/2"
+#define PRODUCT3_URL                     @"http://mapi.lhgene.cn:8088/m/product/3"
 
-#define orderRequest_RUL                 @"https://mapi.lhgene.cn/m/api/order"
-#define feedBack_URL                     @"https://mapi.lhgene.cn/m/api/feedback"
+#define orderRequest_RUL                 @"http://mapi.lhgene.cn:8088/m/api/order"
+#define feedBack_URL                     @"http://mapi.lhgene.cn:8088/m/api/feedback"
 
 #define advise_URL  @"http://a.eqxiu.com/s/b7uWplIt?eqrcode=1&from=singlemessage&isappinstalled=0&lhtype=share"
 

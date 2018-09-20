@@ -205,7 +205,7 @@
 - (void)reportBtClick:(UIButton *)sender
 {
     firstItemViewController *fivc = [[firstItemViewController alloc]init];
-    fivc.strURL =[NSURL URLWithString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/my/report/%@?token=%@",_reportId,_token]];
+    fivc.strURL =[NSURL URLWithString:[NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/my/report/%@?token=%@",_reportId,_token]];
     [self.navigationController pushViewController:fivc animated:YES];
 }
 

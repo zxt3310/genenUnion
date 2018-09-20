@@ -376,7 +376,7 @@
     NSString *currentId = [dic objectForKey:@"report_id"];
     
     firstItemViewController *fivc = [[firstItemViewController alloc]init];
-    fivc.strURL =[NSURL URLWithString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/m/my/report/%@?token=%@",currentId,_token]];
+    fivc.strURL =[NSURL URLWithString:[NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/my/report/%@?token=%@",currentId,_token]];
     [self.navigationController pushViewController:fivc animated:YES];
 }
 
@@ -448,7 +448,7 @@
 {
     loadingView.hidden = NO;
     
-    NSString *urlStr = [NSString stringWithFormat:@"https://mapi.lhgene.cn/m/api/report/%@?token=%@",reportId,_token];
+    NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/api/report/%@?token=%@",reportId,_token];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     

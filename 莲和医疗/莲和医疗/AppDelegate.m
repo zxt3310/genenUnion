@@ -262,7 +262,6 @@
         
         CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
         
-        
         CGRect pathRect = CGPathGetBoundingBox(path);
         
         //具体方向可根据需求修改

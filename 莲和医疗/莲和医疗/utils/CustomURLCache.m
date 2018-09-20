@@ -43,9 +43,9 @@
 
 - (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request {
     
-    if ([request.URL.absoluteString containsString:@"mapi.lhgene.cn/m/db/newslist"]) {
+    if ([request.URL.absoluteString containsString:@"mapi.lhgene.cn:8088/m/db/newslist"]) {
         
-        NSString *curUrl = [request.URL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn/m/db/newslist/" withString:@""];
+        NSString *curUrl = [request.URL.absoluteString stringByReplacingOccurrencesOfString:@"http://mapi.lhgene.cn:8088/m/db/newslist/" withString:@""];
         NSInteger listId = [curUrl integerValue];
         switch (listId) {
             case 1:
@@ -66,7 +66,7 @@
         return [super cachedResponseForRequest:request];
     }
     
-    if (![request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn/resources/mobile"]]){
+    if (![request.URL.absoluteString containsString:[NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/resources/mobile"]]){
         return [super cachedResponseForRequest:request];
     }
     

@@ -183,7 +183,7 @@
     [super viewDidAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     
-    hostReach = [Reachability reachabilityWithHostname:@"http://mapi.lhgene.cn"];
+    hostReach = [Reachability reachabilityWithHostname:@"http://mapi.lhgene.cn:8088"];
     
         URL = [[NSURL alloc] initWithString:_strURL];
         

@@ -200,7 +200,7 @@
 -(CGRect)setLeftDrawerViewFrame {
     CGRect frame = self.view.frame;
     frame.origin = CGPointMake(0,0);//CGPointMake(-UFDrawerWidth, 0);
-    frame.size.width = UFDrawerWidth;
+    frame.size.width = UFSCREEN_WIDTH;//UFDrawerWidth;
     _leftDrawerViewController.view.hidden = YES;
     _leftDrawerViewController.view.alpha = 0;
     return frame;

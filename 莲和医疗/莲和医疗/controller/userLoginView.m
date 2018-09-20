@@ -151,7 +151,7 @@
 }
 
 
-//注册或登录：http://gzh.http://mapi.lhgene.cn/m/api/validation?mobile=xxxxxxxxxxx&code=1234
+//注册或登录：http://gzh.http://mapi.lhgene.cn:8088/m/api/validation?mobile=xxxxxxxxxxx&code=1234
 //{ret:1, is_login:true/false, token:'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}
 
 - (IBAction)Bt_LoginClick:(id)sender
@@ -160,7 +160,7 @@
     [[Mixpanel sharedInstance] track:@"登陆页面“登录”按钮点击"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"https://mapi.lhgene.cn/m/api/validation?mobile=%@&code=%@"
+        NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/api/validation?mobile=%@&code=%@"
                                         ,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]
                                         ,[_Tx_Password.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
        // NSURL *url = [[NSURL alloc] initWithString:urlStr];
@@ -255,7 +255,7 @@
 
 
 
-//请求验证码：http://gzh.http://mapi.lhgene.cn/m/api/requestcode?mobile=xxxxxxxxxxx
+//请求验证码：http://gzh.http://mapi.lhgene.cn:8088/m/api/requestcode?mobile=xxxxxxxxxxx
 //{ret:1/0, errmsg:xxx}
 - (IBAction)Bt_SendMsgClick:(id)sender
 {
@@ -268,7 +268,7 @@
     [[Mixpanel sharedInstance] track:@"登陆页面“获取验证码”按钮点击"];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *urlStr = [NSString stringWithFormat:@"https://mapi.lhgene.cn/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
+        NSString *urlStr = [NSString stringWithFormat:@"http://mapi.lhgene.cn:8088/m/api/requestcode?mobile=%@",_Tx_PhoneNumber.text];
         //,[_Tx_PhoneNumber.text stringByReplacingOccurrencesOfString:@" " withString:@""]];
         
         // NSURL *url = [[NSURL alloc] initWithString:urlStr];

@@ -80,7 +80,7 @@
     loginBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     loginBtn.layer.borderWidth = 1;
     loginBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    loginBtn.layer.cornerRadius = 15 *SCREEN_WEIGHT/375;
+    loginBtn.layer.cornerRadius = 14 *SCREEN_WEIGHT/375;
     loginBtn.tintColor = [UIColor whiteColor];
     loginBtn.tag = 80;
     loginBtn.frame = CGRectMake(135 *SCREEN_WEIGHT/375,

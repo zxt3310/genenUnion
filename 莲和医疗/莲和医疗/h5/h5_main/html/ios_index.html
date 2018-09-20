@@ -304,8 +304,8 @@
 
         var urlParam = parseURL(location.href);
         var $GC = {
-            serverUrl: 'http://mapi.lhgene.cn',
-            webappUrl: 'http://mapi.lhgene.cn',
+            serverUrl: 'http://mapi.lhgene.cn:8088',
+            webappUrl: 'http://mapi.lhgene.cn:8088',
             appid: urlParam['appid'] == undefined ? 1 : urlParam['appid']
         };
         console.log("appid:" + $GC.appid);
@@ -391,21 +391,21 @@
         <span class="product-name">产品</span>
         <div class="product-info">
             <div>
-                <a href="http://mapi.lhgene.cn/m/product/1">
+                <a href="http://mapi.lhgene.cn:8088/m/product/1">
                     <img src="../img/1@3x.png" alt="">
                     <p>和普安</p>
                     <p>ctDNA无创肿瘤基因检测</p>
                 </a>
             </div>
             <div>
-                <a href="http://mapi.lhgene.cn/m/product/3">
+                <a href="http://mapi.lhgene.cn:8088/m/product/3">
                     <img src="../img/2@3x.png" alt="">
                     <p>和家安</p>
                     <p>遗传肿瘤基因检测</p>
                 </a>
             </div>
             <div>
-                <a href="http://mapi.lhgene.cn/m/product/2">
+                <a href="http://mapi.lhgene.cn:8088/m/product/2">
                     <img src="../img/3@3x.png" alt="">
                     <p>和美安</p>
                     <p>乳腺肿瘤基因检测</p>
@@ -415,7 +415,7 @@
     </div>
     
     <div class="functions-box">
-        <a href="http://mapi.lhgene.cn/m/my/report">
+        <a href="http://mapi.lhgene.cn:8088/m/my/report">
             <div class="function">
                 <img src="../img/jiancebaogao.png">
                 <div class="function-info">
@@ -433,7 +433,7 @@
                 </div>
             </div>
         </a>
-        <a href="http://mapi.lhgene.cn/m/faq">
+        <a href="http://mapi.lhgene.cn:8088/m/faq">
             <div class="function">
                 <img src="../img/wenti.png">
                 <div class="function-info">
@@ -479,7 +479,7 @@
     -->
     <div class="caption">
         <span class="best-value">基因世界</span>
-        <a href="http://mapi.lhgene.cn/m/news">
+        <a href="http://mapi.lhgene.cn:8088/m/news">
             更多
             <i class="icon-more" style="display: none;"></i>
         </a>
@@ -511,7 +511,7 @@
             $('#baogao-msg').html('登录即可查看报告');
         } else {
             $.ajax({
-                url: 'http://mapi.lhgene.cn/m/api/reports?token='+token,
+                url: 'http://mapi.lhgene.cn:8088/m/api/reports?token='+token,
                 type: 'GET',
                 timeout: 5000,
                 dataType: 'json',
